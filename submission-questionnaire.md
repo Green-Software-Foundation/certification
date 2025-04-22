@@ -5,7 +5,7 @@ All tickboxes must be checked in order for the submission to proceed. You can op
 
 ## Metadata
 
-- **What is the measurement name? **
+- **What is the measurement name?**
   
   *The name must match the title of the submitted IMP*
 
