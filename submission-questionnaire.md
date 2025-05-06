@@ -2,43 +2,33 @@
 
 ## Metadata
 
-### What is the measurement name?
+- What is the measurement name?
+  *The name must match the title of the submitted IMP*
 
-*The name must match the title of the submitted IMP*
+- What is the SCI score?
+  *Provide the overall SCI score for the entire system*
 
-### What is the SCI score?
+- Please describe the system in terms that software generalists can understand. Please be very specific about version numbers, deployment details etc.
 
-*Provide the overall SCI score for the entire system*
+- Please describe the functional unit, R, used in your SCI calculation
 
-### Please describe the system in terms that software generalists can understand. Please be very specific about version numbers, deployment details etc.
+- Why was this functional unit chosen?
+  *Please explain why your chosen functional unit is appropriate for your application*
 
-### Please describe the functional unit, R, used in your SCI calculation
+- What is the total timespan covered by your measurement?
+  *e.g. if your measurements cover 2025-04-01 to 2025-04-02 then the total timespan is 1 day*
 
-### Why was this functional unit chosen?
+- Please provide a URL for the documentation for the software under measurement
+  *If you do not have open documentation, provide a link to to a website, blog or social media account where you share information about your software application*
 
-*Please explain why your chosen functional unit is appropriate for your application*
+- Please provide the name of the accountable person for this measurement
+  *This will ideally be your name as the submitting person but can be your title or team name if necessary*
 
-*What was the source of the functional unit data?*
+- Please list the components in your tree
+  *List all the components in your tree. Use indentation to indicate component heirarchy*
 
-### What is the total timespan covered by your measurement?
-
-*e.g. if your measurements cover 2025-04-01 to 2025-04-02 then the total timespan is 1 day*
-
-### Please provide a URL for the documentation for the software under measurement
-
-*If you do not have open documentation, provide a link to to a website, blog or social media account where you share information about your software application*
-
-### Please provide the name of the accountable person for this measurement
-
-*This will ideally be your name as the submitting person but can be your title or team name if necessary*
-
-### Please list the components in your tree
-
-*List all the components in your tree. Use indentation to indicate component heirarchy*
-
-### Did you undertake any assessment of SCI score error?
-
-*If you can provide any quantification of the estimate uncertainty, please describe here*
+- Did you undertake any assessment of SCI score error?
+  *If you can provide any quantification of the estimate uncertainty, please describe here*
 
 ## SCI calculation
 
@@ -104,14 +94,12 @@ e.g.
     - [ ] Estimate or literature values
       - Describe, with citations and/or links
 
-
-- List out the key coefficients used in the model pipeline for this component:
-
-|Coefficient name | Brief description | Value |
-|---|---|---|
-|example | used to convert x to y | 3 |
-
-
 - [ ] SCI is calculated as (O + M) / R
 
 - [ ] Aggregation was done by averaging SCI values over time (if you have time series data)
+
+- List out the key coefficients used in the model pipeline for this component:
+
+| Coefficient name | Brief description      | Value |
+| ---------------- | ---------------------- | ----- |
+| example          | used to convert x to y | 3     |
