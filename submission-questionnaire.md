@@ -8,27 +8,20 @@
 
 ### What is the SCI score?
 
-*Please describe the system under measurement*
+*Provide the overall SCI score for the entire system*
 
 ### Please describe the system in terms that software generalists can understand. Please be very specific about version numbers, deployment details etc.
 
-*What was the functional unit?*
-
 ### Please describe the functional unit, R, used in your SCI calculation
 
-*Why was this functional unit chosen?*
+### Why was this functional unit chosen?
 
-### Please explain why your chosen functional unit is appropriate for your application
+*Please explain why your chosen functional unit is appropriate for your application*
 
 *What was the source of the functional unit data?*
 
-### Where did you source functional unit data from, e.g. was it an API, a published dataset, an estimate...
+### What is the total timespan covered by your measurement?
 
-*What is the time granularity of the raw data used in this IMP?*
-
-### Describe the temporal resolution of your datasets - was it daily, 5 minute, daily, annual..etc? If the granularity of the raw data varied between components, please provide details
-
-*What is the total timespan covered by your measurement?*
 *e.g. if your measurements cover 2025-04-01 to 2025-04-02 then the total timespan is 1 day*
 
 ### Please provide a URL for the documentation for the software under measurement
@@ -43,58 +36,82 @@
 
 *List all the components in your tree. Use indentation to indicate component heirarchy*
 
+### Did you undertake any assessment of SCI score error?
+
+*If you can provide any quantification of the estimate uncertainty, please describe here*
+
 ## SCI calculation
 
-*For definitions of E, I, M, O and R, you can refer back to the SCI specification here: https://sci.greensoftware.foundation/*
+*You can refer back to the SCI specification here: https://sci.greensoftware.foundation/*
 
 *Answer the following questions **FOR EVERY COMPONENT IN YOUR TREE**:*
+*Add an H3 (###) for each component in your tree, and answer the questions in normal text underneath each heading*
 
-- [ ] There is an O value in units of gCO2e
-  O was sourced from:
-    - [ ] Direct measurement of power consumption (describe)
-    - [ ] A proxy (describe) 
-    - [ ] An analogue (describe)
-    - [ ] A published value (describe)
-    - [ ] An estimate (describe)
-    - [ ] Calculated from E and I
+e.g.
 
-- [ ] E is operational energy in units of kWh
-    E was sourced from:
-    - [ ] Direct measurement of power consumption (describe)
-    - [ ] A proxy or proxies (describe) 
-    - [ ] What models were used to convert your proxy measurements? (describe)
-    - [ ] An analogue (describe)
-    - [ ] A published value (describe)
-    - [ ] An estimate (describe)
+```
+### Component-name
+- what is this component's SCI score?
+31.5
+...
+```
 
-- [ ] I is carbon intensity of the electricity used, in units of gCO2e/kWh
-  I was sourced from:
-    - [ ] An API (describe) 
-    - [ ] A dataset (describe)
-    - [ ] A published value (describe)
-    - [ ] An estimate (describe)
-	I was:
-    - [ ] Averaged over time (describe)
-    - [ ] Marginal (describe)
-    - [ ] Global
-    - [ ] Regional (describe)
+- What is this components's SCI score?
+- Where was your functional unit data sourced from?
+- How was your SCI score calculated?
+-   R values were sourced from:
+    - [ ] An API
+      - describe and provide link to docs
+    - [ ] A dataset
+      - describe and provide link to dataset
+    - [ ] A published value
+      - describe and provide link
+    - [ ] An estimate
+      - describe how the estimate was made
+  
+- What is the time granularity of the raw data used in this IMP?
+  
+- If your SCI was computed from other SCI scores, please provide details here. Include:
+  - what were the sources for the SCI scores?
+  - what units were they in when you retrieved them?
+  - what models did you use to express the initial SCI scores into your chosen functional unit?
 
-- [ ] There is an M value representing embodied carbon in units of gCO2e
-  M was sourced from:
-    - [ ] A PCF or other LCA assessment (describe) 
-    - [ ] A manufacturer’s data sheet for the specific hardware
-    - [ ] Manufacturer’s data sheet for analogue hardware
-    - [ ] A published value (describe)
-    - [ ] A model (describe)
-    - [ ] An estimate (describe)
+- If your SCI was computed from E, I and M values:
+  - How did you source E values?
+    - [ ] Direct measurement
+      - describe the measurement setup
+    - [ ] Proxy measurement
+      -  describe the proxy measurements and the models applied to turn them into E values
+    - [ ] Analogue measurements
+      -  describe the analogue system and the measurement setup
+    - [ ] Estimate or literature values
+      - Describe, with citations and/or links
 
-- [ ] There is a functional unit, R
-  R values were sourced from:
-    - [ ] An API (describe) 
-    - [ ] A dataset (describe)
-    - [ ] A published value (describe)
-    - [ ] An estimate (describe)
+  - Where did you source your I value?
+  - Was your I value marginal or average? Please give details.
+  - Was your I value regional or global? Please give details.
+  
+  - How did you source M data?
+  - What were the observations you made for E?
+    - [ ] Direct measurement
+      - describe the measurement setup
+    - [ ] Proxy measurement
+      -  describe the proxy measurements and the models applied to turn them into E values
+    - [ ] Analogue measurements
+      -  describe the analogue system and the measurement setup
+   -  [ ] Manufacturer's data sheet
+      -  provide link
+    - [ ] Estimate or literature values
+      - Describe, with citations and/or links
+
+
+- List out the key coefficients used in the model pipeline for this component:
+
+|Coefficient name | Brief description | Value |
+|---|---|---|
+|example | used to convert x to y | 3 |
+
 
 - [ ] SCI is calculated as (O + M) / R
 
-- [ ] Aggregation is done by summing SCI values across all components
+- [ ] Aggregation was done by averaging SCI values over time (if you have time series data)
