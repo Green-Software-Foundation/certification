@@ -82,15 +82,17 @@ e.g.
   - Was your I value regional or global? Please give details.
   
   - How did you source M data?
-  - What were the observations you made for E?
+  - What were the observations you made for M?
     - [ ] Direct measurement
       - describe the measurement setup
     - [ ] Proxy measurement
-      -  describe the proxy measurements and the models applied to turn them into E values
+      -  describe the proxy measurements and the models applied to turn them into M values
     - [ ] Analogue measurements
       -  describe the analogue system and the measurement setup
    -  [ ] Manufacturer's data sheet
       -  provide link
+   -  [ ] Model
+      - describe the model and the parameter values used
     - [ ] Estimate or literature values
       - Describe, with citations and/or links
 
