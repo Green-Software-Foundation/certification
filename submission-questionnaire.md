@@ -30,6 +30,9 @@
 - Did you undertake any assessment of SCI score error?
   *If you can provide any quantification of the estimate uncertainty, please describe here*
 
+- For any components knowingly omitted from your inventory, please provide a justification.
+*If you have omitted components, please show that they do not significantly influence your SCI score, could not be expressed in your chosen functional unit or were otherwise impractical to include.*
+
 ## SCI calculation
 
 *You can refer back to the SCI specification here: https://sci.greensoftware.foundation/*
