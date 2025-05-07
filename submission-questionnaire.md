@@ -102,6 +102,6 @@ e.g.
 
 - List out the key coefficients used in the model pipeline for this component:
 
-| Coefficient name | Brief description      | Value |
-| ---------------- | ---------------------- | ----- |
-| example          | used to convert x to y | 3     |
+| Coefficient name | Brief description      | Value | Unit    |
+| ---------------- | ---------------------- | ----- | ------- |
+| example          | used to convert x to y | 3     | kWh/GBh |
