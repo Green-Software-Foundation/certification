@@ -2,30 +2,54 @@
 
 ## Metadata
 
-- What is the measurement name?
-  *The name must match the title of the submitted IMP*
+- Application name?
+  *provide the name of the application under measurement*
 
-- What is the SCI score?
-  *Provide the overall SCI score for the entire system*
+- Application version
+  *provide the specific version of the application under measurement*
 
-- Please describe the system in terms that software generalists can understand. Please be very specific about version numbers, deployment details etc.
+- Application description
+  *Please describe the system in terms that software generalists can understand. Please be very specific about version numbers, deployment details etc.*
+
+- Application URL
+  *Please link to the application itself or its documentation*
+
+- Accountable Organization
+  *Give your organization name*
+
+- Accountable Person:
+  *Name of the person submitting the certification*
+
+- Accountable contact:
+  *Contact email for the accountable person*
+
+- Measurement time span
+  *Start and end date and time* 
+
+- Measurement manifest file
+  *Provide link to the measurement IMP file*
+
+- Measurement Visualizer Link
+  *Link to the IF visualizer for your manifest file*
+
+- Measurement summary
+  *A short 2-3 sentence description of the measurement being certified*
+
+
+## Functional Unit
 
 - Please describe the functional unit, R, used in your SCI calculation
 
 - Why was this functional unit chosen?
   *Please explain why your chosen functional unit is appropriate for your application*
 
-- What is the total timespan covered by your measurement?
-  *e.g. if your measurements cover 2025-04-01 to 2025-04-02 then the total timespan is 1 day*
+## Methodology
 
-- Please provide a URL for the documentation for the software under measurement
-  *If you do not have open documentation, provide a link to to a website, blog or social media account where you share information about your software application*
+- Please explain your general methodological approach.
+  *describe the components under measurement and a brief outline of the data gathered and processes used to convert observatiosn to SCI scores for each component* 
 
-- Please provide the name of the accountable person for this measurement
-  *This will ideally be your name as the submitting person but can be your title or team name if necessary*
-
-- Please list the components in your tree
-  *List all the components in your tree. Use indentation to indicate component heirarchy*
+- Key insights
+  *What are the most important insights arising from your measurement?*
 
 - Did you undertake any assessment of SCI score error?
   *If you can provide any quantification of the estimate uncertainty, please describe here*
@@ -33,75 +57,26 @@
 - For any components knowingly omitted from your inventory, please provide a justification.
 *If you have omitted components, please show that they do not significantly influence your SCI score, could not be expressed in your chosen functional unit or were otherwise impractical to include.*
 
-## SCI calculation
+## Breakdown
 
-*You can refer back to the SCI specification here: https://sci.greensoftware.foundation/*
+- For each component in your measurement, please provide the SCI score below.
 
 *Answer the following questions **FOR EVERY COMPONENT IN YOUR TREE**:*
-*Add an H3 (###) for each component in your tree, and answer the questions in normal text underneath each heading*
+*Add an H3 (###) for each component in your tree, using the component name as the heading*
 
-e.g.
+### Component X (replace me with your component name)
+- What is this component's SCI score?
+- Describe this component
+- The data used to calculate SCI were:
+  - [ ] Total Carbon
+    - explain where you sourced your C values from and describe any models used to turn them into SCI 
+  - [ ] O and M
+    - explain where you sourced O and M and describe any models used to turn them into SCI 
+  - [ ] E, I and M
+    - explain where you sourced E, I and M and describe any models and coefficients you applied to turn them into SCI.
+    - specify whether I was marginal or average, regional or global and give details.
 
-```
-### Component-name
-- what is this component's SCI score?
-31.5
-...
-```
-
-- What is this components's SCI score?
-- Where was your functional unit data sourced from?
-- How was your SCI score calculated?
--   R values were sourced from:
-    - [ ] An API
-      - describe and provide link to docs
-    - [ ] A dataset
-      - describe and provide link to dataset
-    - [ ] A published value
-      - describe and provide link
-    - [ ] An estimate
-      - describe how the estimate was made
-  
-- What is the time granularity of the raw data used in this IMP?
-  
-- If your SCI was computed from other SCI scores, please provide details here. Include:
-  - what were the sources for the SCI scores?
-  - what units were they in when you retrieved them?
-  - what models did you use to express the initial SCI scores into your chosen functional unit?
-
-- If your SCI was computed from E, I and M values:
-  - How did you source E values?
-    - [ ] Direct measurement
-      - describe the measurement setup
-    - [ ] Proxy measurement
-      -  describe the proxy measurements and the models applied to turn them into E values
-    - [ ] Analogue measurements
-      -  describe the analogue system and the measurement setup
-    - [ ] Estimate or literature values
-      - Describe, with citations and/or links
-
-  - Where did you source your I value?
-  - Was your I value marginal or average? Please give details.
-  - Was your I value regional or global? Please give details.
-  
-  - How did you source M data?
-  - What were the observations you made for M?
-    - [ ] Direct measurement
-      - describe the measurement setup
-    - [ ] Proxy measurement
-      -  describe the proxy measurements and the models applied to turn them into M values
-    - [ ] Analogue measurements
-      -  describe the analogue system and the measurement setup
-   -  [ ] Manufacturer's data sheet
-      -  provide link
-   -  [ ] Model
-      - describe the model and the parameter values used
-    - [ ] Estimate or literature values
-      - Describe, with citations and/or links
-
-- [ ] SCI is calculated as (O + M) / R
-
-- [ ] Aggregation was done by averaging SCI values over time (if you have time series data)
+- [ ] Aggregation was done by averaging SCI values over time (if you have time series data) and summing SCI values across components
 
 - List out the key coefficients used in the model pipeline for this component:
 
