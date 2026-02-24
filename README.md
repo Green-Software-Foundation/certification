@@ -1,150 +1,49 @@
-# Impact Framework (IF) Manifest Files for SCI Examples
+# GSF Self-Certification Program for ISO/IEC 21031:2024
 
-This directory contains executable Impact Framework manifest files (`.yml`) that implement the three SCI calculation examples from `SCI-calculation-examples.md`.
+Planning and operational documents for the Green Software Foundation's Self-Certification Program for ISO/IEC 21031:2024 (Software Carbon Intensity).
 
-## Prerequisites
+## About the Program
 
-Install the Impact Framework CLI:
-```bash
-npm install -g @grnsft/if
-```
+This program enables organizations to **self-certify conformity** with the ISO/IEC 21031:2024 standard (SCI). Organizations submit their SCI calculations along with a signed attestation and full methodology disclosure. A GSF review committee verifies **disclosure completeness** -- not calculation accuracy -- through a structured three-gate review process (completeness, internal consistency, and disclosure sufficiency). Approved submissions receive a 1-year certificate issued via the GSF badging platform, and all disclosures are published publicly on GitHub for community review.
 
-## Manifest Files
+The program is free, follows the ISO/IEC 17050 supplier's declaration of conformity framework, and targets a ~15 business day review turnaround.
 
-### Example 1: E-commerce API Service
-**File:** `example-1-api-service-final.yml`
+## Repository Contents
 
-**Scenario:** REST API service on AWS EC2 (us-east-1) with application servers, load balancer, and database.
+### Planning Documents (`planning/`)
 
-**Run:**
-```bash
-if-run --manifest example-1-api-service-final.yml
-```
+| Document | Description |
+|----------|-------------|
+| [GSF CoD Simplified proposal doc.md](planning/GSF%20CoD%20Simplified%20proposal%20doc.md) | Full proposal document covering program model, submission requirements, review process, governance, and certificate lifecycle |
+| [LAUNCH-IMPLEMENTATION-PLAN.md](planning/LAUNCH-IMPLEMENTATION-PLAN.md) | Week-by-week implementation plan with acceptance criteria, review procedures, and launch readiness checklist |
+| [submission-questionnaire.md](planning/submission-questionnaire.md) | Questionnaire template for applicants submitting SCI calculations |
+| [Validation-Checklist.md](planning/Validation-Checklist.md) | Validation checklist covering structural, completeness, logical, and quality checks for submissions |
+| [Badge-Usage-Guidelines.md](planning/Badge-Usage-Guidelines.md) | Badge specifications, permitted/prohibited uses, display examples, and compliance enforcement |
+| [IMP-Schema-Documentation.md](planning/IMP-Schema-Documentation.md) | Impact Manifest Protocol (IMP) schema for optional structured YAML/JSON submissions |
 
-**Expected Result:** 349.63 gCO2eq per 1,000 API requests
+### Other Files
 
-**Actual Result:**
-- Energy: 1.022 kWh per 1,000 requests
-- Operational Carbon: 347.48 gCO2eq
-- Embodied Carbon: 2.146 gCO2eq
-- **SCI: 349.63 gCO2eq per 1,000 API requests** ✓
+| File | Description |
+|------|-------------|
+| [tracking-sheet.csv](tracking-sheet.csv) | Submission tracking spreadsheet for managing applications through the review lifecycle |
 
----
+## Key Concepts
 
-### Example 2: Machine Learning Training Job
-**File:** `example-2-ml-training-final.yml`
+- **Self-certification, not third-party audit**: Organizations declare their own conformity with ISO/IEC 21031:2024. GSF verifies disclosure completeness, not accuracy.
+- **Three-gate review**: Gate 1 (completeness) -> Gate 2 (internal consistency) -> Gate 3 (disclosure sufficiency, scored on a 1-5 rubric across 6 criteria).
+- **Public disclosure**: All approved submissions are published to enable community validation and peer review.
+- **1-year validity**: Certificates expire annually and can be renewed with an updated submission.
 
-**Scenario:** ResNet-50 training on GCP with NVIDIA V100 GPU in europe-west4 (Netherlands).
+## Status
 
-**Run:**
-```bash
-if-run --manifest example-2-ml-training-final.yml
-```
-
-**Expected Result:** 2,721 gCO2eq (2.72 kgCO2eq) per training run
-
-**Actual Result:**
-- Energy: 5.5 kWh per training run
-- Operational Carbon: 2,310 gCO2eq
-- Embodied Carbon: 411 gCO2eq
-- **SCI: 2,721 gCO2eq per training run** ✓
-
----
-
-### Example 3: Mobile Banking App
-**File:** `example-3-mobile-app-final.yml`
-
-**Scenario:** Mobile banking app running on user devices (60% iPhone, 40% Android) with global user distribution.
-
-**Run:**
-```bash
-if-run --manifest example-3-mobile-app-final.yml
-```
-
-**Expected Result:** 6.02 gCO2eq per user-month
-
-**Actual Result:**
-- Energy: 0.003795 kWh per user-month
-- Operational Carbon: 1.56 gCO2eq
-- Embodied Carbon: 4.46 gCO2eq
-- **SCI: 6.02 gCO2eq per user-month** ✓
-
----
-
-## Manifest Structure
-
-Each manifest follows the Impact Framework IMP file format:
-
-```yaml
-name: manifest-name
-description: |
-  Detailed description of the scenario
-tags:
-  kind: sci
-  category: service-type
-
-initialize:
-  plugins:
-    plugin-name:
-      method: PluginMethod
-      path: builtin
-      config:
-        # Plugin configuration
-
-tree:
-  children:
-    component-name:
-      pipeline:
-        compute:
-          - plugin-1
-          - plugin-2
-          - ...
-      defaults:
-        # Default values
-      inputs:
-        - timestamp: "2025-01-01T00:00:00.000Z"
-          duration: <seconds>
-          # Input parameters
-```
-
-## Key Plugins Used
-
-1. **Multiply**: Multiplies parameters (e.g., energy × carbon intensity)
-2. **Sum**: Sums multiple parameters (e.g., operational + embodied carbon)
-3. **Sci**: Calculates Software Carbon Intensity per functional unit
-4. **Coefficient**: Passes through a value with coefficient multiplication
-
-## Validation
-
-All manifests have been validated to produce results matching the written examples in `SCI-calculation-examples.md`:
-
-| Example | Manifest | Expected SCI | Actual SCI | Match |
-|---------|----------|--------------|------------|-------|
-| API Service | example-1-api-service-final.yml | 349.63 | 349.63 | ✓ |
-| ML Training | example-2-ml-training-final.yml | 2,721 | 2,721 | ✓ |
-| Mobile App | example-3-mobile-app-final.yml | 6.02 | 6.02 | ✓ |
-
-## Output Files
-
-To save manifest outputs:
-```bash
-if-run --manifest <manifest-file>.yml --output <output-file>.yml
-```
-
-To print to stdout:
-```bash
-if-run --manifest <manifest-file>.yml --stdout
-```
-
-## Notes
-
-- All calculations conform to SCI Specification v1.1.0
-- Operational emissions use location-based carbon intensity (no market-based measures)
-- Embodied emissions include hardware lifecycle impacts with time/resource-share allocation
-- Functional units are chosen to represent meaningful application scaling metrics
+The program is targeting launch approximately 2-4 weeks after steering committee approval. See the [Launch Implementation Plan](planning/LAUNCH-IMPLEMENTATION-PLAN.md) for the full timeline and readiness checklist.
 
 ## References
 
-- [Impact Framework Documentation](https://if.greensoftware.foundation/)
-- [SCI Specification v1.1.0](https://github.com/Green-Software-Foundation/sci)
-- [IF GitHub Repository](https://github.com/Green-Software-Foundation/if)
+- [ISO/IEC 21031:2024 (SCI Specification)](https://github.com/Green-Software-Foundation/sci)
+- [Green Software Foundation](https://greensoftware.foundation/)
+- [GSF Impact Framework](https://if.greensoftware.foundation/)
+
+## License
+
+See [LICENSE](LICENSE) for details.
