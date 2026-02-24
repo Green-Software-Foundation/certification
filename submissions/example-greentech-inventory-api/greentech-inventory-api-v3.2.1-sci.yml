@@ -1,0 +1,250 @@
+# ============================================================================
+# SCI Self-Certification — Impact Framework Manifest
+# GreenTech Solutions — Inventory Management API v3.2.1
+#
+# This manifest computes the SCI score for a REST API running on AWS us-east-1.
+# Each infrastructure component is modelled as a separate child node.
+# The "system-total" child verifies the aggregate SCI from pre-computed totals.
+#
+# Run:  if-run --manifest greentech-inventory-api-v3.2.1-sci.yml
+# ============================================================================
+
+name: greentech-inventory-api-sci
+description: |
+  SCI calculation for GreenTech Solutions Inventory Management API v3.2.1.
+
+  A REST API for real-time inventory management, built with Python (FastAPI)
+  and PostgreSQL, deployed on AWS us-east-1 (Virginia, USA).
+
+  Infrastructure:
+    - 2x EC2 m5.large application servers (behind ALB)
+    - 1x RDS r6g.large PostgreSQL database
+    - 1x ElastiCache r6g.medium Redis cache
+    - 1x Application Load Balancer
+
+  Measurement period: January 2026 (31 days, 744 hours)
+  Total API requests: 25,000,000
+  Grid carbon intensity: 370 gCO2eq/kWh (EPA eGRID 2023, SRVC subregion)
+  PUE: 1.2
+
+  Result: 4.85 gCO2eq per 1,000 API requests
+
+tags:
+  kind: sci
+  category: api-service
+  domain: inventory-management
+  environment: production
+  cloud_provider: aws
+  region: us-east-1
+
+initialize:
+  plugins:
+    # Step 1: Compute energy from average power draw
+    #   power-kw × hours → energy-kwh
+    power-to-energy:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["power-kw", "hours"]
+        output-parameter: "energy-kwh"
+
+    # Step 2: Apply data centre PUE overhead
+    #   energy-kwh × pue → energy
+    apply-pue:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["energy-kwh", "pue"]
+        output-parameter: "energy"
+
+    # Step 3: Operational carbon = energy × grid carbon intensity
+    #   energy × grid/carbon-intensity → carbon-operational
+    operational-carbon:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["energy", "grid/carbon-intensity"]
+        output-parameter: "carbon-operational"
+
+    # Step 4: Compute time-share ratio for embodied allocation
+    #   time-reserved-hours / expected-lifespan-hours → time-share-ratio
+    time-share:
+      method: Divide
+      path: builtin
+      config:
+        numerator: time-reserved-hours
+        denominator: expected-lifespan-hours
+        output: time-share-ratio
+
+    # Step 5: Allocate embodied emissions for measurement period
+    #   emissions-embodied-total × time-share-ratio → carbon-embodied
+    compute-embodied:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["emissions-embodied-total", "time-share-ratio"]
+        output-parameter: "carbon-embodied"
+
+    # Step 6: Total carbon = operational + embodied
+    sum-carbon:
+      method: Sum
+      path: builtin
+      config:
+        input-parameters:
+          - carbon-operational
+          - carbon-embodied
+        output-parameter: carbon
+
+    # Step 7: SCI = total carbon / functional unit count
+    sci:
+      method: Sci
+      path: builtin
+      config:
+        functional-unit: "functional-unit-count"
+
+tree:
+  children:
+    # ------------------------------------------------------------------
+    # Per-component children: each computes energy, operational carbon,
+    # embodied carbon, and total carbon for one infrastructure component.
+    # ------------------------------------------------------------------
+
+    app-server-1:
+      pipeline:
+        compute:
+          - power-to-energy
+          - apply-pue
+          - operational-carbon
+          - time-share
+          - compute-embodied
+          - sum-carbon
+      inputs:
+        - timestamp: "2026-01-01T00:00:00.000Z"
+          duration: 2678400                    # 31 days in seconds
+          power-kw: 0.015                      # 15W average draw (m5.large at ~35% utilization)
+          hours: 744                           # 31 days
+          pue: 1.2                             # AWS us-east-1 data centre PUE
+          grid/carbon-intensity: 370           # gCO2eq/kWh, EPA eGRID 2023 SRVC
+          emissions-embodied-total: 1100000    # gCO2eq total lifecycle (Cloud Carbon Footprint)
+          time-reserved-hours: 744             # measurement period
+          expected-lifespan-hours: 35040       # 4 years (4 × 365 × 24)
+
+    app-server-2:
+      pipeline:
+        compute:
+          - power-to-energy
+          - apply-pue
+          - operational-carbon
+          - time-share
+          - compute-embodied
+          - sum-carbon
+      inputs:
+        - timestamp: "2026-01-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.015
+          hours: 744
+          pue: 1.2
+          grid/carbon-intensity: 370
+          emissions-embodied-total: 1100000
+          time-reserved-hours: 744
+          expected-lifespan-hours: 35040
+
+    database:
+      pipeline:
+        compute:
+          - power-to-energy
+          - apply-pue
+          - operational-carbon
+          - time-share
+          - compute-embodied
+          - sum-carbon
+      inputs:
+        - timestamp: "2026-01-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.022                      # 22W average draw (r6g.large at ~40% utilization)
+          hours: 744
+          pue: 1.2
+          grid/carbon-intensity: 370
+          emissions-embodied-total: 1400000    # gCO2eq total lifecycle
+          time-reserved-hours: 744
+          expected-lifespan-hours: 35040
+
+    redis-cache:
+      pipeline:
+        compute:
+          - power-to-energy
+          - apply-pue
+          - operational-carbon
+          - time-share
+          - compute-embodied
+          - sum-carbon
+      inputs:
+        - timestamp: "2026-01-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.008                      # 8W average draw (r6g.medium at ~30% utilization)
+          hours: 744
+          pue: 1.2
+          grid/carbon-intensity: 370
+          emissions-embodied-total: 700000     # gCO2eq total lifecycle
+          time-reserved-hours: 744
+          expected-lifespan-hours: 35040
+
+    load-balancer:
+      pipeline:
+        compute:
+          - power-to-energy
+          - apply-pue
+          - operational-carbon
+          - time-share
+          - compute-embodied
+          - sum-carbon
+      inputs:
+        - timestamp: "2026-01-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.003                      # 3W average draw (ALB)
+          hours: 744
+          pue: 1.2
+          grid/carbon-intensity: 370
+          emissions-embodied-total: 400000     # gCO2eq total lifecycle
+          time-reserved-hours: 744
+          expected-lifespan-hours: 35040
+
+    network:
+      # Network energy is coefficient-based (GB × kWh/GB), not power × time.
+      # Energy is provided directly; pipeline starts at PUE application.
+      pipeline:
+        compute:
+          - apply-pue
+          - operational-carbon
+          - sum-carbon
+      inputs:
+        - timestamp: "2026-01-01T00:00:00.000Z"
+          duration: 2678400
+          energy-kwh: 1.5                      # 1,500 GB × 0.001 kWh/GB
+          pue: 1.2
+          grid/carbon-intensity: 370
+          carbon-embodied: 0                   # no dedicated hardware for network
+
+    # ------------------------------------------------------------------
+    # System total: verifies the aggregate SCI score from pre-computed
+    # component totals. This is the value reported on the certificate.
+    #
+    # Inputs are the sums of the per-component values above:
+    #   energy    = sum of all component energy-with-PUE values
+    #   carbon-embodied = sum of all component embodied allocations
+    #   functional-unit-count = total requests / 1,000 (the SCI unit)
+    # ------------------------------------------------------------------
+
+    system-total:
+      pipeline:
+        compute:
+          - operational-carbon
+          - sum-carbon
+          - sci
+      inputs:
+        - timestamp: "2026-01-01T00:00:00.000Z"
+          duration: 2678400
+          energy: 58.0464                      # total E after PUE (kWh)
+          grid/carbon-intensity: 370           # gCO2eq/kWh
+          carbon-embodied: 99794.520548        # total M (gCO2eq)
+          functional-unit-count: 25000         # 25,000,000 requests / 1,000

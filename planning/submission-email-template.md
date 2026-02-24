@@ -1,8 +1,10 @@
 # SCI Self-Certification Submission — Email Template
 
-Copy everything below the line into a new email addressed to **sci-certification@greensoftware.foundation** with the subject line shown. Replace all placeholder text in [square brackets] with your information. Delete the helper notes in *italics* as you go — they are there to guide you.
+Copy everything below the line into a new email addressed to **sci-certification@greensoftware.foundation** with the subject line shown. Replace all placeholder text in [square brackets] with your information. Delete the helper notes in *italics* as you go.
 
-**A note on format:** You can answer any section inline in the email or in an attached document (PDF, Word, Markdown, or plain text). If you provide information as an attachment, just note the filename inline so the reviewer can match it to the requirement — for example: *"See attached: acme-api-boundary.pdf"*. You can use a single attachment for everything or separate files per section — whatever is easiest for you.
+**Format:** You can answer inline in the email or attach documents (PDF, Word, Markdown, or plain text). If you use attachments, note the filename inline so the reviewer can match it — e.g., *"See attached: acme-api-boundary.pdf"*.
+
+**This submission becomes your public disclosure.** If approved, it is published as-is to the `greensoftware-foundation/sci-certifications` GitHub repository (your contact email is redacted and a certificate metadata header is added). Write accordingly — there is no separate disclosure step.
 
 ---
 
@@ -24,7 +26,7 @@ Copy everything below the line into a new email addressed to **sci-certification
 **Software version:** [e.g. v2.1.0, or "commit abc123 deployed 2026-01-15"]
 
 **Software description:**
-[Describe the system in 2-4 sentences so that a reader unfamiliar with your product can understand what it does and how it is deployed. Include the tech stack, hosting environment, and rough scale.]
+[2-4 sentences: what it does, tech stack, hosting environment, rough scale.]
 
 *Example: "A REST API serving an e-commerce platform, built with Node.js and PostgreSQL, deployed on two AWS EC2 t3.medium instances behind an Application Load Balancer in us-east-1. Handles approximately 45 million requests per month."*
 
@@ -49,8 +51,6 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 ## PART 3 — Software Boundary
 
-*List every significant component of your system and state whether it is **included** or **excluded** from the calculation. For included components, briefly say why. For excluded components, you must give a rationale for the exclusion.*
-
 ### Included components
 
 | Component | Description | Why included |
@@ -67,7 +67,7 @@ Copy everything below the line into a new email addressed to **sci-certification
 | [e.g. End-user devices] | [e.g. Client browsers] | [e.g. Beyond our operational control] |
 | ... | ... | ... |
 
-### Shared infrastructure *(if any — delete this section if not applicable)*
+### Shared infrastructure [delete if not applicable]
 
 | Shared component | How you allocated your share | Your allocation % or ratio |
 |------------------|------------------------------|----------------------------|
@@ -82,9 +82,7 @@ Copy everything below the line into a new email addressed to **sci-certification
 [e.g. "1,000 API requests"]
 
 **Why did you choose this unit?**
-[Explain why this unit scales with how your software delivers value.]
-
-*Example: "API requests are the core unit of value our service delivers. Request volume scales linearly with usage, making it an appropriate normalizing factor."*
+[Explain why this unit scales with how your software delivers value. See Applicant Guide Section 4 for requirements.]
 
 **How did you count or measure the total units?**
 [e.g. "Counted from nginx access logs, validated against CloudWatch request metrics."]
@@ -100,7 +98,7 @@ Copy everything below the line into a new email addressed to **sci-certification
 **PUE applied:** [e.g. 1.2 — or "N/A" if not applicable]
 
 **How was energy measured or estimated?**
-[Describe your approach — direct metering, cloud provider telemetry, power modelling, etc.]
+[Your approach: direct metering, cloud provider telemetry, power modelling, etc. See Applicant Guide Section 5.]
 
 **Energy breakdown by component:**
 
@@ -124,7 +122,7 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 **Year of data:** [e.g. 2022]
 
-### Regional breakdown *(if your software runs in multiple regions — delete if single-region)*
+### Regional breakdown [delete if single-region]
 
 | Region | % of workload | Carbon intensity (gCO2eq/kWh) | Data source |
 |--------|--------------|-------------------------------|-------------|
@@ -140,7 +138,7 @@ Copy everything below the line into a new email addressed to **sci-certification
 **Total embodied emissions allocated to this measurement:** [Number and unit, e.g. "96,574.9 gCO2eq"]
 
 **Allocation methodology:**
-[Describe how you allocated embodied emissions across time and resources. The standard formula is M = TE x (TiR / EL) x (RR / ToR) — explain how you applied it or describe any alternative approach.]
+[How you allocated embodied emissions. The standard formula is M = TE x (TiR / EL) x (RR / ToR). See Applicant Guide Section 7.]
 
 **Hardware component breakdown:**
 
@@ -149,7 +147,7 @@ Copy everything below the line into a new email addressed to **sci-certification
 | [e.g. App Server 1] | [e.g. EC2 t3.medium] | [e.g. 1,200,000] | [e.g. 4 years] | [e.g. 720h] | [e.g. 100%] | [e.g. 24,658] | [e.g. Cloud Carbon Footprint] |
 | ... | ... | ... | ... | ... | ... | ... | ... |
 
-*If embodied emissions are zero, explain why (e.g. "Pure SaaS — no hardware under our operational control").*
+*If M = 0, explain why (e.g. "Pure SaaS — no hardware under our operational control").*
 
 ---
 
@@ -158,7 +156,7 @@ Copy everything below the line into a new email addressed to **sci-certification
 **Overall approach:** [Measurement / Calculation / Hybrid]
 
 **Describe your methodology:**
-[A paragraph explaining the overall approach — how you gathered data, what models or tools you used, and how you combined E, I, and M into your final SCI score.]
+[How you gathered data, what models or tools you used, and how you arrived at your SCI score.]
 
 **Key assumptions:**
 
@@ -187,8 +185,6 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 ## PART 9 — Show Your Calculation
 
-*Reproduce the final SCI formula with your numbers so the reviewer can verify the arithmetic.*
-
 ```
 Operational emissions (O) = E x I = [e.g. 46.01 kWh] x [e.g. 340 gCO2eq/kWh] = [e.g. 15,643.4 gCO2eq]
 Embodied emissions (M) = [e.g. 96,574.9 gCO2eq]
@@ -200,7 +196,7 @@ SCI = (O + M) / R = ([e.g. 15,643.4] + [e.g. 96,574.9]) / [e.g. 45,000] x 1,000
 
 ---
 
-## PART 10 — Baseline Comparison *(delete this section if this is your first measurement)*
+## PART 10 — Baseline Comparison [OPTIONAL — delete if this is your first measurement]
 
 **Previous SCI score:** [value and unit]
 
@@ -220,9 +216,7 @@ SCI = (O + M) / R = ([e.g. 15,643.4] + [e.g. 96,574.9]) / [e.g. 45,000] x 1,000
 
 ---
 
-## PART 11 — Supporting Materials *(optional but encouraged)*
-
-*Attach or link any of the following if available. These are not required but strengthen your submission.*
+## PART 11 — Supporting Materials [OPTIONAL — not required but encouraged]
 
 - [ ] Impact Framework manifest file (IMP/YAML) — *highly encouraged for maximum transparency*
 - [ ] Link to IF Visualizer output for your manifest
@@ -233,7 +227,7 @@ SCI = (O + M) / R = ([e.g. 15,643.4] + [e.g. 96,574.9]) / [e.g. 45,000] x 1,000
 
 ## PART 12 — Self-Certification Attestation
 
-*You must include the following attestation. Copy it as-is, fill in the signature fields, and include it in your email or as a signed attachment.*
+*Copy the attestation below as-is. Fill in the signature fields.*
 
 ---
 
@@ -273,16 +267,14 @@ By submitting this application, I hereby:
 
 ## Submission Checklist
 
-*Before sending, confirm you have included everything. Incomplete submissions will be returned.*
-
-- [ ] Part 1 — Organization and software details filled in
-- [ ] Part 2 — Measurement period and SCI score stated
-- [ ] Part 3 — All included and excluded components listed with justifications/rationales
-- [ ] Part 4 — Functional unit defined with rationale and measurement method
-- [ ] Part 5 — Energy value with per-component breakdown and data sources
-- [ ] Part 6 — Carbon intensity value with location, data source, and year
+- [ ] Part 1 — Organization and software details
+- [ ] Part 2 — Measurement period and SCI score
+- [ ] Part 3 — Included and excluded components with justifications/rationales
+- [ ] Part 4 — Functional unit with rationale and measurement method
+- [ ] Part 5 — Energy with per-component breakdown and data sources
+- [ ] Part 6 — Carbon intensity with location, data source, and year
 - [ ] Part 7 — Embodied emissions with hardware breakdown (or justification if zero)
-- [ ] Part 8 — Methodology described; assumptions and limitations documented
-- [ ] Part 9 — Final SCI calculation shown with arithmetic
+- [ ] Part 8 — Methodology, assumptions, and limitations
+- [ ] Part 9 — SCI calculation shown with arithmetic
 - [ ] Part 12 — Attestation signed and dated
 - [ ] All attachments referenced by filename in the relevant section

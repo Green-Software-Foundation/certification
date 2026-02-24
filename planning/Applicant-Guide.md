@@ -108,39 +108,7 @@ SCI = (O + M) / R = ([your O] + [your M]) / [your R] = [your score] per [your fu
 
 ### 10. Self-certification attestation
 
-The 10-point attestation below must be signed and included. This is not optional. Copy it verbatim, fill in the signature fields, and include it in your submission.
-
-> **Self-Certification Attestation for ISO/IEC 21031:2024**
->
-> By submitting this application, I hereby:
->
-> 1. **DECLARE** that the submitted SCI calculation conforms to all requirements of ISO/IEC 21031:2024 (Software Carbon Intensity).
->
-> 2. **ATTEST** that the calculation was performed in good faith using appropriate methodologies and data sources consistent with ISO/IEC 21031:2024.
->
-> 3. **ACKNOWLEDGE** that this is self-certification under the ISO/IEC 17050 framework and does not constitute third-party certification or independent validation by the Green Software Foundation.
->
-> 4. **MAINTAIN** supporting documentation for all calculations, methodologies, data sources, and assumptions for a minimum of 3 years and will provide upon reasonable request.
->
-> 5. **ACCEPT RESPONSIBILITY** for the accuracy, completeness, and conformity of the calculation and disclosure with ISO/IEC 21031:2024.
->
-> 6. **AGREE** to promptly correct any errors or inaccuracies if identified through community review or self-discovery.
->
-> 7. **UNDERSTAND** that GSF's role is limited to verifying disclosure completeness, not validating calculation accuracy or ISO/IEC 21031:2024 conformity.
->
-> 8. **AGREE** to use the certificate and badge only as permitted in the GSF Badge Usage Guidelines, including always using the "self-certified" qualifier when claiming ISO/IEC 21031:2024 conformity.
->
-> 9. **ACKNOWLEDGE** that false or misleading self-certification may result in certificate revocation, public notice, and potential legal consequences.
->
-> 10. **CONSENT** to public disclosure of the submitted information to enable community review and validation.
->
-> **Signature:** ___________________
->
-> **Date:** ___________________
->
-> **Name and title:** ___________________
->
-> **Organization:** ___________________
+The submission template (Part 12) contains a 10-point attestation that you must sign and include. This is not optional. Copy it verbatim from the template, fill in the signature fields, and include it in your submission. The attestation covers your declaration of ISO/IEC 21031:2024 conformity, your responsibilities, GSF's limited role, badge usage obligations, and your consent to public disclosure.
 
 ### Optional supporting materials (encouraged)
 
@@ -159,9 +127,11 @@ These are not required but strengthen your submission:
 
 **Subject line:** `SCI Self-Certification Submission — [Your Organization Name] — [Your Software Name]`
 
-**Accepted formats for the disclosure document:** PDF, Word, Markdown, or plain text in the email body. You can answer inline in the email or attach one or more documents. If you use attachments, reference each filename in the relevant section so the reviewer can match it.
+**Accepted formats:** PDF, Word, Markdown, or plain text in the email body. You can answer inline in the email or attach one or more documents. If you use attachments, reference each filename in the relevant section so the reviewer can match it.
 
 Use the submission email template (`submission-email-template.md`) as your starting point. It is structured to match the requirements above section by section, with examples for every field.
+
+**Your submission becomes your public disclosure.** If approved, your submission is published as-is to the public GitHub repository (with your contact email redacted and a certificate metadata header added). Write your submission knowing it will be the public-facing document — there is no separate disclosure step.
 
 ---
 
@@ -260,8 +230,8 @@ The six criteria, with concrete examples of what passes and what doesn't:
 Your submission passes all three gates. What happens next:
 
 1. GSF issues a certificate on the badging platform with a unique certificate ID (format: `GSF-SCI-YYYY-NNNNN`).
-2. Your full disclosure is published to the public GitHub repository (`greensoftware-foundation/sci-certifications`).
-3. You receive an email with your certificate link, badge download instructions, and badge usage guidelines.
+2. Your submission is published to the public GitHub repository (`greensoftware-foundation/sci-certifications`) with your contact email redacted and a certificate metadata header added.
+3. You receive a short email with your certificate link, disclosure URL, badge download instructions, and expiry date.
 4. Your certificate is **valid for 1 year** from the date of issuance.
 
 ### Revision Requested
@@ -299,7 +269,7 @@ If rejected, you receive a written explanation and may appeal through the disput
 
 ### Your public disclosure
 
-Your complete submission is published to the `greensoftware-foundation/sci-certifications` GitHub repository. This is a requirement of the program — by submitting, you consent to full public disclosure (attestation point 10). This transparency enables the community validation that underpins the self-certification model.
+Your submission is published as-is to the `greensoftware-foundation/sci-certifications` GitHub repository, with two changes: your contact email is redacted, and a certificate metadata header (certificate ID, issue date, expiry date, certificate URL) is prepended. No separate disclosure document is created — your submission is the disclosure. This is a requirement of the program (attestation point 10) and enables the community validation that underpins the self-certification model.
 
 ---
 

@@ -103,78 +103,140 @@ The proposal (Section 5.2) defines what reviewers assess: **disclosure completen
 
 Every submission passes through three sequential gates. A submission must pass all three to be approved. Failure at any gate produces a specific, documented outcome.
 
+**Reviewer workflow**: Work through the submission top to bottom. Gates 1 and 2 are mechanical — if the submission fails either, stop and return it immediately with specific feedback. Only invest the deeper reading time of Gate 3 on submissions that pass the first two gates.
+
+**Target review times**: Gate 1 ~30 min, Gate 2 ~15 min, Gate 3 ~60 min. A routine submission should take ~2 hours total.
+
 **Gate 1: Completeness** — Is everything present?
 
-This is a binary check. Every required field is either present or it isn't. There is no judgement involved.
+Binary checks — no judgement. Work through the submission section by section. Items marked *(if applicable)* can be skipped when the condition doesn't apply.
 
-| # | Required Item | Present? | Source |
-|---|--------------|----------|--------|
-| 1 | Signed self-certification attestation (all 10 points) | Y/N | Proposal §2.3 |
-| 2 | Applicant name, organization, contact email | Y/N | Proposal §3.1 |
-| 3 | Software/system name and version | Y/N | Proposal §3.1 |
-| 4 | SCI score value with units | Y/N | Proposal §3.1 |
-| 5 | Measurement period (start date, end date) | Y/N | Proposal §3.1 |
-| 6 | Components explicitly included in boundary | Y/N | Proposal §3.2 |
-| 7 | Components explicitly excluded, each with rationale | Y/N | Proposal §3.2 |
-| 8 | Functional unit chosen | Y/N | Proposal §3.3 |
-| 9 | Rationale for functional unit choice | Y/N | Proposal §3.3 |
-| 10 | How functional unit is counted/measured | Y/N | Proposal §3.3 |
-| 11 | Energy (E): value, methodology, data sources | Y/N | Proposal §3.4 |
-| 12 | Carbon intensity (I): value, location(s), data sources | Y/N | Proposal §3.4 |
-| 13 | Embodied emissions (M): value, methodology, data sources (or explicit justification if M=0) | Y/N | Proposal §3.4 |
-| 14 | Description of quantification methodology | Y/N | Proposal §3.4 |
-| 15 | Key assumptions documented | Y/N | Proposal §3.4 |
-| 16 | Known limitations documented | Y/N | Proposal §3.4 |
+**Applicant and software** (§3.1):
+
+| # | Item | Y/N |
+|---|------|-----|
+| 1 | Organization name, contact name, and contact email | |
+| 2 | Software name and version | |
+| 3 | SCI score — numeric value with units including functional unit | |
+| 4 | Measurement start date and end date | |
+
+**Software boundary** (§3.2):
+
+| # | Item | Y/N |
+|---|------|-----|
+| 5 | At least one included component with justification for inclusion | |
+| 6 | Excluded components listed — each with a specific rationale | |
+| 7 | *(If shared infrastructure)* Allocation method and share stated | |
+
+**Functional unit** (§3.3):
+
+| # | Item | Y/N |
+|---|------|-----|
+| 8 | Functional unit named | |
+| 9 | Rationale for choice provided | |
+| 10 | How units are counted or measured | |
+| 11 | Total units in measurement period stated | |
+
+**Energy — E** (§3.4):
+
+| # | Item | Y/N |
+|---|------|-----|
+| 12 | Total energy value with unit (kWh) | |
+| 13 | Per-component energy breakdown with calculation or measurement method | |
+| 14 | Data source(s) identified for energy values | |
+| 15 | PUE value stated, or explicitly noted as not applicable | |
+
+**Carbon intensity — I** (§3.4):
+
+| # | Item | Y/N |
+|---|------|-----|
+| 16 | Carbon intensity value with unit (gCO2eq/kWh) | |
+| 17 | Location(s) stated | |
+| 18 | Approach stated (location-based or market-based) | |
+| 19 | Data source named with year | |
+| 20 | *(If multi-region)* Per-region breakdown with percentage weights | |
+
+**Embodied emissions — M** (§3.4):
+
+| # | Item | Y/N |
+|---|------|-----|
+| 21 | Total M value with unit (gCO2eq), OR explicit justification if M=0 | |
+| 22 | *(If M>0)* Per-hardware-component breakdown | |
+| 23 | *(If M>0)* Allocation methodology described (lifespan, time reserved, resource share) | |
+| 24 | Data source(s) identified | |
+
+**Methodology and assumptions** (§3.4):
+
+| # | Item | Y/N |
+|---|------|-----|
+| 25 | Overall approach stated (measurement / calculation / hybrid) | |
+| 26 | At least one key assumption with justification | |
+| 27 | At least one known limitation acknowledged | |
+
+**Calculation**:
+
+| # | Item | Y/N |
+|---|------|-----|
+| 28 | SCI formula shown with numbers (O = E×I, SCI = (O+M)/R) | |
+
+**Attestation** (§2.3):
+
+| # | Item | Y/N |
+|---|------|-----|
+| 29 | Signed self-certification attestation covering all 10 points | |
 
 **Gate 1 outcome**: If ANY item is missing → **Revision Requested** with a specific list of what's missing. Do not proceed to Gate 2. The applicant can resubmit.
 
+**Efficiency note**: If 5+ items are missing, the submission is substantially incomplete — send a brief email directing the applicant to the submission template rather than itemizing every gap.
+
 **Gate 2: Internal Consistency** — Do the numbers add up?
 
-These are arithmetic and logical checks. There is minimal judgement involved.
+Arithmetic and logical checks. Extract the key values from the submission, verify the formulas, and record your working in the review record.
 
-| # | Check | Pass Criterion | Tolerance |
+| # | Check | Pass criterion | Tolerance |
 |---|-------|---------------|-----------|
-| 1 | O = E × I | Stated operational carbon matches E × I | ±1% |
-| 2 | SCI = (O + M) / R | Stated SCI matches formula result | ±1% |
-| 3 | Component energy sums to total | Sum of component energies (× PUE if applicable) = total E | ±1% |
-| 4 | Embodied components sum to total | Sum of allocated embodied emissions = total M | ±1% |
-| 5 | Measurement dates are logical | start_date < end_date; both in the past | Exact |
-| 6 | PUE is plausible (if provided) | 1.0 ≤ PUE ≤ 3.0 | Exact |
-| 7 | Carbon intensity is plausible | 0 < I < 2000 gCO2eq/kWh | Exact |
-| 8 | Units are consistent | Energy in kWh, carbon in gCO2eq, score includes functional unit | Exact |
+| 1 | O = E × I | Reviewer calculates E × I; result matches stated operational emissions | ±1% |
+| 2 | SCI = (O + M) / R | Reviewer calculates (O + M) / R; result matches stated SCI score | ±1% |
+| 3 | Component energy sums to total | Sum of per-component energy values (× PUE if stated) ≈ stated total E | ±1% |
+| 4 | Embodied components sum to total | Sum of per-component allocated emissions ≈ stated total M | ±1% |
+| 5 | Dates are logical | start_date < end_date; end_date ≤ today | Exact |
+| 6 | PUE in plausible range | If stated: 1.0 ≤ PUE ≤ 3.0 | Exact |
+| 7 | Carbon intensity in plausible range | 0 < I < 2000 gCO2eq/kWh | Exact |
+| 8 | Regional weights sum to 100% | If multi-region: stated percentage allocations sum to 100% | Exact |
+| 9 | Units are consistent throughout | Energy in kWh, carbon in gCO2eq, intensity in gCO2eq/kWh, SCI score includes functional unit | Exact |
 
-**Gate 2 outcome**: If any check fails → **Revision Requested** with the specific calculation discrepancy identified. The applicant can correct and resubmit.
+**Gate 2 outcome**: If any check fails → **Revision Requested** identifying the specific discrepancy (show both stated and calculated values). The applicant can correct and resubmit.
 
 **Gate 3: Disclosure Sufficiency** — Is there enough detail for a knowledgeable third party to understand and evaluate the calculation?
 
-This is the only gate that requires reviewer judgement. To constrain that judgement and ensure consistency, each aspect is scored on a defined rubric.
+This is the only gate requiring reviewer judgement. Score each criterion on the rubric below. The critical boundary is between 2 (insufficient — triggers revision) and 3 (sufficient — passes). Focus your attention on that boundary.
 
 **Scoring rubric** (1-5 per criterion):
 
-| Score | Meaning | Guidance |
-|-------|---------|----------|
-| 1 | Absent or vacuous | Field is present but contains no meaningful information (e.g., "standard methodology") |
-| 2 | Vague | Some information but not enough to understand the approach (e.g., "cloud provider data" without specifying which provider or what data) |
-| 3 | Adequate | A practitioner could understand what was done, even if not every detail is provided. Sufficient for community review. |
-| 4 | Good | Clear, specific, with named data sources, explicit formulas, and justified choices |
-| 5 | Exemplary | Comprehensive, reproducible, with uncertainty analysis and alternative approaches considered |
+| Score | Meaning |
+|-------|---------|
+| 1 | **Absent or vacuous** — present but no meaningful content (e.g. "standard methodology") |
+| 2 | **Vague** — some information but a practitioner could not understand the approach |
+| 3 | **Adequate** — a practitioner can understand what was done. **This is the pass bar.** |
+| 4 | **Good** — clear, specific, with named sources, explicit formulas, and justified choices |
+| 5 | **Exemplary** — comprehensive and reproducible, with uncertainty analysis |
 
-**Scored criteria**:
+**Scored criteria** — for each criterion, the table shows the pass bar (score 3) and a concrete example of what fails (score 2). Use these to calibrate quickly:
 
-| # | Criterion | What Sufficient (≥3) Looks Like |
-|---|-----------|-------------------------------|
-| A | Boundary clarity | A reader can identify exactly what hardware/software is included and excluded, and each exclusion has a specific rationale (not just "not included") |
-| B | Functional unit justification | The unit is named, the rationale connects it to how the software scales/delivers value, and the measurement method is specified (e.g., "counted from application logs") |
-| C | Energy methodology | For each component: how energy was measured or calculated, what data source was used, and (if applicable) what coefficients were applied. Not just a final number. |
-| D | Carbon intensity sourcing | Location(s) identified, carbon intensity value(s) stated with named source and year. If multi-region, weighting is shown. |
-| E | Embodied emissions methodology | For each hardware component: total embodied emissions, expected lifespan, time reserved, resource share (if applicable), allocation formula, and data source. If M=0, a specific justification (e.g., "pure SaaS, no controlled hardware"). |
-| F | Assumptions and limitations | At least one assumption documented with justification. At least one limitation acknowledged. Not just generic statements. |
+| # | Criterion | Pass bar (score ≥ 3) | Fails — triggers revision (score ≤ 2) |
+|---|-----------|-------------------|--------------------------------------|
+| A | **Boundary clarity** | Included and excluded components are identifiable by name; each exclusion has a specific rationale tied to the system (e.g. "CDN is a separate service outside our operational boundary") | Exclusions listed but rationale is blank or generic (e.g. "not included", "out of scope") |
+| B | **Functional unit justification** | Unit named, rationale connects it to how the software scales or delivers value, counting method identified (e.g. "counted from nginx access logs") | Unit named but no rationale, or rationale is circular (e.g. "we chose requests because we measure requests") |
+| C | **Energy methodology** | For each component: how energy was measured or estimated, what data was used, what coefficients were applied. A reader can trace from raw data to E. | Only a total energy figure with no breakdown, or breakdown with no explanation of how values were derived (e.g. "Server: 21.6 kWh" with no method) |
+| D | **Carbon intensity sourcing** | Location(s) named, I value stated, data source named with year (e.g. "EPA eGRID 2022, SRVC subregion"). If multi-region, weighting shown. | I value stated but no source, or source without year, or "average grid data" without specifying whose data or which grid |
+| E | **Embodied emissions methodology** | If M>0: each hardware component shows total embodied, lifespan, time reserved, resource share (if applicable), allocation formula, and data source. If M=0: specific justification (e.g. "pure SaaS, no hardware under operational control"). | M value with no component breakdown, or breakdown without allocation methodology, or M=0 with no justification |
+| F | **Assumptions and limitations** | At least one specific assumption with justification (e.g. "server power 15W based on AWS TDP at 40% utilization"). At least one specific limitation (e.g. "no direct power metering — used cloud telemetry as proxy"). | Generic statements only (e.g. "industry standard assumptions", "some limitations exist") or section is empty |
 
 **Gate 3 decision rule**:
 
 - **Approve**: ALL criteria score ≥ 3 (adequate or better)
-- **Revision Requested**: ANY criterion scores 1 or 2 — the reviewer specifies which criteria are insufficient and what would bring them to a 3
-- **Reject**: Only for bad faith (fabricated data, obvious fraud, refusal to engage). Rejection is NOT used for poor quality — poor quality gets revision requests. Rejection requires agreement from 2+ reviewers.
+- **Revision Requested**: ANY criterion scores 1 or 2 — specify which criteria are insufficient and what the applicant needs to add to reach a 3
+- **Reject**: Reserved for bad faith only (fabricated data, obvious fraud, persistent refusal to engage after revision requests). Never used for poor quality — poor quality always gets revision requests first. Rejection requires concurrence from 2+ reviewers.
 
 #### What Reviewers Explicitly Do NOT Assess
 
@@ -204,14 +266,14 @@ A step-by-step procedure that any reviewer follows for every submission, produci
 
 #### Step 2: Gate 1 — Completeness Check (Reviewer, ~30 minutes)
 
-- Reviewer works through the 16-item completeness checklist
+- Reviewer works through the 29-item completeness checklist (grouped by submission section)
 - Records Y/N for each item
 - If all Y → proceed to Gate 2
 - If any N → draft a revision request email listing exactly what's missing, using the template. Log the outcome and specific missing items in the tracking spreadsheet. Stop here.
 
 #### Step 3: Gate 2 — Consistency Check (Reviewer, ~30 minutes)
 
-- Reviewer works through the 8 arithmetic/logic checks
+- Reviewer works through the 9 arithmetic/logic checks, recording their working
 - Records pass/fail for each, showing their calculation where applicable
 - If all pass → proceed to Gate 3
 - If any fail → draft a revision request email identifying the specific discrepancy (e.g., "Stated SCI is 350.00 but (E × I + M) / R = 349.63 — please confirm or correct"). Log the outcome in the spreadsheet. Stop here.
@@ -253,19 +315,21 @@ Reviewer:         [Name]
 Review Date:      [Date]
 Time Spent:       [hours]
 
-GATE 1: COMPLETENESS
-Items 1-16:       [Y/N for each]
-Gate 1 Result:    PASS / FAIL (specify missing items)
+GATE 1: COMPLETENESS (items grouped by submission section)
+Items 1-29:       [Y/N for each, N/A for conditional items that don't apply]
+Gate 1 Result:    PASS / FAIL (list missing items by number)
 
-GATE 2: CONSISTENCY
-Check 1 (O=E×I):         PASS / FAIL  [reviewer's calculation]
-Check 2 (SCI formula):   PASS / FAIL  [reviewer's calculation]
-Check 3 (energy sum):    PASS / FAIL  [reviewer's calculation]
-Check 4 (embodied sum):  PASS / FAIL  [reviewer's calculation]
-Check 5 (dates):         PASS / FAIL
-Check 6 (PUE range):     PASS / FAIL / N/A
-Check 7 (CI range):      PASS / FAIL
-Check 8 (units):         PASS / FAIL
+GATE 2: CONSISTENCY (record your working)
+E = ___    I = ___    M = ___    R = ___
+Check 1 (O=E×I):           ___ × ___ = ___  vs stated ___  | PASS / FAIL
+Check 2 (SCI=(O+M)/R):     (___ + ___) / ___ = ___  vs stated ___  | PASS / FAIL
+Check 3 (energy sum):      PASS / FAIL  [sum of components × PUE = ___]
+Check 4 (embodied sum):    PASS / FAIL  [sum of components = ___]
+Check 5 (dates logical):   PASS / FAIL
+Check 6 (PUE range):       PASS / FAIL / N/A
+Check 7 (CI range):        PASS / FAIL
+Check 8 (regional weights): PASS / FAIL / N/A  [sum = ___%]
+Check 9 (units consistent): PASS / FAIL
 Gate 2 Result:    PASS / FAIL (specify failed checks)
 
 GATE 3: DISCLOSURE SUFFICIENCY
@@ -583,9 +647,9 @@ Once the committee has processed ~10 submissions under dual review with consiste
 
 ### Acceptance Criteria and Process
 - [ ] Three-gate acceptance criteria documented and approved by committee
-- [ ] 16-item completeness checklist finalized
-- [ ] 8-item consistency check list finalized
-- [ ] 6-criterion sufficiency rubric finalized with scoring guidance
+- [ ] 29-item completeness checklist finalized (grouped by submission section)
+- [ ] 9-item consistency check list finalized
+- [ ] 6-criterion sufficiency rubric finalized with scoring guidance and concrete pass/fail boundary examples
 - [ ] Decision rules documented (approve if all ≥3; revise if any 1-2; reject only for bad faith with dual concurrence)
 - [ ] Review record template finalized
 - [ ] Precedent log created (empty, ready for first entries)
