@@ -13,24 +13,22 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 ---
 
-## PART 1 — About You and Your Software
+## PART 1 — Applicant and Software
 
 **Organization name:** [e.g. Acme Corporation]
 
-**Contact name:** [Full name of the person responsible for this submission]
+**Contact name:** [Full name]
 
 **Contact email:** [e.g. jane.smith@acme.com]
 
-**Software name:** [The name of the specific application or service being measured]
+**Software name:** [Name of the application or service being measured]
 
 **Software version:** [e.g. v2.1.0, or "commit abc123 deployed 2026-01-15"]
 
 **Software description:**
 [2-4 sentences: what it does, tech stack, hosting environment, rough scale.]
 
-*Example: "A REST API serving an e-commerce platform, built with Node.js and PostgreSQL, deployed on two AWS EC2 t3.medium instances behind an Application Load Balancer in us-east-1. Handles approximately 45 million requests per month."*
-
-**Software URL:** [Link to the application, its documentation, or its repository — if public]
+**Software URL:** [Link to application, docs, or repository — if public]
 
 ---
 
@@ -40,12 +38,7 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 **Measurement end date:** [YYYY-MM-DD]
 
-**Your SCI score:** [Number with units, e.g. "349.63 gCO2eq per 1,000 API requests"]
-
-**Brief summary of the measurement:**
-[2-3 sentences describing what was measured and the headline result.]
-
-*Example: "We measured the carbon intensity of our e-commerce API over January 2026. The calculation included compute, database, load balancing, and network transfer, and yielded an SCI of 349.63 gCO2eq per 1,000 API requests."*
+**SCI score:** [Number with units, e.g. "349.63 gCO2eq per 1,000 API requests"]
 
 ---
 
@@ -56,7 +49,6 @@ Copy everything below the line into a new email addressed to **sci-certification
 | Component | Description | Why included |
 |-----------|-------------|--------------|
 | [e.g. Application Servers] | [e.g. 2x EC2 t3.medium running Node.js] | [e.g. Core compute under our operational control] |
-| [e.g. Database] | [e.g. RDS PostgreSQL r6g.large] | [e.g. Dedicated database for this application] |
 | ... | ... | ... |
 
 ### Excluded components
@@ -64,7 +56,6 @@ Copy everything below the line into a new email addressed to **sci-certification
 | Component | Description | Reason for exclusion |
 |-----------|-------------|----------------------|
 | [e.g. CDN] | [e.g. CloudFront distribution for static assets] | [e.g. Separate service outside operational boundary] |
-| [e.g. End-user devices] | [e.g. Client browsers] | [e.g. Beyond our operational control] |
 | ... | ... | ... |
 
 ### Shared infrastructure [delete if not applicable]
@@ -72,20 +63,17 @@ Copy everything below the line into a new email addressed to **sci-certification
 | Shared component | How you allocated your share | Your allocation % or ratio |
 |------------------|------------------------------|----------------------------|
 | [e.g. Kubernetes cluster node] | [e.g. By vCPU reservation: 2 of 16 vCPUs] | [e.g. 12.5%] |
-| ... | ... | ... |
 
 ---
 
 ## PART 4 — Functional Unit (R)
 
-**What is your functional unit?**
-[e.g. "1,000 API requests"]
+**Functional unit:** [e.g. "1,000 API requests"]
 
-**Why did you choose this unit?**
-[Explain why this unit scales with how your software delivers value. See Applicant Guide Section 4 for requirements.]
+**Why this unit?**
+[How it connects to how your software scales or delivers value. See Applicant Guide Section 4.]
 
-**How did you count or measure the total units?**
-[e.g. "Counted from nginx access logs, validated against CloudWatch request metrics."]
+**How counted or measured:** [e.g. "Counted from nginx access logs, validated against CloudWatch request metrics."]
 
 **Total units in measurement period:** [e.g. 45,000,000 requests]
 
@@ -93,12 +81,9 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 ## PART 5 — Energy (E)
 
-**Total energy consumed:** [Number and unit, e.g. "46.01 kWh"]
+**Total energy:** [e.g. "46.01 kWh"]
 
-**PUE applied:** [e.g. 1.2 — or "N/A" if not applicable]
-
-**How was energy measured or estimated?**
-[Your approach: direct metering, cloud provider telemetry, power modelling, etc. See Applicant Guide Section 5.]
+**PUE:** [e.g. 1.2 — or "N/A"]
 
 **Energy breakdown by component:**
 
@@ -112,42 +97,37 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 ## PART 6 — Carbon Intensity (I)
 
-**Carbon intensity value:** [Number and unit, e.g. "340 gCO2eq/kWh"]
+**Carbon intensity:** [e.g. "340 gCO2eq/kWh"]
 
 **Location(s):** [e.g. "AWS us-east-1 (Virginia, USA)"]
 
 **Approach:** [Location-based / Market-based]
 
-**Data source:** [e.g. "EPA eGRID 2022, SRVC subregion"]
-
-**Year of data:** [e.g. 2022]
+**Data source (with year):** [e.g. "EPA eGRID 2023, SRVC subregion"]
 
 ### Regional breakdown [delete if single-region]
 
 | Region | % of workload | Carbon intensity (gCO2eq/kWh) | Data source |
 |--------|--------------|-------------------------------|-------------|
-| [e.g. us-east-1] | [e.g. 60%] | [e.g. 340] | [e.g. EPA eGRID 2022] |
+| [e.g. us-east-1] | [e.g. 60%] | [e.g. 340] | [e.g. EPA eGRID 2023] |
 | [e.g. eu-west-1] | [e.g. 40%] | [e.g. 280] | [e.g. EEA 2023] |
 
-**Weighted average carbon intensity:** [if multi-region, show the calculation]
+**Weighted average carbon intensity:** [show the calculation]
 
 ---
 
 ## PART 7 — Embodied Emissions (M)
 
-**Total embodied emissions allocated to this measurement:** [Number and unit, e.g. "96,574.9 gCO2eq"]
+**Total embodied emissions (allocated):** [e.g. "96,574.9 gCO2eq"]
 
-**Allocation methodology:**
-[How you allocated embodied emissions. The standard formula is M = TE x (TiR / EL) x (RR / ToR). See Applicant Guide Section 7.]
+*If M = 0, explain why (e.g. "Pure SaaS — no hardware under our operational control") and skip the table.*
 
 **Hardware component breakdown:**
 
-| Hardware component | Type | Total embodied (gCO2eq) | Expected lifespan | Time reserved | Resource share | Allocated emissions (gCO2eq) | Data source |
-|--------------------|------|------------------------|-------------------|---------------|----------------|------------------------------|-------------|
-| [e.g. App Server 1] | [e.g. EC2 t3.medium] | [e.g. 1,200,000] | [e.g. 4 years] | [e.g. 720h] | [e.g. 100%] | [e.g. 24,658] | [e.g. Cloud Carbon Footprint] |
-| ... | ... | ... | ... | ... | ... | ... | ... |
-
-*If M = 0, explain why (e.g. "Pure SaaS — no hardware under our operational control").*
+| Component | Total embodied (gCO2eq) | Expected lifespan | Time reserved | Resource share | Allocated M (gCO2eq) | Data source |
+|-----------|------------------------|-------------------|---------------|----------------|---------------------|-------------|
+| [e.g. App Server 1 — EC2 t3.medium] | [e.g. 1,200,000] | [e.g. 4 years] | [e.g. 720h] | [e.g. 100%] | [e.g. 24,658] | [e.g. Cloud Carbon Footprint] |
+| ... | ... | ... | ... | ... | ... | ... |
 
 ---
 
@@ -155,15 +135,14 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 **Overall approach:** [Measurement / Calculation / Hybrid]
 
-**Describe your methodology:**
+**Methodology:**
 [How you gathered data, what models or tools you used, and how you arrived at your SCI score.]
 
 **Key assumptions:**
 
-| Assumption | Justification | Impact on result (Low / Medium / High) |
-|------------|---------------|----------------------------------------|
+| Assumption | Justification | Impact (Low / Medium / High) |
+|------------|---------------|------------------------------|
 | [e.g. Server avg power draw is 15W] | [e.g. Based on AWS TDP at 40% utilization] | [e.g. Medium] |
-| [e.g. Server lifespan is 4 years] | [e.g. Industry standard refresh cycle] | [e.g. Medium] |
 | ... | ... | ... |
 
 **Known limitations:**
@@ -173,25 +152,24 @@ Copy everything below the line into a new email addressed to **sci-certification
 | [e.g. No direct hardware power metering] | [e.g. Medium] | [e.g. Used cloud telemetry as proxy] |
 | ... | ... | ... |
 
-**All data sources used:**
+**Data sources:**
 
-| Source name | Type | Description | URL (if available) |
-|-------------|------|-------------|--------------------|
-| [e.g. AWS CloudWatch] | [Measurement] | [Cloud provider CPU/memory telemetry] | [https://...] |
-| [e.g. EPA eGRID 2022] | [Grid data] | [US grid carbon intensity] | [https://...] |
-| ... | ... | ... | ... |
+| Source | Description | URL (if available) |
+|-------|-------------|--------------------|
+| [e.g. AWS CloudWatch] | [e.g. CPU/memory telemetry, 5-min intervals] | [https://...] |
+| [e.g. EPA eGRID 2023] | [e.g. US grid carbon intensity, SRVC subregion] | [https://...] |
+| ... | ... | ... |
 
 ---
 
 ## PART 9 — Show Your Calculation
 
 ```
-Operational emissions (O) = E x I = [e.g. 46.01 kWh] x [e.g. 340 gCO2eq/kWh] = [e.g. 15,643.4 gCO2eq]
-Embodied emissions (M) = [e.g. 96,574.9 gCO2eq]
-Functional units (R) = [e.g. 45,000,000 requests]
+O = E x I = [your E] x [your I] = [result] gCO2eq
+M = [your M] gCO2eq
+R = [your total units] / [normalizer if any] = [result]
 
-SCI = (O + M) / R = ([e.g. 15,643.4] + [e.g. 96,574.9]) / [e.g. 45,000] x 1,000
-    = [e.g. 349.63 gCO2eq per 1,000 API requests]
+SCI = (O + M) / R = [result] per [your functional unit]
 ```
 
 ---
@@ -200,26 +178,18 @@ SCI = (O + M) / R = ([e.g. 15,643.4] + [e.g. 96,574.9]) / [e.g. 45,000] x 1,000
 
 **Previous SCI score:** [value and unit]
 
-**Date of previous measurement:** [YYYY-MM-DD]
-
-**Previous certificate ID (if any):** [e.g. GSF-SCI-2025-00123]
+**Previous certificate ID:** [e.g. GSF-SCI-2025-00123]
 
 **New SCI score:** [value and unit]
 
-**Actions taken between measurements:**
-- [e.g. Migrated to GPU-accelerated training]
-- [e.g. Optimized model architecture]
-- ...
-
-**Explanation of change:**
-[Describe why the score changed — what drove the improvement or increase.]
+**What changed and why:**
+[Actions taken between measurements and what drove the score change.]
 
 ---
 
 ## PART 11 — Supporting Materials [OPTIONAL — not required but encouraged]
 
-- [ ] Impact Framework manifest file (IMP/YAML) — *highly encouraged for maximum transparency*
-- [ ] Link to IF Visualizer output for your manifest
+- [ ] Impact Framework manifest file (IMP/YAML)
 - [ ] Spreadsheet with detailed calculations
 - [ ] Links to public documentation or methodology write-ups
 
