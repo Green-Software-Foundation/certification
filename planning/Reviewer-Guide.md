@@ -255,7 +255,7 @@ Rejection requires:
 ### Submitting Your Review
 
 - Submit your completed review record to the program manager.
-- **For approvals**: the program manager issues the certificate and publishes the disclosure.
+- **For approvals**: the program manager issues the certificate by inserting a row into the badging platform database (see Section 10) and publishes the disclosure to GitHub.
 - **For revision requests**: the program manager sends the feedback email to the applicant with your specific scored criteria.
 - **For rejections**: the program manager assigns a second reviewer for independent assessment before the final decision.
 
@@ -373,3 +373,63 @@ The following mechanisms keep assessments consistent across reviewers. You do no
 4. **Monthly calibration check**: At the monthly committee meeting, one recently-approved and one recently-revised submission are reviewed as a group. The committee confirms it would have reached the same decisions.
 
 5. **Inter-reviewer agreement metric**: How often dual reviewers agree (both approve, both request revision) is tracked. Target: 80%+ agreement. If agreement is low, the rubric or guidance is tightened.
+
+---
+
+## 10. Issuing a Certificate (After Approval)
+
+Once a submission passes all three gates, the program manager (or designated
+reviewer) mints the certificate by inserting a single row into the
+`sci_approvals` table in the Supabase dashboard. The badging platform
+(`badges.greensoftware.foundation`) then automatically generates the
+certificate, uploads it, and emails the applicant.
+
+### Step-by-step
+
+1. **Publish the disclosure** to the `sci-certifications` GitHub repo and
+   note the resulting URL.
+
+2. **Open the Supabase dashboard** for the badges project and navigate to
+   the Table Editor (or SQL Editor).
+
+3. **Insert a row into `sci_approvals`** with the following fields, taken
+   directly from the approved submission:
+
+   | Column | What to enter | Source |
+   |--------|--------------|--------|
+   | `organization_name` | The applicant's organization name | Submission item 1 |
+   | `contact_name` | The contact person's full name | Submission item 1 |
+   | `contact_email` | The contact person's email address | Submission item 1 |
+   | `software_name` | The name of the software or system | Submission item 2 |
+   | `software_version` | The version string | Submission item 2 |
+   | `sci_score` | The numeric SCI score (e.g. `349.63`) | Submission item 3 |
+   | `sci_unit` | The full unit string including functional unit (e.g. `gCO2eq per 1,000 API requests`) | Submission item 3 |
+   | `functional_unit` | The functional unit alone (e.g. `1,000 API requests`) | Submission item 8 |
+   | `measurement_start` | Measurement period start date (`YYYY-MM-DD`) | Submission item 4 |
+   | `measurement_end` | Measurement period end date (`YYYY-MM-DD`) | Submission item 4 |
+   | `disclosure_url` | The GitHub URL of the published disclosure | From step 1 |
+
+   Do **not** fill in `id` or `created_at` — these are auto-generated.
+
+4. **Verify the certificate was created.** Within a few seconds of
+   inserting the row, the platform will have:
+   - Created the certificate with a sequential ID (e.g. `GSF-SCI-2026-00042`)
+   - Generated and uploaded the PDF certificate and social preview image
+   - Sent a notification email to the contact person
+
+   Check the webhook response in the Supabase dashboard logs, or open the
+   award URL to confirm the certificate page is live.
+
+### Important notes
+
+- **Double-check all values before inserting.** The row you insert becomes
+  the certificate. Typos in the organization name, SCI score, or dates will
+  appear on the published certificate.
+- **One row per certification.** Each software product certified gets its own
+  row, even if the same organization has multiple certifications.
+- **Do not edit other tables.** The `people`, `awards`, and
+  `sci_certifications` tables are populated automatically by the platform.
+  Only insert into `sci_approvals`.
+
+A more detailed operational guide with screenshots and troubleshooting will
+be created after the platform implementation is complete.
