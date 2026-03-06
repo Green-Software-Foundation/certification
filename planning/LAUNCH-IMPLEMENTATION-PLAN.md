@@ -51,7 +51,7 @@ Create a shared spreadsheet to track all submissions through their lifecycle.
 | Decision | Approved / Revision Requested / Rejected |
 | Certificate ID | GSF-SCI-2026-0001 |
 | Certificate Expiry | 2027-03-28 |
-| Review Score (1-30) | 22 |
+| Items N or I | 0 |
 | Notes | — |
 
 Share with all reviewers. This is the single source of truth for program status.
@@ -99,144 +99,32 @@ The acceptance criteria must answer one question unambiguously: **given a submis
 
 The proposal (Section 5.2) defines what reviewers assess: **disclosure completeness, not ISO conformity or calculation accuracy.** This principle must be operationalized into concrete, checkable criteria.
 
-#### Structure: Three Gates
+#### Structure: Single-Pass 27-Item Checklist
 
-Every submission passes through three sequential gates. A submission must pass all three to be approved. Failure at any gate produces a specific, documented outcome.
+Every submission is evaluated in a single pass through a 27-item checklist. The reviewer works through the submission top to bottom, marking each item **Y** (present and adequate), **N** (missing), or **I** (insufficient — present but too vague for a practitioner to understand). Items marked *(if applicable)* can be marked N/A when the condition doesn't apply.
 
-**Reviewer workflow**: Work through the submission top to bottom. Gates 1 and 2 are mechanical — if the submission fails either, stop and return it immediately with specific feedback. Only invest the deeper reading time of Gate 3 on submissions that pass the first two gates.
+**The question for every item**: *"Could a knowledgeable practitioner reading this disclosure understand and evaluate this part of the calculation?"*
 
-**Target review times**: Gate 1 ~30 min, Gate 2 ~15 min, Gate 3 ~60 min. A routine submission should take ~2 hours total.
+**Target review time**: ~45 minutes for a routine submission.
 
-**Gate 1: Completeness** — Is everything present?
+The full checklist with per-item guidance, pass/fail examples, and "When to mark I" reference table is in the **Reviewer Guide**. The 27 items cover:
 
-Binary checks — no judgement. Work through the submission section by section. Items marked *(if applicable)* can be skipped when the condition doesn't apply.
+- **Applicant and software** (items 1–4): Organization, software, SCI score, dates
+- **Software boundary** (items 5–7): Included/excluded components, shared infrastructure allocation
+- **Functional unit** (items 8–11): Unit, rationale, counting method, total
+- **Energy** (items 12–14): Total energy, **per-component** breakdown (each component: value + method + data source), PUE
+- **Carbon intensity** (items 15–19): CI value (per-region if multi-region), location, approach, data source with year, per-region weights
+- **Embodied emissions** (items 20–22): Total M or justification if zero, **per-component** breakdown (each component: total embodied + allocation + value + source), allocation method with parameters
+- **Methodology, assumptions, limitations** (items 23–25): Overall approach, specific assumptions, specific limitations
+- **Calculation and attestation** (items 26–27): SCI formula with numbers, signed attestation
 
-**Applicant and software** (§3.1):
+**Decision rule**:
 
-| # | Item | Y/N |
-|---|------|-----|
-| 1 | Organization name, contact name, and contact email | |
-| 2 | Software name and version | |
-| 3 | SCI score — numeric value with units including functional unit | |
-| 4 | Measurement start date and end date | |
-
-**Software boundary** (§3.2):
-
-| # | Item | Y/N |
-|---|------|-----|
-| 5 | At least one included component with justification for inclusion | |
-| 6 | Excluded components listed — each with a specific rationale | |
-| 7 | *(If shared infrastructure)* Allocation method and share stated | |
-
-**Functional unit** (§3.3):
-
-| # | Item | Y/N |
-|---|------|-----|
-| 8 | Functional unit named | |
-| 9 | Rationale for choice provided | |
-| 10 | How units are counted or measured | |
-| 11 | Total units in measurement period stated | |
-
-**Energy — E** (§3.4):
-
-| # | Item | Y/N |
-|---|------|-----|
-| 12 | Total energy value with unit (kWh) | |
-| 13 | Per-component energy breakdown with calculation or measurement method | |
-| 14 | Data source(s) identified for energy values | |
-| 15 | PUE value stated, or explicitly noted as not applicable | |
-
-**Carbon intensity — I** (§3.4):
-
-| # | Item | Y/N |
-|---|------|-----|
-| 16 | Carbon intensity value with unit (gCO2eq/kWh) | |
-| 17 | Location(s) stated | |
-| 18 | Approach stated (location-based or market-based) | |
-| 19 | Data source named with year | |
-| 20 | *(If multi-region)* Per-region breakdown with percentage weights | |
-
-**Embodied emissions — M** (§3.4):
-
-| # | Item | Y/N |
-|---|------|-----|
-| 21 | Total M value with unit (gCO2eq), OR explicit justification if M=0 | |
-| 22 | *(If M>0)* Per-hardware-component breakdown | |
-| 23 | *(If M>0)* Allocation methodology described (lifespan, time reserved, resource share) | |
-| 24 | Data source(s) identified | |
-
-**Methodology and assumptions** (§3.4):
-
-| # | Item | Y/N |
-|---|------|-----|
-| 25 | Overall approach stated (measurement / calculation / hybrid) | |
-| 26 | At least one key assumption with justification | |
-| 27 | At least one known limitation acknowledged | |
-
-**Calculation**:
-
-| # | Item | Y/N |
-|---|------|-----|
-| 28 | SCI formula shown with numbers (O = E×I, SCI = (O+M)/R) | |
-
-**Attestation** (§2.3):
-
-| # | Item | Y/N |
-|---|------|-----|
-| 29 | Signed self-certification attestation covering all 10 points | |
-
-**Gate 1 outcome**: If ANY item is missing → **Revision Requested** with a specific list of what's missing. Do not proceed to Gate 2. The applicant can resubmit.
-
-**Efficiency note**: If 5+ items are missing, the submission is substantially incomplete — send a brief email directing the applicant to the submission template rather than itemizing every gap.
-
-**Gate 2: Internal Consistency** — Do the numbers add up?
-
-Arithmetic and logical checks. Extract the key values from the submission, verify the formulas, and record your working in the review record.
-
-| # | Check | Pass criterion | Tolerance |
-|---|-------|---------------|-----------|
-| 1 | O = E × I | Reviewer calculates E × I; result matches stated operational emissions | ±1% |
-| 2 | SCI = (O + M) / R | Reviewer calculates (O + M) / R; result matches stated SCI score | ±1% |
-| 3 | Component energy sums to total | Sum of per-component energy values (× PUE if stated) ≈ stated total E | ±1% |
-| 4 | Embodied components sum to total | Sum of per-component allocated emissions ≈ stated total M | ±1% |
-| 5 | Dates are logical | start_date < end_date; end_date ≤ today | Exact |
-| 6 | PUE in plausible range | If stated: 1.0 ≤ PUE ≤ 3.0 | Exact |
-| 7 | Carbon intensity in plausible range | 0 < I < 2000 gCO2eq/kWh | Exact |
-| 8 | Regional weights sum to 100% | If multi-region: stated percentage allocations sum to 100% | Exact |
-| 9 | Units are consistent throughout | Energy in kWh, carbon in gCO2eq, intensity in gCO2eq/kWh, SCI score includes functional unit | Exact |
-
-**Gate 2 outcome**: If any check fails → **Revision Requested** identifying the specific discrepancy (show both stated and calculated values). The applicant can correct and resubmit.
-
-**Gate 3: Disclosure Sufficiency** — Is there enough detail for a knowledgeable third party to understand and evaluate the calculation?
-
-This is the only gate requiring reviewer judgement. Score each criterion on the rubric below. The critical boundary is between 2 (insufficient — triggers revision) and 3 (sufficient — passes). Focus your attention on that boundary.
-
-**Scoring rubric** (1-5 per criterion):
-
-| Score | Meaning |
-|-------|---------|
-| 1 | **Absent or vacuous** — present but no meaningful content (e.g. "standard methodology") |
-| 2 | **Vague** — some information but a practitioner could not understand the approach |
-| 3 | **Adequate** — a practitioner can understand what was done. **This is the pass bar.** |
-| 4 | **Good** — clear, specific, with named sources, explicit formulas, and justified choices |
-| 5 | **Exemplary** — comprehensive and reproducible, with uncertainty analysis |
-
-**Scored criteria** — for each criterion, the table shows the pass bar (score 3) and a concrete example of what fails (score 2). Use these to calibrate quickly:
-
-| # | Criterion | Pass bar (score ≥ 3) | Fails — triggers revision (score ≤ 2) |
-|---|-----------|-------------------|--------------------------------------|
-| A | **Boundary clarity** | Included and excluded components are identifiable by name; each exclusion has a specific rationale tied to the system (e.g. "CDN is a separate service outside our operational boundary") | Exclusions listed but rationale is blank or generic (e.g. "not included", "out of scope") |
-| B | **Functional unit justification** | Unit named, rationale connects it to how the software scales or delivers value, counting method identified (e.g. "counted from nginx access logs") | Unit named but no rationale, or rationale is circular (e.g. "we chose requests because we measure requests") |
-| C | **Energy methodology** | For each component: how energy was measured or estimated, what data was used, what coefficients were applied. A reader can trace from raw data to E. | Only a total energy figure with no breakdown, or breakdown with no explanation of how values were derived (e.g. "Server: 21.6 kWh" with no method) |
-| D | **Carbon intensity sourcing** | Location(s) named, I value stated, data source named with year (e.g. "EPA eGRID 2022, SRVC subregion"). If multi-region, weighting shown. | I value stated but no source, or source without year, or "average grid data" without specifying whose data or which grid |
-| E | **Embodied emissions methodology** | If M>0: each hardware component shows total embodied, lifespan, time reserved, resource share (if applicable), allocation formula, and data source. If M=0: specific justification (e.g. "pure SaaS, no hardware under operational control"). | M value with no component breakdown, or breakdown without allocation methodology, or M=0 with no justification |
-| F | **Assumptions and limitations** | At least one specific assumption with justification (e.g. "server power 15W based on AWS TDP at 40% utilization"). At least one specific limitation (e.g. "no direct power metering — used cloud telemetry as proxy"). | Generic statements only (e.g. "industry standard assumptions", "some limitations exist") or section is empty |
-
-**Gate 3 decision rule**:
-
-- **Approve**: ALL criteria score ≥ 3 (adequate or better)
-- **Revision Requested**: ANY criterion scores 1 or 2 — specify which criteria are insufficient and what the applicant needs to add to reach a 3
-- **Reject**: Reserved for bad faith only (fabricated data, obvious fraud, persistent refusal to engage after revision requests). Never used for poor quality — poor quality always gets revision requests first. Rejection requires concurrence from 2+ reviewers.
+- **All Y (or N/A)** → **Approved**.
+- **Any N** → **Revision Requested** — list missing items by number.
+- **Any I** → **Revision Requested** — state what is too vague and what the applicant needs to add.
+- **5+ items N or I** → Submission substantially incomplete. Direct the applicant back to the submission template rather than itemizing every gap.
+- **Reject** → Bad faith only (fabricated data, obvious fraud, persistent refusal to engage). Never used for poor quality. Requires concurrence from 2+ reviewers.
 
 #### What Reviewers Explicitly Do NOT Assess
 
@@ -264,39 +152,24 @@ A step-by-step procedure that any reviewer follows for every submission, produci
   - **Conflict of interest rule**: A reviewer must recuse themselves if they have a professional or financial relationship with the applicant. Disclose the conflict to the program manager, who reassigns.
 - Program manager sends acknowledgement email to applicant
 
-#### Step 2: Gate 1 — Completeness Check (Reviewer, ~30 minutes)
+#### Step 2: Review (Reviewer, ~45 minutes)
 
-- Reviewer works through the 29-item completeness checklist (grouped by submission section)
-- Records Y/N for each item
-- If all Y → proceed to Gate 2
-- If any N → draft a revision request email listing exactly what's missing, using the template. Log the outcome and specific missing items in the tracking spreadsheet. Stop here.
-
-#### Step 3: Gate 2 — Consistency Check (Reviewer, ~30 minutes)
-
-- Reviewer works through the 9 arithmetic/logic checks, recording their working
-- Records pass/fail for each, showing their calculation where applicable
-- If all pass → proceed to Gate 3
-- If any fail → draft a revision request email identifying the specific discrepancy (e.g., "Stated SCI is 350.00 but (E × I + M) / R = 349.63 — please confirm or correct"). Log the outcome in the spreadsheet. Stop here.
-
-#### Step 4: Gate 3 — Disclosure Sufficiency (Reviewer, ~60 minutes)
-
-- Reviewer scores each of the 6 criteria (A-F) on the 1-5 rubric
-- Writes a brief rationale (1-2 sentences) for each score, referencing specific content in the submission
-- Calculates total score (6-30)
+- Reviewer works through the 27-item checklist, marking each item Y, N, I, or N/A
+- For any item marked I, writes a brief note explaining what is insufficient and what the applicant needs to add
 - Applies the decision rule:
-  - All criteria ≥ 3 → **Recommend Approve**
-  - Any criterion 1 or 2 → **Recommend Revision** (specify which criteria and what's needed)
+  - All Y (or N/A) → **Recommend Approve**
+  - Any N or I → **Recommend Revision** (list items by number with specific feedback)
   - Bad faith indicators → **Recommend Reject** (requires second reviewer concurrence)
 
-#### Step 5: Decision and Documentation (Reviewer)
+#### Step 3: Decision and Documentation (Reviewer)
 
 - Reviewer completes the review record (see template below)
 - Submits recommendation to the program manager
 - For approvals: program manager issues certificate and publishes disclosure
-- For revision requests: program manager sends feedback email with the specific scored criteria
+- For revision requests: program manager sends feedback email with the specific items that need attention
 - For rejections: program manager assigns a second reviewer for independent assessment before final decision
 
-#### Step 6: Record Keeping (Program Manager)
+#### Step 5: Record Keeping (Program Manager)
 
 - Every review produces a completed review record stored internally
 - Every decision (approve, revise, reject) is logged in the tracking spreadsheet with date
@@ -315,39 +188,57 @@ Reviewer:         [Name]
 Review Date:      [Date]
 Time Spent:       [hours]
 
-GATE 1: COMPLETENESS (items grouped by submission section)
-Items 1-29:       [Y/N for each, N/A for conditional items that don't apply]
-Gate 1 Result:    PASS / FAIL (list missing items by number)
+CHECKLIST (Y = present & adequate, N = missing, I = insufficient, N/A = not applicable)
 
-GATE 2: CONSISTENCY (record your working)
-E = ___    I = ___    M = ___    R = ___
-Check 1 (O=E×I):           ___ × ___ = ___  vs stated ___  | PASS / FAIL
-Check 2 (SCI=(O+M)/R):     (___ + ___) / ___ = ___  vs stated ___  | PASS / FAIL
-Check 3 (energy sum):      PASS / FAIL  [sum of components × PUE = ___]
-Check 4 (embodied sum):    PASS / FAIL  [sum of components = ___]
-Check 5 (dates logical):   PASS / FAIL
-Check 6 (PUE range):       PASS / FAIL / N/A
-Check 7 (CI range):        PASS / FAIL
-Check 8 (regional weights): PASS / FAIL / N/A  [sum = ___%]
-Check 9 (units consistent): PASS / FAIL
-Gate 2 Result:    PASS / FAIL (specify failed checks)
+Applicant and software:
+  1.  Organization, contact name, contact email:                    [ ]
+  2.  Software name, version, description:                          [ ]
+  3.  SCI score with units and functional unit:                     [ ]
+  4.  Measurement start and end dates:                              [ ]
 
-GATE 3: DISCLOSURE SUFFICIENCY
-A. Boundary clarity:              [1-5]  [rationale]
-B. Functional unit justification: [1-5]  [rationale]
-C. Energy methodology:            [1-5]  [rationale]
-D. Carbon intensity sourcing:     [1-5]  [rationale]
-E. Embodied emissions methodology:[1-5]  [rationale]
-F. Assumptions and limitations:   [1-5]  [rationale]
-Total Score:       [6-30]
-Gate 3 Result:     APPROVE / REVISION REQUESTED / REJECT
+Software boundary:
+  5.  Included components with reasons:                             [ ]
+  6.  Excluded components with system-specific rationales:          [ ]
+  7.  (If shared) Allocation method and share:                      [ ]
 
-OVERALL RECOMMENDATION:  APPROVE / REVISION REQUESTED / REJECT
+Functional unit:
+  8.  Functional unit named:                                        [ ]
+  9.  Rationale (connects to scaling/value):                        [ ]
+  10. Counting/measurement method:                                  [ ]
+  11. Total units in period:                                        [ ]
 
-If REVISION REQUESTED, specific feedback for applicant:
-[What needs to change, tied to specific criteria]
+Energy:
+  12. Total energy (kWh):                                           [ ]
+  13. Per-component: value + method + data source each:             [ ]
+  14. PUE stated or N/A:                                            [ ]
 
-If REJECT, rationale:
+Carbon intensity:
+  15. CI value (per-region if multi-region):                        [ ]
+  16. Location(s):                                                  [ ]
+  17. Approach (location/market-based):                             [ ]
+  18. Data source with year:                                        [ ]
+  19. (If multi-region) Per-region weights:                         [ ]
+
+Embodied emissions:
+  20. Total M or justification if zero:                             [ ]
+  21. (If M>0) Per-component: total + allocation + value + source:  [ ]
+  22. (If M>0) Allocation method with parameters:                   [ ]
+
+Methodology, assumptions, limitations:
+  23. Overall approach:                                             [ ]
+  24. Specific assumption(s) with justification:                    [ ]
+  25. Specific limitation(s):                                       [ ]
+
+Calculation and attestation:
+  26. SCI formula with numbers:                                     [ ]
+  27. Signed attestation (10 points):                               [ ]
+
+Result:           APPROVE / REVISION REQUESTED / REJECT
+
+If REVISION REQUESTED — items marked N or I with notes:
+[List item numbers and what needs to change]
+
+If REJECT — rationale:
 [Detailed justification; requires second reviewer concurrence]
 
 NOTES / PRECEDENT:
@@ -356,17 +247,17 @@ NOTES / PRECEDENT:
 
 ### 2.4 Calibration and Consistency Mechanisms
 
-Even with a structured rubric, different reviewers may interpret "adequate" differently. The following mechanisms keep assessments consistent:
+Even with a structured checklist, different reviewers may interpret "adequate" differently. The following mechanisms keep assessments consistent:
 
-1. **Calibration session during training (Week 2-3)**: All reviewers independently score the same 2-3 example submissions using the rubric, then compare and discuss their scores. Resolve any systematic differences before real submissions arrive.
+1. **Calibration session during training (Week 2-3)**: All reviewers independently review the same 2-3 example submissions using the checklist, then compare and discuss their results. Resolve any systematic differences in Y vs I judgements before real submissions arrive.
 
-2. **Dual review for the first 10 submissions**: During the pilot and early launch, every submission is reviewed by two reviewers independently. Compare scores. If scores diverge by more than 1 point on any criterion, discuss and align. This builds shared understanding of the rubric.
+2. **Dual review for the first 10 submissions**: During the pilot and early launch, every submission is reviewed by two reviewers independently. Compare results. If reviewers disagree on Y vs I for any item, discuss and align. This builds shared understanding of the checklist.
 
 3. **Precedent log**: Record edge-case decisions and the reasoning. When a similar case arises, reviewers reference the precedent rather than starting from scratch. This creates case law that makes the process more predictable over time.
 
-4. **Monthly calibration check**: At the monthly committee meeting, review one recently-approved and one recently-revised submission as a group. Confirm the committee would have reached the same decisions. Adjust rubric guidance if needed.
+4. **Monthly calibration check**: At the monthly committee meeting, review one recently-approved and one recently-revised submission as a group. Confirm the committee would have reached the same decisions. Adjust checklist guidance if needed.
 
-5. **Inter-reviewer agreement metric**: Track how often dual reviewers agree (both approve, both request revision). Target: 80%+ agreement. If agreement is low, the rubric or guidance needs to be tightened.
+5. **Inter-reviewer agreement metric**: Track how often dual reviewers agree (both approve, both request revision). Target: 80%+ agreement. If agreement is low, the checklist guidance needs to be tightened.
 
 ---
 
@@ -385,7 +276,7 @@ Even with a structured rubric, different reviewers may interpret "adequate" diff
    - Functional unit (unit chosen, rationale, measurement method)
    - E, I, and M details (values, data sources, methodology for each)
    - Key assumptions and known limitations
-4. **What "sufficient disclosure" looks like** — publish the Gate 3 rubric criteria so applicants know exactly what standard their submission will be measured against. Transparency about the criteria is itself a fairness mechanism.
+4. **What "sufficient disclosure" looks like** — publish the 27-item review checklist so applicants know exactly what standard their submission will be measured against. Transparency about the criteria is itself a fairness mechanism.
 5. **Accepted formats** (PDF, Word, plain text email, Markdown; IMP/YAML optional)
 6. **How to submit** (email to sci-certification@greensoftware.foundation)
 7. **What happens next** (acknowledgement → review in 10-15 business days → approve / request revision / reject)
@@ -524,7 +415,7 @@ Ongoing management tasks that need a defined process before launch:
 Six templates needed:
 
 1. **Acknowledgement**: tracking number, expected timeline, link to requirements
-2. **Revision Request**: specific feedback tied to Gate 1/2/3 criteria, invitation to resubmit
+2. **Revision Request**: specific feedback tied to checklist items, invitation to resubmit
 3. **Approval**: certificate ID, certificate link, badge guidelines link, validity dates, disclosure URL
 4. **Rejection**: specific rationale, right to appeal per proposal Section 9
 5. **Renewal Reminder** (30 days before expiry): certificate ID, expiry date, how to renew
@@ -541,8 +432,8 @@ One 90-minute session with the full review committee.
 **Agenda**:
 
 1. **Program overview** (15 min): The proposal, what GSF does/doesn't verify, the self-certification model
-2. **Acceptance criteria walkthrough** (20 min): The three gates, the completeness checklist, the consistency checks, the sufficiency rubric
-3. **Calibration exercise** (40 min): All reviewers independently score the same 2 example submissions, then compare scores and discuss divergences. Agree on what a "3" looks like for each criterion.
+2. **Acceptance criteria walkthrough** (20 min): The 27-item checklist, Y/N/I marking, the decision rule
+3. **Calibration exercise** (40 min): All reviewers independently review the same 2 example submissions, then compare results and discuss divergences. Agree on the Y vs I boundary for key items.
 4. **Edge cases** (10 min): M=0, unusual functional units, vague data sources, "internal tools" as sole data source — where is the line?
 5. **Operational workflow** (5 min): Assignment, the review record, the tracking spreadsheet, email templates
 
@@ -560,7 +451,7 @@ Process 2-3 test submissions through the complete workflow.
 - Record everything in the tracking spreadsheet
 
 **What you're validating**:
-- The three-gate process is clear and workable
+- The single-pass review process is clear and workable
 - Reviewers reach consistent conclusions on the same submission
 - The review record template captures everything needed
 - Certificate generation works
@@ -587,7 +478,7 @@ After each pilot, gather feedback from:
 - **Applicants**: Was the guide clear? How long did preparation take? Was the review feedback useful?
 - **Reviewers**: Was the process workable? Were the criteria clear? Where did they feel uncertain?
 
-Refine the Applicant Guide, acceptance criteria, and rubric guidance based on this feedback before public launch.
+Refine the Applicant Guide, acceptance criteria, and checklist guidance based on this feedback before public launch.
 
 ---
 
@@ -641,16 +532,14 @@ Once the committee has processed ~10 submissions under dual review with consiste
 ### People
 - [ ] 3+ reviewers recruited and confirmed
 - [ ] Reviewer training session completed
-- [ ] Calibration exercise completed (reviewers aligned on rubric interpretation)
+- [ ] Calibration exercise completed (reviewers aligned on Y vs I boundaries)
 - [ ] Assignment method and conflict-of-interest rule agreed
 - [ ] Escalation path defined for complex/disputed cases
 
 ### Acceptance Criteria and Process
-- [ ] Three-gate acceptance criteria documented and approved by committee
-- [ ] 29-item completeness checklist finalized (grouped by submission section)
-- [ ] 9-item consistency check list finalized
-- [ ] 6-criterion sufficiency rubric finalized with scoring guidance and concrete pass/fail boundary examples
-- [ ] Decision rules documented (approve if all ≥3; revise if any 1-2; reject only for bad faith with dual concurrence)
+- [ ] 27-item review checklist documented and approved by committee
+- [ ] Y/N/I marking guidance finalized with concrete pass/fail boundary examples
+- [ ] Decision rules documented (approve if all Y; revise if any N or I; reject only for bad faith with dual concurrence)
 - [ ] Review record template finalized
 - [ ] Precedent log created (empty, ready for first entries)
 - [ ] Review procedure documented step-by-step
@@ -708,12 +597,12 @@ Once the committee has processed ~10 submissions under dual review with consiste
 |------|-----------|--------|------------|
 | GSF IT slow to create email | Medium | **Blocks everything** | Request before formal approval |
 | Cannot recruit 3 reviewers | Low | High | Draw from SWG participants; offer stipend |
-| Reviewers inconsistent in scoring | Medium | High | Calibration exercise, dual review for first 10, monthly check-ins, precedent log |
+| Reviewers inconsistent in Y vs I judgements | Medium | High | Calibration exercise, dual review for first 10, monthly check-ins, precedent log |
 | No pilot applicants | Medium | Medium | Approach SWG members directly; offer support |
 | First submissions are low quality | High | Low | Expected — revision-request workflow handles this; refine Applicant Guide based on patterns |
 | Terminology confusion | High | Medium | Resolve definitively in Week 1 |
-| Acceptance criteria too strict (nothing gets approved) | Medium | High | Calibrate on examples during training; "adequate" (score 3) is the bar, not "exemplary" |
-| Acceptance criteria too loose (rubber-stamping) | Medium | High | Gate 3 rubric forces specific scoring with rationale; dual review catches drift |
-| Challenge to a decision with no documented rationale | Low | High | Review record template ensures every decision is documented with scored criteria |
+| Acceptance criteria too strict (nothing gets approved) | Medium | High | Calibrate on examples during training; "adequate" is the bar, not "exemplary" |
+| Acceptance criteria too loose (rubber-stamping) | Medium | High | Checklist requires Y/N/I for each item with notes for I marks; dual review catches drift |
+| Challenge to a decision with no documented rationale | Low | High | Review record template ensures every decision is documented with per-item Y/N/I marks |
 | Badging platform doesn't support needed dynamic fields | Low | High | Investigate in Week 1 (Section 1.5); if platform is too rigid, fall back to a simpler certificate with a link to the full details on GitHub |
 | Badge design delayed (no designer available) | Medium | Medium | Start the brief on Day 1; if no designer, use the badging platform's built-in badge designer as a minimum viable option |

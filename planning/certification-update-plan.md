@@ -6,14 +6,14 @@ Program as specified in `../certification/planning/GSF CoD Simplified proposal d
 
 ---
 
-## 1. How SCI certificate minting works (end-to-end flow)
+## 1. How SCI certificate issuance works (end-to-end flow)
 
-The existing platform mints awards for **course completions**: a learner
+The existing platform issues awards for **course completions**: a learner
 finishes a quiz, a webhook fires, and the platform creates an award with a
 PDF certificate and notification email -- all automatically.
 
 SCI self-certification is different. A reviewer must manually approve a
-submission before a certificate is minted. The platform reuses the same
+submission before a certificate is issued. The platform reuses the same
 pipeline but with a new trigger and richer data.
 
 ### Existing flow (course completions)
@@ -35,10 +35,8 @@ Learner completes course quiz
 
 ```
 Organization submits SCI disclosure via email
-  → Reviewer performs 3-gate review (completeness, consistency, sufficiency)
-  → On approval, reviewer inserts row into Supabase `sci_approvals` table
-    → Supabase DB webhook fires POST /api/webhooks/course-completion
-      → Webhook handler detects SCI payload (table = "sci_approvals")
+  → Reviewer performs single-pass review (completeness, disclosure sufficiency)
+  → On approval, reviewer calls issuance API (POST /api/issue-sci-certificate)
       → Platform upserts organization in `people` table (org name + contact email)
       → Platform creates `awards` row (person_id + sci-certificate badge_id)
       → Platform generates sequential certificate ID (GSF-SCI-2026-00042)
@@ -57,7 +55,7 @@ Organization submits SCI disclosure via email
 
 | Aspect | Course completion | SCI self-certification |
 |--------|------------------|----------------------|
-| Trigger | Automatic (quiz completion) | Manual (reviewer inserts `sci_approvals` row) |
+| Trigger | Automatic (quiz completion) | Manual (reviewer calls issuance API) |
 | Recipient | Individual person | Organization (with contact person) |
 | Data | Name + email only | Org, software, SCI score, functional unit, measurement period, disclosure URL |
 | Certificate ID | UUID | Sequential: GSF-SCI-YYYY-NNNNN |
@@ -68,9 +66,8 @@ Organization submits SCI disclosure via email
 
 ### What the reviewer concretely does to issue a certificate
 
-The reviewer's only interaction with this platform is inserting a single row
-into the `sci_approvals` table in the Supabase dashboard. Everything else
-happens automatically.
+The reviewer's only interaction with the platform is calling the issuance
+API. Everything else happens automatically.
 
 The current Supabase database has three tables (no migration files exist;
 the schema is managed via the Supabase web dashboard):
@@ -96,73 +93,38 @@ Existing tables (unchanged):
 └─────────────────────────────────────────────┘
 ```
 
-After the migrations in this plan are applied, a new `sci_approvals` table
-will exist. **The reviewer opens the Supabase Table Editor (or SQL Editor)
-and inserts a row with these exact columns:**
+**The reviewer calls `POST /api/issue-sci-certificate`** with a JSON body
+containing these fields:
 
-```
-sci_approvals – the reviewer fills in ALL of these columns:
-┌──────────────────────┬──────────┬───────────────────────────────────────────┐
-│ Column               │ Type     │ Example value                             │
-├──────────────────────┼──────────┼───────────────────────────────────────────┤
-│ organization_name    │ text     │ Acme Corporation                          │
-│ contact_name         │ text     │ Jane Smith                                │
-│ contact_email        │ text     │ jane.smith@acme.org                       │
-│ software_name        │ text     │ E-commerce API Service                    │
-│ software_version     │ text     │ v2.1.0                                    │
-│ sci_score            │ numeric  │ 349.63                                    │
-│ sci_unit             │ text     │ gCO2eq per 1,000 API requests             │
-│ functional_unit      │ text     │ 1,000 API requests                        │
-│ measurement_start    │ date     │ 2025-01-01                                │
-│ measurement_end      │ date     │ 2025-01-31                                │
-│ disclosure_url       │ text     │ https://github.com/Green-Software-Foundation/sci-certifications/blob/main/certifications/2026/GSF-SCI-2026-00042/disclosure.md │
-└──────────────────────┴──────────┴───────────────────────────────────────────┘
-(id and created_at are auto-generated and should not be filled in)
+```json
+{
+  "organization_name": "Acme Corporation",
+  "contact_name": "Jane Smith",
+  "contact_email": "jane.smith@acme.org",
+  "software_name": "E-commerce API Service",
+  "software_version": "v2.1.0",
+  "sci_score": 349.63,
+  "sci_unit": "gCO2eq per 1,000 API requests",
+  "functional_unit": "1,000 API requests",
+  "measurement_start": "2025-01-01",
+  "measurement_end": "2025-01-31",
+  "disclosure_url": "https://github.com/Green-Software-Foundation/sci-certifications/blob/main/certifications/2026/GSF-SCI-2026-00042/disclosure.md"
+}
 ```
 
-**Equivalently, in the Supabase SQL Editor:**
+**What happens automatically after the API call:**
 
-```sql
-INSERT INTO sci_approvals (
-  organization_name,
-  contact_name,
-  contact_email,
-  software_name,
-  software_version,
-  sci_score,
-  sci_unit,
-  functional_unit,
-  measurement_start,
-  measurement_end,
-  disclosure_url
-) VALUES (
-  'Acme Corporation',
-  'Jane Smith',
-  'jane.smith@acme.org',
-  'E-commerce API Service',
-  'v2.1.0',
-  349.63,
-  'gCO2eq per 1,000 API requests',
-  '1,000 API requests',
-  '2025-01-01',
-  '2025-01-31',
-  'https://github.com/Green-Software-Foundation/sci-certifications/blob/main/certifications/2026/GSF-SCI-2026-00042/disclosure.md'
-);
-```
+1. The platform upserts the organization in the `people` table.
+2. The platform creates entries in `awards` and `sci_certifications`,
+   generates the PDF certificate and OG image, uploads them to storage,
+   and sends the notification email.
+3. The contact person receives an email with their certificate link.
+4. The certificate is live at `badges.greensoftware.foundation/awards/{uuid}`.
+5. The API returns the certificate ID, certificate URL, and all metadata.
 
-**What happens next (automatically, no reviewer action needed):**
-
-1. Supabase fires a database webhook on INSERT to `sci_approvals`.
-2. The webhook sends the row data to `POST /api/webhooks/course-completion`.
-3. The platform creates entries in `people`, `awards`, and
-   `sci_certifications`, generates the PDF certificate and OG image,
-   uploads them to storage, and sends the notification email.
-4. The contact person receives an email with their certificate link.
-5. The certificate is live at `badges.greensoftware.foundation/awards/{uuid}`.
-
-The reviewer does **not** need to touch the `people`, `awards`,
-`sci_certifications`, or `badges` tables. Those are populated automatically
-by the webhook handler.
+The reviewer does **not** need to interact with the database directly.
+The `people`, `awards`, and `sci_certifications` tables are populated
+automatically by the issuance API.
 
 ---
 
@@ -173,18 +135,20 @@ alternatives noted below for future revisiting.
 
 ### 2.1 How are SCI certificates issued?
 
-**Decision: Extend existing webhook** -- Add SCI-specific fields to the
-existing `course-completion` webhook, triggered by inserting a row into a new
-Supabase table (`sci_approvals`). A reviewer (or script) inserts the row after
-completing the 3-gate review, and a Supabase database webhook fires the API.
+**Decision: Dedicated issuance API endpoint** -- A new `POST /api/issue-sci-certificate`
+endpoint accepts SCI-specific fields and issues the certificate. The reviewer
+calls this endpoint (via curl, script, or future admin UI) after completing
+the single-pass review. The endpoint handles all downstream work: database
+inserts, PDF generation, email notification.
 
 Alternatives considered:
-- **Manual API call**: A reviewer calls the API directly (e.g. via curl/script)
-  with all SCI fields after approving a submission. Simpler but no audit trail
-  in the database for the approval event itself.
+- **Supabase table trigger**: Reviewer inserts a row into a `sci_approvals`
+  table, which fires a database webhook. Provides an audit trail but couples
+  the reviewer workflow to the database layer and makes the issuance flow
+  harder to reason about.
 - **Admin UI**: Build a browser-based admin page where reviewers fill in the
   SCI fields and issue a certificate. Better UX but significantly more work
-  for v1.
+  for v1. Can be built on top of the API endpoint later.
 
 ### 2.2 How are organizations represented?
 
@@ -314,7 +278,7 @@ with a complete definition. Key differences from course badges:
 - `credentialType`: new field, value `"sci-certificate"` (used to switch UI layouts)
 - `aboutParagraphs`: describes the self-certification program
 - `outcomes`: not applicable (empty array)
-- `earningCriteria`: describes the 3-gate review process
+- `earningCriteria`: describes the single-pass review process
 - No `duration` or `cost`
 
 ```yaml
@@ -344,8 +308,7 @@ sci-certificate:
   outcomes: []
   earningCriteria:
     - "Submit a complete SCI disclosure covering all 29 required items."
-    - "Pass the internal consistency check (arithmetic verification)."
-    - "Score at least 'Adequate' (3/5) on all six disclosure sufficiency criteria."
+    - "Pass all 27 items on the review checklist (each marked Y or N/A)."
   duration: ""
   cost: "Free"
   learnMoreText: "Applicant Guide"
@@ -371,43 +334,38 @@ credentialType?: "course" | "sci-certificate";
 
 ## 5. API changes
 
-### 5.1 Webhook payload extension
+### 5.1 SCI issuance endpoint
 
-The existing `POST /api/webhooks/course-completion` endpoint already accepts
-a `directPayloadSchema`. We extend it with optional SCI fields:
+Create a new `POST /api/issue-sci-certificate` endpoint. This is the
+endpoint the reviewer calls to issue a certificate after approving a
+submission.
+
+**Request schema:**
 
 ```typescript
-const sciPayloadSchema = z.object({
-  name: z.string().min(1),              // organization name
-  email: z.string().email(),            // contact email
-  badgeSlug: z.literal("sci-certificate"),
-
-  // SCI-specific fields
-  sci: z.object({
-    contactName: z.string().min(1),
-    softwareName: z.string().min(1),
-    softwareVersion: z.string().min(1),
-    sciScore: z.number().positive(),
-    sciUnit: z.string().min(1),           // "gCO2eq per 1,000 API requests"
-    functionalUnit: z.string().min(1),    // "1,000 API requests"
-    measurementStart: z.string().date(),  // "2025-01-01"
-    measurementEnd: z.string().date(),    // "2025-01-31"
-    disclosureUrl: z.string().url(),
-  }),
+const sciIssuanceSchema = z.object({
+  organization_name: z.string().min(1),
+  contact_name: z.string().min(1),
+  contact_email: z.string().email(),
+  software_name: z.string().min(1),
+  software_version: z.string().min(1),
+  sci_score: z.number().positive(),
+  sci_unit: z.string().min(1),           // "gCO2eq per 1,000 API requests"
+  functional_unit: z.string().min(1),    // "1,000 API requests"
+  measurement_start: z.string().date(),  // "2025-01-01"
+  measurement_end: z.string().date(),    // "2025-01-31"
+  disclosure_url: z.string().url(),
 });
 ```
 
-Parsing order becomes:
-
-1. Try `supabaseWebhookSchema` (existing Supabase DB webhook)
-2. Try `supabaseSciWebhookSchema` (new Supabase SCI approval webhook)
-3. Try `sciPayloadSchema` (new SCI-specific direct payload)
-4. Try `directPayloadSchema` (existing direct course-completion payload)
-5. Return 400 if none match
+**Authentication:** The endpoint must be protected so only authorized
+reviewers can call it. Use a shared API key passed in the `Authorization`
+header (e.g. `Bearer <ISSUANCE_API_KEY>`). The key is stored as an
+environment variable on the platform.
 
 ### 5.2 SCI issuance logic
 
-When the payload matches `sciPayloadSchema` or `supabaseSciWebhookSchema`:
+When the endpoint receives a valid request:
 
 1. Upsert `people` row (org name + contact email)
 2. Look up `badges` row for slug `"sci-certificate"`
@@ -417,10 +375,10 @@ When the payload matches `sciPayloadSchema` or `supabaseSciWebhookSchema`:
 6. Generate certificate PDF using SCI-specific template (see Section 6)
 7. Generate OG preview PNG
 8. Send notification email using SCI-specific template (see Section 8)
-9. Return extended response including `sci.certificateId`, `sci.disclosureUrl`,
+9. Return response including `sci.certificateId`, `sci.disclosureUrl`,
    `sci.validUntil`
 
-### 5.3 Extended response
+### 5.3 Response
 
 ```json
 {
@@ -450,64 +408,7 @@ When the payload matches `sciPayloadSchema` or `supabaseSciWebhookSchema`:
 }
 ```
 
-### 5.4 Supabase webhook trigger (for `sci_approvals` table)
-
-The reviewer workflow would be:
-
-1. Reviewer completes 3-gate review manually (outside this platform).
-2. Reviewer (or a script) inserts a row into a new `sci_approvals` table.
-3. A Supabase database webhook fires `POST /api/webhooks/course-completion`
-   with the insertion payload.
-
-The `sci_approvals` table mirrors the SCI payload fields and acts as the
-source of truth for approved submissions. Schema:
-
-```sql
-create table sci_approvals (
-  id                  uuid primary key default gen_random_uuid(),
-  organization_name   text not null,
-  contact_name        text not null,
-  contact_email       text not null,
-  software_name       text not null,
-  software_version    text not null,
-  sci_score           numeric not null,
-  sci_unit            text not null,
-  functional_unit     text not null,
-  measurement_start   date not null,
-  measurement_end     date not null,
-  disclosure_url      text not null,
-  created_at          timestamptz not null default now()
-);
-```
-
-We also add a new Supabase webhook schema variant to the webhook handler:
-
-```typescript
-const supabaseSciWebhookSchema = z.object({
-  type: z.literal("INSERT"),
-  table: z.literal("sci_approvals"),
-  schema: z.string(),
-  record: z.object({
-    organization_name: z.string(),
-    contact_name: z.string(),
-    contact_email: z.string().email(),
-    software_name: z.string(),
-    software_version: z.string(),
-    sci_score: z.number(),
-    sci_unit: z.string(),
-    functional_unit: z.string(),
-    measurement_start: z.string(),
-    measurement_end: z.string(),
-    disclosure_url: z.string().url(),
-  }),
-  old_record: z.any().nullable(),
-});
-```
-
-When this schema matches, the handler maps it into the same SCI issuance logic
-described in 5.2.
-
-### 5.5 COURSE_TO_BADGE_SLUG mapping update
+### 5.4 COURSE_TO_BADGE_SLUG mapping update
 
 Add entries for SCI:
 
@@ -691,7 +592,7 @@ present, render a different layout:
 
 For the `sci-certificate` credential page, the existing layout works well
 enough since it already supports dynamic content from the YAML. The `outcomes`
-section will be empty and hidden. The `earningCriteria` will show the 3-gate
+section will be empty and hidden. The `earningCriteria` will show the single-pass review
 process. Minor tweaks:
 
 - Hide the "Outcomes" section when `credential.outcomes` is empty
@@ -754,7 +655,7 @@ These need to be created and added to the repository or uploaded to storage:
 
 Badge design specs from the proposal:
 - GSF leaf logo (top center)
-- "Certificate of Disclosure" or "SCI Self-Certification" text
+- "SCI Self-Certification" text
 - Year of issuance
 - Primary color: #00C853 (GSF Green)
 - Light/dark variants
@@ -769,7 +670,7 @@ Badge design specs from the proposal:
 | `src/data/badge-types.yaml` | Replace placeholder `sci-certificate` entry with full definition |
 | `src/data/credentials.ts` | Add `credentialType` to types; pass through from YAML |
 | `src/data/awards.ts` | Add `SciCertification` type; extend `getAwardById()` to fetch SCI data |
-| `src/pages/api/webhooks/course-completion.ts` | Add `sciPayloadSchema`, `supabaseSciWebhookSchema`; add SCI issuance branch; update `COURSE_TO_BADGE_SLUG`; extend response |
+| `src/pages/api/webhooks/course-completion.ts` | Update `COURSE_TO_BADGE_SLUG` mapping |
 | `src/lib/certificatePdf.ts` | Add `replaceSciPlaceholders()`; branch `buildCertificateHtml()` for SCI; pass SCI fields through `generateCertificateAndUpload()` |
 | `src/lib/resend.ts` | Add `sendSciCertificationNotification()` function |
 | `src/pages/awards/[awardId].astro` | Add SCI-specific award page layout (conditional on `credentialType`) |
@@ -779,6 +680,7 @@ Badge design specs from the proposal:
 
 | File | Purpose |
 |------|---------|
+| `src/pages/api/issue-sci-certificate.ts` | SCI issuance API endpoint (reviewer calls this to issue certificates) |
 | `public/assets/badges/sci-certificate-badge.png` | Badge image (needs design work) |
 | `public/assets/badges/sci-certificate-badge.svg` | Scalable badge image (needs design work) |
 | Supabase: `certificates/templates/sci-certificate.html` | Certificate PDF template (needs design work) |
@@ -787,9 +689,7 @@ Badge design specs from the proposal:
 
 1. Create `sci_certifications` table (Section 3.1)
 2. Create `sci_cert_seq` sequence and `next_sci_certificate_id()` function (Section 3.2)
-3. Create `sci_approvals` table (Section 5.4)
-4. Insert `sci-certificate` badge row into `badges` table: `INSERT INTO badges (slug) VALUES ('sci-certificate');`
-5. Configure Supabase database webhook on `sci_approvals` table INSERT to fire the course-completion webhook endpoint
+3. Insert `sci-certificate` badge row into `badges` table: `INSERT INTO badges (slug) VALUES ('sci-certificate');`
 
 ---
 
@@ -797,14 +697,13 @@ Badge design specs from the proposal:
 
 1. **Database**: Run migrations (tables, sequence, badge row)
 2. **YAML + types**: Update badge-types.yaml and credentials.ts
-3. **API**: Extend webhook with SCI payload schemas and issuance logic
+3. **API**: Create `issue-sci-certificate` endpoint with issuance logic
 4. **Certificate generation**: Add SCI placeholder handling in certificatePdf.ts
 5. **Award data**: Extend awards.ts to fetch SCI certification data
 6. **Award page**: Add SCI-specific layout to [awardId].astro
 7. **Credential page**: Minor tweaks to [slug].astro for certification type
 8. **Email**: Add SCI notification email template
 9. **Assets**: Create/upload badge images and certificate HTML template
-10. **Supabase webhook**: Configure the `sci_approvals` INSERT trigger
 
 ---
 
@@ -819,8 +718,8 @@ Badge design specs from the proposal:
 - **`src/lib/resend.ts`**: A new `sendSciCertificationNotification()` function
   is added alongside the existing `sendAwardNotification()`. The existing
   function is not modified.
-- **New database tables** (`sci_certifications`, `sci_approvals`): Entirely
-  new tables. No schema changes to `awards`, `badges`, or `people`.
+- **New database table** (`sci_certifications`): Entirely new table. No
+  schema changes to `awards`, `badges`, or `people`.
 - **New static assets** (badge images, HTML template): New files only.
 
 ### Extends existing code (low risk)
@@ -844,33 +743,21 @@ Badge design specs from the proposal:
 
 ### Modifies existing logic (needs care)
 
-- **`src/pages/api/webhooks/course-completion.ts`**: Highest-risk file.
-  Three concerns:
+- **`src/pages/api/issue-sci-certificate.ts`**: New endpoint, but reuses
+  shared logic from the existing issuance pipeline. Two concerns:
 
-  1. **Schema parsing restructure.** The current handler tries 2 schemas
-     sequentially. The plan adds 2 more, making it a 4-way dispatch. The
-     existing `supabaseWebhookSchema` requires `record.course_id`, which SCI
-     payloads won't have, so it won't accidentally match SCI payloads. Safe
-     as long as the SCI schemas are tried first or alongside.
+  1. **Idempotency.** A single organization (same `people` row / same email)
+     could certify **multiple software products**, all under the
+     `sci-certificate` badge. The existing award idempotency check
+     (`person_id + badge_id`) would block the second certification.
 
-  2. **Post-parsing branching.** After parsing, the current code is a single
-     linear flow. For SCI we need to branch after award creation (insert
-     `sci_certifications`, call different email function, return extended
-     response). If the branch condition is wrong, the SCI insert could run
-     for course completions (and fail) or be skipped for SCI certs.
+     **Fix:** Always create a new award for SCI issuance, or use a more
+     specific uniqueness key (e.g. org email + software name + software
+     version).
 
-  3. **Idempotency collision (design bug -- must be fixed).** The existing
-     idempotency check finds an existing award by `person_id + badge_id`.
-     For courses this is correct: one person gets one badge. But for SCI,
-     a single organization (same `people` row / same email) could certify
-     **multiple software products**, all under the `sci-certificate` badge.
-     The current check would find the first award and silently reuse it,
-     preventing the second certification from being created.
-
-     **Fix:** Skip or modify the idempotency check when
-     `badgeSlug === "sci-certificate"`. Always create a new award for SCI,
-     or use a more specific uniqueness key (e.g. org email + software name
-     + software version).
+  2. **Authentication.** The endpoint must be protected so only authorized
+     reviewers can call it. Use a shared API key in the `Authorization`
+     header.
 
 - **`src/lib/certificatePdf.ts`**: `buildCertificateHtml()` needs to branch
   on `badgeSlug` to call `replaceSciPlaceholders()` instead of
@@ -890,8 +777,8 @@ Badge design specs from the proposal:
 
 | Risk | Area | Issue | Mitigation |
 |------|------|-------|------------|
-| **Bug** | Webhook idempotency | Same org certifying multiple products is blocked by `person_id + badge_id` check | Skip idempotency for SCI, or key on org + software + version |
-| **Moderate** | Webhook POST handler | 4-way schema dispatch + branching post-parse logic | Test existing course webhook payloads against the modified handler |
+| **Bug** | Issuance idempotency | Same org certifying multiple products is blocked by `person_id + badge_id` check | Skip idempotency for SCI, or key on org + software + version |
+| **Moderate** | Issuance endpoint auth | Unauthorized calls could issue certificates | API key in Authorization header; key stored as env var |
 | **Moderate** | Award page | Course-specific hardcoded text needs conditional replacement | Use top-level layout switch, not scattered inline conditions |
 | **Low** | certificatePdf.ts | Wrong branch throws on missing placeholders | Safe failure (500), not silent corruption |
 | **Low** | awards.ts | Fetching SCI data after existing query | Use second query, not a join, to avoid touching existing query |

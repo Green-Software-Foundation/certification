@@ -4,7 +4,7 @@
 
 The Green Software Foundation (GSF) Self-Certification Program lets any organization declare that its Software Carbon Intensity (SCI) calculation conforms to ISO/IEC 21031:2024. You self-certify conformity. GSF then checks that your disclosure is complete and detailed enough for the public to understand and evaluate your calculation. If it is, GSF issues a certificate.
 
-**This is not a third-party audit.** GSF does not validate the accuracy of your numbers, assess whether your methodology is correct, or confirm that your calculation actually conforms to ISO/IEC 21031:2024. You are responsible for all of that. GSF verifies only that your disclosure is complete, internally consistent, and sufficiently detailed. Your submission is then published so the community can review it.
+**This is not a third-party audit.** GSF does not validate the accuracy of your numbers, assess whether your methodology is correct, or confirm that your calculation actually conforms to ISO/IEC 21031:2024. You are responsible for all of that. GSF verifies only that your disclosure is complete and sufficiently detailed. Your submission is then published so the community can review it.
 
 The program is **free**. There is no fee to apply, and no fee to receive or renew a certificate.
 
@@ -22,7 +22,7 @@ Any individual or organization that has calculated an SCI score according to ISO
 |------|-------------|----------|----------|
 | 1 | You email your submission | You | — |
 | 2 | You receive an acknowledgement with a tracking number | Automatic | Within 1 business day |
-| 3 | A reviewer checks your submission against three gates | GSF reviewer | 10–15 business days |
+| 3 | A reviewer checks your submission against a 27-item checklist | GSF reviewer | 10–15 business days |
 | 4a | **Approved** — certificate issued, disclosure published | GSF | Included in the 10–15 days |
 | 4b | **Revision requested** — you receive specific feedback on what to fix | GSF | Included in the 10–15 days |
 | 4c | **Rejected** — only if the submission is made in bad faith | GSF | Included in the 10–15 days |
@@ -137,88 +137,27 @@ Use the submission email template (`submission-email-template.md`) as your start
 
 ## Exactly How Your Submission Is Evaluated
 
-Your submission is measured against **three sequential gates**. This is the exact same process your reviewer follows — there are no hidden criteria. A submission must pass all three gates to be approved. Failure at any gate stops the review and produces specific feedback.
+Your reviewer works through a **27-item checklist** in a single pass. This is the exact same checklist your reviewer follows — there are no hidden criteria. Each item is marked **Y** (present and adequate), **N** (missing), or **I** (insufficient — present but too vague for a practitioner to understand). All items must be Y to pass.
 
-### Gate 1: Completeness — Is everything present?
+The reviewer's question for every item: *"Could a knowledgeable practitioner reading this disclosure understand and evaluate this part of the calculation?"*
 
-The reviewer checks that all 29 required items (Sections 1–10 above) are present. This is binary — each item is either there or it isn't. No judgement is involved.
+Here is what the reviewer checks, and what "adequate" looks like for the items where detail matters:
 
-**If anything is missing**: your submission is returned with a list of the specific missing items. You fix them and resubmit.
+| Section | What must be present | What "adequate" looks like | What gets marked insufficient |
+|---------|---------------------|---------------------------|-------------------------------|
+| **Boundary** | Included and excluded components, each with rationale | Exclusions have system-specific rationales (e.g., "CDN is outside our operational boundary") | Generic rationales ("out of scope", "N/A") |
+| **Functional unit** | Unit, rationale, counting method, total | Rationale connects to how software scales; counting method named | Circular rationale ("we chose requests because we measure requests") |
+| **Energy** | Total, plus **per-component** breakdown | Each component shows energy value, how it was derived, and data source | Just a number per component with no method or source |
+| **Carbon intensity** | Value, location, approach, source with year | Named source with year (e.g., "EPA eGRID 2023, SRVC") | "Average grid data" with no source or year |
+| **Embodied (M)** | Total (or justified M=0), plus **per-component** breakdown | Each component shows total embodied, allocation calculation, allocated value, and source | Just an allocated number with no breakdown or source |
+| **Assumptions** | At least one specific assumption with justification | "Server avg power 15W based on AWS TDP at 40% utilization" | "Industry standard assumptions" |
+| **Limitations** | At least one specific limitation | "No direct power metering — used cloud telemetry as proxy" | "Some limitations exist" |
 
-**If 5 or more items are missing**: your submission is substantially incomplete. You will receive a short note directing you back to this guide and the submission template rather than an item-by-item list.
+**Decision rule:**
 
-### Gate 2: Internal Consistency — Do the numbers add up?
-
-The reviewer extracts your key values and verifies the arithmetic:
-
-| Check | What the reviewer does | Tolerance |
-|-------|----------------------|-----------|
-| O = E × I | Multiplies your E by your I and compares to your stated operational emissions | ±1% |
-| SCI = (O + M) / R | Calculates (O + M) / R and compares to your stated SCI score | ±1% |
-| Component energy sums | Adds up your per-component energy values (× PUE if stated) and compares to your stated total E | ±1% |
-| Embodied components sum | Adds up your per-component embodied emissions and compares to your stated total M | ±1% |
-| Dates are logical | Checks that start < end and end ≤ today | Exact |
-| PUE in plausible range | If stated: 1.0 ≤ PUE ≤ 3.0 | Exact |
-| Carbon intensity in plausible range | 0 < I < 2,000 gCO2eq/kWh | Exact |
-| Regional weights sum to 100% | If multi-region: checks that your percentages add up | Exact |
-| Units consistent | Energy in kWh, carbon in gCO2eq, intensity in gCO2eq/kWh, SCI score includes functional unit | Exact |
-
-**If any check fails**: your submission is returned with the specific discrepancy — the reviewer will show both your stated value and their calculated value.
-
-### Gate 3: Disclosure Sufficiency — Is there enough detail?
-
-This is the only gate involving judgement. The reviewer scores six criteria on a 1–5 scale. **The pass bar is 3 ("adequate") on every criterion.** You do not need to be exemplary — you need to be clear enough that a knowledgeable practitioner can understand what you did.
-
-| Score | Meaning |
-|-------|---------|
-| 1 | **Absent or vacuous** — present but no meaningful content (e.g. "standard methodology") |
-| 2 | **Vague** — some information but a practitioner could not understand the approach |
-| 3 | **Adequate** — a practitioner can understand what was done. **This is the pass bar.** |
-| 4 | **Good** — clear, specific, with named sources, explicit formulas, and justified choices |
-| 5 | **Exemplary** — comprehensive and reproducible, with uncertainty analysis |
-
-The six criteria, with concrete examples of what passes and what doesn't:
-
-**A. Boundary clarity**
-
-| Passes (score 3+) | Does not pass (score 2 or below) |
-|--------------------|----------------------------------|
-| Included and excluded components identifiable by name; each exclusion has a specific rationale tied to the system | Exclusions listed but rationale is blank or generic (e.g. "not included", "out of scope") |
-
-**B. Functional unit justification**
-
-| Passes (score 3+) | Does not pass (score 2 or below) |
-|--------------------|----------------------------------|
-| Unit named, rationale connects it to how the software scales or delivers value, counting method identified | Unit named but no rationale, or rationale is circular (e.g. "we chose requests because we measure requests") |
-
-**C. Energy methodology**
-
-| Passes (score 3+) | Does not pass (score 2 or below) |
-|--------------------|----------------------------------|
-| For each component: how energy was measured or estimated, what data was used, what coefficients were applied. A reader can trace from raw data to E. | Only a total energy figure with no breakdown, or breakdown with no explanation of how values were derived (e.g. "Server: 21.6 kWh" with no method) |
-
-**D. Carbon intensity sourcing**
-
-| Passes (score 3+) | Does not pass (score 2 or below) |
-|--------------------|----------------------------------|
-| Location(s) named, I value stated, data source named with year (e.g. "EPA eGRID 2022, SRVC subregion"). If multi-region, weighting shown. | I value stated but no source, or source without year, or "average grid data" without specifying whose data or which grid |
-
-**E. Embodied emissions methodology**
-
-| Passes (score 3+) | Does not pass (score 2 or below) |
-|--------------------|----------------------------------|
-| If M>0: each hardware component shows total embodied, lifespan, time reserved, resource share (if applicable), allocation formula, and data source. If M=0: specific justification (e.g. "pure SaaS, no hardware under operational control"). | M value with no component breakdown, or breakdown without allocation methodology, or M=0 with no justification |
-
-**F. Assumptions and limitations**
-
-| Passes (score 3+) | Does not pass (score 2 or below) |
-|--------------------|----------------------------------|
-| At least one specific assumption with justification. At least one specific limitation. | Generic statements only (e.g. "industry standard assumptions", "some limitations exist") or section is empty |
-
-**Gate 3 decision rule:**
-
-- **All six criteria score 3 or higher** → Approved.
-- **Any criterion scores 1 or 2** → Revision requested. You receive specific feedback identifying which criteria need more detail and what to add.
+- **All Y** → Approved.
+- **Any N or I** → Revision requested. You receive specific feedback identifying which items need attention and what to add.
+- **5+ items N or I** → Submission substantially incomplete. You are directed back to this guide and the submission template.
 - **Bad faith** (fabricated data, obvious fraud, persistent refusal to engage after revision requests) → Rejected. This requires concurrence from 2+ reviewers and is never used for poor quality. Poor quality always gets a revision request first.
 
 ---
@@ -227,7 +166,7 @@ The six criteria, with concrete examples of what passes and what doesn't:
 
 ### Approved
 
-Your submission passes all three gates. What happens next:
+Your submission passes the review. What happens next:
 
 1. GSF issues a certificate on the badging platform with a unique certificate ID (format: `GSF-SCI-YYYY-NNNNN`).
 2. Your submission is published to the public GitHub repository (`greensoftware-foundation/sci-certifications`) with your contact email redacted and a certificate metadata header added.
@@ -236,11 +175,11 @@ Your submission passes all three gates. What happens next:
 
 ### Revision Requested
 
-Your submission failed one or more gates. This is **not a rejection** — it is an invitation to fix specific issues and resubmit. You will receive:
+Your submission had one or more items marked N (missing) or I (insufficient). This is **not a rejection** — it is an invitation to fix specific issues and resubmit. You will receive:
 
-- The exact gate where the review stopped (Gate 1, 2, or 3).
-- The specific items, checks, or criteria that need attention.
-- What you need to add or correct to pass.
+- The specific checklist items that need attention, identified by number.
+- For missing items: what is missing.
+- For insufficient items: what is too vague and what you need to add.
 
 You may resubmit as many times as needed. Each resubmission enters the review queue and is reviewed within 10–15 business days.
 
@@ -275,7 +214,7 @@ Your submission is published as-is to the `greensoftware-foundation/sci-certific
 
 ## Certificate and Badge Usage Rules
 
-These rules are binding. Violating them may result in certificate revocation.
+These rules are binding. Violating them may result in certificate revocation. The full rules, including display examples, asset downloads, and enforcement details, are in the **[Badge Usage Guidelines](Badge-Usage-Guidelines.md)**. The key points are summarized below.
 
 ### The single most important rule
 
@@ -283,37 +222,20 @@ These rules are binding. Violating them may result in certificate revocation.
 
 Removing the "self-certified" qualifier is a violation of your attestation (point 8) and grounds for revocation.
 
-### Language you MAY use
+### Quick reference
 
-- "Self-certified compliant with ISO/IEC 21031:2024, verified by GSF"
-- "ISO/IEC 21031:2024 SCI calculation (self-certified, disclosure verified by Green Software Foundation)"
-- "Our software carbon intensity has been self-certified to ISO/IEC 21031:2024 standards"
-- "We have self-certified our SCI calculation with ISO/IEC 21031:2024 through the GSF program"
-
-### Language you MUST NOT use
-
-- "ISO certified" or "ISO/IEC 21031:2024 certified" (missing "self-certified" qualifier)
-- "Certified by Green Software Foundation to ISO/IEC 21031:2024" (implies GSF certified conformity)
-- "Certified by GSF for ISO 21031:2024" (implies GSF certified conformity)
-- "Independently verified ISO/IEC 21031:2024 compliant" (falsely claims independent verification)
-- "ISO certified software carbon intensity" (missing "self-certified" qualifier)
-- "GSF verified ISO compliant" (implies GSF validated conformity, not just disclosure)
-- "Certified by ISO accredited body" (this program is not accredited certification)
-- "Third-party certified" or "independently certified" (this is self-certification, not third-party)
-- "Audited and certified" (no audit was performed)
-- Any claim implying GSF have verified compliance against the ISO standard
-- Any claim implying an independent certification audit occurred
-
-### Badge display rules
-
-- The badge **must** link to your full disclosure (certificate URL or GitHub page).
-- The badge may **only** be displayed while your certificate is active — not after it has expired or been revoked.
-- The badge design **must not** be modified.
-- If displaying conformity claims alongside the badge, the "self-certified" qualifier must be visible.
+| Rule | Details |
+|------|---------|
+| **Always say "self-certified"** | Never claim "ISO certified", "third-party certified", "independently verified", or imply GSF validated accuracy or conformity. |
+| **Badge must link to your certificate** | Every badge display must be a clickable link to your certificate URL. |
+| **Active certificates only** | Remove the badge immediately when your certificate expires or is revoked. |
+| **Do not modify the badge** | Use official assets only — no color changes, no layout changes, no added text. |
+| **Include context** | When displaying the badge, include a statement clarifying this is self-certification, not third-party audit. |
+| **One badge per product** | Only display the badge for the specific software covered by your certificate. |
 
 ### What GSF actually verified
 
-To be precise: GSF verified that your disclosure is **complete** (all required information present), **internally consistent** (the arithmetic checks out), and **sufficiently detailed** (a practitioner can understand what you did). GSF did not verify that your calculation is accurate, that your methodology is appropriate, or that your SCI score conforms to ISO/IEC 21031:2024. You certified those things yourself.
+GSF verified that your disclosure is **complete** (all required information present) and **sufficiently detailed** (a practitioner can understand what you did). GSF did not verify that your calculation is accurate, that your arithmetic is correct, that your methodology is appropriate, or that your SCI score conforms to ISO/IEC 21031:2024. You are responsible for all of that.
 
 ### Enforcement
 
@@ -321,6 +243,8 @@ To be precise: GSF verified that your disclosure is **complete** (all required i
 - First offence: warning with 14 days to correct.
 - Persistent misuse: certificate revocation.
 - GSF may conduct periodic spot-checks.
+
+For approved/prohibited language examples, display guidelines, asset downloads, and the full enforcement process, see the **[Badge Usage Guidelines](Badge-Usage-Guidelines.md)**.
 
 ---
 
@@ -377,37 +301,35 @@ If your submission is rejected or you disagree with a review decision, you may a
 
 ## Pre-Submission Checklist
 
-Before you send your submission, confirm every item below. This checklist mirrors the 29 items the reviewer will check in Gate 1. If any item is missing, your submission will be returned.
+Before you send your submission, confirm every item below. This checklist mirrors the 27 items the reviewer will check. If any item is missing or too vague, your submission will be returned.
 
 - [ ] Organization name, contact name, and contact email
-- [ ] Software name and version
+- [ ] Software name, version, and brief description
 - [ ] SCI score — numeric value with units including functional unit
-- [ ] Measurement start date and end date
-- [ ] At least one included component with justification for inclusion
-- [ ] Excluded components listed — each with a specific rationale
+- [ ] Measurement start and end dates
+- [ ] Included components named, each with a reason for inclusion
+- [ ] Excluded components named, each with a **system-specific** rationale (not just "out of scope")
 - [ ] *(If shared infrastructure)* Allocation method and share stated
 - [ ] Functional unit named
-- [ ] Rationale for functional unit choice provided
-- [ ] How units are counted or measured
+- [ ] Rationale connects the unit to how the software scales or delivers value
+- [ ] Counting/measurement method identified
 - [ ] Total units in measurement period stated
-- [ ] Total energy value with unit (kWh)
-- [ ] Per-component energy breakdown with calculation or measurement method
-- [ ] Data source(s) identified for energy values
-- [ ] PUE value stated, or explicitly noted as not applicable
-- [ ] Carbon intensity value with unit (gCO2eq/kWh)
+- [ ] Total energy with unit (kWh)
+- [ ] Per-component energy breakdown — **each component** shows: energy value, how it was calculated or measured, and data source
+- [ ] PUE stated, or explicitly noted as N/A
+- [ ] Carbon intensity value with unit (gCO2eq/kWh) — if multi-region, **per-region values** with weighting
 - [ ] Location(s) stated
 - [ ] Approach stated (location-based or market-based)
-- [ ] Data source named with year
+- [ ] Data source named **with year**
 - [ ] *(If multi-region)* Per-region breakdown with percentage weights
-- [ ] Total M value with unit (gCO2eq), OR explicit justification if M = 0
-- [ ] *(If M > 0)* Per-hardware-component breakdown
-- [ ] *(If M > 0)* Allocation methodology described (lifespan, time reserved, resource share)
-- [ ] Data source(s) identified for embodied emissions
-- [ ] Overall methodology approach stated (measurement / calculation / hybrid)
-- [ ] At least one key assumption with justification
-- [ ] At least one known limitation acknowledged
-- [ ] SCI formula shown with numbers (O = E×I, SCI = (O+M)/R)
-- [ ] Signed self-certification attestation (all 10 points)
+- [ ] Total M with unit, **or** specific justification if M = 0
+- [ ] *(If M > 0)* Per-component embodied emissions — **each component** shows: total embodied, allocation calculation, allocated value, and data source
+- [ ] *(If M > 0)* Allocation method described with per-component parameters (lifespan, time reserved, resource share where applicable)
+- [ ] Overall approach stated (measurement / calculation / hybrid)
+- [ ] At least one **specific** assumption with justification
+- [ ] At least one **specific** limitation acknowledged
+- [ ] SCI formula shown with actual numbers (O = E × I, SCI = (O+M)/R)
+- [ ] Signed attestation covering all 10 points
 
 ---
 
@@ -415,11 +337,10 @@ Before you send your submission, confirm every item below. This checklist mirror
 
 | Situation | Outcome |
 |-----------|---------|
-| All information present, arithmetic checks out, all six disclosure criteria score 3+ | **Approved** |
-| Missing items (e.g., no PUE stated, no exclusion rationales) | **Revision requested** — specific missing items listed |
-| Arithmetic error (e.g., O ≠ E × I within 1%) | **Revision requested** — discrepancy shown with both values |
-| Disclosure too vague (e.g., "standard methodology", no data sources named) | **Revision requested** — specific criteria identified with guidance on what to add |
-| Genuinely incomplete submission (5+ items missing) | **Revision requested** — directed back to this guide and the submission template |
+| All 27 items marked Y (or N/A) | **Approved** |
+| Missing items (e.g., no PUE stated, no exclusion rationales) | **Revision requested** — specific missing items listed by number |
+| Disclosure too vague (e.g., "standard methodology", no data sources named) | **Revision requested** — items marked insufficient with guidance on what to add |
+| Genuinely incomplete submission (5+ items N or I) | **Revision requested** — directed back to this guide and the submission template |
 | Fabricated data, obvious fraud, persistent refusal to engage after revision requests | **Rejected** — requires 2+ reviewers to agree; you may appeal |
 
-**The bar is "adequate", not "perfect."** You do not need uncertainty analysis, exhaustive documentation, or the best possible methodology. You need to provide enough detail that a practitioner can understand what you did, verify your arithmetic, and see where your numbers come from. If something is unclear, you will be told exactly what to fix.
+**The bar is "adequate", not "perfect."** You do not need uncertainty analysis, exhaustive documentation, or the best possible methodology. You need to provide enough detail that a practitioner can understand what you did and see where your numbers come from. If something is unclear, you will be told exactly what to fix.

@@ -1,4 +1,4 @@
-# GSF Certificate of Disclosure - Badge Usage Guidelines
+# GSF SCI Self-Certification Program - Badge Usage Guidelines
 
 ## Version 1.0 - Branding and Display Standards
 
@@ -19,12 +19,12 @@
 
 ## Overview
 
-The GSF Certificate of Disclosure badge is a visual indicator that an organization has publicly disclosed their Software Carbon Intensity (SCI) calculation through the Green Software Foundation's certification program.
+The GSF SCI Self-Certification badge is a visual indicator that an organization has self-certified its Software Carbon Intensity (SCI) calculation through the Green Software Foundation's SCI Self-Certification Program.
 
 ### Badge Purpose
 
 - **Recognition**: Acknowledge organizations that commit to transparency
-- **Trust Signal**: Indicate that disclosure has been validated for completeness
+- **Trust Signal**: Indicate that disclosure has been verified for completeness
 - **Call-to-Action**: Link viewers to the full public disclosure
 
 ### Key Principle
@@ -40,22 +40,22 @@ The GSF Certificate of Disclosure badge is a visual indicator that an organizati
 #### Standard Badge
 
 ```
-┌─────────────────────────────────┐
-│                                 │
-│        [GSF Leaf Logo]          │
-│                                 │
-│    Certificate of Disclosure    │
-│              SCI                │
-│             2026                │
-│                                 │
-│  greensoftware.foundation       │
-│                                 │
-└─────────────────────────────────┘
++---------------------------------+
+|                                 |
+|        [GSF Leaf Logo]          |
+|                                 |
+|      SCI Self-Certification     |
+|              SCI                |
+|             2026                |
+|                                 |
+|  greensoftware.foundation       |
+|                                 |
++---------------------------------+
 ```
 
 **Components**:
 - GSF leaf logo (top center)
-- "Certificate of Disclosure" text (bold)
+- "SCI Self-Certification" text (bold)
 - "SCI" text (medium weight)
 - Year of issuance (e.g., "2026")
 - Domain reference (small text)
@@ -114,8 +114,8 @@ The GSF Certificate of Disclosure badge is a visual indicator that an organizati
 
 Required alt text for badge image:
 ```html
-<img src="gsf-disclosure-badge.svg"
-     alt="GSF Certificate of Disclosure for SCI calculation - Click to view full disclosure">
+<img src="gsf-sci-badge.svg"
+     alt="GSF SCI Self-Certification badge - Click to view full disclosure">
 ```
 
 #### Color Contrast
@@ -153,18 +153,18 @@ Organizations MAY display the badge on:
 
 **Example HTML**:
 ```html
-<a href="https://certificates.greensoftware.foundation/GSF-SCI-2026-00042"
+<a href="https://badges.greensoftware.foundation/awards/GSF-SCI-2026-00042"
    target="_blank"
    rel="noopener">
-  <img src="gsf-disclosure-badge-light.svg"
-       alt="GSF Certificate of Disclosure - View our SCI calculation"
+  <img src="gsf-sci-badge-light.svg"
+       alt="GSF SCI Self-Certification - View our SCI calculation"
        height="80">
 </a>
 ```
 
 **Example Markdown**:
 ```markdown
-[![GSF Certificate of Disclosure](gsf-disclosure-badge-light.svg)](https://certificates.greensoftware.foundation/GSF-SCI-2026-00042)
+[![GSF SCI Self-Certification](gsf-sci-badge-light.svg)](https://badges.greensoftware.foundation/awards/GSF-SCI-2026-00042)
 ```
 
 ### 2. Marketing and Communications
@@ -184,14 +184,14 @@ Organizations MAY reference the certificate in:
 
 **Approved Language Examples**:
 
-✅ **Correct**:
-> "Our SCI calculation has been disclosed through the GSF Certificate of Disclosure program, demonstrating our commitment to transparency in software carbon measurement. [View Certificate](URL)"
+**Correct**:
+> "Our SCI calculation has been self-certified through the GSF SCI Self-Certification Program, demonstrating our commitment to transparency in software carbon measurement. [View Certificate](URL)"
 
-✅ **Correct**:
-> "We've achieved a GSF Certificate of Disclosure for our API service, publicly sharing our SCI calculation of 349.63 gCO2eq per 1,000 requests. [Full Disclosure](URL)"
+**Correct**:
+> "We've achieved a GSF SCI Self-Certification for our API service, publicly sharing our SCI calculation of 349.63 gCO2eq per 1,000 requests. [Full Disclosure](URL)"
 
-✅ **Correct**:
-> "Transparent software carbon reporting: Our SCI calculation is publicly disclosed and validated for completeness by the Green Software Foundation. [Certificate](URL)"
+**Correct**:
+> "Transparent software carbon reporting: Our SCI calculation is publicly disclosed and verified for completeness by the Green Software Foundation. [Certificate](URL)"
 
 ### 3. Social Media
 
@@ -207,7 +207,7 @@ Organizations MAY share the certificate on:
 - Tag @greensoftware (optional but encouraged)
 
 **Example Post**:
-> "We're proud to share our Software Carbon Intensity calculation through @greensoftware's Certificate of Disclosure program. Transparency is key to reducing software's carbon footprint. 🌱 [View our full disclosure] (URL) #GreenSoftware #SustainableTech"
+> "We're proud to share our Software Carbon Intensity calculation through @greensoftware's SCI Self-Certification Program. Transparency is key to reducing software's carbon footprint. [View our full disclosure] (URL) #GreenSoftware #SustainableTech"
 
 ### 4. Email Signatures
 
@@ -223,7 +223,7 @@ Organizations MAY include badge in email signatures:
 Jane Smith | Senior Engineer
 Acme Corporation
 jane@acme.com | acme.com
-[Badge Icon - 50px] GSF Certified Disclosure
+[Badge Icon - 50px] GSF SCI Self-Certified
 ```
 
 ### 5. Conference Presentations
@@ -235,7 +235,7 @@ Organizations MAY include badge in:
 
 **Requirements**:
 - Include certificate URL on same slide or in references
-- Provide context about disclosure vs. compliance
+- Provide context about self-certification vs. third-party certification
 
 ### 6. Product Packaging (Physical/Digital)
 
@@ -254,22 +254,22 @@ Organizations MAY include badge on:
 
 ## Required Context
 
-### Disclosure vs. Compliance Statement
+### Self-Certification Statement
 
-When displaying the badge or referencing the certificate, organizations MUST clarify that this is a Certificate of Disclosure, not compliance or accuracy validation.
+When displaying the badge or referencing the certificate, organizations MUST clarify that this is a self-certification, not third-party compliance or accuracy validation.
 
 #### Minimum Required Statement
 
 At least one of the following MUST accompany badge display:
 
 **Option 1 (Full Statement)**:
-> "This certificate verifies disclosure of our SCI calculation, not accuracy or compliance. The Green Software Foundation validates completeness of disclosure, enabling public review."
+> "This certificate confirms our self-certification of conformity with ISO/IEC 21031:2024. The Green Software Foundation verified disclosure completeness, enabling public review. This is not third-party certification."
 
 **Option 2 (Concise)**:
-> "Certificate of Disclosure - validates transparency, not accuracy. [Full disclosure](URL)"
+> "Self-certified compliant with ISO/IEC 21031:2024, verified by GSF. [Full disclosure](URL)"
 
 **Option 3 (Footnote)**:
-> "* GSF Certificate of Disclosure certifies public disclosure of SCI calculation with required information for community review. Does not certify accuracy."
+> "* GSF SCI Self-Certification confirms public disclosure of SCI calculation with required information for community review. Does not certify accuracy."
 
 ### Where to Include Context
 
@@ -295,12 +295,12 @@ At least one of the following MUST accompany badge display:
 
 ### 1. Standalone Use Without Link
 
-❌ **PROHIBITED**: Displaying badge without hyperlink to certificate
+**PROHIBITED**: Displaying badge without hyperlink to certificate
 
 **Example of Violation**:
 ```html
 <!-- NO LINK - PROHIBITED -->
-<img src="gsf-badge.svg" alt="GSF Certified">
+<img src="gsf-sci-badge.svg" alt="We're certified!">
 ```
 
 **Why**: The badge is not a standalone credential. It must enable verification.
@@ -311,7 +311,7 @@ At least one of the following MUST accompany badge display:
 
 ### 2. Use with Expired or Revoked Certificates
 
-❌ **PROHIBITED**: Displaying badge when certificate is expired or revoked
+**PROHIBITED**: Displaying badge when certificate is expired or revoked
 
 **Certificate Status Check**:
 - Visit certificate URL to confirm "Active" status
@@ -319,7 +319,7 @@ At least one of the following MUST accompany badge display:
 - Remove badge immediately upon expiration
 
 **Exception**: Historical references are permitted if clearly marked:
-> "Achieved GSF Certificate of Disclosure in 2025 (now expired). Updated calculation in progress."
+> "Achieved GSF SCI Self-Certification in 2025 (now expired). Updated calculation in progress."
 
 **Consequence**: Immediate takedown required, potential future application restrictions.
 
@@ -327,7 +327,7 @@ At least one of the following MUST accompany badge display:
 
 ### 3. Modified Badge Design
 
-❌ **PROHIBITED**: Altering badge colors, layout, text, or logo
+**PROHIBITED**: Altering badge colors, layout, text, or logo
 
 **Examples of Violations**:
 - Changing colors to match brand
@@ -342,19 +342,23 @@ At least one of the following MUST accompany badge display:
 
 ### 4. Implying Accuracy Validation
 
-❌ **PROHIBITED**: Using language that implies GSF certifies accuracy or quality
+**PROHIBITED**: Using language that implies GSF certifies accuracy or quality
 
 **Prohibited Language**:
-- ❌ "GSF-certified accurate SCI calculation"
-- ❌ "Validated by Green Software Foundation"
-- ❌ "GSF-approved carbon footprint"
-- ❌ "Certified green software"
-- ❌ "GSF endorses our methodology"
+- "GSF-certified accurate SCI calculation"
+- "Validated by Green Software Foundation"
+- "GSF-approved carbon footprint"
+- "Certified green software"
+- "GSF endorses our methodology"
+- "ISO certified" or "ISO/IEC 21031:2024 certified" (missing "self-certified" qualifier)
+- "Independently verified ISO/IEC 21031:2024 compliant"
+- "Third-party certified" or "independently certified"
+- "Audited and certified"
 
 **Correct Alternatives**:
-- ✅ "GSF Certificate of Disclosure (transparency, not accuracy)"
-- ✅ "Publicly disclosed SCI calculation through GSF"
-- ✅ "Transparent carbon reporting via GSF certification"
+- "Self-certified compliant with ISO/IEC 21031:2024, verified by GSF"
+- "ISO/IEC 21031:2024 SCI calculation (self-certified, disclosure verified by Green Software Foundation)"
+- "Our software carbon intensity has been self-certified to ISO/IEC 21031:2024 standards"
 
 **Consequence**: Warning and required correction. Persistent misrepresentation may result in revocation.
 
@@ -362,13 +366,13 @@ At least one of the following MUST accompany badge display:
 
 ### 5. Comparative Claims
 
-❌ **PROHIBITED**: Using certificate to make comparative superiority claims
+**PROHIBITED**: Using certificate to make comparative superiority claims
 
 **Prohibited Claims**:
-- ❌ "GSF-certified lower carbon than [competitor]"
-- ❌ "Only [company] has GSF certification in our industry"
-- ❌ "Best-in-class carbon performance (GSF certified)"
-- ❌ "#1 green software (GSF certificate)"
+- "GSF-certified lower carbon than [competitor]"
+- "Only [company] has GSF certification in our industry"
+- "Best-in-class carbon performance (GSF certified)"
+- "#1 green software (GSF certificate)"
 
 **Why**: Certificate validates disclosure, not relative performance.
 
@@ -378,7 +382,7 @@ At least one of the following MUST accompany badge display:
 
 ### 6. Use for Other Products/Services
 
-❌ **PROHIBITED**: Using certificate badge for products/services not covered by the certificate
+**PROHIBITED**: Using certificate badge for products/services not covered by the certificate
 
 **Example**: Certificate is for "API Service v2.1" but badge is displayed for "Mobile App v1.0"
 
@@ -390,7 +394,7 @@ At least one of the following MUST accompany badge display:
 
 ### 7. Separate GSF Logo Use
 
-❌ **PROHIBITED**: Using GSF logo separately from certificate context
+**PROHIBITED**: Using GSF logo separately from certificate context
 
 **Example**: Using GSF leaf logo on marketing materials without certificate badge or reference
 
@@ -410,17 +414,17 @@ At least one of the following MUST accompany badge display:
 <footer>
   <div class="certifications">
     <p>Our Certifications</p>
-    <a href="https://certificates.greensoftware.foundation/GSF-SCI-2026-00042"
+    <a href="https://badges.greensoftware.foundation/awards/GSF-SCI-2026-00042"
        target="_blank"
        rel="noopener"
-       title="View our GSF Certificate of Disclosure">
-      <img src="/images/gsf-disclosure-badge-light.svg"
-           alt="GSF Certificate of Disclosure for SCI calculation"
+       title="View our GSF SCI Self-Certification">
+      <img src="/images/gsf-sci-badge-light.svg"
+           alt="GSF SCI Self-Certification badge"
            height="80">
     </a>
     <p class="disclaimer">
-      Certificate of Disclosure verifies transparent reporting.
-      <a href="https://certificates.greensoftware.foundation/GSF-SCI-2026-00042">
+      Self-certified compliant with ISO/IEC 21031:2024, verified by GSF.
+      <a href="https://badges.greensoftware.foundation/awards/GSF-SCI-2026-00042">
         View full disclosure
       </a>
     </p>
@@ -429,9 +433,9 @@ At least one of the following MUST accompany badge display:
 ```
 
 **Why This Works**:
-- Badge links to certificate ✅
-- Disclaimer provides context ✅
-- Alt text is descriptive ✅
+- Badge links to certificate
+- Disclaimer provides context
+- Alt text is descriptive
 
 ---
 
@@ -439,34 +443,35 @@ At least one of the following MUST accompany badge display:
 
 **Page Layout**:
 ```
-┌────────────────────────────────────────┐
-│  Our Carbon Measurement Journey        │
-│                                        │
-│  In 2026, we achieved a GSF           │
-│  Certificate of Disclosure for our    │
-│  API service, demonstrating our       │
-│  commitment to transparency in         │
-│  software carbon measurement.          │
-│                                        │
-│  [Badge Image]  SCI Score: 349.63     │
-│  (Links to      gCO2eq per 1,000      │
-│   certificate)  API requests          │
-│                                        │
-│  This certificate validates that we   │
-│  have publicly disclosed our          │
-│  calculation with all required        │
-│  information for community review.    │
-│  It does not certify accuracy.        │
-│                                        │
-│  → View Full Disclosure (URL)         │
-└────────────────────────────────────────┘
++----------------------------------------+
+|  Our Carbon Measurement Journey        |
+|                                        |
+|  In 2026, we achieved a GSF SCI       |
+|  Self-Certification for our API        |
+|  service, demonstrating our            |
+|  commitment to transparency in         |
+|  software carbon measurement.          |
+|                                        |
+|  [Badge Image]  SCI Score: 349.63     |
+|  (Links to      gCO2eq per 1,000      |
+|   certificate)  API requests          |
+|                                        |
+|  This certificate confirms that we    |
+|  have self-certified conformity with  |
+|  ISO/IEC 21031:2024 and publicly      |
+|  disclosed our calculation with all   |
+|  required information for community   |
+|  review. It does not certify accuracy.|
+|                                        |
+|  -> View Full Disclosure (URL)        |
++----------------------------------------+
 ```
 
 **Why This Works**:
-- Context explains disclosure nature ✅
-- Badge is linked ✅
-- URL provided multiple times ✅
-- No accuracy claims made ✅
+- Context explains self-certification nature
+- Badge is linked
+- URL provided multiple times
+- No accuracy claims made
 
 ---
 
@@ -481,22 +486,22 @@ High-performance REST API for e-commerce platforms.
 
 We're committed to measuring and reducing our software's carbon intensity.
 
-[![GSF Certificate of Disclosure](https://img.shields.io/badge/GSF-Certificate%20of%20Disclosure-00C853?style=for-the-badge&logo=data:image/svg+xml;base64,...)](https://certificates.greensoftware.foundation/GSF-SCI-2026-00042)
+[![GSF SCI Self-Certification](https://img.shields.io/badge/GSF-SCI%20Self--Certified-00C853?style=for-the-badge&logo=data:image/svg+xml;base64,...)](https://badges.greensoftware.foundation/awards/GSF-SCI-2026-00042)
 
 **SCI Score**: 349.63 gCO2eq per 1,000 API requests
 
-Our SCI calculation has been publicly disclosed through the Green Software
-Foundation's Certificate of Disclosure program. This validates the completeness
+Our SCI calculation has been self-certified through the Green Software
+Foundation's SCI Self-Certification Program. GSF verified the completeness
 and transparency of our disclosure, not the accuracy of the calculation.
 
-[View Full Disclosure →](https://certificates.greensoftware.foundation/GSF-SCI-2026-00042)
+[View Full Disclosure ->](https://badges.greensoftware.foundation/awards/GSF-SCI-2026-00042)
 ```
 
 **Why This Works**:
-- Badge is markdown link to certificate ✅
-- Context explains disclosure ✅
-- No accuracy claims ✅
-- Full disclosure link prominent ✅
+- Badge is markdown link to certificate
+- Context explains self-certification
+- No accuracy claims
+- Full disclosure link prominent
 
 ---
 
@@ -507,29 +512,29 @@ Jane Smith | Senior Engineer
 Acme Corporation
 jane@acme.com
 
-[🌱 GSF Disclosure](https://certificates.greensoftware.foundation/GSF-SCI-2026-00042)
+[GSF SCI Self-Certified](https://badges.greensoftware.foundation/awards/GSF-SCI-2026-00042)
 ```
 
 **Why This Works**:
-- Minimal but linked ✅
-- Uses icon instead of full badge (space-constrained) ✅
-- Direct link to certificate ✅
+- Minimal but linked
+- Uses icon instead of full badge (space-constrained)
+- Direct link to certificate
 
 ---
 
 ### Example 5: Website (Incorrect - Common Mistakes)
 
-❌ **MISTAKE 1: No Link**
+**MISTAKE 1: No Link**
 ```html
-<img src="gsf-badge.svg" alt="We're certified!">
+<img src="gsf-sci-badge.svg" alt="We're certified!">
 ```
 **Problem**: Badge not clickable, no way to verify.
 
-❌ **MISTAKE 2: Misleading Language**
+**MISTAKE 2: Misleading Language**
 ```html
 <div class="certifications">
   <h3>GSF-Certified Green Software</h3>
-  <img src="gsf-badge.svg">
+  <img src="gsf-sci-badge.svg">
 </div>
 ```
 **Problems**:
@@ -537,9 +542,9 @@ jane@acme.com
 - No link to certificate
 - Misleading "certified green" claim
 
-❌ **MISTAKE 3: Modified Badge**
+**MISTAKE 3: Modified Badge**
 ```html
-<img src="gsf-badge-BLUE.svg" alt="GSF Certified" height="80">
+<img src="gsf-sci-badge-BLUE.svg" alt="GSF Certified" height="80">
 ```
 **Problem**: Badge colors changed to match brand (prohibited).
 
@@ -549,26 +554,27 @@ jane@acme.com
 
 **Slide Layout**:
 ```
-┌────────────────────────────────────────┐
-│  Our Carbon Measurement Results        │
-│                                        │
-│  [Badge]          SCI Score            │
-│                   349.63 gCO2eq        │
-│                   per 1,000 requests   │
-│                                        │
-│  Full Disclosure:                      │
-│  certificates.greensoftware.foundation │
-│  /GSF-SCI-2026-00042                  │
-│                                        │
-│  * Certificate validates disclosure    │
-│    completeness for community review   │
-└────────────────────────────────────────┘
++----------------------------------------+
+|  Our Carbon Measurement Results        |
+|                                        |
+|  [Badge]          SCI Score            |
+|                   349.63 gCO2eq        |
+|                   per 1,000 requests   |
+|                                        |
+|  Full Disclosure:                      |
+|  badges.greensoftware.foundation       |
+|  /awards/GSF-SCI-2026-00042           |
+|                                        |
+|  * Self-certified to ISO/IEC          |
+|    21031:2024. GSF verified disclosure |
+|    completeness for community review.  |
++----------------------------------------+
 ```
 
 **Why This Works**:
-- Badge visible ✅
-- URL printed (for non-clickable context) ✅
-- Disclaimer footnote ✅
+- Badge visible
+- URL printed (for non-clickable context)
+- Disclaimer footnote
 
 ---
 
@@ -577,29 +583,29 @@ jane@acme.com
 ### Downloadable Assets
 
 Organizations with active certificates can download badge assets from:
-**https://certification.greensoftware.foundation/badges**
+**https://badges.greensoftware.foundation/badges**
 
 **Available Files**:
 
 1. **Badge - Light Mode**
-   - `gsf-disclosure-badge-light.svg` (primary)
-   - `gsf-disclosure-badge-light-500px.png`
-   - `gsf-disclosure-badge-light-250px.png`
-   - `gsf-disclosure-badge-light-1000px.png`
+   - `gsf-sci-badge-light.svg` (primary)
+   - `gsf-sci-badge-light-500px.png`
+   - `gsf-sci-badge-light-250px.png`
+   - `gsf-sci-badge-light-1000px.png`
 
 2. **Badge - Dark Mode**
-   - `gsf-disclosure-badge-dark.svg` (primary)
-   - `gsf-disclosure-badge-dark-500px.png`
-   - `gsf-disclosure-badge-dark-250px.png`
-   - `gsf-disclosure-badge-dark-1000px.png`
+   - `gsf-sci-badge-dark.svg` (primary)
+   - `gsf-sci-badge-dark-500px.png`
+   - `gsf-sci-badge-dark-250px.png`
+   - `gsf-sci-badge-dark-1000px.png`
 
 3. **Badge - Print**
-   - `gsf-disclosure-badge-print.pdf` (CMYK)
+   - `gsf-sci-badge-print.pdf` (CMYK)
 
 4. **Icon/Favicon**
-   - `gsf-disclosure-icon.svg` (leaf logo only)
-   - `gsf-disclosure-icon-32px.png`
-   - `gsf-disclosure-icon-64px.png`
+   - `gsf-sci-icon.svg` (leaf logo only)
+   - `gsf-sci-icon-32px.png`
+   - `gsf-sci-icon-64px.png`
 
 ### Asset Customization
 
@@ -618,8 +624,8 @@ Organizations with active certificates can download badge assets from:
 
 GSF provides CDN-hosted badge images:
 ```html
-<img src="https://cdn.greensoftware.foundation/badges/disclosure-light.svg"
-     alt="GSF Certificate of Disclosure">
+<img src="https://cdn.greensoftware.foundation/badges/sci-badge-light.svg"
+     alt="GSF SCI Self-Certification">
 ```
 
 **Benefits**:
@@ -637,14 +643,14 @@ GSF provides CDN-hosted badge images:
 
 GSF monitors badge usage through:
 - Periodic web crawling of known certificate holders
-- Community reports via certification portal
+- Community reports via sci-certification@greensoftware.foundation
 - Social media monitoring (sampling)
 - Quarterly compliance audits (random sample)
 
 ### Reporting Misuse
 
 To report badge misuse:
-1. Visit: https://certification.greensoftware.foundation/report-misuse
+1. Email sci-certification@greensoftware.foundation
 2. Provide:
    - URL or location of misuse
    - Certificate ID (if known)
@@ -697,7 +703,7 @@ To report badge misuse:
 
 ### Appeals
 
-Badge misuse determinations can be appealed through the dispute resolution process (see main proposal document, Section 9).
+Badge misuse determinations can be appealed through the dispute resolution process (see Applicant Guide, Appeals section).
 
 ---
 
@@ -708,7 +714,7 @@ Badge misuse determinations can be appealed through the dispute resolution proce
 **A**: No. Remove the badge immediately upon expiration. You may renew your certificate and redisplay the badge with the new certificate.
 
 **Exception**: You may make historical references if clearly labeled as expired:
-> "Achieved GSF Certificate of Disclosure in 2025 (expired). Updated calculation in progress."
+> "Achieved GSF SCI Self-Certification in 2025 (expired). Updated calculation in progress."
 
 ---
 
@@ -732,7 +738,7 @@ Badge misuse determinations can be appealed through the dispute resolution proce
 
 ### Q: Can I say "GSF Certified"?
 
-**A**: Only with proper context. Acceptable: "GSF Certificate of Disclosure (transparency, not accuracy)." Not acceptable: "GSF Certified Accurate" or "GSF Certified Green Software."
+**A**: Not without the "self-certified" qualifier. Acceptable: "Self-certified compliant with ISO/IEC 21031:2024, verified by GSF." Not acceptable: "GSF Certified Accurate" or "GSF Certified Green Software."
 
 ---
 
@@ -756,7 +762,7 @@ Badge misuse determinations can be appealed through the dispute resolution proce
 
 ### Q: How do I update the badge year when I renew?
 
-**A**: Download the new badge assets from the certification portal after renewal. The badge will automatically reflect the new certificate year.
+**A**: Download the new badge assets from the badging platform after renewal. The badge will automatically reflect the new certificate year.
 
 ---
 
@@ -781,25 +787,24 @@ Use this checklist before displaying the badge:
 - [ ] Badge is used only for covered product/service
 - [ ] No comparative claims made
 
-**If all items are checked**, you're good to display the badge! ✅
+**If all items are checked**, you're good to display the badge!
 
 ---
 
 ## Contact and Support
 
 **Questions about badge usage**:
-- Email: certification@greensoftware.foundation
-- Documentation: https://certification.greensoftware.foundation/docs/badge-guidelines
+- Email: sci-certification@greensoftware.foundation
 
 **Report badge misuse**:
-- Form: https://certification.greensoftware.foundation/report-misuse
+- Email: sci-certification@greensoftware.foundation
 
 **Download badge assets**:
-- Portal: https://certification.greensoftware.foundation/badges
+- Portal: https://badges.greensoftware.foundation/badges
 
 ---
 
-**Document Version**: 1.0
-**Last Updated**: 2026-01
-**Maintained By**: GSF Certification Working Group
-**License**: © Green Software Foundation. Badge assets provided under certificate terms.
+**Document Version**: 1.1
+**Last Updated**: 2026-03
+**Maintained By**: GSF SCI Self-Certification Program
+**License**: (c) Green Software Foundation. Badge assets provided under certificate terms.

@@ -1,7 +1,7 @@
 # Example Approval Email: GreenTech Solutions — Inventory Management API
 
 > **This is an example approval email.** It demonstrates what the applicant
-> receives after their submission passes all three review gates and a
+> receives after their submission passes the review checklist and a
 > certificate is issued.
 
 ---

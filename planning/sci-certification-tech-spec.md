@@ -99,28 +99,11 @@ RETURNS text AS $$
 $$ LANGUAGE sql;
 ```
 
-### 1.4 Create the `sci_approvals` table
+### 1.4 (Removed)
 
-This is the table the reviewer inserts into. A Supabase database webhook
-on INSERT triggers the course-completion endpoint.
-
-```sql
-CREATE TABLE sci_approvals (
-  id                  uuid PRIMARY KEY DEFAULT gen_random_uuid(),
-  organization_name   text NOT NULL,
-  contact_name        text NOT NULL,
-  contact_email       text NOT NULL,
-  software_name       text NOT NULL,
-  software_version    text NOT NULL,
-  sci_score           numeric NOT NULL,
-  sci_unit            text NOT NULL,
-  functional_unit     text NOT NULL,
-  measurement_start   date NOT NULL,
-  measurement_end     date NOT NULL,
-  disclosure_url      text NOT NULL,
-  created_at          timestamptz NOT NULL DEFAULT now()
-);
-```
+The `sci_approvals` table has been removed from the design. Certificate
+issuance is now triggered by calling the `POST /api/issue-sci-certificate`
+endpoint directly rather than inserting a database row. See Section 5.
 
 ---
 
@@ -159,9 +142,7 @@ sci-certificate:
       accredited conformity assessment.
   outcomes: []
   earningCriteria:
-    - "Submit a complete SCI disclosure covering all 29 required items."
-    - "Pass the internal consistency check (arithmetic verification)."
-    - "Score at least 'Adequate' (3/5) on all six disclosure sufficiency criteria."
+    - "Submit a complete SCI disclosure that passes all 27 items on the review checklist."
   duration: ""
   cost: "Free"
   learnMoreText: "Applicant Guide"
@@ -382,10 +363,23 @@ second query is never executed. Zero impact on existing behavior.
 
 ---
 
-## 5. File: `src/pages/api/webhooks/course-completion.ts`
+## 5. File: `src/pages/api/issue-sci-certificate.ts` (NEW)
 
-**Current file:** 361 lines. This is the highest-risk file. Changes must
-be surgical -- the existing course completion flow must remain untouched.
+> **Architecture change:** The original design had the reviewer insert a row
+> into a `sci_approvals` Supabase table, which triggered a database webhook
+> that called the existing `course-completion` endpoint. The revised design
+> uses a **dedicated issuance API endpoint** that the reviewer calls directly.
+> This is simpler, avoids coupling the reviewer workflow to the database layer,
+> and keeps the existing course-completion webhook untouched.
+>
+> The code snippets below were written for the old webhook-extension approach
+> and need to be adapted for the new dedicated endpoint. The core issuance
+> logic (schema validation, people upsert, award creation, sci_certifications
+> insert, PDF generation, email) remains the same — only the entry point
+> changes from webhook handler to standalone endpoint.
+
+**This is a new file.** The existing `course-completion.ts` webhook is
+**not modified** except for the `COURSE_TO_BADGE_SLUG` mapping update.
 
 ### 5.1 Add SCI-related imports
 
@@ -2055,23 +2049,18 @@ certificates can be generated.
 
 ---
 
-## 11. Supabase Webhook Configuration
+## 11. Issuance API Authentication
 
-After all code is deployed, configure a Supabase database webhook:
+The `POST /api/issue-sci-certificate` endpoint must be protected so only
+authorized reviewers can call it.
 
-1. Go to Supabase Dashboard → Database → Webhooks
-2. Create a new webhook:
-   - **Name:** `sci-approval-certificate-issuance`
-   - **Table:** `sci_approvals`
-   - **Events:** `INSERT`
-   - **URL:** `https://badges.greensoftware.foundation/api/webhooks/course-completion`
-   - **HTTP method:** POST
-   - **Headers:**
-     - `Content-Type: application/json`
-     - `Authorization: Bearer <WEBHOOK_SECRET>`
+1. Add an `ISSUANCE_API_KEY` environment variable to the platform deployment.
+2. The endpoint validates `Authorization: Bearer <ISSUANCE_API_KEY>` on every
+   request and returns 401 if the key is missing or incorrect.
+3. Share the API key with authorized reviewers via a secure channel.
 
-The webhook secret must match the `WEBHOOK_SECRET` environment variable
-already configured for the existing course-completion webhook.
+No Supabase database webhook configuration is needed — the reviewer calls
+the issuance API directly.
 
 ---
 
@@ -2088,17 +2077,17 @@ Execute in this order to minimize broken intermediate states:
 4. **Certificate PDF** (Section 6) -- Add SCI placeholder handling.
    Deploy-safe: only invoked when `badgeSlug === "sci-certificate"`.
 5. **Email** (Section 7) -- Add new function. Deploy-safe: not called
-   until webhook handler is updated.
-6. **Webhook handler** (Section 5) -- The big change. Must be deployed
-   atomically. After this, the full SCI flow is live.
+   until issuance endpoint is deployed.
+6. **Issuance endpoint** (Section 5) -- New file. After this, the full
+   SCI flow is live.
 7. **Award page** (Section 8) -- SCI-specific display. Can deploy before
-   or after the webhook handler (it gracefully handles `award.sci` being
+   or after the issuance endpoint (it gracefully handles `award.sci` being
    `undefined`).
 8. **Credential page** (Section 9) -- Minor tweaks. Deploy anytime.
 9. **Static assets** (Section 10) -- Badge images and HTML template.
-   Must be in place before the first SCI certificate is generated.
-10. **Supabase webhook** (Section 11) -- Configure last, once everything
-    is deployed and tested.
+   Must be in place before the first SCI certificate is issued.
+10. **Auth config** (Section 11) -- Set the `ISSUANCE_API_KEY` environment
+    variable.
 
 ---
 
@@ -2132,10 +2121,12 @@ After implementation, verify these existing features still work:
       "Earning Criteria".
 
 ### SCI-specific flow
-- [ ] Insert a row into `sci_approvals` via Supabase. Verify the webhook
-      fires and creates: person row, award row, sci_certifications row
-      with sequential certificate ID, PDF certificate, OG PNG, and
-      sends the SCI-specific email.
-- [ ] Insert a second row for the same organization (different software).
+- [ ] Call `POST /api/issue-sci-certificate` with valid SCI fields and
+      correct API key. Verify it creates: person row, award row,
+      sci_certifications row with sequential certificate ID, PDF
+      certificate, OG PNG, and sends the SCI-specific email.
+- [ ] Call the endpoint again for the same organization (different software).
       Verify it creates a **new** award (idempotency skipped for SCI),
       with a new certificate ID (sequence incremented).
+- [ ] Call the endpoint without the API key. Verify 401 response.
+- [ ] Call the endpoint with an invalid API key. Verify 401 response.

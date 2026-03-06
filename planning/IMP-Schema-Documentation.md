@@ -1,6 +1,6 @@
 # Impact Manifest Protocol (IMP) Schema Documentation
 
-## Version 1.0 - GSF Certificate of Disclosure Program
+## Version 1.0 - GSF SCI Self-Certification Program
 
 ---
 
@@ -18,7 +18,7 @@
 
 ## Overview
 
-The **Impact Manifest Protocol (IMP)** is a structured YAML/JSON format for documenting Software Carbon Intensity (SCI) calculations. It serves as an **optional, alternative submission method** for the GSF Certificate of Disclosure program.
+The **Impact Manifest Protocol (IMP)** is a structured YAML/JSON format for documenting Software Carbon Intensity (SCI) calculations. It serves as an **optional, alternative submission method** for the GSF SCI Self-Certification Program.
 
 ### Purpose
 
@@ -822,7 +822,7 @@ baseline:
     value: 5.12
     unit: "kgCO2eq per training run"
     measurement_date: "2024-12-01"
-    reference: "https://certificates.greensoftware.foundation/GSF-SCI-2024-00123"
+    reference: "https://badges.greensoftware.foundation/awards/GSF-SCI-2024-00123"
 
   new_score:
     value: 2.72
@@ -1034,11 +1034,11 @@ See: `example-3-mobile-app-final.yml`
 - **SCI Specification**: https://sci.greensoftware.foundation/
 - **Impact Framework**: https://if.greensoftware.foundation/
 - **GSF SCI Data**: https://github.com/Green-Software-Foundation/sci-data
-- **Certificate Portal**: https://certification.greensoftware.foundation
-- **Questions**: certification@greensoftware.foundation
+- **Certificate Portal**: https://badges.greensoftware.foundation
+- **Questions**: sci-certification@greensoftware.foundation
 
 ---
 
 ## Version History
 
-- **v1.0.0** (2026-01): Initial release for GSF Certificate of Disclosure program
+- **v1.0.0** (2026-01): Initial release for GSF SCI Self-Certification Program
