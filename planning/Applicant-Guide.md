@@ -203,7 +203,7 @@ If rejected, you receive a written explanation and may appeal through the disput
 
 - Certificates are valid for **1 year** from the date of issuance.
 - You will receive a renewal reminder **30 days** before expiry.
-- To renew, submit an updated SCI calculation through the same process. Renewed certificates receive a new certificate ID linked to the previous one.
+- To renew, submit a **full new submission** through the same process — renewal is not a lighter or abbreviated review. Renewed certificates receive a new certificate ID linked to the previous one.
 - Expired certificates remain publicly visible as a historical record but are marked "Expired."
 
 ### Your public disclosure
@@ -273,11 +273,11 @@ Because this is self-certification, the community serves as the validation layer
 
 If your submission is rejected or you disagree with a review decision, you may appeal.
 
-**Phase 1 — Informal resolution (days 1–10):** Submit your dispute by email to sci-certification@greensoftware.foundation with a detailed rationale. GSF staff attempt informal resolution.
+**Phase 1 — Informal resolution (days 1–10):** Submit your dispute by email to sci-certification@greensoftware.foundation with a detailed rationale. The Program Owner (GSF Head of R&D) attempts informal resolution.
 
 **Phase 2 — Formal review (days 11–30):** If unresolved, a 3-person panel from the review committee (excluding anyone involved in the original decision) reviews written statements from both sides and issues a written decision.
 
-**Phase 3 — Final appeal (days 31–60):** Limited to procedural errors, new evidence, or panel misconduct. Heard by GSF Standards Working Group leadership. Decision is final.
+**Phase 3 — Final appeal (days 31–60):** Limited to procedural errors, new evidence, or panel misconduct. Heard by the SWG Chair (Chair of the Software Standards Working Group). Decision is final.
 
 ---
 

@@ -422,20 +422,66 @@ All submissions undergo manual review by the GSF review committee:
 
 ---
 
-## 5\. Review Committee and Process
+## 5\. Governance, Review Committee, and Process
+
+### 5.0 Program Governance
+
+#### Roles and Authority
+
+| Role | Person / Body | Authority |
+|------|--------------|-----------|
+| **Program Owner / Manager** | GSF Head of R&D | Day-to-day operations: submission assignment, tracking, certificate issuance, SLA monitoring, email communications. May change operational procedures (assignment method, templates, tooling) unilaterally. |
+| **SWG Chair** | Chair of the Software Standards Working Group | Override authority on any program decision. Adjudicates when brought in by the Program Owner or by a dispute escalation (Section 9, Phase 3). |
+| **Review Committee** | 3+ self-nominated members (see §5.1) | Review submissions, approve/revise/reject decisions, investigate and enforce badge misuse, make precedent-setting decisions on edge cases, propose changes to program rules. |
+| **Software Standards Working Group** | GSF Standards WG | Approves substantive program changes (review criteria, access requirements, fee structure). Receives quarterly reports. May direct follow-up actions. |
+| **Steering Committee** | GSF Steering Committee | Receives quarterly reports for strategic oversight. |
+| **Backup PM** | Any GSF staff member | Steps in if the Program Owner is unavailable for an extended period. |
+
+#### Decision Authority Matrix
+
+| Decision | Who decides | Escalation if needed |
+|----------|------------|---------------------|
+| Approve / Revise a submission | Single reviewer | PM reassigns if reviewer is uncertain |
+| Reject a submission | 2+ reviewers must concur | PM coordinates second review |
+| Discretionary revocation | Review committee (quorum of 3, consensus or 2/3 vote) | SWG Chair if committee cannot reach agreement |
+| Mandatory revocation | Automatic per defined triggers (§10.1) | N/A |
+| Badge misuse — warning | Review committee | — |
+| Badge misuse — escalation to revocation | Review committee (quorum of 3) | SWG Chair |
+| Operational changes (templates, tooling, assignment) | Program Owner unilaterally | — |
+| Substantive changes (criteria, access, fees) | Proposed by PM or SWG; approved by SWG | SWG Chair has final say |
+| Dispute Phase 1 (informal) | Program Owner | Escalate to Phase 2 |
+| Dispute Phase 2 (formal) | 3-person panel from committee | Escalate to Phase 3 |
+| Dispute Phase 3 (final appeal) | SWG Chair | Decision is final |
+
+#### Change Management
+
+- **Operational changes** (e.g., email templates, assignment method, tracking tools) can be made by the Program Owner at any time.
+- **Substantive changes** (e.g., review criteria, access requirements, fee structure, checklist items) must be proposed to and approved by the Software Standards Working Group before taking effect.
+- **Grace period**: Substantive changes take effect **5 business days** after approval. Submissions already under review at the time of approval are evaluated against the criteria in effect when the submission was received.
+
+#### Reporting and Oversight
+
+- The Program Owner produces **quarterly reports** covering: submission volume, approval/revision/rejection rates, average review time, inter-reviewer agreement, community challenges, badge misuse incidents, and any precedent-setting decisions.
+- Reports are delivered to the **Software Standards Working Group** and the **GSF Steering Committee**.
+- The SWG may direct follow-up actions based on the reports (e.g., tightening criteria, recruiting additional reviewers, adjusting SLAs).
+- There is no separate annual review process — oversight is provided through quarterly reporting and the SWG Chair's standing override authority.
 
 ### 5.1 Review Committee
 
 The review committee consists of:
 
-- **3-5 GSF members** with SCI expertise and familiarity with the specification  
-- Appointed for 1-year renewable terms
+- **3 or more members** with SCI expertise, self-nominated and drawn from the Software Standards Working Group or the broader SCI community
+- Members should be from **different institutions** and must **not** be GSF staff (to maintain independence from the program operator)
+- Appointed for **1-year terms**; members may serve consecutive terms
+- Members may swap out mid-term with approval from the Software Standards Working Group
+- If the committee drops below 3 active members, the Program Owner may step in temporarily as a reviewer to prevent the program from halting, but a replacement must be recruited urgently
 
 **Committee Operations**:
 
-- Reviews conducted asynchronously (email-based workflow)  
-- Complex cases discussed in monthly committee meetings (1 hour)  
-- Decision consensus via email or meeting vote
+- Reviews conducted asynchronously (email-based workflow)
+- Complex cases discussed in monthly committee meetings (1 hour)
+- **Quorum**: 3 members required for committee-level decisions (discretionary revocation, precedent-setting cases, changes to guidance)
+- **Decision method**: Consensus. If consensus fails, fallback to a vote — 2/3 majority wins.
 
 ### 5.2 Review Criteria
 
@@ -488,11 +534,11 @@ Reviewers evaluate submissions against a **Disclosure Verification Checklist** (
 - **Complex cases**: May extend to 20 business days with applicant notification  
 - Applicants notified of delays via email
 
-### 5.5 Review Documentation
+### 5.5 Review Documentation and Reporting
 
-- All review decisions documented internally  
-- Precedent-setting decisions added to reviewer guidance  
-- Anonymized statistics published quarterly (submission volume, approval rate, common issues)
+- All review decisions documented internally with completed review records
+- Precedent-setting decisions added to reviewer guidance (precedent log)
+- The Program Owner produces quarterly reports to the Software Standards Working Group and the GSF Steering Committee covering: submission volume, approval/revision/rejection rates, average review time, inter-reviewer agreement, community challenges, badge misuse incidents, and precedent-setting decisions
 
 ---
 
@@ -573,15 +619,17 @@ The complete submission (with all detailed disclosure information) is published 
 
 **Expiration**:
 
-- Certificates expire after 1 year  
-- Expired certificates remain publicly accessible (historical record)  
-- Badge or certificate marked as "Expired"
+- Certificates expire after 1 year
+- Certificates display their expiry date prominently, so the public can see at a glance whether a certificate is current
+- Expired certificates remain publicly accessible (historical record), marked "Expired"
+- The Program Owner periodically checks for expiring/expired certificates, contacts holders to ask about renewal, and removes lapsed certificates from active site listings
 
 **Renewal Process**:
 
-- Applicants email renewed submission to [sci-certification@greensoftware.foundation](mailto:sci-certification@greensoftware.foundation)  
-- Subject line: "Renewal: GSF-SCI-2026-00042"  
-- Can update calculation, methodology, or provide new measurement period  
+- Applicants email a **full new submission** to [sci-certification@greensoftware.foundation](mailto:sci-certification@greensoftware.foundation)
+- Subject line: "Renewal: GSF-SCI-2026-00042"
+- Renewal goes through the same 27-item review as any new submission — there is no abbreviated renewal process
+- Can update calculation, methodology, or provide new measurement period
 - Renewed certificates receive new certificate ID, linked to previous version
 
 **Multiple Certificates**:
@@ -909,17 +957,17 @@ The dispute resolution process covers:
 
 **For Applicant Disputes**:
 
-1. Applicant submits dispute via portal with detailed rationale  
-2. GSF staff reviews and attempts informal resolution  
-3. If resolved: Decision documented, case closed  
+1. Applicant submits dispute via email with detailed rationale
+2. Program Owner reviews and attempts informal resolution
+3. If resolved: Decision documented, case closed
 4. If not resolved: Escalate to Phase 2
 
 **For Third-Party Disputes**:
 
-1. Complaint submitted via portal with evidence  
-2. GSF staff conducts preliminary review  
-3. Certificate holder notified and invited to respond  
-4. If resolved: Decision documented, case closed  
+1. Complaint submitted via email with evidence
+2. Program Owner conducts preliminary review
+3. Certificate holder notified and invited to respond
+4. If resolved: Decision documented, case closed
 5. If not resolved: Escalate to Phase 2
 
 #### Phase 2: Formal Review (Days 11-30)
@@ -943,7 +991,7 @@ The dispute resolution process covers:
 
 #### Phase 3: Final Appeal (Days 31-60)
 
-**Final Appeal Authority**: GSF Standards Working Group Chair or designated GSF leadership
+**Final Appeal Authority**: SWG Chair (Chair of the Software Standards Working Group)
 
 **Grounds for Final Appeal** (limited):
 
@@ -1007,7 +1055,7 @@ Certificates may be revoked for:
 - Serious code of conduct violations (fraud, system abuse)  
 - Applicant request (self-revocation)
 
-**Discretionary Revocation** (review committee decision):
+**Discretionary Revocation** (review committee decision, quorum of 3, consensus or 2/3 vote):
 
 - Badge or branding guideline violations (persistent after warning)  
 - Failure to correct material omissions after discovery  
@@ -1045,23 +1093,52 @@ Certificates may be revoked for:
 
 ## 11\. Success Metrics
 
+### Year 1 Targets
+
 **Adoption**:
 
-- 20-50 submissions in Year 1  
-- 10+ unique organizations  
+- 20-50 submissions in Year 1
+- 10+ unique organizations
 - 3+ software categories represented
 
 **Operations**:
 
-- Average review time: \<15 business days  
-- Approval rate: 70-90% (most submissions approved or approved after revisions)  
+- Average initial review time: \<15 business days
+- Total elapsed time (submission to certificate): tracked for internal performance reporting
+- Approval rate: 70-90% (most submissions approved or approved after revisions)
 - Revocation rate: \<5%
 
 **Quality**:
 
-- Disclosure completeness scores improve over time  
-- Community engagement (views of public disclosures)  
 - No major badge misuse incidents
+- Inter-reviewer agreement rate: 80%+ during dual-review period
+
+**Reviewer workload**: Tracked implicitly via the tracking spreadsheet (each submission is assigned to a specific reviewer). The Program Owner monitors distribution and rebalances assignments if workload becomes uneven.
+
+**Certificate views**: Not tracked in v1. If the badging platform provides view metrics in future, this becomes a useful engagement data point.
+
+### Year 2+ Targets
+
+Year 2 targets will be set after Year 1 results are available. The annual program review (see §6.4 in the Launch Implementation Plan) is the venue for setting updated targets based on actual performance data.
+
+### SLA Breach Procedure
+
+If a review exceeds the 15 business day SLA target:
+
+1. The Program Owner contacts the applicant with an apology and an updated timeline.
+2. The Program Owner secures sufficient reviewer capacity to deliver outstanding reviews promptly.
+3. SLA breaches are recorded in the tracking spreadsheet and reported in the quarterly report.
+
+### Certificate Expiry Monitoring
+
+The Program Owner periodically checks the tracking spreadsheet for certificates approaching or past expiry:
+
+1. **30 days before expiry**: Send renewal reminder to the certificate holder (already in operational cadence).
+2. **On expiry**: Certificates display their expiry date prominently, so the viewing public can see the certificate is expired without any action from the PM.
+3. **Post-expiry follow-up**: The Program Owner contacts the certificate holder to ask whether they intend to renew.
+4. **If no renewal**: The PM removes the certificate from the active listings on the site. The expired certificate and its disclosure remain publicly accessible as a historical record, marked "Expired."
+
+This is a manual process. Automation may be added in a future version if volume warrants it.
 
 \---
 

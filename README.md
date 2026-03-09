@@ -20,6 +20,7 @@ The program is free, follows the ISO/IEC 17050 supplier's declaration of conform
 | [Validation-Checklist.md](planning/Validation-Checklist.md) | Validation checklist covering structural, completeness, logical, and quality checks for submissions |
 | [Badge-Usage-Guidelines.md](planning/Badge-Usage-Guidelines.md) | Badge specifications, permitted/prohibited uses, display examples, and compliance enforcement |
 | [IMP-Schema-Documentation.md](planning/IMP-Schema-Documentation.md) | Impact Manifest Protocol (IMP) schema for optional structured YAML/JSON submissions |
+| [Governance.md](planning/Governance.md) | Governance structure: roles, decision authority, committee formation, change management, reporting, and dispute resolution |
 
 ### Other Files
 

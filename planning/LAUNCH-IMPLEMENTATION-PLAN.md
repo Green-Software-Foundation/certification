@@ -22,13 +22,13 @@ If GSF IT has a lead time, submit the request before formal approval if possible
 
 ### 1.2 Recruit Review Committee
 
-You need 3-5 people with SCI expertise. Per proposal Section 5.1, these are GSF members on 1-year renewable terms reviewing submissions asynchronously.
+You need 3 or more self-nominated reviewers with SCI expertise. Per proposal Section 5.1, these are volunteers from the Software Standards Working Group (or broader SCI community) on 1-year terms, reviewing submissions asynchronously. Members must be from **different institutions** and must **not** be GSF staff.
 
 **Time commitment**: 2-4 hours/week at projected volume (1-2 submissions/week in Year 1).
 
-**Minimum viable**: 3 reviewers (provides quorum for disputes and coverage for absence).
+**Minimum viable**: 3 reviewers (quorum for committee decisions). If the committee drops below 3, the Program Owner may step in temporarily but a replacement must be recruited urgently.
 
-**Where to recruit**: Standards Working Group participants are the obvious pool — people involved in SCI specification development or who have presented SCI case studies.
+**Where to recruit**: Software Standards Working Group participants are the primary pool — people involved in SCI specification development or who have presented SCI case studies. Self-nomination is encouraged.
 
 **By end of Week 1**: Confirmed list of 3+ reviewers with email addresses and commitment.
 
@@ -51,7 +51,6 @@ Create a shared spreadsheet to track all submissions through their lifecycle.
 | Decision | Approved / Revision Requested / Rejected |
 | Certificate ID | GSF-SCI-2026-0001 |
 | Certificate Expiry | 2027-03-28 |
-| Items N or I | 0 |
 | Notes | — |
 
 Share with all reviewers. This is the single source of truth for program status.
@@ -143,14 +142,14 @@ This boundary is critical for defensibility. GSF verifies disclosure, not accura
 
 A step-by-step procedure that any reviewer follows for every submission, producing a documented, auditable trail.
 
-#### Step 1: Assignment (Program Manager)
+#### Step 1: Assignment (Program Owner)
 
 - New submission arrives at the shared email
-- Program manager logs it in the tracking spreadsheet with a tracking ID
-- Program manager assigns to a reviewer
+- Program Owner logs it in the tracking spreadsheet with a tracking ID
+- Program Owner assigns to a reviewer
   - **Assignment method**: Round-robin by default, balancing workload. If a submission is in a domain where one reviewer has particular expertise, assign to them. No reviewer should assess a submission from their own employer.
-  - **Conflict of interest rule**: A reviewer must recuse themselves if they have a professional or financial relationship with the applicant. Disclose the conflict to the program manager, who reassigns.
-- Program manager sends acknowledgement email to applicant
+  - **Conflict of interest rule**: A reviewer must recuse themselves if they have a professional or financial relationship with the applicant. Disclose the conflict to the Program Owner, who reassigns.
+- Program Owner sends acknowledgement email to applicant
 
 #### Step 2: Review (Reviewer, ~45 minutes)
 
@@ -164,12 +163,12 @@ A step-by-step procedure that any reviewer follows for every submission, produci
 #### Step 3: Decision and Documentation (Reviewer)
 
 - Reviewer completes the review record (see template below)
-- Submits recommendation to the program manager
-- For approvals: program manager issues certificate and publishes disclosure
-- For revision requests: program manager sends feedback email with the specific items that need attention
-- For rejections: program manager assigns a second reviewer for independent assessment before final decision
+- Submits recommendation to the Program Owner
+- For approvals: Program Owner issues certificate and publishes disclosure
+- For revision requests: Program Owner sends feedback email with the specific items that need attention
+- For rejections: Program Owner assigns a second reviewer for independent assessment before final decision
 
-#### Step 5: Record Keeping (Program Manager)
+#### Step 5: Record Keeping (Program Owner)
 
 - Every review produces a completed review record stored internally
 - Every decision (approve, revise, reject) is logged in the tracking spreadsheet with date
@@ -379,7 +378,7 @@ Whichever method is chosen, the approval email template (Section 3.3) must inclu
 
 Define the step-by-step process for issuing a certificate after a submission is approved. This is part of the reviewer procedure (Step 5 in Section 2.2) but the mechanical details depend on the badging platform.
 
-**Issuance steps** (program manager, after reviewer recommends approval):
+**Issuance steps** (Program Owner, after reviewer recommends approval):
 
 1. Open the badging platform admin
 2. Create a new credential from the self-certification template
@@ -495,11 +494,11 @@ Include: what the program is, link to Applicant Guide, example submissions, subm
 | Cadence | Activity |
 |---------|----------|
 | Daily | Check submission email, acknowledge new submissions, assign to reviewers |
-| Weekly | Follow up on in-progress reviews, check SLA (10-15 business day target) |
-| Monthly | Committee sync (1 hour): review one recent approve and one recent revision as calibration; discuss precedents |
-| Quarterly | Publish anonymized statistics; review inter-reviewer agreement metric |
+| Weekly | Follow up on in-progress reviews, check SLA (10–15 business day target). If any review has breached the SLA: contact applicant with apology and updated timeline, then secure reviewer capacity to deliver promptly |
+| Monthly | Committee sync (1 hour): review one recent approve and one recent revision as calibration; discuss precedents. Check certificate expiry list — contact holders with certificates expiring in the next 30 days |
+| Quarterly | Publish anonymized statistics; review inter-reviewer agreement metric. Follow up on any expired certificates: contact holders to ask about renewal; remove expired certificates from active site listings if not renewing |
 | 30 days before expiry | Send renewal reminders |
-| Annually | Full program review; refresh committee terms; update criteria if needed |
+| Annually | Full program review; refresh committee terms; update criteria if needed; set Year N+1 targets based on actual performance data |
 
 ### 6.3 Transition from Dual to Single Review
 
@@ -529,12 +528,15 @@ Once the committee has processed ~10 submissions under dual review with consiste
 - [ ] Certificate issuance workflow documented and tested end-to-end
 - [ ] Revocation capability confirmed on platform
 
-### People
-- [ ] 3+ reviewers recruited and confirmed
+### People and Governance
+- [ ] Program Owner confirmed (GSF Head of R&D)
+- [ ] Backup PM identified from GSF staff
+- [ ] 3+ self-nominated reviewers recruited and confirmed (different institutions, not GSF staff)
 - [ ] Reviewer training session completed
 - [ ] Calibration exercise completed (reviewers aligned on Y vs I boundaries)
-- [ ] Assignment method and conflict-of-interest rule agreed
-- [ ] Escalation path defined for complex/disputed cases
+- [ ] Assignment method and conflict-of-interest recusal rule agreed
+- [ ] Escalation path defined: reviewer → Program Owner → SWG Chair
+- [ ] Quarterly reporting cadence agreed with SWG and Steering Committee
 
 ### Acceptance Criteria and Process
 - [ ] 27-item review checklist documented and approved by committee
@@ -576,7 +578,7 @@ Once the committee has processed ~10 submissions under dual review with consiste
 | 5 | Email templates (6) | Proposal §§4-5 | **Critical** — needed for first submission |
 | 6 | Certificate content template (badging platform) | Proposal §6.2, Certificate-Template-Specification.md | **Critical** — needed to issue first certificate |
 | 7 | Badge design (SVG/PNG, light/dark) | Badge-Usage-Guidelines.md, Certificate-Template-Specification.md | **Critical** — needed for approval email and badge guidelines |
-| 8 | Certificate issuance workflow (documented steps) | Section 3.2.4 of this plan | **Critical** — program manager must be able to issue certificates |
+| 8 | Certificate issuance workflow (documented steps) | Section 3.2.4 of this plan | **Critical** — Program Owner must be able to issue certificates |
 | 9 | GitHub repo README | Proposal §6.3 | High |
 | 10 | Announcement post | Proposal executive summary | Medium |
 

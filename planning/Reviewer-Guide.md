@@ -22,7 +22,7 @@ You are **not** assessing whether the calculation is correct, whether the method
 
 ### Conflict of Interest
 
-You must recuse yourself if you have a professional or financial relationship with the applicant. This includes submissions from your own employer. If a conflict exists, disclose it to the program manager immediately so the submission can be reassigned.
+You must recuse yourself if you have a professional or financial relationship with the applicant. This includes submissions from your own employer. If a conflict exists, disclose it to the Program Owner (GSF Head of R&D) immediately so the submission can be reassigned.
 
 ### Time Budget
 
@@ -159,14 +159,14 @@ Rejection requires:
 1. Evidence of bad faith (fabricated data, obvious fraud, or persistent refusal to engage after revision requests).
 2. A detailed written rationale from the first reviewer.
 3. Concurrence from a second reviewer who independently reviews the submission.
-4. Both reviewers' records are submitted to the program manager before the rejection is communicated.
+4. Both reviewers' records are submitted to the Program Owner before the rejection is communicated.
 
 ### Submitting Your Review
 
-- Submit your completed review record to the program manager.
-- **For approvals**: the program manager issues the certificate via the badging platform's issuance API (see Section 9) and publishes the disclosure to GitHub.
-- **For revision requests**: the program manager sends the feedback email to the applicant with your specific notes.
-- **For rejections**: the program manager assigns a second reviewer for independent assessment before the final decision.
+- Submit your completed review record to the Program Owner.
+- **For approvals**: the Program Owner issues the certificate via the badging platform's issuance API (see Section 9) and publishes the disclosure to GitHub.
+- **For revision requests**: the Program Owner sends the feedback email to the applicant with your specific notes.
+- **For rejections**: the Program Owner assigns a second reviewer for independent assessment before the final decision.
 
 ---
 
@@ -283,7 +283,7 @@ NOTES / PRECEDENT:
 
 ## 8. Calibration and Consistency
 
-The following mechanisms keep assessments consistent across reviewers. You do not need to manage these — they are maintained by the program manager — but you should know they exist.
+The following mechanisms keep assessments consistent across reviewers. You do not need to manage these — they are maintained by the Program Owner — but you should know they exist.
 
 1. **Initial calibration session**: Before reviewing real submissions, all reviewers independently review 2–3 example submissions, then compare and discuss results. This establishes shared understanding of Y vs I boundaries.
 
@@ -299,7 +299,7 @@ The following mechanisms keep assessments consistent across reviewers. You do no
 
 ## 9. Issuing a Certificate (After Approval)
 
-Once a submission is approved, the program manager (or designated
+Once a submission is approved, the Program Owner (or designated
 reviewer) issues the certificate by calling the badging platform's
 issuance API. The platform (`badges.greensoftware.foundation`) then
 generates the certificate, uploads it, and emails the applicant.
