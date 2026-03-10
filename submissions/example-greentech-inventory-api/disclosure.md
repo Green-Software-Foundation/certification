@@ -15,7 +15,7 @@
 
 ---
 
-## PART 1 — About You and Your Software
+## Section 1 — About You and Your Software
 
 **Organization name:** GreenTech Solutions Ltd
 
@@ -34,7 +34,7 @@ A REST API providing real-time inventory management for retail and e-commerce bu
 
 ---
 
-## PART 2 — Measurement Period and Score
+## Section 2 — Your SCI Score
 
 **Measurement start date:** 2026-01-01
 
@@ -47,7 +47,7 @@ We measured the carbon intensity of our Inventory Management API over January 20
 
 ---
 
-## PART 3 — Software Boundary
+## Section 3 — Software Boundary
 
 ### Included components
 
@@ -71,7 +71,7 @@ We measured the carbon intensity of our Inventory Management API over January 20
 
 ---
 
-## PART 4 — Functional Unit (R)
+## Section 4 — Functional Unit (R)
 
 **What is your functional unit?**
 1,000 API requests
@@ -86,7 +86,7 @@ Counted from the FastAPI access logs aggregated in our DataDog logging pipeline.
 
 ---
 
-## PART 5 — Energy (E)
+## Section 5 — Energy (E) and Carbon Intensity (I)
 
 **Total energy consumed:** 58.05 kWh (48.37 kWh before PUE)
 
@@ -107,9 +107,7 @@ Energy was estimated using a power-modelling approach. For each compute componen
 | Network Transfer | — | — | 1.500 | 1.800 | 1,500 GB × 0.001 kWh/GB = 1.5 kWh | GSF network energy coefficient; AWS CloudWatch NetworkOut metrics |
 | **Total** | | | **48.372** | **58.046** | | |
 
----
-
-## PART 6 — Carbon Intensity (I)
+### Carbon intensity
 
 **Carbon intensity value:** 370 gCO2eq/kWh
 
@@ -117,13 +115,11 @@ Energy was estimated using a power-modelling approach. For each compute componen
 
 **Approach:** Location-based
 
-**Data source:** EPA eGRID 2023, SRVC subregion (SERC Virginia/Carolina)
-
-**Year of data:** 2023 (published February 2025)
+**Data source + year:** EPA eGRID 2023, SRVC subregion (SERC Virginia/Carolina), published February 2025
 
 ---
 
-## PART 7 — Embodied Emissions (M)
+## Section 6 — Embodied Emissions (M)
 
 **Total embodied emissions allocated to this measurement:** 99,794.52 gCO2eq
 
@@ -153,7 +149,7 @@ The time-share factor is: 744 / 35,040 = 0.02123
 
 ---
 
-## PART 8 — Methodology, Assumptions, and Limitations
+## Section 7 — Methodology and Calculation
 
 **Overall approach:** Hybrid (measurement-derived utilisation data combined with power-modelling calculation)
 
@@ -190,9 +186,7 @@ We used a hybrid approach combining measured utilisation data with power-modelli
 | GSF SCI Data | Coefficient | Network energy coefficient (0.001 kWh/GB) from the Green Software Foundation's SCI open data project. | https://github.com/Green-Software-Foundation/sci-data |
 | AWS Sustainability | Reference | PUE values for AWS data centres. Global PUE reported as 1.2. | https://sustainability.aboutamazon.com/ |
 
----
-
-## PART 9 — Show Your Calculation
+### Show your calculation
 
 ```
 Energy (E):
@@ -218,13 +212,7 @@ SCI = (O + M) / R         = (21,477.17 + 99,794.52) / 25,000
 
 ---
 
-## PART 10 — Baseline Comparison
-
-*This is our first SCI measurement for this application. No baseline comparison is available.*
-
----
-
-## PART 11 — Supporting Materials
+## Optional Attachments
 
 - [x] Impact Framework manifest file (IMP/YAML) — see attached: `greentech-inventory-api-v3.2.1-sci.yml`
 
@@ -234,7 +222,7 @@ SCI = (O + M) / R         = (21,477.17 + 99,794.52) / 25,000
 
 ---
 
-## PART 12 — Self-Certification Attestation
+## Attestation
 
 **Self-Certification Attestation for ISO/IEC 21031:2024**
 
@@ -272,17 +260,14 @@ By submitting this application, I hereby:
 
 ## Submission Checklist
 
-- [x] Part 1 — Organization and software details
-- [x] Part 2 — Measurement period and SCI score
-- [x] Part 3 — Included and excluded components with justifications/rationales
-- [x] Part 4 — Functional unit with rationale and measurement method
-- [x] Part 5 — Energy with per-component breakdown and data sources
-- [x] Part 6 — Carbon intensity with location, data source, and year
-- [x] Part 7 — Embodied emissions with hardware breakdown
-- [x] Part 8 — Methodology, assumptions, and limitations
-- [x] Part 9 — SCI calculation shown with arithmetic
-- [x] Part 12 — Attestation signed and dated
-- [x] All attachments referenced by filename in the relevant section
+- [x] Section 1 — Organization and software details
+- [x] Section 2 — SCI score with units and measurement period
+- [x] Section 3 — Included and excluded components with rationales
+- [x] Section 4 — Functional unit with rationale and measurement method
+- [x] Section 5 — Energy with per-component breakdown; carbon intensity with source and year
+- [x] Section 6 — Embodied emissions with hardware breakdown
+- [x] Section 7 — Methodology, assumptions, limitations, and calculation shown
+- [x] Attestation — Signed and dated
 
 ---
 

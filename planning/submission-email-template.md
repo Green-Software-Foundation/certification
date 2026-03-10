@@ -9,11 +9,11 @@ Copy everything below the line into a new email addressed to **sci-certification
 ---
 
 **To:** sci-certification@greensoftware.foundation
-**Subject:** SCI Self-Certification Submission — [Your Organization Name] — [Your Software Name]
+**Subject:** SCI Self-Certification — [Your Organization Name] — [Your Software Name]
 
 ---
 
-## PART 1 — Applicant and Software
+## Section 1 — About You and Your Software
 
 **Organization name:** [e.g. Acme Corporation]
 
@@ -25,181 +25,134 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 **Software version:** [e.g. v2.1.0, or "commit abc123 deployed 2026-01-15"]
 
-**Software description:**
-[2-4 sentences: what it does, tech stack, hosting environment, rough scale.]
+**Software URL:** [Link to application, docs, or repository — if public, or "Internal"]
 
-**Software URL:** [Link to application, docs, or repository — if public]
-
----
-
-## PART 2 — Measurement Period and Score
-
-**Measurement start date:** [YYYY-MM-DD]
-
-**Measurement end date:** [YYYY-MM-DD]
-
-**SCI score:** [Number with units, e.g. "349.63 gCO2eq per 1,000 API requests"]
+**What does it do?**
+[2-3 sentences: what the software does, tech stack, where it runs]
 
 ---
 
-## PART 3 — Software Boundary
+## Section 2 — Your SCI Score
 
-### Included components
+**SCI score:** [Number] [unit] per [functional unit]
+*Example: 349.6 gCO2eq per 1,000 API requests*
 
-| Component | Description | Why included |
-|-----------|-------------|--------------|
-| [e.g. Application Servers] | [e.g. 2x EC2 t3.medium running Node.js] | [e.g. Core compute under our operational control] |
-| ... | ... | ... |
-
-### Excluded components
-
-| Component | Description | Reason for exclusion |
-|-----------|-------------|----------------------|
-| [e.g. CDN] | [e.g. CloudFront distribution for static assets] | [e.g. Separate service outside operational boundary] |
-| ... | ... | ... |
-
-### Shared infrastructure [delete if not applicable]
-
-| Shared component | How you allocated your share | Your allocation % or ratio |
-|------------------|------------------------------|----------------------------|
-| [e.g. Kubernetes cluster node] | [e.g. By vCPU reservation: 2 of 16 vCPUs] | [e.g. 12.5%] |
+**Measurement period:** [Start date] to [End date]
+*Example: 2026-01-01 to 2026-03-31*
 
 ---
 
-## PART 4 — Functional Unit (R)
+## Section 3 — Software Boundary
 
-**Functional unit:** [e.g. "1,000 API requests"]
+### What's included?
 
-**Why this unit?**
-[How it connects to how your software scales or delivers value. See Applicant Guide Section 4.]
+| Component | Brief description |
+|-----------|------------------|
+| [e.g. Application servers] | [e.g. 2x EC2 t3.medium running Node.js] |
+| [e.g. Database] | [e.g. RDS PostgreSQL db.t3.medium] |
 
-**How counted or measured:** [e.g. "Counted from nginx access logs, validated against CloudWatch request metrics."]
+### What's excluded, and why?
 
-**Total units in measurement period:** [e.g. 45,000,000 requests]
+| Component | Reason for exclusion |
+|-----------|---------------------|
+| [e.g. CDN] | [e.g. Separate service outside operational boundary] |
 
----
+*Each exclusion needs a system-specific rationale. "Not included" or "out of scope" is not sufficient.*
 
-## PART 5 — Energy (E)
+### Shared infrastructure
 
-**Total energy:** [e.g. "46.01 kWh"]
+*Does any included component run on shared infrastructure? If yes, state what is shared and how you allocated your share. If no, write "No shared infrastructure."*
 
-**PUE:** [e.g. 1.2 — or "N/A"]
-
-**Energy breakdown by component:**
-
-| Component | Energy (kWh) | How calculated or measured | Data source |
-|-----------|-------------|---------------------------|-------------|
-| [e.g. Application Servers] | [e.g. 21.6] | [e.g. 2 instances x 15W avg x 720h] | [e.g. AWS CloudWatch CPU metrics] |
-| [e.g. Database] | [e.g. 14.4] | [e.g. 20W avg x 720h] | [e.g. RDS CloudWatch metrics] |
-| ... | ... | ... | ... |
+[e.g. "App servers run on a shared Kubernetes cluster. Allocated by vCPU reservation: 2 of 16 vCPUs = 12.5%."]
 
 ---
 
-## PART 6 — Carbon Intensity (I)
+## Section 4 — Functional Unit (R)
 
-**Carbon intensity:** [e.g. "340 gCO2eq/kWh"]
+**Functional unit:** [e.g. 1,000 API requests]
 
-**Location(s):** [e.g. "AWS us-east-1 (Virginia, USA)"]
+**Why this unit:** [e.g. Primary measure of how the service delivers value]
+
+**How counted:** [e.g. nginx access logs, validated against CloudWatch]
+
+**Total in measurement period:** [e.g. 45,000,000 requests]
+
+---
+
+## Section 5 — Energy (E) and Carbon Intensity (I)
+
+### Energy
+
+**Total energy:** [e.g. 46.01 kWh]
+
+**PUE applied:** [e.g. 1.2, or "N/A — cloud provider"]
+
+| Component | Energy (kWh) | Data source |
+|-----------|-------------|-------------|
+| [e.g. Application servers] | [e.g. 21.6] | [e.g. AWS CloudWatch CPU metrics -> TDP model] |
+| [e.g. Database] | [e.g. 14.4] | [e.g. RDS CloudWatch metrics] |
+
+### Carbon intensity
+
+**Carbon intensity:** [e.g. 340 gCO2eq/kWh]
+
+**Location(s):** [e.g. AWS us-east-1 (Virginia, USA)]
 
 **Approach:** [Location-based / Market-based]
 
-**Data source (with year):** [e.g. "EPA eGRID 2023, SRVC subregion"]
+**Data source + year:** [e.g. EPA eGRID 2023, SRVC subregion]
 
-### Regional breakdown [delete if single-region]
+*If multi-region, add a row per region:*
 
-| Region | % of workload | Carbon intensity (gCO2eq/kWh) | Data source |
-|--------|--------------|-------------------------------|-------------|
+| Region | % of workload | gCO2eq/kWh | Source |
+|--------|--------------|------------|--------|
 | [e.g. us-east-1] | [e.g. 60%] | [e.g. 340] | [e.g. EPA eGRID 2023] |
-| [e.g. eu-west-1] | [e.g. 40%] | [e.g. 280] | [e.g. EEA 2023] |
-
-**Weighted average carbon intensity:** [show the calculation]
 
 ---
 
-## PART 7 — Embodied Emissions (M)
+## Section 6 — Embodied Emissions (M)
 
-**Total embodied emissions (allocated):** [e.g. "96,574.9 gCO2eq"]
+**Total embodied (allocated):** [e.g. 96,574.9 gCO2eq]
 
 *If M = 0, explain why (e.g. "Pure SaaS — no hardware under our operational control") and skip the table.*
 
-**Hardware component breakdown:**
-
-| Component | Total embodied (gCO2eq) | Expected lifespan | Time reserved | Resource share | Allocated M (gCO2eq) | Data source |
-|-----------|------------------------|-------------------|---------------|----------------|---------------------|-------------|
-| [e.g. App Server 1 — EC2 t3.medium] | [e.g. 1,200,000] | [e.g. 4 years] | [e.g. 720h] | [e.g. 100%] | [e.g. 24,658] | [e.g. Cloud Carbon Footprint] |
-| ... | ... | ... | ... | ... | ... | ... |
+| Component | Allocated M (gCO2eq) | Data source |
+|-----------|---------------------|-------------|
+| [e.g. App server — EC2 t3.medium] | [e.g. 24,658] | [e.g. Cloud Carbon Footprint] |
 
 ---
 
-## PART 8 — Methodology, Assumptions, and Limitations
+## Section 7 — Methodology and Calculation
 
-**Overall approach:** [Measurement / Calculation / Hybrid]
+**Approach:** [Measurement / Calculation / Hybrid]
 
-**Methodology:**
-[How you gathered data, what models or tools you used, and how you arrived at your SCI score.]
+**How you calculated your score:**
+[Paragraph or bullet points: what tools/models you used, how you gathered data, key decisions you made.]
 
-**Key assumptions:**
+**Assumptions and limitations:**
 
-| Assumption | Justification | Impact (Low / Medium / High) |
-|------------|---------------|------------------------------|
-| [e.g. Server avg power draw is 15W] | [e.g. Based on AWS TDP at 40% utilization] | [e.g. Medium] |
-| ... | ... | ... |
+| Assumption or limitation | Justification or mitigation |
+|--------------------------|----------------------------|
+| [e.g. Server avg power draw is 15W] | [e.g. Based on AWS TDP at 40% avg utilization] |
+| [e.g. No direct hardware power metering] | [e.g. Used cloud telemetry as proxy] |
 
-**Known limitations:**
+*Include at least one specific assumption and one specific limitation.*
 
-| Limitation | Severity (Low / Medium / High) | Mitigation |
-|------------|--------------------------------|------------|
-| [e.g. No direct hardware power metering] | [e.g. Medium] | [e.g. Used cloud telemetry as proxy] |
-| ... | ... | ... |
-
-**Data sources:**
-
-| Source | Description | URL (if available) |
-|-------|-------------|--------------------|
-| [e.g. AWS CloudWatch] | [e.g. CPU/memory telemetry, 5-min intervals] | [https://...] |
-| [e.g. EPA eGRID 2023] | [e.g. US grid carbon intensity, SRVC subregion] | [https://...] |
-| ... | ... | ... |
-
----
-
-## PART 9 — Show Your Calculation
+**Show your calculation:**
 
 ```
-O = E x I = [your E] x [your I] = [result] gCO2eq
-M = [your M] gCO2eq
-R = [your total units] / [normalizer if any] = [result]
+E x I = [E] x [I] = [result] gCO2eq
+M = [M] gCO2eq
+R = [total units]
 
-SCI = (O + M) / R = [result] per [your functional unit]
+SCI = (E x I + M) / R = [result] [unit] per [functional unit]
 ```
 
 ---
 
-## PART 10 — Baseline Comparison [OPTIONAL — delete if this is your first measurement]
-
-**Previous SCI score:** [value and unit]
-
-**Previous certificate ID:** [e.g. GSF-SCI-2025-00123]
-
-**New SCI score:** [value and unit]
-
-**What changed and why:**
-[Actions taken between measurements and what drove the score change.]
-
----
-
-## PART 11 — Supporting Materials [OPTIONAL — not required but encouraged]
-
-- [ ] Impact Framework manifest file (IMP/YAML)
-- [ ] Spreadsheet with detailed calculations
-- [ ] Links to public documentation or methodology write-ups
-
----
-
-## PART 12 — Self-Certification Attestation
+## Attestation
 
 *Copy the attestation below as-is. Fill in the signature fields.*
-
----
 
 **Self-Certification Attestation for ISO/IEC 21031:2024**
 
@@ -235,16 +188,19 @@ By submitting this application, I hereby:
 
 ---
 
+## Optional Attachments
+
+You may attach supporting materials such as a spreadsheet with detailed calculations, an Impact Framework manifest file (IMP/YAML), or links to public documentation. These are encouraged but not required — the questionnaire above is sufficient.
+
+---
+
 ## Submission Checklist
 
-- [ ] Part 1 — Organization and software details
-- [ ] Part 2 — Measurement period and SCI score
-- [ ] Part 3 — Included and excluded components with justifications/rationales
-- [ ] Part 4 — Functional unit with rationale and measurement method
-- [ ] Part 5 — Energy with per-component breakdown and data sources
-- [ ] Part 6 — Carbon intensity with location, data source, and year
-- [ ] Part 7 — Embodied emissions with hardware breakdown (or justification if zero)
-- [ ] Part 8 — Methodology, assumptions, and limitations
-- [ ] Part 9 — SCI calculation shown with arithmetic
-- [ ] Part 12 — Attestation signed and dated
-- [ ] All attachments referenced by filename in the relevant section
+- [ ] Section 1 — Organization and software details
+- [ ] Section 2 — SCI score with units and measurement period
+- [ ] Section 3 — Included and excluded components with rationales
+- [ ] Section 4 — Functional unit with rationale and measurement method
+- [ ] Section 5 — Energy with per-component breakdown; carbon intensity with source and year
+- [ ] Section 6 — Embodied emissions with breakdown (or justification if zero)
+- [ ] Section 7 — Methodology, assumptions, limitations, and calculation shown
+- [ ] Attestation — Signed and dated

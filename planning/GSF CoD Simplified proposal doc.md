@@ -628,7 +628,7 @@ The complete submission (with all detailed disclosure information) is published 
 
 - Applicants email a **full new submission** to [sci-certification@greensoftware.foundation](mailto:sci-certification@greensoftware.foundation)
 - Subject line: "Renewal: GSF-SCI-2026-00042"
-- Renewal goes through the same 13-item review as any new submission — there is no abbreviated renewal process
+- Renewal goes through the same 7-item review as any new submission — there is no abbreviated renewal process
 - Can update calculation, methodology, or provide new measurement period
 - Renewed certificates receive new certificate ID, linked to previous version
 

@@ -26,7 +26,7 @@ You must recuse yourself if you have a professional or financial relationship wi
 
 ### Time Budget
 
-A routine submission should take approximately **45 minutes**.
+A routine submission should take approximately **30 minutes**.
 
 ### Workflow
 
@@ -42,19 +42,13 @@ Each item is marked **Y** (present and adequate), **N** (missing), or **I** (ins
 
 | # | Item | Y/N/I |
 |---|------|-------|
-| 1 | **Applicant and software details** — organization name, contact name and email, software name, version, and brief description | |
-| 2 | **SCI score and measurement period** — numeric score with units including functional unit (e.g. "349.63 gCO2eq per 1,000 API requests"); measurement start and end dates (start < end, end not in the future) | |
-| 3 | **Software boundary** — included components named with reasons; excluded components named with **system-specific** rationales (not just "out of scope"); shared infrastructure allocation method and share if applicable | |
-| 4 | **Functional unit (R)** — unit named; rationale connects to how the software scales or delivers value (not circular); counting/measurement method identified; total units in measurement period stated | |
-| 5 | **Energy (E) — total and PUE** — total energy with unit (kWh); PUE stated or explicitly noted as N/A | |
-| 6 | **Energy (E) — per-component breakdown** — **each component** shows: energy value, how it was calculated or measured, and data source | |
-| 7 | **Carbon intensity (I)** — value with unit (gCO2eq/kWh); location(s); approach (location-based or market-based); data source named **with year** (not just "grid average"); per-region breakdown with percentage weights if multi-region | |
-| 8 | **Embodied emissions (M)** — total M with unit, **or** specific justification if M = 0; if M > 0: per-component breakdown showing total embodied, allocation calculation, allocated value, and data source for each; allocation method with parameters (lifespan, time reserved, resource share) | |
-| 9 | **Methodology approach** — overall approach stated (measurement / calculation / hybrid) | |
-| 10 | **Assumptions** — at least one **specific** assumption with justification (not "industry standard assumptions") | |
-| 11 | **Limitations** — at least one **specific** limitation acknowledged (not "some limitations exist") | |
-| 12 | **Calculation shown** — SCI formula with actual numbers (O = E × I, SCI = (O+M)/R) | |
-| 13 | **Signed attestation** — all 10 attestation points present and signed | |
+| 1 | **Identity and scope** — organization name, contact, software name/version/description; included components with reasons; excluded components with **system-specific** rationales; shared infrastructure allocation if applicable | |
+| 2 | **Score and period** — numeric SCI score with units including functional unit (e.g. "349.63 gCO2eq per 1,000 API requests"); measurement start and end dates (start < end, end not in the future) | |
+| 3 | **Functional unit (R)** — unit named; rationale connects to how the software scales or delivers value (not circular); counting/measurement method identified; total units in measurement period stated | |
+| 4 | **Energy and carbon intensity (E, I)** — total energy with unit (kWh); PUE stated or explicitly N/A; per-component energy breakdown (each component: value and data source); carbon intensity value with unit (gCO2eq/kWh); location(s); approach (location-based or market-based); data source named **with year**; per-region breakdown with percentage weights if multi-region | |
+| 5 | **Embodied emissions (M)** — total M with unit, **or** specific justification if M = 0; if M > 0: per-component breakdown showing allocated value and data source for each | |
+| 6 | **Methodology and transparency** — overall approach stated (measurement / calculation / hybrid); methodology described; at least one **specific** assumption with justification; at least one **specific** limitation; calculation shown (SCI formula with actual numbers matching stated score) | |
+| 7 | **Attestation** — all 10 attestation points present and signed | |
 
 ### When to mark I (Insufficient)
 
@@ -62,22 +56,22 @@ Mark **I** when the information is present but too vague for a practitioner to u
 
 | Item | Passes (mark Y) | Insufficient (mark I) |
 |------|-----------------|----------------------|
-| 3 — Exclusion rationales | "CDN is a separate service outside our operational boundary" | "Not included" / "Out of scope" |
-| 4 — Functional unit rationale | "API requests are the primary unit of value; counted from nginx access logs" | "We chose requests because we measure requests" |
-| 6 — Energy per component | "App servers: 21.6 kWh — 2 instances x 15W avg x 720h, from CloudWatch CPU metrics" | "App servers: 21.6 kWh" (no method or source) |
-| 7 — Carbon intensity source | "EPA eGRID 2023, SRVC subregion" | "Average grid data" |
-| 8 — Embodied per component | "Server: 1.2M gCO2eq total, 4yr lifespan, 720h reserved, allocated 24,658 gCO2eq (Cloud Carbon Footprint)" | "Server: 24,658 gCO2eq" (no allocation method or source) |
-| 10 — Assumptions | "Server avg power 15W based on AWS TDP at 40% utilization" | "Industry standard assumptions" |
-| 11 — Limitations | "No direct power metering — used cloud telemetry as proxy" | "Some limitations exist" |
+| 1 — Exclusion rationales | "CDN is a separate service outside our operational boundary" | "Not included" / "Out of scope" |
+| 3 — Functional unit rationale | "API requests are the primary unit of value; counted from nginx access logs" | "We chose requests because we measure requests" |
+| 4 — Energy per component | "App servers: 21.6 kWh from CloudWatch CPU metrics via TDP model" | "App servers: 21.6 kWh" (no source) |
+| 4 — Carbon intensity source | "EPA eGRID 2023, SRVC subregion" | "Average grid data" |
+| 5 — Embodied per component | "Server: 24,658 gCO2eq allocated from 1.2M total over 4yr lifespan (Cloud Carbon Footprint)" | "Server: 24,658 gCO2eq" (no allocation method or source) |
+| 6 — Assumptions | "Server avg power 15W based on AWS TDP at 40% utilization" | "Industry standard assumptions" |
+| 6 — Limitations | "No direct power metering — used cloud telemetry as proxy" | "Some limitations exist" |
 
 ---
 
 ## 4. Decision Rule
 
-- **All Y (or N/A)** → **Approved**.
+- **All Y** → **Approved**.
 - **Any N** → **Revision Requested** — list missing items by number.
 - **Any I** → **Revision Requested** — state what is too vague and what the applicant needs to add.
-- **4+ items N or I** → Submission substantially incomplete. Direct the applicant back to the submission template rather than itemizing every gap.
+- **3+ items N or I** → Submission substantially incomplete. Direct the applicant back to the submission template rather than itemizing every gap.
 - **Reject** → Bad faith only (fabricated data, obvious fraud, persistent refusal to engage). Never used for poor quality. Requires concurrence from 2+ reviewers.
 
 ---
@@ -88,7 +82,7 @@ Mark **I** when the information is present but too vague for a practitioner to u
 
 After completing the checklist, fill in the review record template (Section 6). Every review must produce a completed record — this is the auditable trail for the decision.
 
-- Record Y/N/I for every item (mark N/A for conditional items that don't apply).
+- Record Y/N/I for every item.
 - For any item marked I, write a brief note explaining what is insufficient and what the applicant needs to add.
 
 ### Drafting Revision-Request Feedback
@@ -96,8 +90,8 @@ After completing the checklist, fill in the review record template (Section 6). 
 When requesting revisions, your feedback must be **specific and actionable**:
 
 - Reference the exact item number(s) that triggered the revision.
-- For items marked N: state what is missing (e.g., "Item 5: no PUE value stated").
-- For items marked I: state what is too vague and what would make it adequate (e.g., "Item 6: the energy breakdown lists values per component but does not explain how each value was derived. Please describe the measurement or estimation method and data source for each component.").
+- For items marked N: state what is missing (e.g., "Item 4: no PUE value stated and no per-component energy breakdown").
+- For items marked I: state what is too vague and what would make it adequate (e.g., "Item 4: the energy breakdown lists values per component but does not identify data sources. Please state the data source for each component's energy figure.").
 
 ### Rejection Escalation
 
@@ -133,31 +127,22 @@ Time Spent:       [hours]
 
 CHECKLIST (Y = present & adequate, N = missing, I = insufficient)
 
-  1.  Applicant and software details:                              [ ]
-      (org, contact, software name/version/description)
-  2.  SCI score and measurement period:                            [ ]
-      (score with units incl. functional unit; start/end dates)
-  3.  Software boundary:                                           [ ]
-      (included/excluded components with rationales; shared infra if applicable)
-  4.  Functional unit (R):                                         [ ]
+  1.  Identity and scope:                                        [ ]
+      (org, contact, software details; boundary with rationales;
+       shared infra if applicable)
+  2.  Score and period:                                          [ ]
+      (SCI score with units incl. functional unit; start/end dates)
+  3.  Functional unit (R):                                       [ ]
       (named, rationale, counting method, total units)
-  5.  Energy (E) — total and PUE:                                  [ ]
-      (total kWh; PUE stated or N/A)
-  6.  Energy (E) — per-component breakdown:                        [ ]
-      (each component: value, method, data source)
-  7.  Carbon intensity (I):                                        [ ]
-      (value, location, approach, source with year; per-region if multi-region)
-  8.  Embodied emissions (M):                                      [ ]
-      (total or justified M=0; per-component with allocation if M>0)
-  9.  Methodology approach:                                        [ ]
-      (measurement / calculation / hybrid)
-  10. Assumptions:                                                  [ ]
-      (at least one specific with justification)
-  11. Limitations:                                                  [ ]
-      (at least one specific)
-  12. Calculation shown:                                            [ ]
-      (SCI formula with actual numbers)
-  13. Signed attestation:                                           [ ]
+  4.  Energy and carbon intensity (E, I):                        [ ]
+      (total E with PUE; per-component breakdown with sources;
+       I value, location, approach, source+year; multi-region if applicable)
+  5.  Embodied emissions (M):                                    [ ]
+      (total or justified M=0; per-component with sources if M>0)
+  6.  Methodology and transparency:                              [ ]
+      (approach stated; methodology described; assumption(s);
+       limitation(s); calculation shown with actual numbers)
+  7.  Attestation:                                               [ ]
       (all 10 points, signed)
 
 Result:           APPROVE / REVISION REQUESTED / REJECT
@@ -180,37 +165,37 @@ NOTES / PRECEDENT:
 
 **Situation**: The applicant reports zero embodied emissions.
 
-**How to handle**: M = 0 is acceptable **only** with a specific justification. Valid justifications include "pure SaaS with no hardware under operational control" or "serverless functions on shared infrastructure where provider does not disclose hardware details." A bare "M = 0" with no explanation → mark item 8 as **I**. If the justification is present but weak (e.g., "not applicable"), also mark as **I** with a note.
+**How to handle**: M = 0 is acceptable **only** with a specific justification. Valid justifications include "pure SaaS with no hardware under operational control" or "serverless functions on shared infrastructure where provider does not disclose hardware details." A bare "M = 0" with no explanation → mark item 5 as **I**. If the justification is present but weak (e.g., "not applicable"), also mark as **I** with a note.
 
 ### Unusual Functional Units
 
 **Situation**: The applicant uses a functional unit you haven't seen before (e.g., "per document processed", "per GB transferred", "per model inference").
 
-**How to handle**: The SCI specification allows any functional unit that scales with how the software is used. Do not reject a unit simply because it is novel. Check that item 4 is satisfied: the unit is named, the rationale connects it to how the software delivers value or scales, and the counting method is described. If all are present and adequate, mark Y. Note unusual units in the NOTES / PRECEDENT section of your review record so future reviewers can reference the precedent.
+**How to handle**: The SCI specification allows any functional unit that scales with how the software is used. Do not reject a unit simply because it is novel. Check that item 3 is satisfied: the unit is named, the rationale connects it to how the software delivers value or scales, and the counting method is described. If all are present and adequate, mark Y. Note unusual units in the NOTES / PRECEDENT section of your review record so future reviewers can reference the precedent.
 
 ### "Internal Tools" as Data Sources
 
 **Situation**: The applicant cites "internal monitoring tools", "proprietary telemetry", or "company dashboard" as data sources without naming the specific tool or method.
 
-**How to handle**: The requirement is that data sources are **identified**, not that they are public or third-party. "Internal Prometheus monitoring with 5-minute sampling" or "AWS CloudWatch CPU utilization metrics" → mark Y. "Internal tools" alone → mark the relevant item (6, 7, or 8 depending on where the vague source appears) as **I** — the applicant needs to say what kind of tool and what it measures.
+**How to handle**: The requirement is that data sources are **identified**, not that they are public or third-party. "Internal Prometheus monitoring with 5-minute sampling" or "AWS CloudWatch CPU utilization metrics" → mark Y. "Internal tools" alone → mark the relevant item (4 or 5 depending on where the vague source appears) as **I** — the applicant needs to say what kind of tool and what it measures.
 
 ### Vague Exclusion Rationales
 
 **Situation**: The applicant lists excluded components but rationales are generic — "out of scope", "not included", "N/A".
 
-**How to handle**: Each exclusion needs a rationale **specific to the system** — e.g., "CDN is a separate service managed by a third-party provider and outside our operational boundary." Generic rationales → mark item 3 as **I**. Provide example rationales in your revision feedback to help the applicant understand what is expected.
+**How to handle**: Each exclusion needs a rationale **specific to the system** — e.g., "CDN is a separate service managed by a third-party provider and outside our operational boundary." Generic rationales → mark item 1 as **I**. Provide example rationales in your revision feedback to help the applicant understand what is expected.
 
 ### Outdated Carbon Intensity Data
 
 **Situation**: The applicant uses grid carbon intensity data that is more than 3–5 years old.
 
-**How to handle**: The requirement is that the data source is **named with year** (item 18). Old data is acceptable as long as the source and year are clearly stated — mark Y. The community can challenge whether the data is appropriate; your job is just to confirm it is identified. Do not reject solely on data age.
+**How to handle**: The requirement is that the data source is **named with year** (item 4). Old data is acceptable as long as the source and year are clearly stated — mark Y. The community can challenge whether the data is appropriate; your job is just to confirm it is identified. Do not reject solely on data age.
 
 ### Multi-Region with Complex Weighting
 
 **Situation**: The applicant operates across many regions with dynamic traffic-based allocation.
 
-**How to handle**: Item 7 requires per-region breakdown with percentage weights. If the applicant describes a dynamic weighting methodology (e.g., "weighted by monthly request volume per region"), verify that they have provided the actual percentages used for the measurement period, not just the methodology description. The weights must be concrete numbers that sum to 100%.
+**How to handle**: Item 4 requires per-region breakdown with percentage weights. If the applicant describes a dynamic weighting methodology (e.g., "weighted by monthly request volume per region"), verify that they have provided the actual percentages used for the measurement period, not just the methodology description. The weights must be concrete numbers that sum to 100%.
 
 ---
 
@@ -254,7 +239,7 @@ generates the certificate, uploads it, and emails the applicant.
    | `software_version` | The version string | Checklist item 1 |
    | `sci_score` | The numeric SCI score (e.g. `349.63`) | Checklist item 2 |
    | `sci_unit` | The full unit string including functional unit (e.g. `gCO2eq per 1,000 API requests`) | Checklist item 2 |
-   | `functional_unit` | The functional unit alone (e.g. `1,000 API requests`) | Checklist item 4 |
+   | `functional_unit` | The functional unit alone (e.g. `1,000 API requests`) | Checklist item 3 |
    | `measurement_start` | Measurement period start date (`YYYY-MM-DD`) | Checklist item 2 |
    | `measurement_end` | Measurement period end date (`YYYY-MM-DD`) | Checklist item 2 |
    | `disclosure_url` | The GitHub URL of the published disclosure | From step 1 |

@@ -59,7 +59,7 @@ Design document for the applicant-facing landing page at greensoftware.foundatio
 | Step | Label | Description |
 |------|-------|-------------|
 | 1 | **Submit** | Email your SCI calculation, methodology disclosure, and signed attestation |
-| 2 | **Review** | A GSF reviewer checks your submission against a 13-item disclosure checklist (10–15 business days) |
+| 2 | **Review** | A GSF reviewer checks your submission against a 7-item disclosure checklist (10–15 business days) |
 | 3 | **Decision** | Approved, revision requested (with specific feedback), or rejected (bad faith only) |
 | 4 | **Certificate** | You receive a 1-year certificate, downloadable badge, and your disclosure is published on GitHub |
 
@@ -77,16 +77,14 @@ Design document for the applicant-facing landing page at greensoftware.foundatio
 
 **Numbered list** (keep brief — this is a summary, not the full guide):
 
-1. **Applicant and software details** — organization, software name, version, description
-2. **Measurement period and SCI score** — start/end dates, score with units
+1. **About you and your software** — organization, software name, version, description
+2. **Your SCI score** — score with units, measurement start/end dates
 3. **Software boundary** — what's included, what's excluded (with rationale for each exclusion)
 4. **Functional unit (R)** — what unit you chose, why, how you counted it
-5. **Energy (E)** — total energy, per-component breakdown with data sources
-6. **Carbon intensity (I)** — value, location, approach, named data source with year
-7. **Embodied emissions (M)** — total or justified M=0, per-component breakdown if applicable
-8. **Methodology, assumptions, and limitations** — approach, at least one specific assumption, at least one specific limitation
-9. **Calculation** — SCI formula shown with your actual numbers
-10. **Signed attestation** — 10-point declaration included in the template
+5. **Energy (E) and carbon intensity (I)** — total energy, per-component breakdown with data sources; carbon intensity with location, approach, named source with year
+6. **Embodied emissions (M)** — total or justified M=0, per-component breakdown if applicable
+7. **Methodology and calculation** — approach, assumptions, limitations, SCI formula with your actual numbers
+8. **Signed attestation** — 10-point declaration included in the template
 
 **CTA button**: Download Submission Template → links to `submission-email-template.md`
 
@@ -150,7 +148,7 @@ Design document for the applicant-facing landing page at greensoftware.foundatio
 | Resource | Description |
 |----------|-------------|
 | [Submission Template](link) | Pre-structured email template with examples for every field — start here |
-| [Applicant Guide](link) | Full requirements, evaluation criteria, the 13-item checklist, decision rules, badge usage, appeals |
+| [Applicant Guide](link) | Full requirements, evaluation criteria, the 7-item checklist, decision rules, badge usage, appeals |
 | [Example Submission](link) | A completed example submission showing what a successful application looks like |
 | [Example Review Record](link) | What a completed review looks like — see exactly how your submission will be evaluated |
 | [Badge Usage Guidelines](link) | Approved/prohibited language, display standards, asset downloads |
@@ -207,7 +205,7 @@ All links on this page should resolve to the following:
 |------|--------|
 | Submission Template | `planning/submission-email-template.md` in the certification repo (or hosted version) |
 | Applicant Guide | `planning/Applicant-Guide.md` in the certification repo (or hosted version) |
-| Example Submission | `submissions/example-greentech-inventory-api/submission.md` |
+| Example Submission | `submissions/example-greentech-inventory-api/disclosure.md` |
 | Example Review Record | `submissions/example-greentech-inventory-api/review-record.md` |
 | Badge Usage Guidelines | `planning/Badge-Usage-Guidelines.md` |
 | Public Disclosures | `greensoftware-foundation/sci-certifications` GitHub repo |

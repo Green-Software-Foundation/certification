@@ -142,7 +142,7 @@ sci-certificate:
       accredited conformity assessment.
   outcomes: []
   earningCriteria:
-    - "Submit a complete SCI disclosure that passes all 13 items on the review checklist."
+    - "Submit a complete SCI disclosure that passes all 7 items on the review checklist."
   duration: ""
   cost: "Free"
   learnMoreText: "Applicant Guide"

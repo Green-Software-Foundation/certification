@@ -22,7 +22,7 @@ Any individual or organization that has calculated an SCI score according to ISO
 |------|-------------|----------|----------|
 | 1 | You email your submission | You | — |
 | 2 | You receive an acknowledgement with a tracking number | Automatic | Within 1 business day |
-| 3 | A reviewer checks your submission against a 13-item checklist | GSF reviewer | 10–15 business days |
+| 3 | A reviewer checks your submission against a 7-item checklist | GSF reviewer | 10–15 business days |
 | 4a | **Approved** — certificate issued, disclosure published | GSF | Included in the 10–15 days |
 | 4b | **Revision requested** — you receive specific feedback on what to fix | GSF | Included in the 10–15 days |
 | 4c | **Rejected** — only if the submission is made in bad faith | GSF | Included in the 10–15 days |
@@ -37,7 +37,7 @@ Complex cases may extend to 20 business days. You will be notified of any delay.
 
 Your submission must contain **all** of the following. If any item is missing, your submission will be returned for revision before the review proceeds. Use the submission email template (`submission-email-template.md` in this repository) as your starting point — it is structured to match these requirements exactly.
 
-### 1. Applicant and software details
+### 1. About you and your software (template Section 1)
 
 - Organization name
 - Contact name and email
@@ -45,17 +45,17 @@ Your submission must contain **all** of the following. If any item is missing, y
 - Software version
 - Brief description of the software (what it does, how it is deployed)
 
-### 2. Measurement period and SCI score
+### 2. Your SCI score (template Section 2)
 
+- SCI score as a numeric value with units that include the functional unit (e.g., "349.63 gCO2eq per 1,000 API requests")
 - Measurement start date (YYYY-MM-DD)
 - Measurement end date (YYYY-MM-DD)
-- SCI score as a numeric value with units that include the functional unit (e.g., "349.63 gCO2eq per 1,000 API requests")
 
-### 3. Software boundary
+### 3. Software boundary (template Section 3)
 
-- **Included components**: every significant component in the calculation, with a brief justification for why each is included.
+- **Included components**: every significant component in the calculation, with a brief description.
 - **Excluded components**: every significant component you left out, each with a **specific rationale** tied to your system. "Not included" or "out of scope" is not a rationale. See the examples below.
-- **Shared infrastructure** (if applicable): the allocation method and your share (percentage or ratio).
+- **Shared infrastructure**: if any included component runs on shared infrastructure, state what is shared and how you allocated your share. If not, state "No shared infrastructure."
 
 | Rationale that passes | Rationale that does not pass |
 |-----------------------|------------------------------|
@@ -63,54 +63,42 @@ Your submission must contain **all** of the following. If any item is missing, y
 | "End-user devices are beyond our operational control" | "Out of scope" |
 | "CI/CD pipeline runs only during deployments and contributes <0.1% of total energy" | "N/A" |
 
-### 4. Functional unit (R)
+### 4. Functional unit (template Section 4)
 
 - The unit you chose (e.g., "per 1,000 API requests", "per training run", "per user-month")
 - Why you chose it — the rationale must connect the unit to how your software scales or delivers value
 - How you counted or measured the total units (e.g., "counted from nginx access logs")
 - Total units in the measurement period (a number)
 
-### 5. Energy (E)
+### 5. Energy and carbon intensity (template Section 5)
 
 - Total energy value with unit (kWh)
-- **Per-component energy breakdown**: each component that consumes energy, the energy value, how it was calculated or measured, and the data source. A single total number with no breakdown is not sufficient.
 - PUE value, or an explicit statement that PUE is not applicable
-
-### 6. Carbon intensity (I)
-
+- **Per-component energy breakdown**: each component that consumes energy, the energy value, and the data source
 - Carbon intensity value with unit (gCO2eq/kWh)
 - Location(s) where the software runs
 - Approach: location-based or market-based
-- Data source **named with year** (e.g., "EPA eGRID 2022, SRVC subregion"). "Average grid data" with no source name or year is not sufficient.
+- Data source **named with year** (e.g., "EPA eGRID 2023, SRVC subregion"). "Average grid data" with no source name or year is not sufficient.
 - If multi-region: per-region breakdown with percentage weights that sum to 100%
 
-### 7. Embodied emissions (M)
+### 6. Embodied emissions (template Section 6)
 
 - Total M value with unit (gCO2eq), **OR** an explicit justification if M = 0 (e.g., "pure SaaS with no hardware under our operational control")
-- If M > 0: per-hardware-component breakdown showing total embodied emissions, expected lifespan, time reserved, resource share (if applicable), allocated emissions, and data source for each
-- Allocation methodology described
+- If M > 0: per-component breakdown showing allocated emissions and data source for each
 
-### 8. Methodology, assumptions, and limitations
+### 7. Methodology and calculation (template Section 7)
 
 - Overall approach: measurement, calculation, or hybrid
+- Description of your methodology
 - **At least one specific assumption with justification** (e.g., "server average power draw is 15W, based on AWS TDP at estimated 40% utilization"). "Industry standard assumptions" is not specific enough.
 - **At least one specific limitation** (e.g., "no direct hardware power metering — used cloud telemetry as proxy"). "Some limitations exist" is not specific enough.
-- All data sources used, identified by name
+- Full SCI calculation shown with your actual numbers
 
-### 9. Calculation
+### Attestation
 
-Show the full SCI formula with your actual numbers so arithmetic can be verified:
+The submission template contains a 10-point attestation that you must sign and include. This is not optional. Copy it verbatim from the template, fill in the signature fields, and include it in your submission. The attestation covers your declaration of ISO/IEC 21031:2024 conformity, your responsibilities, GSF's limited role, badge usage obligations, and your consent to public disclosure.
 
-```
-O = E × I = [your E] × [your I] = [result]
-SCI = (O + M) / R = ([your O] + [your M]) / [your R] = [your score] per [your functional unit]
-```
-
-### 10. Self-certification attestation
-
-The submission template (Part 12) contains a 10-point attestation that you must sign and include. This is not optional. Copy it verbatim from the template, fill in the signature fields, and include it in your submission. The attestation covers your declaration of ISO/IEC 21031:2024 conformity, your responsibilities, GSF's limited role, badge usage obligations, and your consent to public disclosure.
-
-### Optional supporting materials (encouraged)
+### Optional attachments (encouraged)
 
 These are not required but strengthen your submission:
 
@@ -137,27 +125,25 @@ Use the submission email template (`submission-email-template.md`) as your start
 
 ## Exactly How Your Submission Is Evaluated
 
-Your reviewer works through a **13-item checklist** in a single pass. This is the exact same checklist your reviewer follows — there are no hidden criteria. Each item is marked **Y** (present and adequate), **N** (missing), or **I** (insufficient — present but too vague for a practitioner to understand). All items must be Y to pass.
+Your reviewer works through a **7-item checklist** in a single pass. This is the exact same checklist your reviewer follows — there are no hidden criteria. Each item is marked **Y** (present and adequate), **N** (missing), or **I** (insufficient — present but too vague for a practitioner to understand). All items must be Y to pass.
 
 The reviewer's question for every item: *"Could a knowledgeable practitioner reading this disclosure understand and evaluate this part of the calculation?"*
 
 Here is what the reviewer checks, and what "adequate" looks like for the items where detail matters:
 
-| Section | What must be present | What "adequate" looks like | What gets marked insufficient |
-|---------|---------------------|---------------------------|-------------------------------|
-| **Boundary** | Included and excluded components, each with rationale | Exclusions have system-specific rationales (e.g., "CDN is outside our operational boundary") | Generic rationales ("out of scope", "N/A") |
-| **Functional unit** | Unit, rationale, counting method, total | Rationale connects to how software scales; counting method named | Circular rationale ("we chose requests because we measure requests") |
-| **Energy** | Total, plus **per-component** breakdown | Each component shows energy value, how it was derived, and data source | Just a number per component with no method or source |
-| **Carbon intensity** | Value, location, approach, source with year | Named source with year (e.g., "EPA eGRID 2023, SRVC") | "Average grid data" with no source or year |
-| **Embodied (M)** | Total (or justified M=0), plus **per-component** breakdown | Each component shows total embodied, allocation calculation, allocated value, and source | Just an allocated number with no breakdown or source |
-| **Assumptions** | At least one specific assumption with justification | "Server avg power 15W based on AWS TDP at 40% utilization" | "Industry standard assumptions" |
-| **Limitations** | At least one specific limitation | "No direct power metering — used cloud telemetry as proxy" | "Some limitations exist" |
+| Item | What must be present | What "adequate" looks like | What gets marked insufficient |
+|------|---------------------|---------------------------|-------------------------------|
+| **1. Identity and scope** | Applicant details; included/excluded components with rationales; shared infra | Exclusions have system-specific rationales (e.g., "CDN is outside our operational boundary") | Generic rationales ("out of scope", "N/A") |
+| **3. Functional unit** | Unit, rationale, counting method, total | Rationale connects to how software scales; counting method named | Circular rationale ("we chose requests because we measure requests") |
+| **4. Energy and carbon intensity** | Total E with PUE; per-component breakdown with sources; I value, location, approach, source+year | Each component shows energy value and data source; carbon intensity source named with year | Just a number per component with no source; "average grid data" |
+| **5. Embodied (M)** | Total (or justified M=0); per-component with sources if M>0 | Each component shows allocated value and data source | Just an allocated number with no source |
+| **6. Methodology and transparency** | Approach; methodology; assumptions; limitations; calculation shown | Specific assumptions with justification; specific limitations; SCI formula with actual numbers | "Industry standard assumptions"; "some limitations exist" |
 
 **Decision rule:**
 
 - **All Y** → Approved.
 - **Any N or I** → Revision requested. You receive specific feedback identifying which items need attention and what to add.
-- **4+ items N or I** → Submission substantially incomplete. You are directed back to this guide and the submission template.
+- **3+ items N or I** → Submission substantially incomplete. You are directed back to this guide and the submission template.
 - **Bad faith** (fabricated data, obvious fraud, persistent refusal to engage after revision requests) → Rejected. This requires concurrence from 2+ reviewers and is never used for poor quality. Poor quality always gets a revision request first.
 
 ---
@@ -301,21 +287,15 @@ If your submission is rejected or you disagree with a review decision, you may a
 
 ## Pre-Submission Checklist
 
-Before you send your submission, confirm every item below. This checklist mirrors the 13 items the reviewer will check. If any item is missing or too vague, your submission will be returned.
+Before you send your submission, confirm every item below. This checklist mirrors the 7 items the reviewer will check. If any item is missing or too vague, your submission will be returned.
 
-- [ ] **1. Applicant and software details** — organization name, contact name and email, software name, version, and brief description
-- [ ] **2. SCI score and measurement period** — numeric score with units including functional unit; measurement start and end dates
-- [ ] **3. Software boundary** — included components with reasons; excluded components with **system-specific** rationales (not just "out of scope"); shared infrastructure allocation if applicable
-- [ ] **4. Functional unit (R)** — unit named; rationale connects to how the software scales or delivers value; counting/measurement method identified; total units stated
-- [ ] **5. Energy (E) — total and PUE** — total energy with unit (kWh); PUE stated or explicitly noted as N/A
-- [ ] **6. Energy (E) — per-component breakdown** — **each component** shows: energy value, how it was calculated or measured, and data source
-- [ ] **7. Carbon intensity (I)** — value with unit (gCO2eq/kWh); location(s); approach (location-based or market-based); data source named **with year**; per-region breakdown with weights if multi-region
-- [ ] **8. Embodied emissions (M)** — total M with unit **or** specific justification if M = 0; if M > 0: per-component breakdown with allocation method, parameters (lifespan, time reserved, resource share), and data sources
-- [ ] **9. Methodology approach** — overall approach stated (measurement / calculation / hybrid)
-- [ ] **10. Assumptions** — at least one **specific** assumption with justification
-- [ ] **11. Limitations** — at least one **specific** limitation acknowledged
-- [ ] **12. Calculation shown** — SCI formula with actual numbers (O = E × I, SCI = (O+M)/R)
-- [ ] **13. Signed attestation** — all 10 attestation points present and signed
+- [ ] **1. Identity and scope** — organization name, contact, software name/version/description; included components with reasons; excluded components with **system-specific** rationales; shared infrastructure addressed
+- [ ] **2. Score and period** — numeric SCI score with units including functional unit; measurement start and end dates
+- [ ] **3. Functional unit (R)** — unit named; rationale connects to how the software scales or delivers value; counting/measurement method identified; total units stated
+- [ ] **4. Energy and carbon intensity (E, I)** — total energy with PUE; per-component breakdown with data sources; carbon intensity value with location, approach, and source **named with year**; per-region breakdown if multi-region
+- [ ] **5. Embodied emissions (M)** — total M with unit **or** specific justification if M = 0; per-component breakdown with data sources if M > 0
+- [ ] **6. Methodology and transparency** — approach stated; methodology described; at least one **specific** assumption with justification; at least one **specific** limitation; calculation shown with actual numbers
+- [ ] **7. Attestation** — all 10 attestation points present and signed
 
 ---
 
@@ -323,10 +303,10 @@ Before you send your submission, confirm every item below. This checklist mirror
 
 | Situation | Outcome |
 |-----------|---------|
-| All 13 items marked Y | **Approved** |
+| All 7 items marked Y | **Approved** |
 | Missing items (e.g., no PUE stated, no exclusion rationales) | **Revision requested** — specific missing items listed by number |
 | Disclosure too vague (e.g., "standard methodology", no data sources named) | **Revision requested** — items marked insufficient with guidance on what to add |
-| Genuinely incomplete submission (4+ items N or I) | **Revision requested** — directed back to this guide and the submission template |
+| Genuinely incomplete submission (3+ items N or I) | **Revision requested** — directed back to this guide and the submission template |
 | Fabricated data, obvious fraud, persistent refusal to engage after revision requests | **Rejected** — requires 2+ reviewers to agree; you may appeal |
 
 **The bar is "adequate", not "perfect."** You do not need uncertainty analysis, exhaustive documentation, or the best possible methodology. You need to provide enough detail that a practitioner can understand what you did and see where your numbers come from. If something is unclear, you will be told exactly what to fix.
