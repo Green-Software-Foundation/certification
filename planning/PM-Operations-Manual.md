@@ -317,7 +317,7 @@ Ensure you have these ready before launch:
 - [ ] Tracking spreadsheet created and shared with committee
 - [ ] GitHub disclosure repo created with year/certificate directory structure
 - [ ] Badging platform access and certificate template configured
-- [ ] Email templates drafted: acknowledgement, revision request, approval, rejection, renewal reminder, challenge notification
+- [x] Email templates drafted: acknowledgement, revision request, approval, rejection, renewal reminder, challenge notification (`email-templates.md`)
 - [ ] Badge assets ready: SVG and PNG, light and dark variants
 - [ ] Precedent log created (`precedent-log.md` in the top-level certification repo)
 - [ ] Quarterly report template created
@@ -338,4 +338,5 @@ When you need the authoritative source for a specific topic:
 | Certificate issuance technical implementation | `certification-update-plan.md`, `sci-certification-tech-spec.md` |
 | Review records and disclosures | GitHub disclosure repo, co-located per submission (e.g. `/certifications/2026/GSF-SCI-2026-00042/`) |
 | Edge-case decisions and reasoning | `precedent-log.md` (top-level certification repo) |
+| Email templates (all 6) | `email-templates.md` |
 | This manual | `PM-Operations-Manual.md` |

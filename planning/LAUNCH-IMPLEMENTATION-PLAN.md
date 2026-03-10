@@ -6,6 +6,68 @@
 
 ---
 
+## Launch Readiness Checklist
+
+### Infrastructure
+- [ ] Submission email live and auto-reply configured
+- [x] Tracking spreadsheet created and shared with committee
+- [ ] GitHub disclosure repo created with structure and README
+
+### Certificate and Badge
+- [ ] Badging platform admin access confirmed
+- [ ] Certificate content template created with all fixed content (self-certification statement, disclaimer, branding)
+- [ ] Dynamic fields configured (certificate ID, org name, software, score, dates, disclosure URL)
+- [ ] Certificate expiry policy set to 1 year
+- [ ] Public verification URL pattern confirmed and working
+- [ ] Test certificate generated with dummy data and visually reviewed
+- [ ] Badge design created (SVG + PNG in light/dark variants)
+- [ ] Badge assets available for download (platform built-in, CDN, or GitHub)
+- [ ] Certificate issuance workflow documented and tested end-to-end
+- [ ] Revocation capability confirmed on platform
+
+### People and Governance
+- [x] Program Owner confirmed (GSF Head of R&D)
+- [ ] Backup PM identified from GSF staff
+- [ ] 3+ self-nominated reviewers recruited and confirmed (different institutions, not GSF staff)
+- [ ] Reviewer training session completed
+- [ ] Calibration exercise completed (reviewers aligned on Y vs I boundaries)
+- [x] Assignment method and conflict-of-interest recusal rule agreed
+- [x] Escalation path defined: reviewer → Program Owner → SWG Chair
+- [ ] Quarterly reporting cadence agreed with SWG and Steering Committee
+
+### Acceptance Criteria and Process
+- [x] 7-item review checklist documented and approved by committee
+- [x] Y/N/I marking guidance finalized with concrete pass/fail boundary examples
+- [x] Decision rules documented (approve if all Y; revise if any N or I; reject only for bad faith with dual concurrence)
+- [x] Review record template finalized
+- [x] Precedent log created (`precedent-log.md` in the top-level certification repo, empty, ready for first entries)
+- [x] Review procedure documented step-by-step
+
+### Documents
+- [x] Applicant Guide written and published (includes the acceptance criteria so applicants know what standard they'll be measured against)
+- [x] Submission email template written (`submission-email-template.md` — 7-section structured questionnaire)
+- [x] Reviewer Guide finalized and distributed to committee
+- [x] PM Operations Manual written (`PM-Operations-Manual.md`)
+- [x] Governance document written (`Governance.md`)
+- [x] Badge Usage Guidelines written (`Badge-Usage-Guidelines.md`)
+- [x] Landing page design document written (`Landing-Page-Design.md`)
+- [x] Simplified application design document written (`Simplified-Application-Design.md`)
+- [x] Email templates drafted (`email-templates.md`)
+- [x] All documents use consistent program name
+- [x] Example submission and review record created
+
+### Process Validation
+- [ ] End-to-end dry run completed (minimum 2 test submissions, dual-reviewed)
+- [ ] Inter-reviewer agreement confirmed on dry run submissions
+- [ ] Certificate generated successfully on badging platform
+- [ ] Disclosure published successfully to GitHub repo
+- [ ] Bottlenecks identified and resolved
+
+### Communications
+- [ ] Pilot applicants identified (3-5)
+- [ ] Announcement draft prepared for public launch
+
+---
 
 ## Week 1 (Days 1-5): Infrastructure and People
 
@@ -36,13 +98,13 @@ You need 3 or more self-nominated reviewers with SCI expertise. Per proposal Sec
 
 Create a shared spreadsheet to track all submissions through their lifecycle.
 
-**Columns**:
+**Columns** (see `tracking-sheet.csv` in the top-level repo):
 
 | Column | Example |
 |--------|---------|
 | Tracking ID | GSF-SUB-2026-0001 |
 | Date Received | 2026-03-15 |
-| Applicant Organization | Acme Corp |
+| Applicant Organisation | Acme Corp |
 | Software Name | E-commerce API v2.1 |
 | Status | Received / Under Review / Revision Requested / Approved / Rejected |
 | Assigned Reviewer(s) | Jane Smith, John Doe |
@@ -51,7 +113,7 @@ Create a shared spreadsheet to track all submissions through their lifecycle.
 | Decision | Approved / Revision Requested / Rejected |
 | Certificate ID | GSF-SCI-2026-0001 |
 | Certificate Expiry | 2027-03-28 |
-| Notes | — |
+| Link to Review | Link to review record in GitHub disclosure repo |
 
 Share with all reviewers. This is the single source of truth for program status.
 
@@ -167,7 +229,7 @@ A step-by-step procedure that any reviewer follows for every submission, produci
 - For revision requests: Program Owner sends feedback email with the specific items that need attention
 - For rejections: Program Owner assigns a second reviewer for independent assessment before final decision
 
-#### Step 5: Record Keeping (Program Owner)
+#### Step 4: Record Keeping (Program Owner)
 
 - Every review produces a completed review record stored in the GitHub disclosure repo alongside the submission (e.g. `/certifications/2026/GSF-SCI-2026-00042/review-record.md`). This keeps the review trail co-located with the disclosure it assessed.
 - Every decision (approve, revise, reject) is logged in the tracking spreadsheet with date
@@ -236,27 +298,11 @@ Even with a structured checklist, different reviewers may interpret "adequate" d
 
 ## Week 2 (Days 6-10): Other Documents and Templates
 
-### 3.1 Write the Applicant Guide
+### 3.1 Applicant Guide — COMPLETE
 
-**This does not yet exist as a standalone document.** The information is scattered across proposal Sections 2-4, `submission-questionnaire.md`, and `oath.md`. Consolidate into one document:
+The Applicant Guide (`Applicant-Guide.md`) has been written. It covers: what the program is, who can apply, submission requirements (7 sections matching the email template), the 7-item review checklist, decision rules, the three outcomes, certificate lifecycle, badge usage rules, community challenge process, appeals, and a pre-submission checklist.
 
-1. **What this program is** (2 paragraphs — self-certification, not third-party audit)
-2. **Who can apply** (anyone with an SCI calculation per ISO/IEC 21031:2024)
-3. **What you must submit** — the complete requirements, clearly structured:
-   - Signed self-certification attestation (the 10-point form from proposal Section 2.3)
-   - Score information (value, units, measurement period)
-   - Software boundary (included components, excluded components with rationale)
-   - Functional unit (unit chosen, rationale, measurement method)
-   - E, I, and M details (values, data sources, methodology for each)
-   - Key assumptions and known limitations
-4. **What "sufficient disclosure" looks like** — publish the 7-item review checklist so applicants know exactly what standard their submission will be measured against. Transparency about the criteria is itself a fairness mechanism.
-5. **Accepted formats** (PDF, Word, plain text email, Markdown; IMP/YAML optional)
-6. **How to submit** (email to sci-certification@greensoftware.foundation)
-7. **What happens next** (acknowledgement → review in 10-15 business days → approve / request revision / reject)
-8. **Example submissions** (links to the three example YML files)
-9. **After approval** (certificate issued, badge usage rules, public disclosure, 1-year validity)
-
-**Important**: The current `oath.md` is a simpler attestation than the 10-point version in proposal Section 2.3. Use the proposal version as the authority.
+The submission email template (`submission-email-template.md`) is a structured 7-section questionnaire that applicants fill in and email to `sci-certification@greensoftware.foundation`. It is the sole submission channel.
 
 ### 3.2 Design and Build the Certificate and Badge
 
@@ -483,87 +529,28 @@ Once the committee has processed ~10 submissions under dual review with consiste
 
 ---
 
-## Launch Readiness Checklist
-
-### Infrastructure
-- [ ] Submission email live and auto-reply configured
-- [ ] Tracking spreadsheet created and shared with committee
-- [ ] GitHub disclosure repo created with structure and README
-
-### Certificate and Badge
-- [ ] Badging platform admin access confirmed
-- [ ] Certificate content template created with all fixed content (self-certification statement, disclaimer, branding)
-- [ ] Dynamic fields configured (certificate ID, org name, software, score, dates, disclosure URL)
-- [ ] Certificate expiry policy set to 1 year
-- [ ] Public verification URL pattern confirmed and working
-- [ ] Test certificate generated with dummy data and visually reviewed
-- [ ] Badge design created (SVG + PNG in light/dark variants)
-- [ ] Badge assets available for download (platform built-in, CDN, or GitHub)
-- [ ] Certificate issuance workflow documented and tested end-to-end
-- [ ] Revocation capability confirmed on platform
-
-### People and Governance
-- [ ] Program Owner confirmed (GSF Head of R&D)
-- [ ] Backup PM identified from GSF staff
-- [ ] 3+ self-nominated reviewers recruited and confirmed (different institutions, not GSF staff)
-- [ ] Reviewer training session completed
-- [ ] Calibration exercise completed (reviewers aligned on Y vs I boundaries)
-- [ ] Assignment method and conflict-of-interest recusal rule agreed
-- [ ] Escalation path defined: reviewer → Program Owner → SWG Chair
-- [ ] Quarterly reporting cadence agreed with SWG and Steering Committee
-
-### Acceptance Criteria and Process
-- [ ] 7-item review checklist documented and approved by committee
-- [ ] Y/N/I marking guidance finalized with concrete pass/fail boundary examples
-- [ ] Decision rules documented (approve if all Y; revise if any N or I; reject only for bad faith with dual concurrence)
-- [ ] Review record template finalized
-- [ ] Precedent log created (`precedent-log.md` in the top-level certification repo, empty, ready for first entries)
-- [ ] Review procedure documented step-by-step
-
-### Documents
-- [ ] Applicant Guide written and published (includes the acceptance criteria so applicants know what standard they'll be measured against)
-- [ ] Reviewer Guide finalized and distributed to committee
-- [ ] Email templates drafted and stored in shared location
-- [ ] All documents use consistent program name
-
-### Process Validation
-- [ ] End-to-end dry run completed (minimum 2 test submissions, dual-reviewed)
-- [ ] Inter-reviewer agreement confirmed on dry run submissions
-- [ ] Certificate generated successfully on badging platform
-- [ ] Disclosure published successfully to GitHub repo
-- [ ] Bottlenecks identified and resolved
-
-### Communications
-- [ ] Pilot applicants identified (3-5)
-- [ ] Announcement draft prepared for public launch
-
----
-
 ## Deliverables Summary
 
-**Documents to create** (don't exist yet):
-
-| # | Deliverable | Source Material | Priority |
-|---|-------------|----------------|----------|
-| 1 | Acceptance criteria and review procedure | Proposal §§3-5, Validation-Checklist.md | **Critical** — the foundation of program fairness |
-| 2 | Applicant Guide | Proposal §§2-4, submission-questionnaire.md, oath.md | **Critical** — applicants can't submit without it |
-| 3 | Reviewer Guide (incorporating acceptance criteria) | Acceptance criteria + adapted Validation-Checklist.md | **Critical** — reviewers can't review without it |
-| 4 | Review record template | Section 2.3 of this plan | **Critical** — every review must produce one |
-| 5 | Email templates (6) | Proposal §§4-5 | **Critical** — needed for first submission |
-| 6 | Certificate content template (badging platform) | Proposal §6.2, Certificate-Template-Specification.md | **Critical** — needed to issue first certificate |
-| 7 | Badge design (SVG/PNG, light/dark) | Badge-Usage-Guidelines.md, Certificate-Template-Specification.md | **Critical** — needed for approval email and badge guidelines |
-| 8 | Certificate issuance workflow (documented steps) | Section 3.2.4 of this plan | **Critical** — Program Owner must be able to issue certificates |
-| 9 | GitHub repo README | Proposal §6.3 | High |
-| 10 | Announcement post | Proposal executive summary | Medium |
-
-**Documents that exist but need updating**:
-
-| # | Document | What Needs Changing |
-|---|----------|-------------------|
-| 1 | Validation-Checklist.md | Remove automated framing; becomes input to Reviewer Guide |
-| 2 | Badge-Usage-Guidelines.md | Align terminology with final program name |
-| 3 | oath.md | Replace with 10-point attestation from proposal §2.3, or deprecate |
-| 4 | submission-questionnaire.md | Reconcile with proposal §3; integrate into Applicant Guide |
+| # | Deliverable | Status | Notes |
+|---|-------------|--------|-------|
+| 1 | Acceptance criteria and review procedure | **Done** | 7-item checklist in Reviewer Guide and this plan |
+| 2 | Applicant Guide | **Done** | `Applicant-Guide.md` |
+| 3 | Reviewer Guide | **Done** | `Reviewer-Guide.md` |
+| 4 | Review record template | **Done** | In Reviewer Guide and this plan (Section 2.3) |
+| 5 | Submission email template | **Done** | `submission-email-template.md` — 7-section structured questionnaire |
+| 6 | PM Operations Manual | **Done** | `PM-Operations-Manual.md` |
+| 7 | Governance document | **Done** | `Governance.md` |
+| 8 | Badge Usage Guidelines | **Done** | `Badge-Usage-Guidelines.md` |
+| 9 | Landing page design | **Done** | `Landing-Page-Design.md` |
+| 10 | Simplified application design | **Done** | `Simplified-Application-Design.md` |
+| 11 | Example submission and review record | **Done** | `submissions/example-greentech-inventory-api/` |
+| 12 | Precedent log | **Done** | `precedent-log.md` (empty, ready for entries) |
+| 13 | Email templates (6) | **Done** | `email-templates.md` — acknowledgement, revision request, approval, rejection, renewal reminder, challenge notification |
+| 14 | Certificate content template (badging platform) | **To do** | See Section 3.2.1 for spec |
+| 15 | Badge design (SVG/PNG, light/dark) | **To do** | See Section 3.2.2 for spec |
+| 16 | Certificate issuance workflow (tested) | **To do** | See Section 3.2.4 for steps; needs platform implementation |
+| 17 | GitHub disclosure repo README | **To do** | For `greensoftware-foundation/sci-certifications` |
+| 18 | Announcement post | **To do** | For public launch |
 
 ---
 
