@@ -137,7 +137,7 @@ Use the submission email template (`submission-email-template.md`) as your start
 
 ## Exactly How Your Submission Is Evaluated
 
-Your reviewer works through a **27-item checklist** in a single pass. This is the exact same checklist your reviewer follows — there are no hidden criteria. Each item is marked **Y** (present and adequate), **N** (missing), or **I** (insufficient — present but too vague for a practitioner to understand). All items must be Y to pass.
+Your reviewer works through a **13-item checklist** in a single pass. This is the exact same checklist your reviewer follows — there are no hidden criteria. Each item is marked **Y** (present and adequate), **N** (missing), or **I** (insufficient — present but too vague for a practitioner to understand). All items must be Y to pass.
 
 The reviewer's question for every item: *"Could a knowledgeable practitioner reading this disclosure understand and evaluate this part of the calculation?"*
 
@@ -157,7 +157,7 @@ Here is what the reviewer checks, and what "adequate" looks like for the items w
 
 - **All Y** → Approved.
 - **Any N or I** → Revision requested. You receive specific feedback identifying which items need attention and what to add.
-- **5+ items N or I** → Submission substantially incomplete. You are directed back to this guide and the submission template.
+- **4+ items N or I** → Submission substantially incomplete. You are directed back to this guide and the submission template.
 - **Bad faith** (fabricated data, obvious fraud, persistent refusal to engage after revision requests) → Rejected. This requires concurrence from 2+ reviewers and is never used for poor quality. Poor quality always gets a revision request first.
 
 ---
@@ -301,35 +301,21 @@ If your submission is rejected or you disagree with a review decision, you may a
 
 ## Pre-Submission Checklist
 
-Before you send your submission, confirm every item below. This checklist mirrors the 27 items the reviewer will check. If any item is missing or too vague, your submission will be returned.
+Before you send your submission, confirm every item below. This checklist mirrors the 13 items the reviewer will check. If any item is missing or too vague, your submission will be returned.
 
-- [ ] Organization name, contact name, and contact email
-- [ ] Software name, version, and brief description
-- [ ] SCI score — numeric value with units including functional unit
-- [ ] Measurement start and end dates
-- [ ] Included components named, each with a reason for inclusion
-- [ ] Excluded components named, each with a **system-specific** rationale (not just "out of scope")
-- [ ] *(If shared infrastructure)* Allocation method and share stated
-- [ ] Functional unit named
-- [ ] Rationale connects the unit to how the software scales or delivers value
-- [ ] Counting/measurement method identified
-- [ ] Total units in measurement period stated
-- [ ] Total energy with unit (kWh)
-- [ ] Per-component energy breakdown — **each component** shows: energy value, how it was calculated or measured, and data source
-- [ ] PUE stated, or explicitly noted as N/A
-- [ ] Carbon intensity value with unit (gCO2eq/kWh) — if multi-region, **per-region values** with weighting
-- [ ] Location(s) stated
-- [ ] Approach stated (location-based or market-based)
-- [ ] Data source named **with year**
-- [ ] *(If multi-region)* Per-region breakdown with percentage weights
-- [ ] Total M with unit, **or** specific justification if M = 0
-- [ ] *(If M > 0)* Per-component embodied emissions — **each component** shows: total embodied, allocation calculation, allocated value, and data source
-- [ ] *(If M > 0)* Allocation method described with per-component parameters (lifespan, time reserved, resource share where applicable)
-- [ ] Overall approach stated (measurement / calculation / hybrid)
-- [ ] At least one **specific** assumption with justification
-- [ ] At least one **specific** limitation acknowledged
-- [ ] SCI formula shown with actual numbers (O = E × I, SCI = (O+M)/R)
-- [ ] Signed attestation covering all 10 points
+- [ ] **1. Applicant and software details** — organization name, contact name and email, software name, version, and brief description
+- [ ] **2. SCI score and measurement period** — numeric score with units including functional unit; measurement start and end dates
+- [ ] **3. Software boundary** — included components with reasons; excluded components with **system-specific** rationales (not just "out of scope"); shared infrastructure allocation if applicable
+- [ ] **4. Functional unit (R)** — unit named; rationale connects to how the software scales or delivers value; counting/measurement method identified; total units stated
+- [ ] **5. Energy (E) — total and PUE** — total energy with unit (kWh); PUE stated or explicitly noted as N/A
+- [ ] **6. Energy (E) — per-component breakdown** — **each component** shows: energy value, how it was calculated or measured, and data source
+- [ ] **7. Carbon intensity (I)** — value with unit (gCO2eq/kWh); location(s); approach (location-based or market-based); data source named **with year**; per-region breakdown with weights if multi-region
+- [ ] **8. Embodied emissions (M)** — total M with unit **or** specific justification if M = 0; if M > 0: per-component breakdown with allocation method, parameters (lifespan, time reserved, resource share), and data sources
+- [ ] **9. Methodology approach** — overall approach stated (measurement / calculation / hybrid)
+- [ ] **10. Assumptions** — at least one **specific** assumption with justification
+- [ ] **11. Limitations** — at least one **specific** limitation acknowledged
+- [ ] **12. Calculation shown** — SCI formula with actual numbers (O = E × I, SCI = (O+M)/R)
+- [ ] **13. Signed attestation** — all 10 attestation points present and signed
 
 ---
 
