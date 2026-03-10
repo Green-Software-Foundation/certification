@@ -212,6 +212,13 @@ SCI = (O + M) / R         = (21,477.17 + 99,794.52) / 25,000
 
 ---
 
+## Community Participation
+
+- [x] Yes — you may display our organisation name and logo on the GSF certified organisations page
+- [x] Yes — we'd be open to participating in a blog post or case study
+
+---
+
 ## Optional Attachments
 
 - [x] Impact Framework manifest file (IMP/YAML) — see attached: `greentech-inventory-api-v3.2.1-sci.yml`

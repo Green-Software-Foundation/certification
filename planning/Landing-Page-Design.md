@@ -139,6 +139,22 @@ Design document for the applicant-facing landing page at greensoftware.foundatio
 
 ---
 
+### Section 5b: Certified Organisations
+
+**Heading**: Certified Organisations
+
+**Intro line**: These organisations have self-certified their SCI scores through the program and opted in to be featured.
+
+**Layout**: Logo grid (3–4 per row on desktop, 2 per row on mobile). Each logo links to the organisation's public disclosure on GitHub.
+
+**Content**: Populated dynamically from opted-in certificate holders. Initially empty — display a placeholder message until the first logos are added:
+
+> *Be among the first to certify. [Apply now](#section-how-to-apply)*
+
+**Note**: Only organisations that explicitly opted in during their submission are displayed. The opt-in is in the submission template and can be changed at any time.
+
+---
+
 ### Section 6: Resources
 
 **Heading**: Resources and Documentation

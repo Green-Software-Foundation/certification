@@ -112,8 +112,12 @@ Once a year, conduct a full review:
 2. Publish the disclosure and review record to the GitHub repo (`greensoftware-foundation/sci-certifications`) — both live in the same directory (e.g. `/certifications/2026/GSF-SCI-2026-00042/`).
 3. Update the tracking spreadsheet: decision, certificate ID, expiry date.
 4. Send the approval email: certificate link, disclosure URL, badge download instructions, expiry date.
+5. **Check community opt-in status** in the submission:
+   - If **logo opt-in = yes**: request logo in the approval email; once received, add to the Certified Organisations page.
+   - If **blog opt-in = yes**: queue for follow-up communications outreach (blog post or case study coordination).
+   - Log opt-in status in the tracking spreadsheet.
 
-**Time budget**: ~15–20 minutes per issuance.
+**Time budget**: ~15–20 minutes per issuance (plus follow-up for opted-in organisations).
 
 ### Revision Requested
 

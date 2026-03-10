@@ -114,6 +114,8 @@ Create a shared spreadsheet to track all submissions through their lifecycle.
 | Certificate ID | GSF-SCI-2026-0001 |
 | Certificate Expiry | 2027-03-28 |
 | Link to Review | Link to review record in GitHub disclosure repo |
+| Logo opt-in | Y/N — organisation opted in to be featured on the Certified Organisations page |
+| Blog opt-in | Y/N — organisation willing to participate in a blog post or case study |
 
 Share with all reviewers. This is the single source of truth for program status.
 

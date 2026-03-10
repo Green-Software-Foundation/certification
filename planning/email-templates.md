@@ -111,6 +111,18 @@ Badge assets (SVG and PNG, light and dark variants) are available at: [BADGE-DOW
 
 Your certificate is valid for **1 year** from the date of issuance. You will receive a renewal reminder 30 days before expiry. To renew, submit a full new submission through the same process.
 
+**Featured on our Certified Organisations page:**
+
+[IF LOGO OPT-IN = YES, include this paragraph:]
+
+Thank you for opting in to be featured! Please reply to this email with your organisation logo (SVG or PNG, minimum 200px wide) and confirm how your organisation name should appear. We'll add you to our Certified Organisations page within a few business days.
+
+[IF BLOG OPT-IN = YES, include this paragraph:]
+
+You also indicated interest in participating in a blog post or case study — thank you! Someone from the GSF team will follow up separately to discuss this.
+
+[IF NEITHER OPT-IN, omit both paragraphs above.]
+
 Thank you for your commitment to transparency in software carbon measurement.
 
 Best regards,

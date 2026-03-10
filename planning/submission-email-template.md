@@ -188,6 +188,28 @@ By submitting this application, I hereby:
 
 ---
 
+## Community Participation (Optional)
+
+*These are entirely optional and have no effect on your application or review. You can change your mind at any time by emailing us.*
+
+**May we feature your organisation?**
+
+We maintain a public page of certified organisations to help grow the SCI community. If you opt in, your organisation name and logo will appear on our "Certified Organisations" page alongside other certificate holders.
+
+- [ ] Yes — you may display our organisation name and logo on the GSF certified organisations page
+- [ ] No thank you
+
+*If yes, please attach your organisation logo (SVG or PNG, minimum 200px wide) or let us know where to find it.*
+
+**Would you participate in a blog post or case study?**
+
+We'd love to share your SCI measurement journey with the community — what you learned, what worked, and what was challenging.
+
+- [ ] Yes — we'd be open to participating in a blog post or case study
+- [ ] No thank you
+
+---
+
 ## Optional Attachments
 
 You may attach supporting materials such as a spreadsheet with detailed calculations, an Impact Framework manifest file (IMP/YAML), or links to public documentation. These are encouraged but not required — the questionnaire above is sufficient.

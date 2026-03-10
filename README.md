@@ -24,6 +24,7 @@ The program is free, follows the ISO/IEC 17050 supplier's declaration of conform
 | [Governance.md](planning/Governance.md) | Governance structure: roles, decision authority, committee formation, change management, reporting, and dispute resolution |
 | [PM-Operations-Manual.md](planning/PM-Operations-Manual.md) | Program Manager's operational reference: daily/weekly/monthly/quarterly tasks, decision handling, escalation paths, SLA targets, and success metrics |
 | [Landing-Page-Design.md](planning/Landing-Page-Design.md) | Design document for the applicant-facing landing page on greensoftware.foundation |
+| [email-templates.md](planning/email-templates.md) | Email templates for acknowledgement, revision request, approval, rejection, renewal reminder, and challenge notification |
 
 ### Other Files
 

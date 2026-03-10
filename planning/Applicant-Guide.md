@@ -192,6 +192,12 @@ If rejected, you receive a written explanation and may appeal through the disput
 - To renew, submit a **full new submission** through the same process — renewal is not a lighter or abbreviated review. Renewed certificates receive a new certificate ID linked to the previous one.
 - Expired certificates remain publicly visible as a historical record but are marked "Expired."
 
+### Get featured (optional)
+
+If you opted in during your submission, your organisation name and logo will appear on our **Certified Organisations** page — a public showcase of organisations that have self-certified their SCI scores. This is entirely voluntary and has no effect on your certificate. You can opt in or out at any time by emailing sci-certification@greensoftware.foundation.
+
+You may also be invited to participate in a blog post or case study sharing your SCI measurement journey with the community.
+
 ### Your public disclosure
 
 Your submission is published as-is to the `greensoftware-foundation/sci-certifications` GitHub repository, with two changes: your contact email is redacted, and a certificate metadata header (certificate ID, issue date, expiry date, certificate URL) is prepended. No separate disclosure document is created — your submission is the disclosure. This is a requirement of the program (attestation point 10) and enables the community validation that underpins the self-certification model.
