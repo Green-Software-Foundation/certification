@@ -22,7 +22,7 @@ Any individual or organization that has calculated an SCI score according to ISO
 |------|-------------|----------|----------|
 | 1 | You email your submission | You | — |
 | 2 | You receive an acknowledgement with a tracking number | Automatic | Within 1 business day |
-| 3 | A reviewer checks your submission against a 27-item checklist | GSF reviewer | 10–15 business days |
+| 3 | A reviewer checks your submission against a 13-item checklist | GSF reviewer | 10–15 business days |
 | 4a | **Approved** — certificate issued, disclosure published | GSF | Included in the 10–15 days |
 | 4b | **Revision requested** — you receive specific feedback on what to fix | GSF | Included in the 10–15 days |
 | 4c | **Rejected** — only if the submission is made in bad faith | GSF | Included in the 10–15 days |
@@ -323,10 +323,10 @@ Before you send your submission, confirm every item below. This checklist mirror
 
 | Situation | Outcome |
 |-----------|---------|
-| All 27 items marked Y (or N/A) | **Approved** |
+| All 13 items marked Y | **Approved** |
 | Missing items (e.g., no PUE stated, no exclusion rationales) | **Revision requested** — specific missing items listed by number |
 | Disclosure too vague (e.g., "standard methodology", no data sources named) | **Revision requested** — items marked insufficient with guidance on what to add |
-| Genuinely incomplete submission (5+ items N or I) | **Revision requested** — directed back to this guide and the submission template |
+| Genuinely incomplete submission (4+ items N or I) | **Revision requested** — directed back to this guide and the submission template |
 | Fabricated data, obvious fraud, persistent refusal to engage after revision requests | **Rejected** — requires 2+ reviewers to agree; you may appeal |
 
 **The bar is "adequate", not "perfect."** You do not need uncertainty analysis, exhaustive documentation, or the best possible methodology. You need to provide enough detail that a practitioner can understand what you did and see where your numbers come from. If something is unclear, you will be told exactly what to fix.

@@ -156,7 +156,7 @@ For each approved submission:
 | **30 days before expiry** | Send renewal reminder email |
 | **On expiry** | No immediate action needed — the certificate displays its expiry date, so the public can see it's expired |
 | **Post-expiry** | Contact the holder to ask about renewal |
-| **Holder wants to renew** | They submit a full new submission; it goes through the standard 27-item review |
+| **Holder wants to renew** | They submit a full new submission; it goes through the standard 13-item review |
 | **Holder does not renew** | Remove from active site listings; expired certificate stays publicly visible as historical record, marked "Expired" |
 | **Revocation (mandatory)** | ISO standard itself is withdrawn or the certificate was issued in error — revoke immediately |
 | **Revocation (discretionary)** | Badge misuse, misrepresentation, code of conduct violation — requires review committee decision (quorum of 3, consensus or 2/3 vote) |
@@ -235,7 +235,7 @@ These are operational changes — no approval needed:
 
 These are substantive changes — propose to the SWG:
 
-- Review criteria (the 27-item checklist)
+- Review criteria (the 13-item checklist)
 - Access requirements (who can apply)
 - Fee structure
 - Certificate validity period

@@ -59,7 +59,7 @@ Design document for the applicant-facing landing page at greensoftware.foundatio
 | Step | Label | Description |
 |------|-------|-------------|
 | 1 | **Submit** | Email your SCI calculation, methodology disclosure, and signed attestation |
-| 2 | **Review** | A GSF reviewer checks your submission against a 27-item disclosure checklist (10–15 business days) |
+| 2 | **Review** | A GSF reviewer checks your submission against a 13-item disclosure checklist (10–15 business days) |
 | 3 | **Decision** | Approved, revision requested (with specific feedback), or rejected (bad faith only) |
 | 4 | **Certificate** | You receive a 1-year certificate, downloadable badge, and your disclosure is published on GitHub |
 
@@ -150,7 +150,7 @@ Design document for the applicant-facing landing page at greensoftware.foundatio
 | Resource | Description |
 |----------|-------------|
 | [Submission Template](link) | Pre-structured email template with examples for every field — start here |
-| [Applicant Guide](link) | Full requirements, evaluation criteria, the 27-item checklist, decision rules, badge usage, appeals |
+| [Applicant Guide](link) | Full requirements, evaluation criteria, the 13-item checklist, decision rules, badge usage, appeals |
 | [Example Submission](link) | A completed example submission showing what a successful application looks like |
 | [Example Review Record](link) | What a completed review looks like — see exactly how your submission will be evaluated |
 | [Badge Usage Guidelines](link) | Approved/prohibited language, display standards, asset downloads |

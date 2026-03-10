@@ -98,24 +98,29 @@ The acceptance criteria must answer one question unambiguously: **given a submis
 
 The proposal (Section 5.2) defines what reviewers assess: **disclosure completeness, not ISO conformity or calculation accuracy.** This principle must be operationalized into concrete, checkable criteria.
 
-#### Structure: Single-Pass 27-Item Checklist
+#### Structure: Single-Pass 13-Item Checklist
 
-Every submission is evaluated in a single pass through a 27-item checklist. The reviewer works through the submission top to bottom, marking each item **Y** (present and adequate), **N** (missing), or **I** (insufficient — present but too vague for a practitioner to understand). Items marked *(if applicable)* can be marked N/A when the condition doesn't apply.
+Every submission is evaluated in a single pass through a 13-item checklist. The reviewer works through the submission top to bottom, marking each item **Y** (present and adequate), **N** (missing), or **I** (insufficient — present but too vague for a practitioner to understand).
 
 **The question for every item**: *"Could a knowledgeable practitioner reading this disclosure understand and evaluate this part of the calculation?"*
 
 **Target review time**: ~45 minutes for a routine submission.
 
-The full checklist with per-item guidance, pass/fail examples, and "When to mark I" reference table is in the **Reviewer Guide**. The 27 items cover:
+The full checklist with per-item guidance, pass/fail examples, and "When to mark I" reference table is in the **Reviewer Guide**. The 13 items cover:
 
-- **Applicant and software** (items 1–4): Organization, software, SCI score, dates
-- **Software boundary** (items 5–7): Included/excluded components, shared infrastructure allocation
-- **Functional unit** (items 8–11): Unit, rationale, counting method, total
-- **Energy** (items 12–14): Total energy, **per-component** breakdown (each component: value + method + data source), PUE
-- **Carbon intensity** (items 15–19): CI value (per-region if multi-region), location, approach, data source with year, per-region weights
-- **Embodied emissions** (items 20–22): Total M or justification if zero, **per-component** breakdown (each component: total embodied + allocation + value + source), allocation method with parameters
-- **Methodology, assumptions, limitations** (items 23–25): Overall approach, specific assumptions, specific limitations
-- **Calculation and attestation** (items 26–27): SCI formula with numbers, signed attestation
+1. **Applicant and software details** — org, contact, software name/version/description
+2. **SCI score and measurement period** — score with units, start/end dates
+3. **Software boundary** — included/excluded components with rationales, shared infra if applicable
+4. **Functional unit (R)** — named, rationale, counting method, total units
+5. **Energy (E) — total and PUE** — total kWh, PUE stated or N/A
+6. **Energy (E) — per-component breakdown** — each component: value, method, data source
+7. **Carbon intensity (I)** — value, location, approach, source with year, per-region if multi-region
+8. **Embodied emissions (M)** — total or justified M=0, per-component with allocation if M>0
+9. **Methodology approach** — measurement / calculation / hybrid
+10. **Assumptions** — at least one specific with justification
+11. **Limitations** — at least one specific
+12. **Calculation shown** — SCI formula with actual numbers
+13. **Signed attestation** — all 10 points, signed
 
 **Decision rule**:
 
@@ -153,7 +158,7 @@ A step-by-step procedure that any reviewer follows for every submission, produci
 
 #### Step 2: Review (Reviewer, ~45 minutes)
 
-- Reviewer works through the 27-item checklist, marking each item Y, N, I, or N/A
+- Reviewer works through the 13-item checklist, marking each item Y, N, I, or N/A
 - For any item marked I, writes a brief note explaining what is insufficient and what the applicant needs to add
 - Applies the decision rule:
   - All Y (or N/A) → **Recommend Approve**
@@ -187,50 +192,34 @@ Reviewer:         [Name]
 Review Date:      [Date]
 Time Spent:       [hours]
 
-CHECKLIST (Y = present & adequate, N = missing, I = insufficient, N/A = not applicable)
+CHECKLIST (Y = present & adequate, N = missing, I = insufficient)
 
-Applicant and software:
-  1.  Organization, contact name, contact email:                    [ ]
-  2.  Software name, version, description:                          [ ]
-  3.  SCI score with units and functional unit:                     [ ]
-  4.  Measurement start and end dates:                              [ ]
-
-Software boundary:
-  5.  Included components with reasons:                             [ ]
-  6.  Excluded components with system-specific rationales:          [ ]
-  7.  (If shared) Allocation method and share:                      [ ]
-
-Functional unit:
-  8.  Functional unit named:                                        [ ]
-  9.  Rationale (connects to scaling/value):                        [ ]
-  10. Counting/measurement method:                                  [ ]
-  11. Total units in period:                                        [ ]
-
-Energy:
-  12. Total energy (kWh):                                           [ ]
-  13. Per-component: value + method + data source each:             [ ]
-  14. PUE stated or N/A:                                            [ ]
-
-Carbon intensity:
-  15. CI value (per-region if multi-region):                        [ ]
-  16. Location(s):                                                  [ ]
-  17. Approach (location/market-based):                             [ ]
-  18. Data source with year:                                        [ ]
-  19. (If multi-region) Per-region weights:                         [ ]
-
-Embodied emissions:
-  20. Total M or justification if zero:                             [ ]
-  21. (If M>0) Per-component: total + allocation + value + source:  [ ]
-  22. (If M>0) Allocation method with parameters:                   [ ]
-
-Methodology, assumptions, limitations:
-  23. Overall approach:                                             [ ]
-  24. Specific assumption(s) with justification:                    [ ]
-  25. Specific limitation(s):                                       [ ]
-
-Calculation and attestation:
-  26. SCI formula with numbers:                                     [ ]
-  27. Signed attestation (10 points):                               [ ]
+  1.  Applicant and software details:                              [ ]
+      (org, contact, software name/version/description)
+  2.  SCI score and measurement period:                            [ ]
+      (score with units incl. functional unit; start/end dates)
+  3.  Software boundary:                                           [ ]
+      (included/excluded components with rationales; shared infra if applicable)
+  4.  Functional unit (R):                                         [ ]
+      (named, rationale, counting method, total units)
+  5.  Energy (E) — total and PUE:                                  [ ]
+      (total kWh; PUE stated or N/A)
+  6.  Energy (E) — per-component breakdown:                        [ ]
+      (each component: value, method, data source)
+  7.  Carbon intensity (I):                                        [ ]
+      (value, location, approach, source with year; per-region if multi-region)
+  8.  Embodied emissions (M):                                      [ ]
+      (total or justified M=0; per-component with allocation if M>0)
+  9.  Methodology approach:                                        [ ]
+      (measurement / calculation / hybrid)
+  10. Assumptions:                                                  [ ]
+      (at least one specific with justification)
+  11. Limitations:                                                  [ ]
+      (at least one specific)
+  12. Calculation shown:                                            [ ]
+      (SCI formula with actual numbers)
+  13. Signed attestation:                                           [ ]
+      (all 10 points, signed)
 
 Result:           APPROVE / REVISION REQUESTED / REJECT
 
@@ -275,7 +264,7 @@ Even with a structured checklist, different reviewers may interpret "adequate" d
    - Functional unit (unit chosen, rationale, measurement method)
    - E, I, and M details (values, data sources, methodology for each)
    - Key assumptions and known limitations
-4. **What "sufficient disclosure" looks like** — publish the 27-item review checklist so applicants know exactly what standard their submission will be measured against. Transparency about the criteria is itself a fairness mechanism.
+4. **What "sufficient disclosure" looks like** — publish the 13-item review checklist so applicants know exactly what standard their submission will be measured against. Transparency about the criteria is itself a fairness mechanism.
 5. **Accepted formats** (PDF, Word, plain text email, Markdown; IMP/YAML optional)
 6. **How to submit** (email to sci-certification@greensoftware.foundation)
 7. **What happens next** (acknowledgement → review in 10-15 business days → approve / request revision / reject)
@@ -431,7 +420,7 @@ One 90-minute session with the full review committee.
 **Agenda**:
 
 1. **Program overview** (15 min): The proposal, what GSF does/doesn't verify, the self-certification model
-2. **Acceptance criteria walkthrough** (20 min): The 27-item checklist, Y/N/I marking, the decision rule
+2. **Acceptance criteria walkthrough** (20 min): The 13-item checklist, Y/N/I marking, the decision rule
 3. **Calibration exercise** (40 min): All reviewers independently review the same 2 example submissions, then compare results and discuss divergences. Agree on the Y vs I boundary for key items.
 4. **Edge cases** (10 min): M=0, unusual functional units, vague data sources, "internal tools" as sole data source — where is the line?
 5. **Operational workflow** (5 min): Assignment, the review record, the tracking spreadsheet, email templates
@@ -539,7 +528,7 @@ Once the committee has processed ~10 submissions under dual review with consiste
 - [ ] Quarterly reporting cadence agreed with SWG and Steering Committee
 
 ### Acceptance Criteria and Process
-- [ ] 27-item review checklist documented and approved by committee
+- [ ] 13-item review checklist documented and approved by committee
 - [ ] Y/N/I marking guidance finalized with concrete pass/fail boundary examples
 - [ ] Decision rules documented (approve if all Y; revise if any N or I; reject only for bad faith with dual concurrence)
 - [ ] Review record template finalized

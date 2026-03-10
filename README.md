@@ -4,7 +4,7 @@ Planning and operational documents for the Green Software Foundation's Self-Cert
 
 ## About the Program
 
-This program enables organizations to **self-certify conformity** with the ISO/IEC 21031:2024 standard (SCI). Organizations submit their SCI calculations along with a signed attestation and full methodology disclosure. A GSF review committee verifies **disclosure completeness** -- not calculation accuracy -- through a structured 27-item review checklist. Approved submissions receive a 1-year certificate issued via the GSF badging platform, and all disclosures are published publicly on GitHub for community review.
+This program enables organizations to **self-certify conformity** with the ISO/IEC 21031:2024 standard (SCI). Organizations submit their SCI calculations along with a signed attestation and full methodology disclosure. A GSF review committee verifies **disclosure completeness** -- not calculation accuracy -- through a structured 13-item review checklist. Approved submissions receive a 1-year certificate issued via the GSF badging platform, and all disclosures are published publicly on GitHub for community review.
 
 The program is free, follows the ISO/IEC 17050 supplier's declaration of conformity framework, and targets a ~15 business day review turnaround.
 
@@ -34,7 +34,7 @@ The program is free, follows the ISO/IEC 17050 supplier's declaration of conform
 ## Key Concepts
 
 - **Self-certification, not third-party audit**: Organizations declare their own conformity with ISO/IEC 21031:2024. GSF verifies disclosure completeness, not accuracy.
-- **Single-pass review**: A 27-item checklist covering completeness and disclosure sufficiency. Each item is marked Y (adequate), N (missing), or I (insufficient).
+- **Single-pass review**: A 13-item checklist covering completeness and disclosure sufficiency. Each item is marked Y (adequate), N (missing), or I (insufficient).
 - **Public disclosure**: All approved submissions are published to enable community validation and peer review.
 - **1-year validity**: Certificates expire annually and can be renewed with an updated submission.
 

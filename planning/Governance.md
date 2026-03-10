@@ -109,7 +109,7 @@ If the committee drops below 3 active members:
 
 | Decision | Who decides | Process |
 |----------|-----------|---------|
-| **Approve** | Single reviewer | Reviewer completes the 27-item checklist; all items Y or N/A |
+| **Approve** | Single reviewer | Reviewer completes the 13-item checklist; all items Y |
 | **Request revision** | Single reviewer | Reviewer identifies items marked N or I with specific feedback |
 | **Reject** | 2 reviewers must concur | First reviewer provides written rationale; Program Owner assigns second reviewer for independent assessment; both must agree |
 
@@ -142,7 +142,7 @@ Changes to operational procedures (email templates, assignment method, tracking 
 
 Changes to the following require **Software Standards Working Group approval**:
 
-- Review criteria (the 27-item checklist, Y/N/I marking guidance, pass/fail examples)
+- Review criteria (the 13-item checklist, Y/N/I marking guidance, pass/fail examples)
 - Access requirements (who can apply, eligibility criteria)
 - Fee structure (currently free)
 - Certificate validity period
