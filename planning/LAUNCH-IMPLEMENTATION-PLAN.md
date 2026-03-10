@@ -170,10 +170,10 @@ A step-by-step procedure that any reviewer follows for every submission, produci
 
 #### Step 5: Record Keeping (Program Owner)
 
-- Every review produces a completed review record stored internally
+- Every review produces a completed review record stored in the GitHub disclosure repo alongside the submission (e.g. `/certifications/2026/GSF-SCI-2026-00042/review-record.md`). This keeps the review trail co-located with the disclosure it assessed.
 - Every decision (approve, revise, reject) is logged in the tracking spreadsheet with date
 - Review records are retained for the life of the certificate + 1 year
-- Precedent-setting decisions (unusual functional units, novel methodologies, edge cases) are noted in a running "precedent log" that reviewers can reference for future submissions
+- Precedent-setting decisions (unusual functional units, novel methodologies, edge cases) are noted in the precedent log (`precedent-log.md` in the top-level certification repo) that reviewers can reference for future submissions
 
 ### 2.3 Review Record Template
 
@@ -252,7 +252,7 @@ Even with a structured checklist, different reviewers may interpret "adequate" d
 
 2. **Dual review for the first 10 submissions**: During the pilot and early launch, every submission is reviewed by two reviewers independently. Compare results. If reviewers disagree on Y vs I for any item, discuss and align. This builds shared understanding of the checklist.
 
-3. **Precedent log**: Record edge-case decisions and the reasoning. When a similar case arises, reviewers reference the precedent rather than starting from scratch. This creates case law that makes the process more predictable over time.
+3. **Precedent log** (`precedent-log.md` in the top-level certification repo): Record edge-case decisions and the reasoning. When a similar case arises, reviewers reference the precedent rather than starting from scratch. This creates case law that makes the process more predictable over time.
 
 4. **Monthly calibration check**: At the monthly committee meeting, review one recently-approved and one recently-revised submission as a group. Confirm the committee would have reached the same decisions. Adjust checklist guidance if needed.
 
@@ -543,7 +543,7 @@ Once the committee has processed ~10 submissions under dual review with consiste
 - [ ] Y/N/I marking guidance finalized with concrete pass/fail boundary examples
 - [ ] Decision rules documented (approve if all Y; revise if any N or I; reject only for bad faith with dual concurrence)
 - [ ] Review record template finalized
-- [ ] Precedent log created (empty, ready for first entries)
+- [ ] Precedent log created (`precedent-log.md` in the top-level certification repo, empty, ready for first entries)
 - [ ] Review procedure documented step-by-step
 
 ### Documents

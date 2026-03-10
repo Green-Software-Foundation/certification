@@ -21,12 +21,15 @@ The program is free, follows the ISO/IEC 17050 supplier's declaration of conform
 | [Badge-Usage-Guidelines.md](planning/Badge-Usage-Guidelines.md) | Badge specifications, permitted/prohibited uses, display examples, and compliance enforcement |
 | [IMP-Schema-Documentation.md](planning/IMP-Schema-Documentation.md) | Impact Manifest Protocol (IMP) schema for optional structured YAML/JSON submissions |
 | [Governance.md](planning/Governance.md) | Governance structure: roles, decision authority, committee formation, change management, reporting, and dispute resolution |
+| [PM-Operations-Manual.md](planning/PM-Operations-Manual.md) | Program Manager's operational reference: daily/weekly/monthly/quarterly tasks, decision handling, escalation paths, SLA targets, and success metrics |
+| [Landing-Page-Design.md](planning/Landing-Page-Design.md) | Design document for the applicant-facing landing page on greensoftware.foundation |
 
 ### Other Files
 
 | File | Description |
 |------|-------------|
 | [tracking-sheet.csv](tracking-sheet.csv) | Submission tracking spreadsheet for managing applications through the review lifecycle |
+| [precedent-log.md](precedent-log.md) | Running log of edge-case decisions and reasoning for reviewer reference |
 
 ## Key Concepts
 

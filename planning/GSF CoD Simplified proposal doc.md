@@ -536,8 +536,8 @@ Reviewers evaluate submissions against a **Disclosure Verification Checklist** (
 
 ### 5.5 Review Documentation and Reporting
 
-- All review decisions documented internally with completed review records
-- Precedent-setting decisions added to reviewer guidance (precedent log)
+- All review decisions documented with completed review records, stored in the GitHub disclosure repo alongside the submission they assessed (e.g. `/certifications/2026/GSF-SCI-2026-00042/review-record.md`)
+- Precedent-setting decisions added to the precedent log (`precedent-log.md` in the top-level certification repo)
 - The Program Owner produces quarterly reports to the Software Standards Working Group and the GSF Steering Committee covering: submission volume, approval/revision/rejection rates, average review time, inter-reviewer agreement, community challenges, badge misuse incidents, and precedent-setting decisions
 
 ---

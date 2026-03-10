@@ -163,7 +163,7 @@ Rejection requires:
 
 ### Submitting Your Review
 
-- Submit your completed review record to the Program Owner.
+- Submit your completed review record to the Program Owner. The Program Owner will store it in the GitHub disclosure repo alongside the submission (e.g. `/certifications/2026/GSF-SCI-2026-00042/review-record.md`).
 - **For approvals**: the Program Owner issues the certificate via the badging platform's issuance API (see Section 9) and publishes the disclosure to GitHub.
 - **For revision requests**: the Program Owner sends the feedback email to the applicant with your specific notes.
 - **For rejections**: the Program Owner assigns a second reviewer for independent assessment before the final decision.
@@ -289,7 +289,7 @@ The following mechanisms keep assessments consistent across reviewers. You do no
 
 2. **Dual review for the first 10 submissions**: During the pilot and early launch, every submission is reviewed by two reviewers independently. Results are compared; disagreements on Y vs I are discussed and resolved.
 
-3. **Precedent log**: Edge-case decisions and their reasoning are recorded. When a similar case arises, reviewers reference the precedent rather than starting from scratch.
+3. **Precedent log** (`precedent-log.md` in the top-level certification repo): Edge-case decisions and their reasoning are recorded. When a similar case arises, reviewers reference the precedent rather than starting from scratch.
 
 4. **Monthly calibration check**: At the monthly committee meeting, one recently-approved and one recently-revised submission are reviewed as a group. The committee confirms it would have reached the same decisions.
 
