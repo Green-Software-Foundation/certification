@@ -29,6 +29,7 @@ The Program Owner is answerable to the SWG Chair, who may override any decision.
 
 The SWG Chair has:
 
+- **Certificate sign-off authority**: after a reviewer recommends approval, the SWG Chair (or GSF Executive Director) provides explicit sign-off following a 7-day SWG objection period. No certificate is issued without this sign-off.
 - **Override authority** on any program decision, at any time
 - **Adjudication authority** when brought in by the Program Owner or through dispute escalation
 - **Final appeal authority** for Phase 3 disputes (decision is final and not subject to further appeal)
@@ -109,7 +110,8 @@ If the committee drops below 3 active members:
 
 | Decision | Who decides | Process |
 |----------|-----------|---------|
-| **Approve** | Single reviewer | Reviewer completes the 7-item checklist; all items Y |
+| **Recommend approval** | Single reviewer | Reviewer completes the 7-item checklist; all items Y → recommends approval |
+| **SWG sign-off** | SWG Chair or GSF Executive Director | After reviewer recommends approval, the SWG is notified and has a **7-day objection period**. If no objections are raised, the SWG Chair or GSF Executive Director provides explicit sign-off and the certificate is issued. If an objection is raised, the objection must be resolved before issuance can proceed. |
 | **Request revision** | Single reviewer | Reviewer identifies items marked N or I with specific feedback |
 | **Reject** | 2 reviewers must concur | First reviewer provides written rationale; Program Owner assigns second reviewer for independent assessment; both must agree |
 
@@ -144,7 +146,7 @@ Changes to the following require **Software Standards Working Group approval**:
 
 - Review criteria (the 7-item checklist, Y/N/I marking guidance, pass/fail examples)
 - Access requirements (who can apply, eligibility criteria)
-- Fee structure (currently free)
+- Fee structure (currently free for GSF members)
 - Certificate validity period
 - Dispute resolution procedures
 - Badge usage rules

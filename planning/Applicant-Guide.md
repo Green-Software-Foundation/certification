@@ -2,17 +2,17 @@
 
 ## What This Program Is
 
-The Green Software Foundation (GSF) Self-Certification Program lets any organization declare that its Software Carbon Intensity (SCI) calculation conforms to ISO/IEC 21031:2024. You self-certify conformity. GSF then checks that your disclosure is complete and detailed enough for the public to understand and evaluate your calculation. If it is, GSF issues a certificate.
+The Green Software Foundation (GSF) Self-Certification Program lets GSF member organizations declare that their Software Carbon Intensity (SCI) calculation conforms to ISO/IEC 21031:2024. You self-certify conformity. GSF then checks that your disclosure is complete and detailed enough for the public to understand and evaluate your calculation. If it is, GSF issues a certificate.
 
 **This is not a third-party audit.** GSF does not validate the accuracy of your numbers, assess whether your methodology is correct, or confirm that your calculation actually conforms to ISO/IEC 21031:2024. You are responsible for all of that. GSF verifies only that your disclosure is complete and sufficiently detailed. Your submission is then published so the community can review it.
 
-The program is **free**. There is no fee to apply, and no fee to receive or renew a certificate.
+The program is **free** for GSF members. There is no additional fee to apply, receive a certificate, or renew. Applicants must be current members of the Green Software Foundation.
 
 ---
 
 ## Who Can Apply
 
-Any individual or organization that has calculated an SCI score according to ISO/IEC 21031:2024. There are no restrictions on organization size, type, location, software domain, or calculation methodology.
+The program is open to **GSF member organizations** that have calculated an SCI score according to ISO/IEC 21031:2024. Applicants must be current members of the Green Software Foundation. Within that membership, there are no further restrictions on organization size, type, location, software domain, or calculation methodology.
 
 ---
 
@@ -23,13 +23,15 @@ Any individual or organization that has calculated an SCI score according to ISO
 | 1 | You email your submission | You | — |
 | 2 | You receive an acknowledgement with a tracking number | Automatic | Within 1 business day |
 | 3 | A reviewer checks your submission against a 7-item checklist | GSF reviewer | 10–15 business days |
-| 4a | **Approved** — certificate issued, disclosure published | GSF | Included in the 10–15 days |
+| 4a | **Approved** — reviewer recommends approval | GSF reviewer | Included in the 10–15 days |
 | 4b | **Revision requested** — you receive specific feedback on what to fix | GSF | Included in the 10–15 days |
 | 4c | **Rejected** — only if the submission is made in bad faith | GSF | Included in the 10–15 days |
-| 5 | If revisions were requested, you fix and resubmit | You | At your pace |
-| 6 | Resubmission re-enters the review queue | GSF reviewer | Another 10–15 business days |
+| 5 | **SWG sign-off** — the Software Standards Working Group has a 7-day objection period; the SWG Chair or Executive Director then provides sign-off | SWG | 7 calendar days after step 4a |
+| 6 | **Certificate issued** — certificate issued, disclosure published | GSF | After sign-off |
+| 7 | If revisions were requested, you fix and resubmit | You | At your pace |
+| 8 | Resubmission re-enters the review queue | GSF reviewer | Another 10–15 business days (plus sign-off period if approved) |
 
-Complex cases may extend to 20 business days. You will be notified of any delay.
+Complex cases may extend to 20 business days for the review step. You will be notified of any delay. The total time from submission to certificate issuance is typically **3–4 weeks** (review period plus sign-off period).
 
 ---
 
@@ -154,10 +156,12 @@ Here is what the reviewer checks, and what "adequate" looks like for the items w
 
 Your submission passes the review. What happens next:
 
-1. GSF issues a certificate on the badging platform with a unique certificate ID (format: `GSF-SCI-YYYY-NNNNN`).
-2. Your submission is published to the public GitHub repository (`greensoftware-foundation/sci-certifications`) with your contact email redacted and a certificate metadata header added.
-3. You receive a short email with your certificate link, disclosure URL, badge download instructions, and expiry date.
-4. Your certificate is **valid for 1 year** from the date of issuance.
+1. The reviewer recommends approval. Your submission then enters a **7-day objection period** during which the Software Standards Working Group may raise objections. This is a governance safeguard — in practice, most submissions proceed without objection.
+2. After the objection period, the SWG Chair or GSF Executive Director provides explicit sign-off.
+3. GSF issues a certificate on the badging platform with a unique certificate ID (format: `GSF-SCI-YYYY-NNNNN`).
+4. Your submission is published to the public GitHub repository (`greensoftware-foundation/sci-certifications`) with your contact email redacted and a certificate metadata header added.
+5. You receive a short email with your certificate link, disclosure URL, badge download instructions, and expiry date.
+6. Your certificate is **valid for 1 year** from the date of issuance.
 
 ### Revision Requested
 
@@ -279,7 +283,10 @@ If your submission is rejected or you disagree with a review decision, you may a
 |-------|----------|
 | Acknowledgement after submission | Within 1 business day |
 | Initial review decision | 10–15 business days (up to 20 for complex cases) |
-| Resubmission review | 10–15 business days from resubmission |
+| SWG objection period (after approval recommendation) | 7 calendar days |
+| SWG Chair / Executive Director sign-off | After objection period expires |
+| Total time: submission to certificate | ~3–4 weeks (review + sign-off) |
+| Resubmission review | 10–15 business days from resubmission (plus sign-off period) |
 | Certificate validity | 1 year from issuance |
 | Renewal reminder | 30 days before expiry |
 | Community challenge — initial review | 5 business days |

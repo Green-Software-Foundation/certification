@@ -106,7 +106,7 @@ Create a shared spreadsheet to track all submissions through their lifecycle.
 | Date Received | 2026-03-15 |
 | Applicant Organisation | Acme Corp |
 | Software Name | E-commerce API v2.1 |
-| Status | Received / Under Review / Revision Requested / Approved / Rejected |
+| Status | Received / Under Review / Revision Requested / Awaiting Sign-Off / Approved / Rejected |
 | Assigned Reviewer(s) | Jane Smith, John Doe |
 | Date Assigned | 2026-03-16 |
 | Date Decision Made | 2026-03-28 |
@@ -227,9 +227,20 @@ A step-by-step procedure that any reviewer follows for every submission, produci
 
 - Reviewer completes the review record (see template below)
 - Submits recommendation to the Program Owner
-- For approvals: Program Owner issues certificate and publishes disclosure
+- For approvals: Program Owner initiates the SWG sign-off process (see Step 3b)
 - For revision requests: Program Owner sends feedback email with the specific items that need attention
 - For rejections: Program Owner assigns a second reviewer for independent assessment before final decision
+
+#### Step 3b: SWG Sign-Off (Program Owner, 7 days)
+
+When a reviewer recommends approval, the certificate cannot be issued until the SWG Chair or GSF Executive Director provides explicit sign-off:
+
+1. Program Owner notifies the SWG that a submission has been recommended for approval (submission ID, applicant, software name, link to review record).
+2. Tracking spreadsheet status → "Awaiting Sign-Off."
+3. The SWG has **7 calendar days** to raise objections. Any SWG member may object with a specific rationale.
+4. **No objections**: after the 7-day period, the SWG Chair or GSF Executive Director confirms sign-off (email or written confirmation).
+5. **Objection raised**: Program Owner reviews the objection with the reviewer and the objecting member. Must be resolved before sign-off. If the objection changes the recommendation, treat as revision requested.
+6. After sign-off: proceed to certificate issuance (Step 4).
 
 #### Step 4: Record Keeping (Program Owner)
 
@@ -400,7 +411,7 @@ Whichever method is chosen, the approval email template (Section 3.3) must inclu
 
 Define the step-by-step process for issuing a certificate after a submission is approved. This is part of the reviewer procedure (Step 5 in Section 2.2) but the mechanical details depend on the badging platform.
 
-**Issuance steps** (Program Owner, after reviewer recommends approval):
+**Issuance steps** (Program Owner, after SWG sign-off is received):
 
 1. Open the badging platform admin
 2. Create a new credential from the self-certification template
@@ -433,14 +444,15 @@ Ongoing management tasks that need a defined process before launch:
 
 ### 3.3 Draft Email Templates
 
-Six templates needed:
+Seven templates needed:
 
 1. **Acknowledgement**: tracking number, expected timeline, link to requirements
 2. **Revision Request**: specific feedback tied to checklist items, invitation to resubmit
 3. **Approval**: certificate ID, certificate link, badge guidelines link, validity dates, disclosure URL
 4. **Rejection**: specific rationale, right to appeal per proposal Section 9
 5. **Renewal Reminder** (30 days before expiry): certificate ID, expiry date, how to renew
-6. **Challenge Notification**: notification to certificate holder that a community challenge has been submitted (per proposal Section 8.5)
+6. **SWG Sign-Off Notification**: sent to the SWG when a reviewer recommends approval — starts the 7-day objection period
+7. **Challenge Notification**: notification to certificate holder that a community challenge has been submitted (per proposal Section 8.5)
 
 ---
 
@@ -547,7 +559,7 @@ Once the committee has processed ~10 submissions under dual review with consiste
 | 10 | Simplified application design | **Done** | `Simplified-Application-Design.md` |
 | 11 | Example submission and review record | **Done** | `submissions/example-greentech-inventory-api/` |
 | 12 | Precedent log | **Done** | `precedent-log.md` (empty, ready for entries) |
-| 13 | Email templates (6) | **Done** | `email-templates.md` — acknowledgement, revision request, approval, rejection, renewal reminder, challenge notification |
+| 13 | Email templates (7) | **Done** | `email-templates.md` — acknowledgement, revision request, approval, rejection, renewal reminder, SWG sign-off notification, challenge notification |
 | 14 | Certificate content template (badging platform) | **To do** | See Section 3.2.1 for spec |
 | 15 | Badge design (SVG/PNG, light/dark) | **To do** | See Section 3.2.2 for spec |
 | 16 | Certificate issuance workflow (tested) | **To do** | See Section 3.2.4 for steps; needs platform implementation |

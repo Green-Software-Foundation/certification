@@ -107,7 +107,7 @@ Rejection requires:
 ### Submitting Your Review
 
 - Submit your completed review record to the Program Owner. The Program Owner will store it in the GitHub disclosure repo alongside the submission (e.g. `/certifications/2026/GSF-SCI-2026-00042/review-record.md`).
-- **For approvals**: the Program Owner issues the certificate via the badging platform's issuance API (see Section 9) and publishes the disclosure to GitHub.
+- **For approvals**: the Program Owner initiates the **SWG sign-off process** — the Software Standards Working Group is notified and has a 7-day objection period. After the period expires with no objections, the SWG Chair or GSF Executive Director provides explicit sign-off, and the Program Owner issues the certificate via the badging platform's issuance API (see Section 9) and publishes the disclosure to GitHub.
 - **For revision requests**: the Program Owner sends the feedback email to the applicant with your specific notes.
 - **For rejections**: the Program Owner assigns a second reviewer for independent assessment before the final decision.
 
@@ -215,11 +215,9 @@ The following mechanisms keep assessments consistent across reviewers. You do no
 
 ---
 
-## 9. Issuing a Certificate (After Approval)
+## 9. Issuing a Certificate (After Approval and Sign-Off)
 
-Once a submission is approved, the Program Owner (or designated
-reviewer) issues the certificate by calling the badging platform's
-issuance API. The platform (`badges.greensoftware.foundation`) then
+Once a submission is approved by the reviewer **and** the SWG Chair or GSF Executive Director has provided sign-off following the 7-day objection period, the Program Owner issues the certificate by calling the badging platform's issuance API. The platform (`badges.greensoftware.foundation`) then
 generates the certificate, uploads it, and emails the applicant.
 
 ### Step-by-step

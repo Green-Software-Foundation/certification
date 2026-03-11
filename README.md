@@ -6,7 +6,7 @@ Planning and operational documents for the Green Software Foundation's Self-Cert
 
 This program enables organizations to **self-certify conformity** with the ISO/IEC 21031:2024 standard (SCI). Organizations submit their SCI calculations along with a signed attestation and full methodology disclosure. A GSF review committee verifies **disclosure completeness** -- not calculation accuracy -- through a structured 7-item review checklist. Approved submissions receive a 1-year certificate issued via the GSF badging platform, and all disclosures are published publicly on GitHub for community review.
 
-The program is free, follows the ISO/IEC 17050 supplier's declaration of conformity framework, and targets a ~15 business day review turnaround.
+The program is free, follows the ISO/IEC 17050 supplier's declaration of conformity framework, and targets a ~3–4 week turnaround from submission to certificate (10–15 business day review plus 7-day SWG sign-off period).
 
 ## Repository Contents
 
@@ -24,7 +24,8 @@ The program is free, follows the ISO/IEC 17050 supplier's declaration of conform
 | [Governance.md](planning/Governance.md) | Governance structure: roles, decision authority, committee formation, change management, reporting, and dispute resolution |
 | [PM-Operations-Manual.md](planning/PM-Operations-Manual.md) | Program Manager's operational reference: daily/weekly/monthly/quarterly tasks, decision handling, escalation paths, SLA targets, and success metrics |
 | [Landing-Page-Design.md](planning/Landing-Page-Design.md) | Design document for the applicant-facing landing page on greensoftware.foundation |
-| [email-templates.md](planning/email-templates.md) | Email templates for acknowledgement, revision request, approval, rejection, renewal reminder, and challenge notification |
+| [email-templates.md](planning/email-templates.md) | Email templates for acknowledgement, revision request, approval, rejection, renewal reminder, SWG sign-off notification, and challenge notification |
+| [claude-review-prompt.md](planning/claude-review-prompt.md) | Prompt for AI-assisted submission review — paste into Claude with submission materials to get a draft review record |
 
 ### Other Files
 

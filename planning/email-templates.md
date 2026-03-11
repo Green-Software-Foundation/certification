@@ -20,8 +20,9 @@ Your submission has been assigned tracking number **[TRACKING-ID]** and has ente
 
 **What happens next:**
 
-- A reviewer will evaluate your submission against our 7-item disclosure checklist.
-- You should receive a decision within **10–15 business days**.
+- A reviewer will evaluate your submission against our 7-item disclosure checklist within **10–15 business days**.
+- If the reviewer recommends approval, the Software Standards Working Group has a 7-day sign-off period before your certificate is issued.
+- Total time from submission to certificate is typically **3–4 weeks**.
 - If anything in your submission needs attention, you'll receive specific feedback identifying exactly what to fix.
 
 **Useful links:**
@@ -74,7 +75,7 @@ GSF SCI Self-Certification Program
 
 ## 3. Approval
 
-Sent when a submission passes all 7 checklist items.
+Sent after a submission passes all 7 checklist items and receives SWG sign-off.
 
 ---
 
@@ -201,7 +202,44 @@ GSF SCI Self-Certification Program
 
 ---
 
-## 6. Challenge Notification
+## 6. SWG Sign-Off Notification
+
+Sent to the Software Standards Working Group when a reviewer recommends approval. Starts the 7-day objection period.
+
+---
+
+**Subject:** SCI Self-Certification — Approval Recommended — [TRACKING-ID] — 7-Day Objection Period
+
+Dear SWG members,
+
+A submission has been reviewed and **recommended for approval**. Per program governance, the SWG has a **7-day objection period** before sign-off and certificate issuance.
+
+**Submission details:**
+
+| | |
+|---|---|
+| **Tracking ID** | [TRACKING-ID] |
+| **Organization** | [ORGANIZATION-NAME] |
+| **Software** | [SOFTWARE-NAME] |
+| **SCI Score** | [SCI-SCORE] [SCI-UNIT] |
+| **Reviewer** | [REVIEWER-NAME] |
+| **Review Date** | [REVIEW-DATE] |
+| **Review Record** | [LINK-TO-REVIEW-RECORD] |
+
+**Reviewer recommendation:** Approve — all 7 checklist items marked Y.
+
+**To raise an objection:**
+
+Reply to this email within **7 calendar days** (by [OBJECTION-DEADLINE]) with a specific rationale for your objection. Objections must identify a concrete concern — e.g., a checklist item you believe was incorrectly assessed, a conflict of interest, or a procedural issue.
+
+**If no objections are received by [OBJECTION-DEADLINE]**, the SWG Chair or GSF Executive Director should reply with sign-off confirmation, and the certificate will be issued.
+
+Best regards,
+GSF SCI Self-Certification Program
+
+---
+
+## 7. Challenge Notification
 
 Sent to a certificate holder when a community challenge is submitted against their certificate.
 

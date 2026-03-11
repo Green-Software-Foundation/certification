@@ -33,7 +33,7 @@ Design document for the applicant-facing landing page at greensoftware.foundatio
 
 **Body** (keep to 3–4 sentences):
 
-> The GSF Self-Certification Program lets any organization declare that its SCI calculation conforms to ISO/IEC 21031:2024. You submit your calculation and methodology. GSF checks that your disclosure is complete and detailed enough for the community to understand and evaluate. If it is, you receive a certificate.
+> The GSF Self-Certification Program lets GSF member organizations declare that their SCI calculation conforms to ISO/IEC 21031:2024. You submit your calculation and methodology. GSF checks that your disclosure is complete and detailed enough for the community to understand and evaluate. If it is, you receive a certificate.
 
 **Callout box**:
 
@@ -43,9 +43,9 @@ Design document for the applicant-facing landing page at greensoftware.foundatio
 
 | | |
 |---|---|
-| **Free** | No fees to apply or renew |
-| **Open** | Any organization, any size, any domain |
-| **Fast** | Decision within 10–15 business days |
+| **Free** | No additional fees beyond GSF membership |
+| **Open** | Any GSF member organization, any size, any domain |
+| **Fast** | Review in 10–15 business days, certificate in ~3–4 weeks |
 | **1-year certificate** | Renew annually with an updated submission |
 
 ---
@@ -61,7 +61,8 @@ Design document for the applicant-facing landing page at greensoftware.foundatio
 | 1 | **Submit** | Email your SCI calculation, methodology disclosure, and signed attestation |
 | 2 | **Review** | A GSF reviewer checks your submission against a 7-item disclosure checklist (10–15 business days) |
 | 3 | **Decision** | Approved, revision requested (with specific feedback), or rejected (bad faith only) |
-| 4 | **Certificate** | You receive a 1-year certificate, downloadable badge, and your disclosure is published on GitHub |
+| 4 | **Sign-off** | If approved, the SWG has a 7-day objection period before the SWG Chair or Executive Director signs off |
+| 5 | **Certificate** | You receive a 1-year certificate, downloadable badge, and your disclosure is published on GitHub |
 
 **Below the diagram, a short note**:
 
@@ -178,13 +179,13 @@ Design document for the applicant-facing landing page at greensoftware.foundatio
 **Heading**: Frequently Asked Questions
 
 **Q: Is this program free?**
-Yes. There is no fee to apply, receive a certificate, or renew.
+Yes. There is no additional fee beyond GSF membership to apply, receive a certificate, or renew.
 
 **Q: Who can apply?**
-Any individual or organization that has calculated an SCI score according to ISO/IEC 21031:2024. No restrictions on size, location, or domain.
+Any current GSF member organization that has calculated an SCI score according to ISO/IEC 21031:2024. No further restrictions on size, location, or domain.
 
 **Q: How long does the review take?**
-10–15 business days. Complex cases may take up to 20 business days — you'll be notified of any delay.
+10–15 business days for the review, followed by a 7-day sign-off period. Total time from submission to certificate is typically 3–4 weeks. Complex cases may take up to 20 business days for the review step — you'll be notified of any delay.
 
 **Q: What does GSF actually check?**
 GSF checks that your disclosure is complete and detailed enough for a practitioner to understand and evaluate your calculation. GSF does not verify accuracy, methodology, or conformity — that's your responsibility.

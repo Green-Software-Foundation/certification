@@ -108,16 +108,28 @@ Once a year, conduct a full review:
 
 ### Approved
 
+When a reviewer recommends approval (all 7 items marked Y), the submission enters the **SWG sign-off process** before a certificate can be issued.
+
+#### SWG Sign-Off (7-Day Objection Period)
+
+1. Notify the Software Standards Working Group that a submission has been recommended for approval. Include the submission ID, applicant organisation, software name, and a link to the review record.
+2. Update the tracking spreadsheet: status → "Awaiting Sign-Off."
+3. The SWG has **7 calendar days** to raise objections. Any SWG member may object by emailing the Program Owner with a specific rationale.
+4. **If no objections are raised**: after the 7-day period expires, the SWG Chair or GSF Executive Director provides explicit sign-off (email or written confirmation).
+5. **If an objection is raised**: the Program Owner reviews the objection with the original reviewer and the objecting SWG member. The objection must be resolved (withdrawn or addressed) before sign-off can be given. If the objection leads to a change in the recommendation, treat as revision requested.
+
+#### Certificate Issuance (after sign-off)
+
 1. Issue the certificate on the badging platform (see Certificate Issuance Workflow below).
 2. Publish the disclosure and review record to the GitHub repo (`greensoftware-foundation/sci-certifications`) — both live in the same directory (e.g. `/certifications/2026/GSF-SCI-2026-00042/`).
-3. Update the tracking spreadsheet: decision, certificate ID, expiry date.
+3. Update the tracking spreadsheet: decision, certificate ID, expiry date, sign-off date.
 4. Send the approval email: certificate link, disclosure URL, badge download instructions, expiry date.
 5. **Check community opt-in status** in the submission:
    - If **logo opt-in = yes**: request logo in the approval email; once received, add to the Certified Organisations page.
    - If **blog opt-in = yes**: queue for follow-up communications outreach (blog post or case study coordination).
    - Log opt-in status in the tracking spreadsheet.
 
-**Time budget**: ~15–20 minutes per issuance (plus follow-up for opted-in organisations).
+**Time budget**: ~15–20 minutes per issuance (plus follow-up for opted-in organisations), after sign-off is received.
 
 ### Revision Requested
 
@@ -140,7 +152,9 @@ Rejection requires a second reviewer to concur:
 
 ## 8. Certificate Issuance Workflow
 
-For each approved submission:
+**Prerequisite**: The SWG Chair or GSF Executive Director has provided explicit sign-off following the 7-day objection period (see Section 7, "Approved").
+
+For each signed-off submission:
 
 1. Create the credential on the badging platform.
 2. Populate fields: certificate ID (`GSF-SCI-YYYY-NNNNN`), organization, software name, SCI score, issue date, expiry date (issue date + 1 year), disclosure URL.
@@ -289,7 +303,7 @@ During the early phase, every submission gets dual review (two independent revie
 
 | Role | Who | When to involve |
 |------|-----|-----------------|
-| **SWG Chair** | Override authority | Final appeals, committee deadlock, any decision you're unsure about |
+| **SWG Chair** | Override authority, certificate sign-off | Certificate sign-off after objection period, final appeals, committee deadlock, any decision you're unsure about |
 | **Review Committee** | 3+ independent reviewers | All submission reviews, badge misuse investigation, discretionary revocation |
 | **Backup PM** | Any GSF staff | When you're unavailable — they have the same operational authority during cover |
 | **SWG** | Software Standards Working Group | Substantive program changes, quarterly report delivery |
@@ -303,8 +317,11 @@ During the early phase, every submission gets dual review (two independent revie
 |---------|--------|
 | Submission acknowledgement | Within 1 business day |
 | Initial review decision | 10–15 business days |
-| Complex case extension | Up to 20 business days (notify applicant) |
-| Resubmission review | 10–15 business days from resubmission |
+| SWG objection period | 7 calendar days after review recommendation |
+| SWG Chair / ED sign-off | After objection period expires (no separate SLA — sign-off should be prompt) |
+| Total time: submission to certificate | ~3–4 weeks (review + objection period + issuance) |
+| Complex case extension | Up to 20 business days for review (notify applicant), plus objection period |
+| Resubmission review | 10–15 business days from resubmission, plus objection period |
 | Renewal reminder | 30 days before expiry |
 | Dispute Phase 1 (informal) | 10 business days |
 | Dispute Phase 2 (formal) | 20 business days from Phase 2 initiation |
@@ -321,7 +338,7 @@ Ensure you have these ready before launch:
 - [ ] Tracking spreadsheet created and shared with committee
 - [ ] GitHub disclosure repo created with year/certificate directory structure
 - [ ] Badging platform access and certificate template configured
-- [x] Email templates drafted: acknowledgement, revision request, approval, rejection, renewal reminder, challenge notification (`email-templates.md`)
+- [x] Email templates drafted: acknowledgement, revision request, approval, rejection, renewal reminder, SWG sign-off notification, challenge notification (`email-templates.md`)
 - [ ] Badge assets ready: SVG and PNG, light and dark variants
 - [ ] Precedent log created (`precedent-log.md` in the top-level certification repo)
 - [ ] Quarterly report template created
@@ -342,5 +359,5 @@ When you need the authoritative source for a specific topic:
 | Certificate issuance technical implementation | `certification-update-plan.md`, `sci-certification-tech-spec.md` |
 | Review records and disclosures | GitHub disclosure repo, co-located per submission (e.g. `/certifications/2026/GSF-SCI-2026-00042/`) |
 | Edge-case decisions and reasoning | `precedent-log.md` (top-level certification repo) |
-| Email templates (all 6) | `email-templates.md` |
+| Email templates (all 7) | `email-templates.md` |
 | This manual | `PM-Operations-Manual.md` |
