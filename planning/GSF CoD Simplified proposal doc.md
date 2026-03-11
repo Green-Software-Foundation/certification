@@ -22,9 +22,9 @@ ISO/IEC 21031:2024 (SCI) is now a published standard, but there is no mechanism 
 
 ### The Model
 
-Self-certification (ISO/IEC 17050, "supplier's declaration of conformity") is a recognized conformity assessment approach where organizations declare their own conformity. It is widely used for voluntary standards and is appropriate for emerging standards where the goal is adoption, not gatekeeping.
+Self-certification is a recognized conformity assessment approach where organizations declare their own conformity. It is widely used for voluntary standards and is appropriate for emerging standards where the goal is adoption, not gatekeeping.
 
-GSF adds a disclosure verification layer: a structured review that confirms the submission contains enough detail for a knowledgeable practitioner to understand and evaluate the calculation. This is more rigorous than pure self-attestation (e.g., OpenChain's yes/no checklist) but far lighter than a full conformity audit.
+GSF adds a disclosure verification layer: a structured review that confirms the submission contains enough detail for a knowledgeable practitioner to understand and evaluate the calculation.
 
 | | This Program | Third-Party Certification |
 |---|---|---|
@@ -32,7 +32,6 @@ GSF adds a disclosure verification layer: a structured review that confirms the 
 | **What GSF verifies** | Disclosure completeness | N/A (not this program) |
 | **Cost** | Free | $12,000–$47,000+/year |
 | **Timeline** | ~3–4 weeks | Months |
-| **ISO framework** | ISO/IEC 17050 | ISO/IEC 17021-1 |
 | **Accountability** | Community validation via public disclosure | Auditor validation |
 
 ### Precedent: OpenChain
@@ -41,11 +40,11 @@ The OpenChain Project (Linux Foundation) operates a successful self-certificatio
 
 | | OpenChain | GSF SCI Program |
 |---|---|---|
-| **Checklist** | Yes/no process questions | Structured technical disclosure |
+| **Checklist** | Yes/no process questions | Structured disclosure |
 | **Verification** | None (pure self-attestation) | Human review of disclosure completeness |
 | **Public registry** | Organization listing | Full disclosure publication |
 | **Challenge mechanism** | None | Structured community challenge process |
-| **Certificate** | None (self-cert tier) | Formal certificate issued |
+| **Certificate** | None (self-cert tier) | GSF certificate issued |
 | **Review cycle** | 18 months, self-enforced | 1 year, renewal by resubmission |
 
 ---
@@ -72,7 +71,6 @@ Applicants email a completed 7-section questionnaire to `sci-certification@green
 
 Plus a signed **10-point attestation** declaring ISO/IEC 21031:2024 conformity, accepting responsibility for accuracy, agreeing to public disclosure, and committing to badge usage rules.
 
-The attestation and full template are in `submission-email-template.md`. Detailed submission requirements are in the **Applicant Guide**.
 
 ### Community Participation (Optional)
 
@@ -99,7 +97,7 @@ The reviewer's question for every item: *"Could a knowledgeable practitioner rea
 - **3+ items N or I** → Substantially incomplete (directed back to the template)
 - **Bad faith** → Rejected (fabricated data, fraud — requires 2 reviewers to concur)
 
-### SWG Sign-Off
+### SSWG Sign-Off
 
 After a reviewer recommends approval, the certificate is **not issued immediately**. The Software Standards Working Group has a **7-day objection period**:
 
@@ -120,8 +118,6 @@ This ensures governance oversight of every certificate while keeping the process
 | SWG objection period | 7 calendar days |
 | Sign-off and certificate issuance | After objection period |
 | **Total** | **~3–4 weeks** |
-
-Full review procedures, the checklist with pass/fail examples, and edge case guidance are in the **Reviewer Guide**. Operational procedures are in the **PM Operations Manual**.
 
 ---
 
@@ -161,14 +157,12 @@ Certificates expire after 1 year. Renewal requires a full new submission through
 |------|---------------|
 | **Program Manager** (GSF Head of R&D) | Day-to-day operations, submission routing, SLA monitoring, certificate issuance, quarterly reporting |
 | **SWG Chair** | Certificate sign-off after objection period, override authority, final appeal arbiter |
-| **Review Committee** (3+ independent members) | Review submissions, enforce badge misuse, set precedent on edge cases |
 | **Software Standards Working Group** | Approves substantive program changes, receives quarterly reports, objection period for approvals |
 | **Steering Committee** | Strategic oversight via quarterly reports |
 
 ### Key Governance Principles
 
-- **Separation of concerns**: PM runs operations, committee reviews submissions, SWG governs rules, SWG Chair signs off on certificates
-- **Independence**: reviewers must be from different institutions and not GSF staff
+- **Separation of concerns**: PM runs operations, SWG governs rules and can veto certificates, SWG Chair signs off on certificates
 - **Conflict of interest**: reviewers recuse themselves from submissions involving their employer
 - **Change management**: operational changes (templates, tooling) — PM unilateral; substantive changes (criteria, fees, validity) — SWG approval required
 
@@ -184,7 +178,7 @@ Because this is self-certification, the community serves as the validation layer
 |-------|----------|-------------|
 | Initial review | 5 business days | GSF reviews for legitimacy; frivolous challenges dismissed |
 | Response period | 30 days | Certificate holder responds; status changes to "Under Community Review" |
-| Evaluation | 15 business days | GSF evaluates and determines outcome |
+| Evaluation | 15 business days | SSWG evaluates and determines outcome |
 
 **Outcomes:** challenge dismissed (certificate returns to Active), minor corrections (disclosure updated), material non-conformity (certificate revoked, may resubmit), or bad faith confirmed (revoked, 12–24 month ban).
 
@@ -197,7 +191,7 @@ A three-phase escalation process handles disputes about review decisions:
 | Phase | Timeline | Decision-maker |
 |-------|----------|---------------|
 | **Informal resolution** | Days 1–10 | Program Manager |
-| **Formal review** | Days 11–30 | 3-person panel from review committee |
+| **Formal review** | Days 11–30 | SSWG review |
 | **Final appeal** | Days 31–60 | SWG Chair (final, limited to procedural errors or new evidence) |
 
 The dispute process addresses whether disclosure requirements were met and whether procedures were followed. It does **not** adjudicate calculation accuracy, methodology quality, or technical debates — those are matters for community review.
@@ -235,7 +229,7 @@ Violations follow a graduated response: warning with 14 days to correct → cert
 
 | Category | Metric | Target |
 |----------|--------|--------|
-| **Adoption** | Submissions received | 20–50 |
+| **Adoption** | Submissions received | 20-30 |
 | **Adoption** | Unique organizations | 10+ |
 | **Adoption** | Software categories | 3+ |
 | **Operations** | Average review time | <15 business days |
@@ -260,6 +254,8 @@ If a review exceeds the 15 business day target: contact the applicant with an ap
 ---
 
 ## Related Documents
+
+The following materials are available in the [project Github](https://github.com/Green-Software-Foundation/certification)
 
 | Document | What it covers |
 |----------|---------------|

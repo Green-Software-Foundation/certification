@@ -23,8 +23,10 @@ CHECKLIST (Y = present & adequate, N = missing, I = insufficient)
       and specific justifications. Four excluded components each
       have concrete, system-specific rationales (e.g., CDN
       "handles only documentation traffic, not API requests;
-      contributes <0.5% of total infrastructure cost"). No shared
-      infrastructure — stated explicitly.
+      contributes <0.5% of total infrastructure cost"). Shared
+      infrastructure explicitly addressed: "No shared
+      infrastructure. All included components are dedicated
+      instances."
   2.  Score and period:                                          Y
       4.85 gCO2eq per 1,000 API requests. January 2026
       measurement period with start/end dates.
@@ -49,10 +51,10 @@ CHECKLIST (Y = present & adequate, N = missing, I = insufficient)
       calculated allocated M, and data source. Full allocation
       formula presented. Component-level values sum to stated total.
   6.  Methodology and transparency:                              Y
-      Hybrid approach clearly stated. Six specific assumptions with
-      technical justifications and impact assessments. Four specific
-      limitations with severity ratings and mitigations. Full SCI
-      formula shown with actual numbers.
+      Hybrid approach clearly stated. Ten specific assumptions and
+      limitations with technical justifications and mitigations,
+      presented in a single combined table. Full SCI formula shown
+      with actual numbers.
   7.  Attestation:                                               Y
       All 10 points present and signed.
 
@@ -66,8 +68,7 @@ N/A — submission approved.
 
 NOTES / PRECEDENT:
 - Strong exemplar submission. The energy component table with both pre-PUE
-  and post-PUE columns, and the explicit sensitivity analysis in the
-  assumptions section, go substantially beyond the minimum disclosure
+  and post-PUE columns goes substantially beyond the minimum disclosure
   requirements.
 - The applicant provided an Impact Framework manifest file that
   independently computes the same SCI value (4.8509, rounding to 4.85).

@@ -42,9 +42,6 @@ A REST API providing real-time inventory management for retail and e-commerce bu
 
 **Your SCI score:** 4.85 gCO2eq per 1,000 API requests
 
-**Brief summary of the measurement:**
-We measured the carbon intensity of our Inventory Management API over January 2026 (31 days, 744 hours). The calculation included application servers, database, cache, load balancer, and network data transfer. Energy was estimated from cloud provider telemetry (CPU utilization and instance specifications). Embodied emissions were allocated from lifecycle data for each hardware component using the time-share method. The resulting SCI is 4.85 gCO2eq per 1,000 API requests.
-
 ---
 
 ## Section 3 — Software Boundary
@@ -68,6 +65,10 @@ We measured the carbon intensity of our Inventory Management API over January 20
 | End-user devices | Client applications and devices making API calls | Beyond our operational control — clients are third-party B2B applications running on customer infrastructure |
 | CI/CD pipeline | GitHub Actions build and deployment workflow | Runs only during deployments (~2 per week, ~15 minutes each); contributes <0.01% of monthly compute hours |
 | Monitoring stack | DataDog APM and logging agents | Shared monitoring infrastructure across all GreenTech services; contributes <1% of total resource consumption for this application |
+
+### Shared infrastructure
+
+No shared infrastructure. All included components are dedicated instances provisioned exclusively for this application.
 
 ---
 
@@ -156,35 +157,20 @@ The time-share factor is: 744 / 35,040 = 0.02123
 **Describe your methodology:**
 We used a hybrid approach combining measured utilisation data with power-modelling calculations. CPU utilisation was measured directly from AWS CloudWatch at 5-minute intervals over the 31-day measurement period. These utilisation values were converted to estimated power draw using the Cloud Carbon Footprint linear interpolation model, which maps CPU utilisation percentage to a fraction of the instance type's thermal design power (TDP). Network energy was estimated using the GSF's published coefficient of 0.001 kWh/GB. A PUE of 1.2 was applied to account for data centre cooling and infrastructure overhead. Carbon intensity was obtained from the EPA eGRID 2023 database for the SRVC subregion (Virginia). Embodied emissions were sourced from the Cloud Carbon Footprint database and allocated using the ISO/IEC 21031:2024 time-share methodology.
 
-**Key assumptions:**
+**Assumptions and limitations:**
 
-| Assumption | Justification | Impact on result (Low / Medium / High) |
-|------------|---------------|----------------------------------------|
-| App server average power draw is 15W per instance | Based on m5.large TDP (85W for host with 48 vCPUs), scaled to 2-vCPU share (~3.5W baseline), with 35% average CPU utilisation from CloudWatch producing ~15W via linear interpolation | Medium — a ±5W change shifts E by ~7.4 kWh and SCI by ~0.22 |
-| Database average power draw is 22W | Based on r6g.large Graviton2 TDP scaled by 40% average utilisation from RDS CloudWatch | Medium — database is the largest single energy component |
-| Redis cache average power draw is 8W | Based on r6g.medium TDP scaled by 30% average utilisation from ElastiCache CloudWatch | Low — smallest compute component |
-| PUE of 1.2 for AWS us-east-1 | From AWS sustainability data for North American data centres. AWS reports a global PUE of 1.2; us-east-1 is a mature, large-scale facility | Low — well-documented by provider; a change to 1.15 or 1.25 shifts SCI by ~±2% |
-| Server expected lifespan is 4 years | Standard refresh cycle for cloud provider server hardware, consistent with Cloud Carbon Footprint methodology and industry norms | Medium — a 3-year lifespan would increase M by ~33% |
-| Network energy coefficient is 0.001 kWh/GB | From the GSF SCI Data project; represents average energy per GB for data centre networking | Low — network is <4% of total energy |
-
-**Known limitations:**
-
-| Limitation | Severity (Low / Medium / High) | Mitigation |
-|------------|--------------------------------|------------|
-| No direct hardware power metering | Medium | Used cloud provider CPU telemetry as proxy for power consumption. The TDP-to-power model is a well-established approximation but introduces estimation error of approximately ±10-15%. |
-| Embodied emissions based on generic server lifecycle data, not actual manufacturing data for specific hardware | Medium | Used the Cloud Carbon Footprint database, which derives estimates from manufacturer-published LCA data and academic research. Instance-type-specific coefficients provide reasonable accuracy. |
-| Carbon intensity is annual average, not time-of-use | Low | We used the annual average grid intensity for the SRVC subregion. Hourly marginal intensity would be more precise, but for a continuous-running service measured over a full month, the annual average is a reasonable approximation. |
-| ALB power estimate is coarse | Low | The ALB is the smallest energy component (~2.2 kWh before PUE, ~4% of total). Even a 50% error in this estimate would shift the SCI by less than 0.05. |
-
-**All data sources used:**
-
-| Source name | Type | Description | URL (if available) |
-|-------------|------|-------------|--------------------|
-| AWS CloudWatch | Measurement | Cloud provider telemetry for CPU utilisation, memory, network I/O, and request counts. Sampled at 5-minute intervals. | https://aws.amazon.com/cloudwatch/ |
-| Cloud Carbon Footprint | Database | Open-source database of embodied emissions and power coefficients for cloud infrastructure. Based on manufacturer LCA data and academic research. | https://www.cloudcarbonfootprint.org/ |
-| EPA eGRID 2023 | Grid data | Official US power grid emissions data. Used SRVC (SERC Virginia/Carolina) subregion annual average for 2023. Published February 2025. | https://www.epa.gov/egrid |
-| GSF SCI Data | Coefficient | Network energy coefficient (0.001 kWh/GB) from the Green Software Foundation's SCI open data project. | https://github.com/Green-Software-Foundation/sci-data |
-| AWS Sustainability | Reference | PUE values for AWS data centres. Global PUE reported as 1.2. | https://sustainability.aboutamazon.com/ |
+| Assumption or limitation | Justification or mitigation |
+|--------------------------|----------------------------|
+| App server average power draw is 15W per instance | Based on m5.large TDP (85W for host with 48 vCPUs), scaled to 2-vCPU share (~3.5W baseline), with 35% average CPU utilisation from CloudWatch producing ~15W via linear interpolation |
+| Database average power draw is 22W | Based on r6g.large Graviton2 TDP scaled by 40% average utilisation from RDS CloudWatch |
+| Redis cache average power draw is 8W | Based on r6g.medium TDP scaled by 30% average utilisation from ElastiCache CloudWatch |
+| PUE of 1.2 for AWS us-east-1 | From AWS sustainability data for North American data centres; us-east-1 is a mature, large-scale facility |
+| Server expected lifespan is 4 years | Standard refresh cycle for cloud provider server hardware, consistent with Cloud Carbon Footprint methodology |
+| Network energy coefficient is 0.001 kWh/GB | From the GSF SCI Data project; network is <4% of total energy |
+| No direct hardware power metering | Used cloud provider CPU telemetry as proxy via TDP-to-power model; estimation error approximately ±10–15% |
+| Embodied emissions based on generic server lifecycle data | Used Cloud Carbon Footprint database, which derives estimates from manufacturer-published LCA data; instance-type-specific coefficients |
+| Carbon intensity is annual average, not time-of-use | For a continuous-running service measured over a full month, the annual average is a reasonable approximation |
+| ALB power estimate is coarse | ALB is the smallest energy component (~4% of total); even a 50% error shifts SCI by less than 0.05 |
 
 ### Show your calculation
 
@@ -209,23 +195,6 @@ SCI = (O + M) / R         = (21,477.17 + 99,794.52) / 25,000
                           = 121,271.69 / 25,000
                           = 4.85 gCO2eq per 1,000 API requests
 ```
-
----
-
-## Community Participation
-
-- [x] Yes — you may display our organisation name and logo on the GSF certified organisations page
-- [x] Yes — we'd be open to participating in a blog post or case study
-
----
-
-## Optional Attachments
-
-- [x] Impact Framework manifest file (IMP/YAML) — see attached: `greentech-inventory-api-v3.2.1-sci.yml`
-
-  Run with: `if-run --manifest greentech-inventory-api-v3.2.1-sci.yml`
-
-  The manifest models each infrastructure component as a separate child node in the Impact Framework tree. A `system-total` child verifies the aggregate SCI score. The manifest independently computes the same SCI value (4.8509 gCO2eq, rounding to 4.85) from the raw inputs.
 
 ---
 
@@ -262,6 +231,23 @@ By submitting this application, I hereby:
 **Name and title:** Sarah Chen, VP Engineering
 
 **Organization:** GreenTech Solutions Ltd
+
+---
+
+## Community Participation
+
+- [x] Yes — you may display our organisation name and logo on the GSF certified organisations page
+- [x] Yes — we'd be open to participating in a blog post or case study
+
+---
+
+## Optional Attachments
+
+- [x] Impact Framework manifest file (IMP/YAML) — see attached: `greentech-inventory-api-v3.2.1-sci.yml`
+
+  Run with: `if-run --manifest greentech-inventory-api-v3.2.1-sci.yml`
+
+  The manifest models each infrastructure component as a separate child node in the Impact Framework tree. A `system-total` child verifies the aggregate SCI score. The manifest independently computes the same SCI value (4.8509 gCO2eq, rounding to 4.85) from the raw inputs.
 
 ---
 
