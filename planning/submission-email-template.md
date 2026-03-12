@@ -46,24 +46,18 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 ### What's included?
 
-| Component | Brief description |
-|-----------|------------------|
+| Component                  | Brief description                       |
+| -------------------------- | --------------------------------------- |
 | [e.g. Application servers] | [e.g. 2x EC2 t3.medium running Node.js] |
-| [e.g. Database] | [e.g. RDS PostgreSQL db.t3.medium] |
+| [e.g. Database]            | [e.g. RDS PostgreSQL db.t3.medium]      |
 
 ### What's excluded, and why?
 
-| Component | Reason for exclusion |
-|-----------|---------------------|
+| Component  | Reason for exclusion                                 |
+| ---------- | ---------------------------------------------------- |
 | [e.g. CDN] | [e.g. Separate service outside operational boundary] |
 
 *Each exclusion needs a system-specific rationale. "Not included" or "out of scope" is not sufficient.*
-
-### Shared infrastructure
-
-*Does any included component run on shared infrastructure? If yes, state what is shared and how you allocated your share. If no, write "No shared infrastructure."*
-
-[e.g. "App servers run on a shared Kubernetes cluster. Allocated by vCPU reservation: 2 of 16 vCPUs = 12.5%."]
 
 ---
 
@@ -87,10 +81,10 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 **PUE applied:** [e.g. 1.2, or "N/A — cloud provider"]
 
-| Component | Energy (kWh) | Data source |
-|-----------|-------------|-------------|
-| [e.g. Application servers] | [e.g. 21.6] | [e.g. AWS CloudWatch CPU metrics -> TDP model] |
-| [e.g. Database] | [e.g. 14.4] | [e.g. RDS CloudWatch metrics] |
+| Component                  | Energy (kWh) | Data source                                    |
+| -------------------------- | ------------ | ---------------------------------------------- |
+| [e.g. Application servers] | [e.g. 21.6]  | [e.g. AWS CloudWatch CPU metrics -> TDP model] |
+| [e.g. Database]            | [e.g. 14.4]  | [e.g. RDS CloudWatch metrics]                  |
 
 ### Carbon intensity
 
@@ -104,9 +98,9 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 *If multi-region, add a row per region:*
 
-| Region | % of workload | gCO2eq/kWh | Source |
-|--------|--------------|------------|--------|
-| [e.g. us-east-1] | [e.g. 60%] | [e.g. 340] | [e.g. EPA eGRID 2023] |
+| Region           | Component                  | gCO2eq/kWh | Source                |
+| ---------------- | -------------------------- | ---------- | --------------------- |
+| [e.g. us-east-1] | [e.g. Application servers] | [e.g. 340] | [e.g. EPA eGRID 2023] |
 
 ---
 
@@ -116,9 +110,9 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 *If M = 0, explain why (e.g. "Pure SaaS — no hardware under our operational control") and skip the table.*
 
-| Component | Allocated M (gCO2eq) | Data source |
-|-----------|---------------------|-------------|
-| [e.g. App server — EC2 t3.medium] | [e.g. 24,658] | [e.g. Cloud Carbon Footprint] |
+| Component                         | Allocated M (gCO2eq) | Data source                   |
+| --------------------------------- | -------------------- | ----------------------------- |
+| [e.g. App server — EC2 t3.medium] | [e.g. 24,658]        | [e.g. Cloud Carbon Footprint] |
 
 ---
 
@@ -127,16 +121,7 @@ Copy everything below the line into a new email addressed to **sci-certification
 **Approach:** [Measurement / Calculation / Hybrid]
 
 **How you calculated your score:**
-[Paragraph or bullet points: what tools/models you used, how you gathered data, key decisions you made.]
-
-**Assumptions and limitations:**
-
-| Assumption or limitation | Justification or mitigation |
-|--------------------------|----------------------------|
-| [e.g. Server avg power draw is 15W] | [e.g. Based on AWS TDP at 40% avg utilization] |
-| [e.g. No direct hardware power metering] | [e.g. Used cloud telemetry as proxy] |
-
-*Include at least one specific assumption and one specific limitation.*
+[Paragraph or bullet points: what tools/models you used, how you gathered data, key decisions you made. If different metyhods were used for different components, please give component-wise descriptions]
 
 **Show your calculation:**
 
@@ -147,6 +132,17 @@ R = [total units]
 
 SCI = (E x I + M) / R = [result] [unit] per [functional unit]
 ```
+
+
+**Assumptions and limitations:**
+
+| Assumption or limitation                 | Justification or mitigation                    |
+| ---------------------------------------- | ---------------------------------------------- |
+| [e.g. Server avg power draw is 15W]      | [e.g. Based on AWS TDP at 40% avg utilization] |
+| [e.g. No direct hardware power metering] | [e.g. Used cloud telemetry as proxy]           |
+
+*Include at least one specific assumption and one specific limitation.*
+
 
 ---
 
