@@ -24,6 +24,7 @@ The program is free for GSF members (no additional fees), follows the ISO/IEC 17
 | [Governance.md](planning/Governance.md) | Governance structure: roles, decision authority, SWG sign-off, committee formation, change management, reporting, and dispute resolution |
 | [email-templates.md](planning/email-templates.md) | 7 email templates: acknowledgement, revision request, approval, rejection, renewal reminder, SWG sign-off notification, challenge notification |
 | [Badge-Usage-Guidelines.md](planning/Badge-Usage-Guidelines.md) | Badge specifications, permitted/prohibited uses, display examples, and compliance enforcement |
+| [FAQ.md](planning/FAQ.md) | Frequently asked questions and answers covering eligibility, submission, review, certificates, technical topics, and community challenge |
 | [Landing-Page-Design.md](planning/Landing-Page-Design.md) | Design document for the applicant-facing landing page on greensoftware.foundation |
 | [claude-review-prompt.md](planning/claude-review-prompt.md) | Prompt for AI-assisted submission review — paste into Claude with submission materials to get a draft review record |
 | [IMP-Schema-Documentation.md](planning/IMP-Schema-Documentation.md) | Impact Manifest Protocol (IMP) schema for optional structured YAML/JSON submissions |
