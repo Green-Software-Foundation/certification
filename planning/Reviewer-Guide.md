@@ -101,15 +101,15 @@ Rejection requires:
 
 1. Evidence of bad faith (fabricated data, obvious fraud, or persistent refusal to engage after revision requests).
 2. A detailed written rationale from the first reviewer.
-3. Concurrence from a second reviewer who independently reviews the submission.
-4. Both reviewers' records are submitted to the Program Owner before the rejection is communicated.
+3. Concurrence from SSWG.
+4. SSWG agreement *before* the rejection is communicated.
 
 ### Submitting Your Review
 
 - Submit your completed review record to the Program Owner. The Program Owner will store it in the GitHub disclosure repo alongside the submission (e.g. `/certifications/2026/GSF-SCI-2026-00042/review-record.md`).
 - **For approvals**: the Program Owner initiates the **SWG sign-off process** — the Software Standards Working Group is notified and has a 7-day objection period. After the period expires with no objections, the SWG Chair or GSF Executive Director provides explicit sign-off, and the Program Owner issues the certificate via the badging platform's issuance API (see Section 9) and publishes the disclosure to GitHub.
 - **For revision requests**: the Program Owner sends the feedback email to the applicant with your specific notes.
-- **For rejections**: the Program Owner assigns a second reviewer for independent assessment before the final decision.
+- **For rejections**: the Program Owner communicates with applicant after SSWG sign-off.
 
 ---
 

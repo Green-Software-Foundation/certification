@@ -20,8 +20,8 @@ For each new submission:
 
 1. Log it in the tracking spreadsheet with the next tracking ID (`GSF-SUB-YYYY-NNNN`).
 2. Send the acknowledgement email (template) — include tracking number, expected timeline (10–15 business days), link to submission requirements.
-3. Assign to a reviewer. Use round-robin, balancing workload, avoiding employer conflicts with the applicant.
-4. Update the tracking spreadsheet: assigned reviewer, date assigned, status → "Under Review."
+3. Update the tracking spreadsheet: assigned reviewer, date assigned, status → "Under Review."
+4. Review asap, ideally before next SSWG to minimise impact of SSWG objection period.
 
 ---
 
@@ -39,22 +39,8 @@ For each submission currently under review:
   2. Contact the reviewer to understand the delay.
   3. If the reviewer is blocked or unavailable, reassign to another reviewer.
   4. Log the breach in the tracking spreadsheet notes.
-
----
-
-## 4. Monthly Operations
-
-### Committee Sync (1 hour)
-
-Facilitate the monthly calibration meeting with the review committee:
-
-1. **Calibration**: Pick one recently approved and one recently revised submission. Walk through both as a group. Confirm the committee would have reached the same decisions.
-2. **Precedents**: Discuss any edge cases or novel decisions from the past month. Update the precedent log.
-3. **Certificate expiry check**: Review the tracking spreadsheet for certificates expiring in the next 30 days. Send renewal reminders to those holders.
-
-### Reviewer Workload Check
-
-Glance at review distribution. If one reviewer is handling significantly more submissions than others, rebalance future assignments.
+- Notify SSWG in weekly call that there are outstanding applications that they can object to between now and next weekly meeting
+- Ask SSWG chair to sign off on last week's certificates if no objections
 
 ---
 
@@ -71,15 +57,11 @@ Produce and deliver a report to the SWG and Steering Committee covering:
 | Average initial review turnaround vs 15-day SLA | Tracking spreadsheet — (Date Decision Made − Date Assigned) |
 | Average total elapsed time (submission to certificate) | Tracking spreadsheet — (Date Decision Made − Date Received), including revision cycles |
 | SLA breaches: count, causes, corrective actions | Tracking spreadsheet notes + your records |
-| Inter-reviewer agreement rate | Review records in GitHub disclosure repo — % where both reviewers reached the same outcome |
-| Reviewer workload distribution | Tracking spreadsheet — count submissions per reviewer |
+| Inter-reviewer agreement rate | How freequently does SSWG disagree with initial review? |
 | Certificate expiry and renewal activity | Tracking spreadsheet — certificates expired, renewed, lapsed this quarter |
 | Community challenges received and outcomes | Challenge records |
 | Badge misuse incidents and enforcement actions | Enforcement records |
 | Precedent-setting decisions | `precedent-log.md` in the top-level certification repo |
-| Committee membership status | Active members, any joiners/leavers this quarter |
-
-**Tip**: Build a simple spreadsheet formula sheet that computes these metrics automatically from the tracking data. This saves time each quarter and ensures consistency.
 
 ### Expired Certificate Follow-Up
 
@@ -88,19 +70,6 @@ Review the tracking spreadsheet for certificates that have expired since the las
 1. Contact each holder — ask if they intend to renew.
 2. If renewing: remind them to submit a full new submission (renewal is not an abbreviated process).
 3. If not renewing: remove the certificate from active site listings. The expired certificate and disclosure remain publicly accessible, marked "Expired."
-
----
-
-## 6. Annual Operations
-
-### Program Review
-
-Once a year, conduct a full review:
-
-1. Review Year N performance against targets.
-2. Set Year N+1 targets based on actual data.
-3. Refresh committee terms (1-year terms; members may continue if willing).
-4. Propose any criteria or process updates to the SWG.
 
 ---
 

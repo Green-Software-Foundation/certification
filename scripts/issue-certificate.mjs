@@ -45,10 +45,10 @@ function parseArgs(argv) {
 // Markdown parsing helpers
 // ---------------------------------------------------------------------------
 
-/** Split the disclosure file into numbered PART sections. */
+/** Split the disclosure file into numbered Section blocks. */
 function splitSections(text) {
   const sections = {};
-  const re = /^## PART (\d+) —/gm;
+  const re = /^## Section (\d+) —/gm;
   const starts = [];
   let match;
 
@@ -162,19 +162,19 @@ function parseDisclosure(filePath) {
   const sections = splitSections(text);
   const errors = [];
 
-  // PART 1 — About You and Your Software
-  const p1 = sections[1] || "";
-  const orgName = extractField(p1, "Organization name");
-  const contactName = extractField(p1, "Contact name");
-  const softwareName = extractField(p1, "Software name");
-  const softwareVersion = extractField(p1, "Software version");
-  const softwareDescription = extractField(p1, "Software description");
+  // Section 1 — About You and Your Software
+  const s1 = sections[1] || "";
+  const orgName = extractField(s1, "Organization name");
+  const contactName = extractField(s1, "Contact name");
+  const softwareName = extractField(s1, "Software name");
+  const softwareVersion = extractField(s1, "Software version");
+  const softwareDescription = extractField(s1, "Software description");
 
-  // PART 2 — Measurement Period and Score
-  const p2 = sections[2] || "";
-  const measurementStart = extractField(p2, "Measurement start date");
-  const measurementEnd = extractField(p2, "Measurement end date");
-  const sciScoreRaw = extractField(p2, "Your SCI score");
+  // Section 2 — Your SCI Score
+  const s2 = sections[2] || "";
+  const measurementStart = extractField(s2, "Measurement start date");
+  const measurementEnd = extractField(s2, "Measurement end date");
+  const sciScoreRaw = extractField(s2, "Your SCI score");
 
   let sciScore, sciUnit;
   if (sciScoreRaw) {
@@ -185,70 +185,68 @@ function parseDisclosure(filePath) {
     }
   }
 
-  // PART 3 — Software Boundary
-  const p3 = sections[3] || "";
-  const boundaryIncluded = parseTable(p3, "### Included").map((r) => ({
+  // Section 3 — Software Boundary
+  const s3 = sections[3] || "";
+  const boundaryIncluded = parseTable(s3, "### Included").map((r) => ({
     component: r["Component"] || "",
     description: r["Description"] || "",
     justification: r["Why included"] || "",
   }));
-  const boundaryExcluded = parseTable(p3, "### Excluded").map((r) => ({
+  const boundaryExcluded = parseTable(s3, "### Excluded").map((r) => ({
     component: r["Component"] || "",
     description: r["Description"] || "",
     rationale: r["Reason for exclusion"] || "",
   }));
+  // Extract shared infrastructure text (free-form paragraph after the heading)
+  const sharedInfraMatch = s3.match(
+    /### Shared infrastructure\n\n([\s\S]*?)(?=\n---|$)/,
+  );
+  const sharedInfrastructure = sharedInfraMatch
+    ? sharedInfraMatch[1].trim()
+    : undefined;
 
-  // PART 4 — Functional Unit (R)
-  const p4 = sections[4] || "";
-  const functionalUnit = extractField(p4, "What is your functional unit");
-  const functionalUnitJustification = extractField(p4, "Why did you choose this unit");
-  const functionalUnitCountingMethod = extractField(p4, "How did you count or measure the total units");
-  const functionalUnitTotal = extractField(p4, "Total units in measurement period");
+  // Section 4 — Functional Unit (R)
+  const s4 = sections[4] || "";
+  const functionalUnit = extractField(s4, "What is your functional unit");
+  const functionalUnitJustification = extractField(s4, "Why did you choose this unit");
+  const functionalUnitCountingMethod = extractField(s4, "How did you count or measure the total units");
+  const functionalUnitTotal = extractField(s4, "Total units in measurement period");
 
-  // PART 5 — Energy (E)
-  const p5 = sections[5] || "";
-  const energyTotal = extractField(p5, "Total energy consumed");
-  const pue = extractField(p5, "PUE applied");
-  const energyBreakdown = parseTable(p5, "Energy breakdown").map((r) => ({
+  // Section 5 — Energy (E) and Carbon Intensity (I)
+  const s5 = sections[5] || "";
+  const energyTotal = extractField(s5, "Total energy consumed");
+  const pue = extractField(s5, "PUE applied");
+  const energyBreakdown = parseTable(s5, "Energy breakdown").map((r) => ({
     component: r["Component"] || "",
     energy: r["Energy after PUE (kWh)"] || "",
     method: r["How calculated"] || "",
   }));
+  const carbonIntensityValue = extractField(s5, "Carbon intensity value");
+  const carbonIntensityLocation = extractField(s5, "Location(s)");
+  const carbonIntensityApproach = extractField(s5, "Approach");
+  const carbonIntensitySource =
+    extractField(s5, "Data source + year") ||
+    extractField(s5, "Data source");
 
-  // PART 6 — Carbon Intensity (I)
-  const p6 = sections[6] || "";
-  const carbonIntensityValue = extractField(p6, "Carbon intensity value");
-  const carbonIntensityLocation = extractField(p6, "Location(s)");
-  const carbonIntensityApproach = extractField(p6, "Approach");
-  const carbonIntensitySource = extractField(p6, "Data source");
-
-  // PART 7 — Embodied Emissions (M)
-  const p7 = sections[7] || "";
-  const embodiedTotal = extractField(p7, "Total embodied emissions allocated to this measurement");
-  const embodiedMethodology = extractField(p7, "Allocation methodology");
-  const embodiedBreakdown = parseTable(p7, "Hardware component breakdown").map((r) => ({
+  // Section 6 — Embodied Emissions (M)
+  const s6 = sections[6] || "";
+  const embodiedTotal = extractField(s6, "Total embodied emissions allocated to this measurement");
+  const embodiedMethodology = extractField(s6, "Allocation methodology");
+  const embodiedBreakdown = parseTable(s6, "Hardware component breakdown").map((r) => ({
     component: r["Hardware component"] || "",
     allocated: r["Allocated M (gCO2eq)"] || "",
     source: r["Data source"] || "",
   }));
 
-  // PART 8 — Methodology, Assumptions, and Limitations
-  const p8 = sections[8] || "";
-  const methodologyApproach = extractField(p8, "Overall approach");
-  const methodologyDescription = extractField(p8, "Describe your methodology");
-  const assumptions = parseTable(p8, "Key assumptions").map((r) => ({
-    assumption: r["Assumption"] || "",
-    justification: r["Justification"] || "",
+  // Section 7 — Methodology and Calculation
+  const s7 = sections[7] || "";
+  const methodologyApproach = extractField(s7, "Overall approach");
+  const methodologyDescription = extractField(s7, "Describe your methodology");
+  const assumptionsAndLimitations = parseTable(s7, "Assumptions and limitations").map((r) => ({
+    item: r["Assumption or limitation"] || "",
+    justification: r["Justification or mitigation"] || "",
   }));
-  const limitations = parseTable(p8, "Known limitations").map((r) => ({
-    limitation: r["Limitation"] || "",
-    severity: r["Severity (Low / Medium / High)"] || "",
-    mitigation: r["Mitigation"] || "",
-  }));
-
-  // PART 9 — Show Your Calculation
-  const p9 = sections[9] || "";
-  const calculationText = extractCodeBlock(p9);
+  const calculationText = extractCodeBlock(s7);
 
   // Validate required fields
   const required = {
@@ -299,11 +297,11 @@ function parseDisclosure(filePath) {
       embodiedBreakdown,
       methodologyApproach,
       methodologyDescription,
-      assumptions,
-      limitations,
+      assumptionsAndLimitations,
       calculationText,
       boundaryIncluded,
       boundaryExcluded,
+      sharedInfrastructure,
     },
   };
 }
@@ -331,6 +329,7 @@ function buildPayload(fields, email, disclosureUrl) {
         softwareDescription: fields.softwareDescription,
         boundaryIncluded: fields.boundaryIncluded,
         boundaryExcluded: fields.boundaryExcluded,
+        sharedInfrastructure: fields.sharedInfrastructure,
         functionalUnitJustification: fields.functionalUnitJustification,
         functionalUnitCountingMethod: fields.functionalUnitCountingMethod,
         functionalUnitTotal: fields.functionalUnitTotal,
@@ -346,8 +345,7 @@ function buildPayload(fields, email, disclosureUrl) {
         embodiedBreakdown: fields.embodiedBreakdown,
         methodologyApproach: fields.methodologyApproach,
         methodologyDescription: fields.methodologyDescription,
-        assumptions: fields.assumptions,
-        limitations: fields.limitations,
+        assumptionsAndLimitations: fields.assumptionsAndLimitations,
         calculationText: fields.calculationText,
       },
     },
