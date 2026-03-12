@@ -4,9 +4,9 @@ Planning and operational documents for the Green Software Foundation's Self-Cert
 
 ## About the Program
 
-This program enables **GSF member organizations** to self-certify conformity with the ISO/IEC 21031:2024 standard (SCI). Organizations submit their SCI calculations along with a signed attestation and full methodology disclosure. A GSF review committee verifies **disclosure completeness** -- not calculation accuracy -- through a structured 7-item review checklist. After reviewer approval, the Software Standards Working Group has a 7-day sign-off period before the certificate is issued. All disclosures are published publicly on GitHub for community review.
+This program enables **any organization** to self-certify conformity with the ISO/IEC 21031:2024 standard (SCI). Organizations submit their SCI calculations along with a signed attestation and full methodology disclosure. A GSF review committee verifies **disclosure completeness** -- not calculation accuracy -- through a structured 7-item review checklist. After reviewer approval, the Software Standards Working Group has a 7-day sign-off period before the certificate is issued. All disclosures are published publicly on GitHub for community review.
 
-The program is free for GSF members (no additional fees), follows the ISO/IEC 17050 supplier's declaration of conformity framework, and targets a ~3–4 week turnaround from submission to certificate (10–15 business day review plus 7-day SWG sign-off period).
+The program is free (no fees), follows the ISO/IEC 17050 supplier's declaration of conformity framework, and targets a ~3–4 week turnaround from submission to certificate (10–15 business day review plus 7-day SWG sign-off period).
 
 ## Repository Contents
 
@@ -53,7 +53,7 @@ The program is free for GSF members (no additional fees), follows the ISO/IEC 17
 
 ## Key Concepts
 
-- **GSF members only**: The program is open to current Green Software Foundation member organizations.
+- **Open to all**: The program is open to any organization that has calculated an SCI score according to ISO/IEC 21031:2024.
 - **Self-certification, not third-party audit**: Organizations declare their own conformity with ISO/IEC 21031:2024. GSF verifies disclosure completeness, not accuracy.
 - **Single-pass review**: A 7-item checklist covering completeness and disclosure sufficiency. Each item is marked Y (adequate), N (missing), or I (insufficient).
 - **SWG sign-off**: After reviewer approval, the Software Standards Working Group has a 7-day objection period before the SWG Chair or Executive Director signs off on certificate issuance.

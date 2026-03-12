@@ -2,17 +2,17 @@
 
 ## What This Program Is
 
-The Green Software Foundation (GSF) Self-Certification Program lets GSF member organizations declare that their Software Carbon Intensity (SCI) calculation conforms to ISO/IEC 21031:2024. You self-certify conformity. GSF then checks that your disclosure is complete and detailed enough for the public to understand and evaluate your calculation. If it is, GSF issues a certificate.
+The Green Software Foundation (GSF) Self-Certification Program lets any organization declare that their Software Carbon Intensity (SCI) calculation conforms to ISO/IEC 21031:2024. You self-certify conformity. GSF then checks that your disclosure is complete and detailed enough for the public to understand and evaluate your calculation. If it is, GSF issues a certificate.
 
 **This is not a third-party audit.** GSF does not validate the accuracy of your numbers, assess whether your methodology is correct, or confirm that your calculation actually conforms to ISO/IEC 21031:2024. You are responsible for all of that. GSF verifies only that your disclosure is complete and sufficiently detailed. Your submission is then published so the community can review it.
 
-The program is **free** for GSF members. There is no additional fee to apply, receive a certificate, or renew. Applicants must be current members of the Green Software Foundation.
+The program is **free**. There is no fee to apply, receive a certificate, or renew.
 
 ---
 
 ## Who Can Apply
 
-The program is open to **GSF member organizations** that have calculated an SCI score according to ISO/IEC 21031:2024. Applicants must be current members of the Green Software Foundation. Within that membership, there are no further restrictions on organization size, type, location, software domain, or calculation methodology.
+The program is open to **any organization** that has calculated an SCI score according to ISO/IEC 21031:2024. There are no restrictions on organization size, type, location, software domain, or calculation methodology.
 
 ---
 

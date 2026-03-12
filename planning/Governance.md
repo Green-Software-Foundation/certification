@@ -146,7 +146,7 @@ Changes to the following require **Software Standards Working Group approval**:
 
 - Review criteria (the 7-item checklist, Y/N/I marking guidance, pass/fail examples)
 - Access requirements (who can apply, eligibility criteria)
-- Fee structure (currently free for GSF members)
+- Fee structure (currently free)
 - Certificate validity period
 - Dispute resolution procedures
 - Badge usage rules

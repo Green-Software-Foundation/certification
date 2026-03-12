@@ -6,7 +6,7 @@
 
 ### What is the SCI Self-Certification Program?
 
-It is a program run by the Green Software Foundation (GSF) that lets member organizations declare that their Software Carbon Intensity (SCI) calculation conforms to ISO/IEC 21031:2024. You submit a structured disclosure of your calculation, GSF checks that the disclosure is complete and detailed enough for public review, and — if it passes — GSF issues a certificate and publishes your disclosure.
+It is a program run by the Green Software Foundation (GSF) that lets any organization declare that their Software Carbon Intensity (SCI) calculation conforms to ISO/IEC 21031:2024. You submit a structured disclosure of your calculation, GSF checks that the disclosure is complete and detailed enough for public review, and — if it passes — GSF issues a certificate and publishes your disclosure.
 
 ### What is ISO/IEC 21031:2024?
 
@@ -22,7 +22,7 @@ Self-certification means **your organization** declares conformity with the stan
 |---|---|---|
 | **Who declares conformity** | Your organization | An independent auditor |
 | **What gets verified** | Disclosure completeness | Full conformity assessment |
-| **Cost** | Free (for GSF members) | $12,000–$47,000+/year |
+| **Cost** | Free (no fees) | $12,000–$47,000+/year |
 | **Timeline** | ~3–4 weeks | Months |
 | **Accountability** | Community validation via public disclosure | Auditor validation |
 
@@ -38,15 +38,15 @@ Yes. The OpenChain Project (Linux Foundation) runs a successful self-certificati
 
 ### Who can apply?
 
-The program is open to **current GSF member organizations** that have calculated an SCI score according to ISO/IEC 21031:2024. Within that membership, there are no restrictions on organization size, type, location, software domain, or calculation methodology.
+The program is open to **any organization** that has calculated an SCI score according to ISO/IEC 21031:2024. There are no restrictions on organization size, type, location, software domain, or calculation methodology.
 
 ### Does it cost anything?
 
-No. The program is free for GSF members. There is no additional fee to apply, receive a certificate, or renew. The only requirement is current GSF membership.
+No. The program is completely free. There is no fee to apply, receive a certificate, or renew.
 
 ### Can individuals apply, or only organizations?
 
-Only organizations. The certificate is issued to the organization, not to an individual. However, an individual within a member organization prepares and submits the application on behalf of their organization.
+Only organizations. The certificate is issued to the organization, not to an individual. However, an individual within an organization prepares and submits the application on behalf of their organization.
 
 ### Can I certify multiple software products?
 
@@ -212,7 +212,7 @@ Yes. ISO/IEC 21031:2024 does not prescribe a specific measurement period length.
 
 ### How does community validation work?
 
-All approved submissions are published publicly on GitHub. Anyone — GSF members, industry practitioners, researchers, the public — can read your disclosure and assess whether it is reasonable. This transparency is what gives self-certification its credibility. If someone identifies a concern, they can raise a formal challenge.
+All approved submissions are published publicly on GitHub. Anyone — industry practitioners, researchers, the public — can read your disclosure and assess whether it is reasonable. This transparency is what gives self-certification its credibility. If someone identifies a concern, they can raise a formal challenge.
 
 ### Can anyone challenge my certificate?
 
@@ -269,4 +269,4 @@ Email **sci-certification@greensoftware.foundation** for any questions about the
 
 ### How do I join the Green Software Foundation?
 
-Visit [greensoftware.foundation](https://greensoftware.foundation/) for membership information. GSF membership is a prerequisite for the program.
+Visit [greensoftware.foundation](https://greensoftware.foundation/) for information about the Green Software Foundation and its initiatives.

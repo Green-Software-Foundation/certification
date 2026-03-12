@@ -499,7 +499,7 @@ Process 2-3 test submissions through the complete workflow.
 
 ### 5.1 Recruit 3-5 Pilot Applicants
 
-Real organizations willing to be first submitters. Sources: Standards Working Group members' organizations, case study presenters, GSF member organizations already doing SCI calculations.
+Real organizations willing to be first submitters. Sources: Standards Working Group members' organizations, case study presenters, organizations already doing SCI calculations.
 
 Offer: direct support during preparation, priority review, founding certificate holder recognition, their feedback shapes the process.
 

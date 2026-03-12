@@ -7,7 +7,7 @@ The Green Software Foundation (GSF) proposes a **Self-Certification Program** fo
 **Key points:**
 
 - **Self-certification, not third-party audit** — organizations declare their own conformity; GSF verifies disclosure completeness only
-- **Free for members** — no additional fees, email-based submission, open to all GSF member organizations
+- **Free** — no fees, email-based submission, open to any organization
 - **Transparent** — all approved disclosures are published on GitHub for community validation
 - **Fast** — ~3–4 weeks from submission to certificate (10–15 business day review + 7-day SWG sign-off period)
 - **Community-driven accountability** — public disclosure and a structured challenge mechanism replace expensive audits
@@ -30,7 +30,7 @@ GSF adds a disclosure verification layer: a structured review that confirms the 
 |---|---|---|
 | **Who declares conformity** | The organization | An independent auditor |
 | **What GSF verifies** | Disclosure completeness | N/A (not this program) |
-| **Cost** | Free | $12,000–$47,000+/year |
+| **Cost** | Free (no fees) | $12,000–$47,000+/year |
 | **Timeline** | ~3–4 weeks | Months |
 | **Accountability** | Community validation via public disclosure | Auditor validation |
 
@@ -53,7 +53,7 @@ The OpenChain Project (Linux Foundation) operates a successful self-certificatio
 
 ### Who Can Apply
 
-The program is open to **GSF member organizations** that have calculated an SCI score according to ISO/IEC 21031:2024. Applicants must be current members of the Green Software Foundation. Within that membership, there are no further restrictions on organization size, type, location, domain, or methodology. The program is **free** — there is no additional fee beyond GSF membership.
+The program is open to **any organization** that has calculated an SCI score according to ISO/IEC 21031:2024. There are no restrictions on organization size, type, location, domain, or methodology. The program is **free** — there is no fee to apply, receive a certificate, or renew.
 
 ### What Applicants Submit
 
