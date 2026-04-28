@@ -1,0 +1,370 @@
+# ============================================================================
+# SCI Self-Certification — Impact Framework Manifest
+# Meridian Bank Plc — Meridian Payments Platform v8.4.2
+#
+# Hybrid deployment: on-prem primary (London, UK) + AWS eu-west-2 DR site.
+# Market-based carbon intensity is used (PPA-backed renewable purchasing for
+# the on-prem site; AWS Customer Carbon Footprint market-based figure for DR).
+# Each region uses its own grid/carbon-intensity at the child level.
+# system-total provides pre-summed carbon-operational (different intensities
+# across regions cannot be re-derived from a single intensity at the top).
+#
+# Run:  if-run --manifest meridianbank-payments-v8.4.2-sci.yml
+# ============================================================================
+
+name: meridianbank-payments-platform-sci
+description: |
+  SCI calculation for Meridian Bank's core Payments Platform v8.4.2.
+
+  Hybrid deployment: primary site in Meridian's on-prem London data centre
+  (Slough, UK) running the live workload; active-passive DR at AWS eu-west-2
+  (London) running Kafka mirroring and RDS read replicas for failover.
+
+  On-prem infrastructure:
+    - 6x Dell PowerEdge R650 application servers
+    - 2x Dell PowerEdge R750 Oracle database servers
+    - 4x Dell PowerEdge R650 Kafka cluster nodes
+    - 1x NetApp FAS9500 storage array
+
+  AWS infrastructure:
+    - 2x EC2 c6i.4xlarge (Kafka MirrorMaker)
+    - 1x RDS db.r6i.2xlarge (read replica)
+
+  Measurement period: March 2026 (31 days, 744 hours)
+  Total transactions: 280,000,000
+  Carbon intensity (market-based):
+    - On-prem (London): 25 gCO2eq/kWh — 90% PPA-backed, 10% UK grid residual
+    - AWS eu-west-2: 50 gCO2eq/kWh — AWS Customer Carbon Footprint, 2025
+  PUE:
+    - On-prem: 1.45 (measured 2025 facility average)
+    - AWS eu-west-2: 1.135 (AWS published)
+
+  Result: 17.85 gCO2eq per 10,000 transactions
+
+tags:
+  kind: sci
+  category: financial-services
+  domain: payments-processing
+  environment: production
+  deployment: hybrid
+  approach: market-based
+
+initialize:
+  plugins:
+    power-to-energy:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["power-kw", "hours"]
+        output-parameter: "energy-kwh"
+
+    apply-pue:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["energy-kwh", "pue"]
+        output-parameter: "energy"
+
+    operational-carbon:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["energy", "grid/carbon-intensity"]
+        output-parameter: "carbon-operational"
+
+    time-share:
+      method: Divide
+      path: builtin
+      config:
+        numerator: time-reserved-hours
+        denominator: expected-lifespan-hours
+        output: time-share-ratio
+
+    compute-embodied:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["emissions-embodied-total", "time-share-ratio"]
+        output-parameter: "carbon-embodied"
+
+    sum-carbon:
+      method: Sum
+      path: builtin
+      config:
+        input-parameters:
+          - carbon-operational
+          - carbon-embodied
+        output-parameter: carbon
+
+    sci:
+      method: Sci
+      path: builtin
+      config:
+        functional-unit: "functional-unit-count"
+
+tree:
+  children:
+    # ------------------------------------------------------------------
+    # On-prem London site (primary, ~80% of workload)
+    # PUE: 1.45  |  Market-based CI: 25 gCO2eq/kWh
+    # 5-year hardware lifespan (banking refresh cycle)
+    # ------------------------------------------------------------------
+
+    onprem-app-server-1:
+      pipeline:
+        compute:
+          - power-to-energy
+          - apply-pue
+          - operational-carbon
+          - time-share
+          - compute-embodied
+          - sum-carbon
+      inputs:
+        - timestamp: "2026-03-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.250
+          hours: 744
+          pue: 1.45
+          grid/carbon-intensity: 25
+          emissions-embodied-total: 1500000
+          time-reserved-hours: 744
+          expected-lifespan-hours: 43800   # 5 years
+
+    onprem-app-server-2:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-03-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.250
+          hours: 744
+          pue: 1.45
+          grid/carbon-intensity: 25
+          emissions-embodied-total: 1500000
+          time-reserved-hours: 744
+          expected-lifespan-hours: 43800
+
+    onprem-app-server-3:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-03-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.250
+          hours: 744
+          pue: 1.45
+          grid/carbon-intensity: 25
+          emissions-embodied-total: 1500000
+          time-reserved-hours: 744
+          expected-lifespan-hours: 43800
+
+    onprem-app-server-4:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-03-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.250
+          hours: 744
+          pue: 1.45
+          grid/carbon-intensity: 25
+          emissions-embodied-total: 1500000
+          time-reserved-hours: 744
+          expected-lifespan-hours: 43800
+
+    onprem-app-server-5:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-03-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.250
+          hours: 744
+          pue: 1.45
+          grid/carbon-intensity: 25
+          emissions-embodied-total: 1500000
+          time-reserved-hours: 744
+          expected-lifespan-hours: 43800
+
+    onprem-app-server-6:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-03-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.250
+          hours: 744
+          pue: 1.45
+          grid/carbon-intensity: 25
+          emissions-embodied-total: 1500000
+          time-reserved-hours: 744
+          expected-lifespan-hours: 43800
+
+    onprem-db-server-1:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-03-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.300
+          hours: 744
+          pue: 1.45
+          grid/carbon-intensity: 25
+          emissions-embodied-total: 1800000
+          time-reserved-hours: 744
+          expected-lifespan-hours: 43800
+
+    onprem-db-server-2:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-03-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.300
+          hours: 744
+          pue: 1.45
+          grid/carbon-intensity: 25
+          emissions-embodied-total: 1800000
+          time-reserved-hours: 744
+          expected-lifespan-hours: 43800
+
+    onprem-kafka-1:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-03-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.150
+          hours: 744
+          pue: 1.45
+          grid/carbon-intensity: 25
+          emissions-embodied-total: 1000000
+          time-reserved-hours: 744
+          expected-lifespan-hours: 43800
+
+    onprem-kafka-2:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-03-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.150
+          hours: 744
+          pue: 1.45
+          grid/carbon-intensity: 25
+          emissions-embodied-total: 1000000
+          time-reserved-hours: 744
+          expected-lifespan-hours: 43800
+
+    onprem-kafka-3:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-03-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.150
+          hours: 744
+          pue: 1.45
+          grid/carbon-intensity: 25
+          emissions-embodied-total: 1000000
+          time-reserved-hours: 744
+          expected-lifespan-hours: 43800
+
+    onprem-kafka-4:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-03-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.150
+          hours: 744
+          pue: 1.45
+          grid/carbon-intensity: 25
+          emissions-embodied-total: 1000000
+          time-reserved-hours: 744
+          expected-lifespan-hours: 43800
+
+    onprem-storage:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-03-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.500
+          hours: 744
+          pue: 1.45
+          grid/carbon-intensity: 25
+          emissions-embodied-total: 3500000
+          time-reserved-hours: 744
+          expected-lifespan-hours: 43800
+
+    # ------------------------------------------------------------------
+    # AWS eu-west-2 DR site (active-passive, ~20% of workload)
+    # PUE: 1.135  |  Market-based CI: 50 gCO2eq/kWh
+    # 4-year hardware lifespan (cloud refresh cycle)
+    # ------------------------------------------------------------------
+
+    aws-kafka-mirror-1:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-03-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.080
+          hours: 744
+          pue: 1.135
+          grid/carbon-intensity: 50
+          emissions-embodied-total: 900000
+          time-reserved-hours: 744
+          expected-lifespan-hours: 35040
+
+    aws-kafka-mirror-2:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-03-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.080
+          hours: 744
+          pue: 1.135
+          grid/carbon-intensity: 50
+          emissions-embodied-total: 900000
+          time-reserved-hours: 744
+          expected-lifespan-hours: 35040
+
+    aws-rds-replica:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-03-01T00:00:00.000Z"
+          duration: 2678400
+          power-kw: 0.090
+          hours: 744
+          pue: 1.135
+          grid/carbon-intensity: 50
+          emissions-embodied-total: 1100000
+          time-reserved-hours: 744
+          expected-lifespan-hours: 35040
+
+    # ------------------------------------------------------------------
+    # System total: aggregates the per-component values and computes
+    # the SCI score reported on the certificate.
+    #
+    # Inputs are pre-summed (operational across two regions with different
+    # market-based intensities cannot be re-derived from a single intensity):
+    #   carbon-operational = 96,859.50 gCO2eq (3,452.16 × 25 + 211.11 × 50)
+    #   carbon-embodied    = 403,000 gCO2eq (sum of per-component allocations)
+    #   functional-unit-count = 28,000 (280,000,000 transactions / 10,000)
+    # ------------------------------------------------------------------
+
+    system-total:
+      pipeline:
+        compute:
+          - sum-carbon
+          - sci
+      inputs:
+        - timestamp: "2026-03-01T00:00:00.000Z"
+          duration: 2678400
+          carbon-operational: 96859.50
+          carbon-embodied: 403000.00
+          functional-unit-count: 28000

@@ -1,0 +1,208 @@
+# ============================================================================
+# SCI Self-Certification — Impact Framework Manifest
+# Portal Arena Studios Ltd — Portal Arena Game Backend v12.3
+#
+# Multiplayer game backend on Google Kubernetes Engine with autoscaling node
+# pool. Workload is bursty: 15–50 nodes during the period, averaging 30.
+# Methodology is measurement-based: total node-hours and per-node power
+# come from GKE billing telemetry and Prometheus CPU metrics.
+#
+# The autoscaled game-server fleet is modelled as a single child with
+# aggregated power (30 nodes × 0.030 kW = 0.9 kW) and total fleet embodied
+# (30 × 600,000 = 18,000,000) — mathematically equivalent to summing 30
+# identical per-node children.
+#
+# Run:  if-run --manifest portal-arena-backend-v12.3-sci.yml
+# ============================================================================
+
+name: portal-arena-game-backend-sci
+description: |
+  SCI calculation for Portal Arena Studios Ltd's online multiplayer game
+  backend v12.3.
+
+  The backend hosts matchmaking, game-state, chat, and leaderboard services
+  for Portal Arena, a competitive 5v5 arena game. Deployed on Google
+  Kubernetes Engine (us-central1) with an autoscaling node pool for game
+  servers and a small fixed pool for stateful services. Methodology is
+  measurement-based: node-hours and CPU utilisation come from real
+  telemetry over the measurement period.
+
+  Infrastructure (GKE us-central1):
+    Game-server fleet (autoscaled):
+      n2-standard-4 nodes — 15–50 active, mean 30, total 21,600 node-hours
+      Mean per-node power: 0.030 kW (measured via Prometheus node_exporter)
+    Always-on services:
+      2x state-manager n2-standard-8
+      1x Memorystore Redis (game-state cache)
+      1x Cloud SQL Postgres (player profiles)
+
+  Measurement period: April 2026 (30 days, 720 hours)
+  Total player-sessions: 12,000,000
+  Carbon intensity: 420 gCO2eq/kWh (EPA eGRID 2023, MROE)
+  PUE: 1.09 (Google published, us-central1)
+
+  Result: 65.39 gCO2eq per 1,000 player-sessions
+
+tags:
+  kind: sci
+  category: gaming
+  domain: multiplayer-arena
+  environment: production
+  cloud_provider: gcp
+  region: us-central1
+  approach: measurement
+
+initialize:
+  plugins:
+    power-to-energy:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["power-kw", "hours"]
+        output-parameter: "energy-kwh"
+
+    apply-pue:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["energy-kwh", "pue"]
+        output-parameter: "energy"
+
+    operational-carbon:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["energy", "grid/carbon-intensity"]
+        output-parameter: "carbon-operational"
+
+    time-share:
+      method: Divide
+      path: builtin
+      config:
+        numerator: time-reserved-hours
+        denominator: expected-lifespan-hours
+        output: time-share-ratio
+
+    compute-embodied:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["emissions-embodied-total", "time-share-ratio"]
+        output-parameter: "carbon-embodied"
+
+    sum-carbon:
+      method: Sum
+      path: builtin
+      config:
+        input-parameters:
+          - carbon-operational
+          - carbon-embodied
+        output-parameter: carbon
+
+    sci:
+      method: Sci
+      path: builtin
+      config:
+        functional-unit: "functional-unit-count"
+
+tree:
+  children:
+    # ------------------------------------------------------------------
+    # Game-server fleet (autoscaled n2-standard-4, mean 30 nodes)
+    # Aggregated power: 30 × 0.030 = 0.9 kW
+    # Aggregated embodied: 30 × 600,000 = 18,000,000 gCO2eq fleet lifecycle
+    # ------------------------------------------------------------------
+
+    game-server-fleet:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          power-kw: 0.900                      # 30 nodes × 0.030 kW measured average
+          hours: 720
+          pue: 1.09
+          grid/carbon-intensity: 420
+          emissions-embodied-total: 18000000   # 30 × 600,000 (n2-standard-4 lifecycle)
+          time-reserved-hours: 720             # measurement period (per-node fleet-equivalent)
+          expected-lifespan-hours: 35040       # 4 years per-node lifespan
+
+    # ------------------------------------------------------------------
+    # Always-on stateful services
+    # ------------------------------------------------------------------
+
+    state-manager-1:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          power-kw: 0.060                      # n2-standard-8 measured 50% util
+          hours: 720
+          pue: 1.09
+          grid/carbon-intensity: 420
+          emissions-embodied-total: 800000
+          time-reserved-hours: 720
+          expected-lifespan-hours: 35040
+
+    state-manager-2:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          power-kw: 0.060
+          hours: 720
+          pue: 1.09
+          grid/carbon-intensity: 420
+          emissions-embodied-total: 800000
+          time-reserved-hours: 720
+          expected-lifespan-hours: 35040
+
+    redis-game-state:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          power-kw: 0.020                      # Memorystore standard-1gb
+          hours: 720
+          pue: 1.09
+          grid/carbon-intensity: 420
+          emissions-embodied-total: 400000
+          time-reserved-hours: 720
+          expected-lifespan-hours: 35040
+
+    cloud-sql-profiles:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          power-kw: 0.050                      # Cloud SQL db-custom-2-8192
+          hours: 720
+          pue: 1.09
+          grid/carbon-intensity: 420
+          emissions-embodied-total: 700000
+          time-reserved-hours: 720
+          expected-lifespan-hours: 35040
+
+    # ------------------------------------------------------------------
+    # System total: aggregates the per-component values and computes
+    # the SCI score. Single region, single intensity — operational
+    # is re-derived from total energy at this level.
+    # ------------------------------------------------------------------
+
+    system-total:
+      pipeline:
+        compute:
+          - operational-carbon
+          - sum-carbon
+          - sci
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          energy: 855.432                      # total E after PUE (kWh)
+          grid/carbon-intensity: 420
+          carbon-embodied: 425342.4657534247   # total M (gCO2eq)
+          functional-unit-count: 12000         # 12M player-sessions / 1,000

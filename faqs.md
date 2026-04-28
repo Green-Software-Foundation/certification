@@ -261,12 +261,12 @@ The template is in this repository at `planning/submission-email-template.md`. I
 
 ### Where do I find detailed submission requirements?
 
-The [Applicant Guide](Applicant-Guide.md) contains full requirements, evaluation criteria, pass/fail examples, badge rules, the appeals process, and a pre-submission checklist.
+The [Applicant Guide](planning/Applicant-Guide.md) contains full requirements, evaluation criteria, pass/fail examples, badge rules, the appeals process, and a pre-submission checklist.
 
 ### Who do I contact with questions?
 
-Email **sci-certification@greensoftware.foundation** for any questions about the program, your submission, or your certificate. The Program Manager (GSF Head of R&D) handles all inquiries.
+Email **sci-certification@greensoftware.foundation** for any questions about the program, your submission, or your certificate.
 
-### How do I join the Green Software Foundation?
+### How do I learn more about the Green Software Foundation?
 
 Visit [greensoftware.foundation](https://greensoftware.foundation/) for information about the Green Software Foundation and its initiatives.

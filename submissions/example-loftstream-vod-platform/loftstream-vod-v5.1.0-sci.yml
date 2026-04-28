@@ -1,0 +1,342 @@
+# ============================================================================
+# SCI Self-Certification — Impact Framework Manifest
+# LoftStream Media Ltd — LoftStream Origin & Player v5.1.0
+#
+# Multi-region VoD platform: encoding + origin serving in AWS us-east-1
+# (primary) and AWS eu-west-1 (Europe). Each region has its own grid
+# carbon intensity. Network egress (origin → CDN edge) is included with
+# region-weighted allocation. The CDN itself is excluded (third party).
+#
+# Run:  if-run --manifest loftstream-vod-v5.1.0-sci.yml
+# ============================================================================
+
+name: loftstream-vod-platform-sci
+description: |
+  SCI calculation for LoftStream Media Ltd's video-on-demand platform v5.1.0.
+
+  An ad-supported video-on-demand service. The platform handles ingest,
+  encoding (multi-bitrate ABR ladder), origin serving (HLS and DASH manifests
+  and segments), and a metadata/catalog API. Content is delivered to viewers
+  by a third-party CDN, which is excluded from this measurement.
+
+  Infrastructure (AWS):
+    us-east-1 (primary, ~60% of viewer traffic)
+      - 4x c6i.8xlarge encoder workers (FFmpeg)
+      - 2x c6i.4xlarge origin servers (NGINX)
+      - 2x m6i.large metadata API (Node.js)
+    eu-west-1 (~40% of viewer traffic)
+      - 2x c6i.8xlarge encoder workers
+      - 2x c6i.4xlarge origin servers
+      - 1x m6i.large metadata API
+
+  Network egress (origin to CDN edge): 250,000 GB allocated 60% US / 40% EU.
+
+  Measurement period: April 2026 (30 days, 720 hours)
+  Total viewer-hours: 220,000,000
+  Carbon intensity (location-based):
+    - us-east-1: 370 gCO2eq/kWh (EPA eGRID 2023, SRVC subregion)
+    - eu-west-1: 290 gCO2eq/kWh (SEAI Ireland 2024)
+  PUE: 1.135 (AWS published, both regions)
+
+  Result: 3.31 gCO2eq per 1,000 viewer-hours
+
+tags:
+  kind: sci
+  category: streaming-media
+  domain: video-on-demand
+  environment: production
+  cloud_provider: aws
+  approach: location-based
+  multi-region: true
+
+initialize:
+  plugins:
+    power-to-energy:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["power-kw", "hours"]
+        output-parameter: "energy-kwh"
+
+    apply-pue:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["energy-kwh", "pue"]
+        output-parameter: "energy"
+
+    operational-carbon:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["energy", "grid/carbon-intensity"]
+        output-parameter: "carbon-operational"
+
+    time-share:
+      method: Divide
+      path: builtin
+      config:
+        numerator: time-reserved-hours
+        denominator: expected-lifespan-hours
+        output: time-share-ratio
+
+    compute-embodied:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["emissions-embodied-total", "time-share-ratio"]
+        output-parameter: "carbon-embodied"
+
+    sum-carbon:
+      method: Sum
+      path: builtin
+      config:
+        input-parameters:
+          - carbon-operational
+          - carbon-embodied
+        output-parameter: carbon
+
+    sci:
+      method: Sci
+      path: builtin
+      config:
+        functional-unit: "functional-unit-count"
+
+tree:
+  children:
+    # ------------------------------------------------------------------
+    # US (us-east-1)  |  PUE 1.135  |  CI 370 gCO2eq/kWh
+    # ------------------------------------------------------------------
+
+    us-encoder-1:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          power-kw: 0.150
+          hours: 720
+          pue: 1.135
+          grid/carbon-intensity: 370
+          emissions-embodied-total: 1400000
+          time-reserved-hours: 720
+          expected-lifespan-hours: 35040
+
+    us-encoder-2:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          power-kw: 0.150
+          hours: 720
+          pue: 1.135
+          grid/carbon-intensity: 370
+          emissions-embodied-total: 1400000
+          time-reserved-hours: 720
+          expected-lifespan-hours: 35040
+
+    us-encoder-3:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          power-kw: 0.150
+          hours: 720
+          pue: 1.135
+          grid/carbon-intensity: 370
+          emissions-embodied-total: 1400000
+          time-reserved-hours: 720
+          expected-lifespan-hours: 35040
+
+    us-encoder-4:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          power-kw: 0.150
+          hours: 720
+          pue: 1.135
+          grid/carbon-intensity: 370
+          emissions-embodied-total: 1400000
+          time-reserved-hours: 720
+          expected-lifespan-hours: 35040
+
+    us-origin-1:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          power-kw: 0.080
+          hours: 720
+          pue: 1.135
+          grid/carbon-intensity: 370
+          emissions-embodied-total: 900000
+          time-reserved-hours: 720
+          expected-lifespan-hours: 35040
+
+    us-origin-2:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          power-kw: 0.080
+          hours: 720
+          pue: 1.135
+          grid/carbon-intensity: 370
+          emissions-embodied-total: 900000
+          time-reserved-hours: 720
+          expected-lifespan-hours: 35040
+
+    us-metadata-1:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          power-kw: 0.020
+          hours: 720
+          pue: 1.135
+          grid/carbon-intensity: 370
+          emissions-embodied-total: 500000
+          time-reserved-hours: 720
+          expected-lifespan-hours: 35040
+
+    us-metadata-2:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          power-kw: 0.020
+          hours: 720
+          pue: 1.135
+          grid/carbon-intensity: 370
+          emissions-embodied-total: 500000
+          time-reserved-hours: 720
+          expected-lifespan-hours: 35040
+
+    us-network:
+      # 60% of 250,000 GB egress × 0.001 kWh/GB = 150 kWh raw
+      pipeline:
+        compute: [apply-pue, operational-carbon, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          energy-kwh: 150.0
+          pue: 1.135
+          grid/carbon-intensity: 370
+          carbon-embodied: 0
+
+    # ------------------------------------------------------------------
+    # EU (eu-west-1)  |  PUE 1.135  |  CI 290 gCO2eq/kWh
+    # ------------------------------------------------------------------
+
+    eu-encoder-1:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          power-kw: 0.150
+          hours: 720
+          pue: 1.135
+          grid/carbon-intensity: 290
+          emissions-embodied-total: 1400000
+          time-reserved-hours: 720
+          expected-lifespan-hours: 35040
+
+    eu-encoder-2:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          power-kw: 0.150
+          hours: 720
+          pue: 1.135
+          grid/carbon-intensity: 290
+          emissions-embodied-total: 1400000
+          time-reserved-hours: 720
+          expected-lifespan-hours: 35040
+
+    eu-origin-1:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          power-kw: 0.080
+          hours: 720
+          pue: 1.135
+          grid/carbon-intensity: 290
+          emissions-embodied-total: 900000
+          time-reserved-hours: 720
+          expected-lifespan-hours: 35040
+
+    eu-origin-2:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          power-kw: 0.080
+          hours: 720
+          pue: 1.135
+          grid/carbon-intensity: 290
+          emissions-embodied-total: 900000
+          time-reserved-hours: 720
+          expected-lifespan-hours: 35040
+
+    eu-metadata-1:
+      pipeline:
+        compute: [power-to-energy, apply-pue, operational-carbon, time-share, compute-embodied, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          power-kw: 0.020
+          hours: 720
+          pue: 1.135
+          grid/carbon-intensity: 290
+          emissions-embodied-total: 500000
+          time-reserved-hours: 720
+          expected-lifespan-hours: 35040
+
+    eu-network:
+      # 40% of 250,000 GB egress × 0.001 kWh/GB = 100 kWh raw
+      pipeline:
+        compute: [apply-pue, operational-carbon, sum-carbon]
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          energy-kwh: 100.0
+          pue: 1.135
+          grid/carbon-intensity: 290
+          carbon-embodied: 0
+
+    # ------------------------------------------------------------------
+    # System total: pre-summed because two regions have different
+    # location-based carbon intensities.
+    #
+    #   carbon-operational = 451,552.94 gCO2eq
+    #     (US compute 241,891.20 + US network 62,992.50
+    #      + EU compute 113,754.24 + EU network 32,915.00)
+    #   carbon-embodied = 277,397.26 gCO2eq
+    #   functional-unit-count = 220,000 (220M viewer-hours / 1,000)
+    # ------------------------------------------------------------------
+
+    system-total:
+      pipeline:
+        compute:
+          - sum-carbon
+          - sci
+      inputs:
+        - timestamp: "2026-04-01T00:00:00.000Z"
+          duration: 2592000
+          carbon-operational: 451552.94
+          carbon-embodied: 277397.2602739726
+          functional-unit-count: 220000

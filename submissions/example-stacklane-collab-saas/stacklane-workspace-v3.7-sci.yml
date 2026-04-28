@@ -1,0 +1,170 @@
+# ============================================================================
+# SCI Self-Certification — Impact Framework Manifest
+# StackLane Inc — StackLane Collaborative Workspace v3.7.0
+#
+# A fully managed-PaaS deployment: Vercel for function compute and static
+# delivery, Neon for Postgres, Upstash for Redis, Cloudflare for edge
+# functions. No infrastructure under StackLane's operational control —
+# embodied emissions allocated as M = 0 with justification.
+#
+# Energy values are pre-computed per provider (load proxies + provider
+# sustainability data); each provider has its own effective grid intensity.
+#
+# Run:  if-run --manifest stacklane-workspace-v3.7-sci.yml
+# ============================================================================
+
+name: stacklane-collab-saas-sci
+description: |
+  SCI calculation for StackLane Inc's collaborative workspace SaaS v3.7.0.
+
+  StackLane is a B2B collaborative workspace tool (project boards, docs,
+  embedded chat) for product and engineering teams. The application is
+  fully serverless and uses only managed-PaaS services:
+
+    - Vercel — Next.js Edge/Serverless functions and static asset delivery
+    - Neon — managed Postgres (scale-to-zero compute)
+    - Upstash — managed Redis (per-command billing)
+    - Cloudflare Workers — auth and image proxy at the edge
+
+  StackLane operates no servers, no containers, no virtual machines, and
+  no hardware. M = 0 is reported with justification (Section 6 of the
+  disclosure): no hardware is under StackLane's operational control;
+  the providers above operate and refresh hardware.
+
+  Measurement period: May 2026 (30 days)
+  Active users: ~25,000  |  user-days: 750,000  |  functional unit: 1,000
+  Result: 170.00 gCO2eq per 1,000 active user-days
+
+tags:
+  kind: sci
+  category: dev-productivity
+  domain: collaboration-saas
+  environment: production
+  deployment: managed-paas
+  embodied: zero
+
+initialize:
+  plugins:
+    operational-carbon:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["energy", "grid/carbon-intensity"]
+        output-parameter: "carbon-operational"
+
+    sum-carbon:
+      method: Sum
+      path: builtin
+      config:
+        input-parameters:
+          - carbon-operational
+          - carbon-embodied
+        output-parameter: carbon
+
+    sci:
+      method: Sci
+      path: builtin
+      config:
+        functional-unit: "functional-unit-count"
+
+tree:
+  children:
+    # ------------------------------------------------------------------
+    # Vercel — Next.js function compute (~210M invocations × 150ms avg)
+    # Energy estimated from invocation-seconds × power proxy (Cloud Carbon
+    # Footprint serverless coefficient).
+    # Vercel runs on AWS us-east-1 — CI 370 gCO2eq/kWh (EPA eGRID 2023, SRVC).
+    # M = 0: hardware is operated by Vercel/AWS, not under StackLane's control.
+    # ------------------------------------------------------------------
+
+    vercel-functions:
+      pipeline:
+        compute: [operational-carbon, sum-carbon]
+      inputs:
+        - timestamp: "2026-05-01T00:00:00.000Z"
+          duration: 2592000
+          energy: 250                   # kWh (function-seconds × CCF serverless coefficient)
+          grid/carbon-intensity: 370    # gCO2eq/kWh, AWS us-east-1
+          carbon-embodied: 0
+
+    vercel-static-delivery:
+      pipeline:
+        compute: [operational-carbon, sum-carbon]
+      inputs:
+        - timestamp: "2026-05-01T00:00:00.000Z"
+          duration: 2592000
+          energy: 20                    # kWh (static asset egress × GSF coefficient)
+          grid/carbon-intensity: 370
+          carbon-embodied: 0
+
+    # ------------------------------------------------------------------
+    # Neon — managed Postgres (scale-to-zero) on AWS us-east-2
+    # Energy from total active compute-hours × CCF managed-DB coefficient.
+    # CI 410 gCO2eq/kWh (EPA eGRID 2023, RFCW subregion).
+    # ------------------------------------------------------------------
+
+    neon-postgres:
+      pipeline:
+        compute: [operational-carbon, sum-carbon]
+      inputs:
+        - timestamp: "2026-05-01T00:00:00.000Z"
+          duration: 2592000
+          energy: 40                    # kWh (active compute-hours × CCF)
+          grid/carbon-intensity: 410    # AWS us-east-2 (Ohio)
+          carbon-embodied: 0
+
+    # ------------------------------------------------------------------
+    # Upstash Redis — pay-per-command, AWS us-east-1
+    # ------------------------------------------------------------------
+
+    upstash-redis:
+      pipeline:
+        compute: [operational-carbon, sum-carbon]
+      inputs:
+        - timestamp: "2026-05-01T00:00:00.000Z"
+          duration: 2592000
+          energy: 10                    # kWh (commands × CCF Redis coefficient)
+          grid/carbon-intensity: 370
+          carbon-embodied: 0
+
+    # ------------------------------------------------------------------
+    # Cloudflare Workers — auth and image proxy at edge
+    # Cloudflare publishes ~150 gCO2eq/kWh global average (location-based,
+    # adjusted for renewable matching) — CF Sustainability Report 2024.
+    # ------------------------------------------------------------------
+
+    cloudflare-workers:
+      pipeline:
+        compute: [operational-carbon, sum-carbon]
+      inputs:
+        - timestamp: "2026-05-01T00:00:00.000Z"
+          duration: 2592000
+          energy: 50                    # kWh (edge requests × CF energy/request)
+          grid/carbon-intensity: 150    # Cloudflare Sustainability Report 2024
+          carbon-embodied: 0
+
+    # ------------------------------------------------------------------
+    # System total: pre-summed because providers run in different regions
+    # and report different effective carbon intensities.
+    #
+    #   carbon-operational =  92,500 (Vercel functions)
+    #                       +  7,400 (Vercel static)
+    #                       + 16,400 (Neon)
+    #                       +  3,700 (Upstash)
+    #                       +  7,500 (Cloudflare)
+    #                       = 127,500 gCO2eq
+    #   carbon-embodied = 0 (M = 0 — no hardware under operational control)
+    #   functional-unit-count = 750 (750,000 user-days / 1,000)
+    # ------------------------------------------------------------------
+
+    system-total:
+      pipeline:
+        compute:
+          - sum-carbon
+          - sci
+      inputs:
+        - timestamp: "2026-05-01T00:00:00.000Z"
+          duration: 2592000
+          carbon-operational: 127500
+          carbon-embodied: 0
+          functional-unit-count: 750

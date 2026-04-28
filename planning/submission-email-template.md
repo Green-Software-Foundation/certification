@@ -204,6 +204,13 @@ We'd love to share your SCI measurement journey with the community — what you 
 - [ ] Yes — we'd be open to participating in a blog post or case study
 - [ ] No thank you
 
+**May we use your disclosure for downstream analysis?**
+
+Your published disclosure may be included in aggregate analyses, research, and AI-generated syntheses (e.g., benchmarking reports, trend summaries, or training data for sustainability tools). Your disclosure is already published publicly, but this opt-in confirms you are happy for it to be used in these ways.
+
+- [ ] Yes — you may use our published disclosure for downstream analysis, including AI syntheses
+- [ ] No thank you
+
 ---
 
 ## Optional Attachments

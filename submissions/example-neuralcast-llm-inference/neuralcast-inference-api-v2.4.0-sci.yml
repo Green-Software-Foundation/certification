@@ -1,0 +1,353 @@
+# ============================================================================
+# SCI Self-Certification — Impact Framework Manifest
+# NeuralCast Inc — NeuralCast Inference API v2.4.0
+#
+# This manifest computes the SCI score for an LLM inference service running
+# on Google Cloud (us-central1). Each infrastructure component is modelled as
+# a separate child node. The "system-total" child verifies the aggregate SCI
+# from pre-computed totals.
+#
+# Run:  if-run --manifest neuralcast-inference-api-v2.4.0-sci.yml
+# ============================================================================
+
+name: neuralcast-inference-api-sci
+description: |
+  SCI calculation for NeuralCast Inc's LLM Inference API v2.4.0.
+
+  A managed REST API providing LLM inference (7B–13B parameter models) with
+  vLLM and Triton Inference Server, deployed on Google Cloud us-central1
+  (Iowa, USA). Serves customer applications with batched, streaming inference.
+
+  Infrastructure:
+    - 8x A2-ultragpu-1g (NVIDIA A100 40GB GPU compute nodes)
+    - 2x e2-standard-4 (control plane / API gateway)
+    - 1x Memorystore Redis basic-1gb (request queue and rate-limiter state)
+
+  Measurement period: February 2026 (28 days, 672 hours)
+  Total tokens served: 23,200,000,000 (23.2 billion)
+  Grid carbon intensity: 420 gCO2eq/kWh (EPA eGRID 2023, MROE subregion)
+  PUE: 1.09 (Google published, us-central1)
+
+  Result: 47.54 gCO2eq per 1,000,000 tokens
+
+tags:
+  kind: sci
+  category: ai-inference
+  domain: large-language-model
+  environment: production
+  cloud_provider: gcp
+  region: us-central1
+
+initialize:
+  plugins:
+    # Step 1: Compute energy from average power draw
+    #   power-kw × hours → energy-kwh
+    power-to-energy:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["power-kw", "hours"]
+        output-parameter: "energy-kwh"
+
+    # Step 2: Apply data centre PUE overhead
+    #   energy-kwh × pue → energy
+    apply-pue:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["energy-kwh", "pue"]
+        output-parameter: "energy"
+
+    # Step 3: Operational carbon = energy × grid carbon intensity
+    operational-carbon:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["energy", "grid/carbon-intensity"]
+        output-parameter: "carbon-operational"
+
+    # Step 4: Compute time-share ratio for embodied allocation
+    time-share:
+      method: Divide
+      path: builtin
+      config:
+        numerator: time-reserved-hours
+        denominator: expected-lifespan-hours
+        output: time-share-ratio
+
+    # Step 5: Allocate embodied emissions for measurement period
+    compute-embodied:
+      method: Multiply
+      path: builtin
+      config:
+        input-parameters: ["emissions-embodied-total", "time-share-ratio"]
+        output-parameter: "carbon-embodied"
+
+    # Step 6: Total carbon = operational + embodied
+    sum-carbon:
+      method: Sum
+      path: builtin
+      config:
+        input-parameters:
+          - carbon-operational
+          - carbon-embodied
+        output-parameter: carbon
+
+    # Step 7: SCI = total carbon / functional unit count
+    sci:
+      method: Sci
+      path: builtin
+      config:
+        functional-unit: "functional-unit-count"
+
+tree:
+  children:
+    # ------------------------------------------------------------------
+    # Per-component children: each computes energy, operational carbon,
+    # embodied carbon, and total carbon for one infrastructure component.
+    # GPU nodes use a 3-year lifespan; non-GPU components use 4 years.
+    # ------------------------------------------------------------------
+
+    gpu-node-1:
+      pipeline:
+        compute:
+          - power-to-energy
+          - apply-pue
+          - operational-carbon
+          - time-share
+          - compute-embodied
+          - sum-carbon
+      inputs:
+        - timestamp: "2026-02-01T00:00:00.000Z"
+          duration: 2419200                    # 28 days in seconds
+          power-kw: 0.330                      # 280W GPU at 70% util + 50W host
+          hours: 672                           # 28 days
+          pue: 1.09                            # GCP us-central1 PUE
+          grid/carbon-intensity: 420           # gCO2eq/kWh, EPA eGRID 2023 MROE
+          emissions-embodied-total: 1200000    # gCO2eq lifecycle (Cloud Carbon Footprint, A100 + host)
+          time-reserved-hours: 672
+          expected-lifespan-hours: 26280       # 3 years (3 × 365 × 24)
+
+    gpu-node-2:
+      pipeline:
+        compute:
+          - power-to-energy
+          - apply-pue
+          - operational-carbon
+          - time-share
+          - compute-embodied
+          - sum-carbon
+      inputs:
+        - timestamp: "2026-02-01T00:00:00.000Z"
+          duration: 2419200
+          power-kw: 0.330
+          hours: 672
+          pue: 1.09
+          grid/carbon-intensity: 420
+          emissions-embodied-total: 1200000
+          time-reserved-hours: 672
+          expected-lifespan-hours: 26280
+
+    gpu-node-3:
+      pipeline:
+        compute:
+          - power-to-energy
+          - apply-pue
+          - operational-carbon
+          - time-share
+          - compute-embodied
+          - sum-carbon
+      inputs:
+        - timestamp: "2026-02-01T00:00:00.000Z"
+          duration: 2419200
+          power-kw: 0.330
+          hours: 672
+          pue: 1.09
+          grid/carbon-intensity: 420
+          emissions-embodied-total: 1200000
+          time-reserved-hours: 672
+          expected-lifespan-hours: 26280
+
+    gpu-node-4:
+      pipeline:
+        compute:
+          - power-to-energy
+          - apply-pue
+          - operational-carbon
+          - time-share
+          - compute-embodied
+          - sum-carbon
+      inputs:
+        - timestamp: "2026-02-01T00:00:00.000Z"
+          duration: 2419200
+          power-kw: 0.330
+          hours: 672
+          pue: 1.09
+          grid/carbon-intensity: 420
+          emissions-embodied-total: 1200000
+          time-reserved-hours: 672
+          expected-lifespan-hours: 26280
+
+    gpu-node-5:
+      pipeline:
+        compute:
+          - power-to-energy
+          - apply-pue
+          - operational-carbon
+          - time-share
+          - compute-embodied
+          - sum-carbon
+      inputs:
+        - timestamp: "2026-02-01T00:00:00.000Z"
+          duration: 2419200
+          power-kw: 0.330
+          hours: 672
+          pue: 1.09
+          grid/carbon-intensity: 420
+          emissions-embodied-total: 1200000
+          time-reserved-hours: 672
+          expected-lifespan-hours: 26280
+
+    gpu-node-6:
+      pipeline:
+        compute:
+          - power-to-energy
+          - apply-pue
+          - operational-carbon
+          - time-share
+          - compute-embodied
+          - sum-carbon
+      inputs:
+        - timestamp: "2026-02-01T00:00:00.000Z"
+          duration: 2419200
+          power-kw: 0.330
+          hours: 672
+          pue: 1.09
+          grid/carbon-intensity: 420
+          emissions-embodied-total: 1200000
+          time-reserved-hours: 672
+          expected-lifespan-hours: 26280
+
+    gpu-node-7:
+      pipeline:
+        compute:
+          - power-to-energy
+          - apply-pue
+          - operational-carbon
+          - time-share
+          - compute-embodied
+          - sum-carbon
+      inputs:
+        - timestamp: "2026-02-01T00:00:00.000Z"
+          duration: 2419200
+          power-kw: 0.330
+          hours: 672
+          pue: 1.09
+          grid/carbon-intensity: 420
+          emissions-embodied-total: 1200000
+          time-reserved-hours: 672
+          expected-lifespan-hours: 26280
+
+    gpu-node-8:
+      pipeline:
+        compute:
+          - power-to-energy
+          - apply-pue
+          - operational-carbon
+          - time-share
+          - compute-embodied
+          - sum-carbon
+      inputs:
+        - timestamp: "2026-02-01T00:00:00.000Z"
+          duration: 2419200
+          power-kw: 0.330
+          hours: 672
+          pue: 1.09
+          grid/carbon-intensity: 420
+          emissions-embodied-total: 1200000
+          time-reserved-hours: 672
+          expected-lifespan-hours: 26280
+
+    api-gateway-1:
+      pipeline:
+        compute:
+          - power-to-energy
+          - apply-pue
+          - operational-carbon
+          - time-share
+          - compute-embodied
+          - sum-carbon
+      inputs:
+        - timestamp: "2026-02-01T00:00:00.000Z"
+          duration: 2419200
+          power-kw: 0.025                      # e2-standard-4 at low utilization
+          hours: 672
+          pue: 1.09
+          grid/carbon-intensity: 420
+          emissions-embodied-total: 600000
+          time-reserved-hours: 672
+          expected-lifespan-hours: 35040       # 4 years
+
+    api-gateway-2:
+      pipeline:
+        compute:
+          - power-to-energy
+          - apply-pue
+          - operational-carbon
+          - time-share
+          - compute-embodied
+          - sum-carbon
+      inputs:
+        - timestamp: "2026-02-01T00:00:00.000Z"
+          duration: 2419200
+          power-kw: 0.025
+          hours: 672
+          pue: 1.09
+          grid/carbon-intensity: 420
+          emissions-embodied-total: 600000
+          time-reserved-hours: 672
+          expected-lifespan-hours: 35040
+
+    redis-cache:
+      pipeline:
+        compute:
+          - power-to-energy
+          - apply-pue
+          - operational-carbon
+          - time-share
+          - compute-embodied
+          - sum-carbon
+      inputs:
+        - timestamp: "2026-02-01T00:00:00.000Z"
+          duration: 2419200
+          power-kw: 0.010                      # Memorystore basic-1gb
+          hours: 672
+          pue: 1.09
+          grid/carbon-intensity: 420
+          emissions-embodied-total: 200000
+          time-reserved-hours: 672
+          expected-lifespan-hours: 35040
+
+    # ------------------------------------------------------------------
+    # System total: aggregates the per-component values and computes
+    # the SCI score reported on the certificate.
+    #
+    # Inputs are pre-summed:
+    #   energy = 1977.696 kWh (all components × PUE)
+    #   carbon-embodied = 272,328.77 gCO2eq (all components allocated)
+    #   functional-unit-count = 23,200 (23.2 billion tokens / 1,000,000)
+    # ------------------------------------------------------------------
+
+    system-total:
+      pipeline:
+        compute:
+          - operational-carbon
+          - sum-carbon
+          - sci
+      inputs:
+        - timestamp: "2026-02-01T00:00:00.000Z"
+          duration: 2419200
+          energy: 1977.696                     # total E after PUE (kWh)
+          grid/carbon-intensity: 420           # gCO2eq/kWh
+          carbon-embodied: 272328.7671232876   # total M (gCO2eq)
+          functional-unit-count: 23200         # tokens (millions)
