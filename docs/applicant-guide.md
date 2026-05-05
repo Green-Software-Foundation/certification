@@ -210,7 +210,7 @@ Your submission is published as-is to the `greensoftware-foundation/sci-certific
 
 ## Certificate and Badge Usage Rules
 
-These rules are binding. Violating them may result in certificate revocation. The full rules, including display examples, asset downloads, and enforcement details, are in the **[Badge Usage Guidelines](Badge-Usage-Guidelines.md)**. The key points are summarized below.
+These rules are binding. Violating them may result in certificate revocation. The full rules, including display examples, asset downloads, and enforcement details, are in the **[Badge Usage Guidelines](badge-usage-guidelines.md)**. The key points are summarized below.
 
 ### The single most important rule
 
@@ -240,7 +240,7 @@ GSF verified that your disclosure is **complete** (all required information pres
 - Persistent misuse: certificate revocation.
 - GSF may conduct periodic spot-checks.
 
-For approved/prohibited language examples, display guidelines, asset downloads, and the full enforcement process, see the **[Badge Usage Guidelines](Badge-Usage-Guidelines.md)**.
+For approved/prohibited language examples, display guidelines, asset downloads, and the full enforcement process, see the **[Badge Usage Guidelines](badge-usage-guidelines.md)**.
 
 ---
 

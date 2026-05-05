@@ -303,14 +303,14 @@ During the early phase, every submission gets dual review (two independent revie
 
 Ensure you have these ready before launch:
 
-- [ ] Submission email inbox live with auto-reply
-- [ ] Tracking spreadsheet created and shared with committee
-- [ ] GitHub disclosure repo created with year/certificate directory structure
-- [ ] Badging platform access and certificate template configured
+- [x] Submission email inbox live with auto-reply
+- [x] Tracking spreadsheet created and shared with committee
+- [x] GitHub disclosure repo created with year/certificate directory structure
+- [x] Badging platform access and certificate template configured
 - [x] Email templates drafted: acknowledgement, revision request, approval, rejection, renewal reminder, SWG sign-off notification, challenge notification (`email-templates.md`)
-- [ ] Badge assets ready: SVG and PNG, light and dark variants
-- [ ] Precedent log created (`precedent-log.md` in the top-level certification repo)
-- [ ] Quarterly report template created
+- [x] Badge assets ready: SVG and PNG, light and dark variants
+- [x] Precedent log created (`precedent-log.md` in the top-level certification repo)
+- [x] Quarterly report template created
 
 ---
 
@@ -320,13 +320,14 @@ When you need the authoritative source for a specific topic:
 
 | Topic | Document |
 |-------|----------|
-| Governance, roles, authority, disputes, change management | `Governance.md` |
-| Program rationale, full proposal, success metrics | `GSF CoD Simplified proposal doc.md` |
-| Launch timeline, infrastructure setup, operational cadence | `LAUNCH-IMPLEMENTATION-PLAN.md` |
-| What applicants see, submission requirements, badge rules | `Applicant-Guide.md` |
-| Reviewer instructions, checklist, calibration | `Reviewer-Guide.md` |
-| Certificate issuance technical implementation | `certification-update-plan.md`, `sci-certification-tech-spec.md` |
+| Governance, roles, authority, disputes, change management | `governance.md` |
+| What applicants see, submission requirements, badge rules | `applicant-guide.md` |
+| Reviewer instructions, checklist, calibration | `reviewer-guide.md` |
+| Badge specifications, permitted/prohibited uses, enforcement | `badge-usage-guidelines.md` |
 | Review records and disclosures | GitHub disclosure repo, co-located per submission (e.g. `/certifications/2026/GSF-SCI-2026-00042/`) |
 | Edge-case decisions and reasoning | `precedent-log.md` (top-level certification repo) |
 | Email templates (all 7) | `email-templates.md` |
-| This manual | `PM-Operations-Manual.md` |
+| Submission template (the form applicants fill in) | `submission-email-template.md` |
+| Optional IMP/YAML submission format | `imp-schema-documentation.md` |
+| AI-assisted review prompt | `claude-review-prompt.md` |
+| This manual | `pm-operations-manual.md` |

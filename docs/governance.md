@@ -181,7 +181,7 @@ The **review committee** is responsible for investigating and enforcing badge mi
 - Claiming "ISO certified" without the "self-certified" qualifier
 - Using the certificate to make unsupported claims
 
-Full details are in the [Badge Usage Guidelines](Badge-Usage-Guidelines.md).
+Full details are in the [Badge Usage Guidelines](badge-usage-guidelines.md).
 
 ---
 

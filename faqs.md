@@ -62,7 +62,7 @@ No. You must have a completed SCI calculation before submitting. The submission 
 
 ### How do I submit?
 
-Email your completed submission to **sci-certification@greensoftware.foundation** using the subject line format: `SCI Self-Certification Submission — [Your Organization Name] — [Your Software Name]`. Use the submission email template (`submission-email-template.md`) as your starting point. Accepted formats are PDF, Word, Markdown, or plain text in the email body.
+Email your completed submission to **sci-certification@greensoftware.foundation** using the subject line format: `SCI Self-Certification Submission — [Your Organization Name] — [Your Software Name]`. Use the submission email template (`docs/submission-email-template.md`) as your starting point. Accepted formats are PDF, Word, Markdown, or plain text in the email body.
 
 ### What do I need to include?
 
@@ -257,11 +257,11 @@ You can dispute whether disclosure requirements were met, whether the code of co
 
 ### Where do I find the submission template?
 
-The template is in this repository at `planning/submission-email-template.md`. It is structured to match the 7-section requirements exactly, with placeholder text and examples for every field.
+The template is in this repository at `docs/submission-email-template.md`. It is structured to match the 7-section requirements exactly, with placeholder text and examples for every field.
 
 ### Where do I find detailed submission requirements?
 
-The [Applicant Guide](planning/Applicant-Guide.md) contains full requirements, evaluation criteria, pass/fail examples, badge rules, the appeals process, and a pre-submission checklist.
+The [Applicant Guide](docs/applicant-guide.md) contains full requirements, evaluation criteria, pass/fail examples, badge rules, the appeals process, and a pre-submission checklist.
 
 ### Who do I contact with questions?
 
