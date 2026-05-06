@@ -9,7 +9,8 @@ Copy everything below the line into a new email addressed to **sci-certification
 ---
 
 **To:** sci-certification@greensoftware.foundation
-**Subject:** SCI Self-Certification — [Your Organization Name] — [Your Software Name]
+
+**Subject:** "SCI Self-Certification - [Your Organization Name] - [Your Software Name]"
 
 ---
 
