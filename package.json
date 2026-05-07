@@ -1,9 +1,0 @@
-{
-  "name": "@gsf/sci-certification",
-  "version": "1.0.0",
-  "private": true,
-  "type": "module",
-  "scripts": {
-    "issue": "node scripts/issue-certificate.mjs"
-  }
-}
