@@ -2,10 +2,10 @@
 
 | Field | Value |
 |-------|-------|
-| **Certificate ID** | GSF-SCI-2026-00002 |
+| **Certificate ID** | GSF-SCI-2026-00001 |
 | **Date Issued** | 2026-09-14 |
 | **Valid Until** | 2027-09-14 |
-| **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/awards/sci/gsf-sci-2026-00002) |
+| **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/awards/sci/gsf-sci-2026-00001) |
 | **Status** | Active |
 
 ---
@@ -24,7 +24,7 @@
 
 **Software URL:** https://clipper.offlyn.ai/
 
-**What does it do?**
+**Software description:**
 
 Offlyn Clipper is a native macOS application that provides AI-powered meeting intelligence running entirely on-device. It captures audio from Mac system audio, transcribes speech to text using on-device Whisper (MLX), and generates meeting summaries, action items, and searchable notes using on-device LLM inference (Gemma 4 via MLX). All AI processing runs locally on Apple Silicon with zero cloud API calls in the default configuration.
 
@@ -32,9 +32,13 @@ Offlyn Clipper is a native macOS application that provides AI-powered meeting in
 
 ## Section 2 — Your SCI Score
 
-**SCI score:** 4.58 gCO2eq per meeting workflow
+**Measurement start date:** 2026-07-22
 
-**Measurement period:** 2026-07-22 to 2026-07-22 (single-day benchmark)
+**Measurement end date:** 2026-07-22
+
+(single-day benchmark)
+
+**Your SCI score:** 4.58 gCO2eq per meeting workflow
 
 **Measurement method:** Direct power measurement using macOS `powermetrics` on Apple M4
 
@@ -44,7 +48,7 @@ Offlyn Clipper is a native macOS application that provides AI-powered meeting in
 
 ## Section 3 — Software Boundary
 
-### What's Included?
+### Included Components
 
 | Component | Description |
 |-----------|-------------|
@@ -54,7 +58,7 @@ Offlyn Clipper is a native macOS application that provides AI-powered meeting in
 | Audio capture | System audio capture from Mac |
 | Local storage | SQLite database and file storage on user device |
 
-### What's Excluded, and Why?
+### Excluded Components
 
 | Component | Reason for exclusion |
 |-----------|----------------------|
@@ -63,7 +67,7 @@ Offlyn Clipper is a native macOS application that provides AI-powered meeting in
 | Baseline device power | All users have an active Mac; baseline is common across all architectures |
 | Cloud fallback (if enabled) | Not used in default configuration; would be measured separately if enabled |
 
-### Shared Infrastructure
+### Shared infrastructure
 
 No included component runs on shared multi-tenant infrastructure. Offlyn Clipper runs entirely on end-user Apple Silicon devices. Audio capture, transcription, embedding generation, and AI inference all execute locally on the user's Mac.
 
@@ -73,13 +77,19 @@ There is no cloud component in the default configuration.
 
 ## Section 4 — Functional Unit (R)
 
-**Functional unit:** One 60-minute meeting intelligence workflow
+**What is your functional unit?**
 
-**Why this unit:** A meeting workflow is the primary unit of value delivered by Clipper. It encompasses the complete pipeline: audio capture, transcription, summarization, action item extraction, and searchable indexing.
+One 60-minute meeting intelligence workflow
 
-**How counted:** Each meeting processed through Clipper from start (begin recording) to finish (summary generated) counts as one functional unit.
+**Why did you choose this unit?**
 
-**Total in measurement period:** 1 meeting workflow
+A meeting workflow is the primary unit of value delivered by Clipper. It encompasses the complete pipeline: audio capture, transcription, summarization, action item extraction, and searchable indexing.
+
+**How did you count or measure the total units?**
+
+Each meeting processed through Clipper from start (begin recording) to finish (summary generated) counts as one functional unit.
+
+**Total units in measurement period:** 1 meeting workflow
 
 **Benchmark methodology:** Power consumption was measured during a controlled 60-minute meeting workflow using macOS `powermetrics`. The measurement captures one complete functional unit to establish the per-workflow SCI score. This benchmark approach is appropriate for consumer software where each user runs the software independently on their own device.
 
@@ -89,13 +99,15 @@ There is no cloud component in the default configuration.
 
 ### Energy
 
-**Total energy:** 0.00101 kWh per meeting workflow
+**Total energy consumed:** 0.00101 kWh per meeting workflow
 
 **PUE applied:** N/A — local consumer device (no datacenter infrastructure)
 
 **Method:** Direct power measurement using macOS `powermetrics` with incremental power calculation (active inference power minus baseline idle power)
 
-| Component | Duration | Power (incremental) | Energy (kWh) | Data source |
+Energy breakdown
+
+| Component | Duration | Power (incremental) | Energy after PUE (kWh) | How calculated |
 |-----------|----------|---------------------|--------------|-------------|
 | Transcription (Whisper) | 60 min | 0.86 W | 0.00086 | powermetrics measurement |
 | Summarization (Gemma 4) | 45 sec | 12.11 W | 0.00015 | powermetrics measurement |
@@ -111,9 +123,9 @@ There is no cloud component in the default configuration.
 
 ### Carbon Intensity
 
-**Carbon intensity:** 350 gCO2eq/kWh
+**Carbon intensity value:** 350 gCO2eq/kWh
 
-**Location:** Global average (user location varies)
+**Location(s):** Global average (user location varies)
 
 **Approach:** Location-based
 
@@ -123,15 +135,17 @@ There is no cloud component in the default configuration.
 
 ## Section 6 — Embodied Emissions (M)
 
-**Total embodied (allocated):** 4.23 gCO2eq per meeting workflow
+**Total embodied emissions allocated to this measurement:** 4.23 gCO2eq per meeting workflow
 
 **Source:** Apple Product Environmental Report, MacBook Pro 14-inch with M4 (October 2024)
 
 **Device lifecycle emissions:** 198 kg CO2e total; 74% production = 146.5 kg CO2e embodied
 
-**Allocation method:** SCI specification formula (M = TE × TS × RS)
+**Allocation methodology:** SCI specification formula (M = TE × TS × RS)
 
-| Parameter | Value | Rationale |
+Hardware component breakdown
+
+| Hardware component | Allocated M (gCO2eq) | Data source |
 |-----------|-------|-----------|
 | TE (Total Embodied) | 146,520 gCO2e | Apple PER, production phase (74% of 198 kg CO2e) |
 | TiR (Time Reserved) | 1.0125 hours | 60 min transcription + 45 sec summarization |
@@ -159,9 +173,9 @@ M = 4.23 gCO2eq per meeting workflow
 
 ## Section 7 — Methodology and Calculation
 
-**Approach:** Measurement
+**Overall approach:** Measurement
 
-**How you calculated your score:**
+**Describe your methodology:**
 
 1. Power measurement was conducted on an Apple M4 Mac using macOS `powermetrics` with the `cpu_power` sampler at 1-second intervals
 2. Baseline power was measured with Clipper open but idle (30 seconds)
@@ -186,7 +200,7 @@ R = 1 meeting workflow
 SCI = (O + M) / R = (0.35 + 4.23) / 1 = 4.58 gCO2eq per meeting workflow
 ```
 
-### Assumptions and Limitations
+### Assumptions and limitations
 
 | Assumption or limitation | Justification or mitigation |
 |--------------------------|----------------------------|
