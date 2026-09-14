@@ -10,7 +10,7 @@
 | **Certificate ID** | GSF-SCI-2026-00005 |
 | **Date Issued** | 2026-06-18 |
 | **Valid Until** | 2027-06-18 |
-| **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/credentials/gsf-sci-2026-00005) |
+| **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/awards/sci/example-portal-arena-game-backend) |
 | **Status** | Active |
 
 ---

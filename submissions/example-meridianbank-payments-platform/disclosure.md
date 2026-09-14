@@ -10,7 +10,7 @@
 | **Certificate ID** | GSF-SCI-2026-00003 |
 | **Date Issued** | 2026-05-08 |
 | **Valid Until** | 2027-05-08 |
-| **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/credentials/gsf-sci-2026-00003) |
+| **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/awards/sci/example-meridianbank-payments-platform) |
 | **Status** | Active |
 
 ---

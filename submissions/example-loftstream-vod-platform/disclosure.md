@@ -10,7 +10,7 @@
 | **Certificate ID** | GSF-SCI-2026-00004 |
 | **Date Issued** | 2026-06-04 |
 | **Valid Until** | 2027-06-04 |
-| **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/credentials/gsf-sci-2026-00004) |
+| **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/awards/sci/example-loftstream-vod-platform) |
 | **Status** | Active |
 
 ---

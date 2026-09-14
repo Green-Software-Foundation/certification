@@ -10,7 +10,7 @@
 | **Certificate ID** | GSF-SCI-2026-00001 |
 | **Date Issued** | 2026-02-12 |
 | **Valid Until** | 2027-02-12 |
-| **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/credentials/gsf-sci-2026-00001) |
+| **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/awards/sci/example-greentech-inventory-api) |
 | **Status** | Active |
 
 ---

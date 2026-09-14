@@ -17,7 +17,7 @@ Dear Priya,
 Your SCI self-certification submission for **StackLane Collaborative Workspace v3.7.0** has been reviewed and **approved**.
 
 **Certificate ID:** GSF-SCI-2026-00006
-**Certificate:** https://badges.greensoftware.foundation/credentials/gsf-sci-2026-00006
+**Certificate:** https://badges.greensoftware.foundation/awards/sci/example-stacklane-collab-saas
 **Public disclosure:** https://github.com/greensoftware-foundation/sci-certifications/blob/main/certifications/2026/GSF-SCI-2026-00006/disclosure.md
 **Valid until:** 2027-07-09
 

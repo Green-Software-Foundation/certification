@@ -153,7 +153,7 @@ Organizations MAY display the badge on:
 
 **Example HTML**:
 ```html
-<a href="https://badges.greensoftware.foundation/awards/GSF-SCI-2026-00042"
+<a href="https://badges.greensoftware.foundation/awards/sci/example-greentech-inventory-api"
    target="_blank"
    rel="noopener">
   <img src="gsf-sci-badge-light.svg"
@@ -164,7 +164,7 @@ Organizations MAY display the badge on:
 
 **Example Markdown**:
 ```markdown
-[![GSF SCI Self-Certification](gsf-sci-badge-light.svg)](https://badges.greensoftware.foundation/awards/GSF-SCI-2026-00042)
+[![GSF SCI Self-Certification](gsf-sci-badge-light.svg)](https://badges.greensoftware.foundation/awards/sci/example-greentech-inventory-api)
 ```
 
 ### 2. Marketing and Communications
@@ -414,7 +414,7 @@ At least one of the following MUST accompany badge display:
 <footer>
   <div class="certifications">
     <p>Our Certifications</p>
-    <a href="https://badges.greensoftware.foundation/awards/GSF-SCI-2026-00042"
+    <a href="https://badges.greensoftware.foundation/awards/sci/example-greentech-inventory-api"
        target="_blank"
        rel="noopener"
        title="View our GSF SCI Self-Certification">
@@ -424,7 +424,7 @@ At least one of the following MUST accompany badge display:
     </a>
     <p class="disclaimer">
       Self-certified compliant with ISO/IEC 21031:2024, verified by GSF.
-      <a href="https://badges.greensoftware.foundation/awards/GSF-SCI-2026-00042">
+      <a href="https://badges.greensoftware.foundation/awards/sci/example-greentech-inventory-api">
         View full disclosure
       </a>
     </p>
@@ -486,7 +486,7 @@ High-performance REST API for e-commerce platforms.
 
 We're committed to measuring and reducing our software's carbon intensity.
 
-[![GSF SCI Self-Certification](https://img.shields.io/badge/GSF-SCI%20Self--Certified-00C853?style=for-the-badge&logo=data:image/svg+xml;base64,...)](https://badges.greensoftware.foundation/awards/GSF-SCI-2026-00042)
+[![GSF SCI Self-Certification](https://img.shields.io/badge/GSF-SCI%20Self--Certified-00C853?style=for-the-badge&logo=data:image/svg+xml;base64,...)](https://badges.greensoftware.foundation/awards/sci/example-greentech-inventory-api)
 
 **SCI Score**: 349.63 gCO2eq per 1,000 API requests
 
@@ -494,7 +494,7 @@ Our SCI calculation has been self-certified through the Green Software
 Foundation's SCI Self-Certification Program. GSF verified the completeness
 and transparency of our disclosure, not the accuracy of the calculation.
 
-[View Full Disclosure ->](https://badges.greensoftware.foundation/awards/GSF-SCI-2026-00042)
+[View Full Disclosure ->](https://badges.greensoftware.foundation/awards/sci/example-greentech-inventory-api)
 ```
 
 **Why This Works**:
@@ -512,7 +512,7 @@ Jane Smith | Senior Engineer
 Acme Corporation
 jane@acme.com
 
-[GSF SCI Self-Certified](https://badges.greensoftware.foundation/awards/GSF-SCI-2026-00042)
+[GSF SCI Self-Certified](https://badges.greensoftware.foundation/awards/sci/example-greentech-inventory-api)
 ```
 
 **Why This Works**:
@@ -554,21 +554,21 @@ jane@acme.com
 
 **Slide Layout**:
 ```
-+----------------------------------------+
-|  Our Carbon Measurement Results        |
-|                                        |
-|  [Badge]          SCI Score            |
-|                   349.63 gCO2eq        |
-|                   per 1,000 requests   |
-|                                        |
-|  Full Disclosure:                      |
-|  badges.greensoftware.foundation       |
-|  /awards/GSF-SCI-2026-00042           |
-|                                        |
-|  * Self-certified to ISO/IEC          |
-|    21031:2024. GSF verified disclosure |
-|    completeness for community review.  |
-+----------------------------------------+
++----------------------------------------------+
+|  Our Carbon Measurement Results              |
+|                                              |
+|  [Badge]          SCI Score                  |
+|                   349.63 gCO2eq              |
+|                   per 1,000 requests         |
+|                                              |
+|  Full Disclosure:                            |
+|  badges.greensoftware.foundation             |
+|  /awards/sci/example-greentech-inventory-api |
+|                                              |
+|  * Self-certified to ISO/IEC                 |
+|    21031:2024. GSF verified disclosure       |
+|    completeness for community review.        |
++----------------------------------------------+
 ```
 
 **Why This Works**:

@@ -17,7 +17,7 @@ Dear Helena,
 Your SCI self-certification submission for **Meridian Payments Platform v8.4.2** has been reviewed and **approved**.
 
 **Certificate ID:** GSF-SCI-2026-00003
-**Certificate:** https://badges.greensoftware.foundation/credentials/gsf-sci-2026-00003
+**Certificate:** https://badges.greensoftware.foundation/awards/sci/example-meridianbank-payments-platform
 **Public disclosure:** https://github.com/greensoftware-foundation/sci-certifications/blob/main/certifications/2026/GSF-SCI-2026-00003/disclosure.md
 **Valid until:** 2027-05-08
 
