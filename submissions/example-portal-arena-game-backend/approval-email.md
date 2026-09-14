@@ -17,7 +17,7 @@ Dear Jonas,
 Your SCI self-certification submission for **Portal Arena Game Backend v12.3** has been reviewed and **approved**.
 
 **Certificate ID:** GSF-SCI-2026-00005
-**Certificate:** https://badges.greensoftware.foundation/credentials/gsf-sci-2026-00005
+**Certificate:** https://badges.greensoftware.foundation/awards/sci/example-portal-arena-game-backend
 **Public disclosure:** https://github.com/greensoftware-foundation/sci-certifications/blob/main/certifications/2026/GSF-SCI-2026-00005/disclosure.md
 **Valid until:** 2027-06-18
 

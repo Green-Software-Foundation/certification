@@ -10,7 +10,7 @@
 | **Certificate ID** | GSF-SCI-2026-00006 |
 | **Date Issued** | 2026-07-09 |
 | **Valid Until** | 2027-07-09 |
-| **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/credentials/gsf-sci-2026-00006) |
+| **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/awards/sci/example-stacklane-collab-saas) |
 | **Status** | Active |
 
 ---

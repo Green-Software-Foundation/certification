@@ -10,7 +10,7 @@
 | **Certificate ID** | GSF-SCI-2026-00002 |
 | **Date Issued** | 2026-04-15 |
 | **Valid Until** | 2027-04-15 |
-| **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/credentials/gsf-sci-2026-00002) |
+| **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/awards/sci/example-neuralcast-llm-inference) |
 | **Status** | Active |
 
 ---
