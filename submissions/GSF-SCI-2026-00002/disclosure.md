@@ -5,7 +5,7 @@
 | **Certificate ID** | GSF-SCI-2026-00002 |
 | **Date Issued** | 2026-09-14 |
 | **Valid Until** | 2027-09-14 |
-| **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/credentials/gsf-sci-2026-00002) |
+| **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/awards/sci/gsf-sci-2026-00002) |
 | **Status** | Active |
 
 ---
