@@ -822,7 +822,7 @@ baseline:
     value: 5.12
     unit: "kgCO2eq per training run"
     measurement_date: "2024-12-01"
-    reference: "https://badges.greensoftware.foundation/awards/GSF-SCI-2024-00123"
+    reference: "https://badges.greensoftware.foundation/awards/sci/example-neuralcast-llm-inference"
 
   new_score:
     value: 2.72
