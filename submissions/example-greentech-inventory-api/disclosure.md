@@ -1,7 +1,7 @@
 # SCI Self-Certification — Public Disclosure
 
 > **This is an example public disclosure.** It shows what gets published to
-> the `greensoftware-foundation/sci-certifications` GitHub repository after
+> the `greensoftware-foundation/certification` GitHub repository after
 > approval. It is the applicant's submission published as-is, with a
 > certificate metadata header prepended and the contact email redacted.
 
@@ -264,4 +264,4 @@ By submitting this application, I hereby:
 
 ---
 
-*This disclosure is published under the GSF SCI Self-Certification Program. To challenge this certification, see the [Community Challenge Process](https://github.com/greensoftware-foundation/sci-certifications/blob/main/CHALLENGE-PROCESS.md).*
+*This disclosure is published under the GSF SCI Self-Certification Program. To challenge this certification, see the [Community Challenge Process](https://github.com/greensoftware-foundation/certification/blob/main/CHALLENGE-PROCESS.md).*

@@ -159,7 +159,7 @@ Your submission passes the review. What happens next:
 1. The reviewer recommends approval. Your submission then enters a **7-day objection period** during which the Software Standards Working Group may raise objections. This is a governance safeguard — in practice, most submissions proceed without objection.
 2. After the objection period, the SWG Chair or GSF Executive Director provides explicit sign-off.
 3. GSF issues a certificate on the badging platform with a unique certificate ID (format: `GSF-SCI-YYYY-NNNNN`).
-4. Your submission is published to the public GitHub repository (`greensoftware-foundation/sci-certifications`) with your contact email redacted and a certificate metadata header added.
+4. Your submission is published to the public GitHub repository (`greensoftware-foundation/certification`) with your contact email redacted and a certificate metadata header added.
 5. You receive a short email with your certificate link, disclosure URL, badge download instructions, and expiry date.
 6. Your certificate is **valid for 1 year** from the date of issuance.
 
@@ -204,7 +204,7 @@ You may also be invited to participate in a blog post or case study sharing your
 
 ### Your public disclosure
 
-Your submission is published as-is to the `greensoftware-foundation/sci-certifications` GitHub repository, with two changes: your contact email is redacted, and a certificate metadata header (certificate ID, issue date, expiry date, certificate URL) is prepended. No separate disclosure document is created — your submission is the disclosure. This is a requirement of the program (attestation point 10) and enables the community validation that underpins the self-certification model.
+Your submission is published as-is to the `greensoftware-foundation/certification` GitHub repository, with two changes: your contact email is redacted, and a certificate metadata header (certificate ID, issue date, expiry date, certificate URL) is prepended. No separate disclosure document is created — your submission is the disclosure. This is a requirement of the program (attestation point 10) and enables the community validation that underpins the self-certification model.
 
 ---
 

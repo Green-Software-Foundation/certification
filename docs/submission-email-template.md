@@ -4,7 +4,7 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 **Format:** You can answer inline in the email or attach documents (PDF, Word, Markdown, or plain text). If you use attachments, note the filename inline so the reviewer can match it — e.g., *"See attached: acme-api-boundary.pdf"*.
 
-**This submission becomes your public disclosure.** If approved, it is published as-is to the `greensoftware-foundation/sci-certifications` GitHub repository (your contact email is redacted and a certificate metadata header is added). Write accordingly — there is no separate disclosure step.
+**This submission becomes your public disclosure.** If approved, it is published as-is to the `greensoftware-foundation/certification` GitHub repository (your contact email is redacted and a certificate metadata header is added). Write accordingly — there is no separate disclosure step.
 
 ---
 
