@@ -84,7 +84,7 @@ Yes. The repository includes a complete example submission in `submissions/examp
 
 ### My submission will be published publicly?
 
-Yes. If approved, your submission is published as-is to the `greensoftware-foundation/sci-certifications` GitHub repository. Your contact email is redacted and a certificate metadata header is added, but otherwise the submission is published exactly as you wrote it. This is a core feature of the program — public disclosure enables community validation, which is what gives self-certification its credibility. You consent to this in attestation point 10.
+Yes. If approved, your submission is published as-is to the `greensoftware-foundation/certification` GitHub repository. Your contact email is redacted and a certificate metadata header is added, but otherwise the submission is published exactly as you wrote it. This is a core feature of the program — public disclosure enables community validation, which is what gives self-certification its credibility. You consent to this in attestation point 10.
 
 ### Can I submit confidential or proprietary information?
 

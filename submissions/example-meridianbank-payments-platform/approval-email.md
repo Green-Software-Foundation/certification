@@ -18,7 +18,7 @@ Your SCI self-certification submission for **Meridian Payments Platform v8.4.2**
 
 **Certificate ID:** GSF-SCI-2026-00003
 **Certificate:** https://badges.greensoftware.foundation/awards/sci/example-meridianbank-payments-platform
-**Public disclosure:** https://github.com/greensoftware-foundation/sci-certifications/blob/main/certifications/2026/GSF-SCI-2026-00003/disclosure.md
+**Public disclosure:** https://github.com/greensoftware-foundation/certification/blob/main/certifications/2026/GSF-SCI-2026-00003/disclosure.md
 **Valid until:** 2027-05-08
 
 Your submission has been published as your public disclosure (your contact email has been redacted). Badge assets (SVG, PNG, light and dark variants) are available from your certificate page.

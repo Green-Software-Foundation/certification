@@ -18,7 +18,7 @@ Your SCI self-certification submission for **Portal Arena Game Backend v12.3** h
 
 **Certificate ID:** GSF-SCI-2026-00005
 **Certificate:** https://badges.greensoftware.foundation/awards/sci/example-portal-arena-game-backend
-**Public disclosure:** https://github.com/greensoftware-foundation/sci-certifications/blob/main/certifications/2026/GSF-SCI-2026-00005/disclosure.md
+**Public disclosure:** https://github.com/greensoftware-foundation/certification/blob/main/certifications/2026/GSF-SCI-2026-00005/disclosure.md
 **Valid until:** 2027-06-18
 
 Your submission has been published as your public disclosure (your contact email has been redacted). Badge assets (SVG, PNG, light and dark variants) are available from your certificate page.
