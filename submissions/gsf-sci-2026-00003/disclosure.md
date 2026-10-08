@@ -1,3 +1,15 @@
+# SCI Self-Certification — Public Disclosure
+
+| Field | Value |
+|-------|-------|
+| **Certificate ID** | GSF-SCI-2026-00002 |
+| **Date Issued** |  |
+| **Valid Until** |  |
+| **Certificate URL** |  |
+| **Status** | In Review |
+
+---
+
 ## Section 1 — About You and Your Software
 
 **Organization name:** tapflow (open-source project)
