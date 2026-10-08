@@ -3,7 +3,7 @@
 ```
 REVIEW RECORD
 =============
-Submission ID:    [GSF-SUB-2026-NNNN: confirm from tracking sheet]
+Submission ID:    [GSF-SUB-2026-00002]
 Reviewer:         Kirsty
 Review Date:      2026-10-08 (final review of resubmission dated 2026-10-07)
 Time Spent:       [TO COMPLETE]
