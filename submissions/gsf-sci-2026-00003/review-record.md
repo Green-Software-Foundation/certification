@@ -3,7 +3,7 @@
 ```
 REVIEW RECORD
 =============
-Submission ID:    GSF-SUB-2026-0003
+Submission ID:    GSF-SUB-2026-00003
 Reviewer:         Kirsty
 Review Date:      2026-10-05
 Time Spent:       [add] hours
