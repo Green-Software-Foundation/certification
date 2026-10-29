@@ -38,13 +38,13 @@ Core capabilities include the mobile AI sorting app, mountable edge camera units
 
 ## Section 2 — Your SCI Score
 
-**SCI score:** 0.003 gCO2eq per waste-sorting inference
+**SCI score:** 0.000402 gCO2eq per waste-sorting inference, single-inference benchmark result on iPhone 13 (MLML3LL/A), iOS version 26.5.2.
 
-**Measurement start date:** 2025-10-23
+**Measurement start date:** 2026-10-22
 
-**Measurement end date:** 2025-10-23
+**Measurement end date:** 2026-10-22
 
-**Measurement period:** Benchmark evaluation period (Single-inference paper evaluation methodology)
+**Measurement period:** Single-inference benchmark on the named reference device; scope and limits stated in Sections 3 and 7.
 
 ---
 
@@ -62,14 +62,14 @@ Core capabilities include the mobile AI sorting app, mountable edge camera units
 |-----------|----------------------|
 | Cloud Analytics Backend | Excluded because core classification operates cloud-free by design; optional external syncing falls outside the measured operational boundary. |
 | Model Training Phase | Excluded from operational SCI per ISO/IEC 21031:2024 guidelines (one-time development cost of 0.09458 kgCO2, reported separately). |
-| Embodied Hardware Emissions | Excluded because the end-user devices (smartphones and client edge boards) are not under DWaste's operational control and their lifecycle emissions are not attributable to the software. |
 | Network Transmission | Excluded by architectural design as all image inference and auditing occur locally on-device. |
 | Actuator Control Signals | Excluded because the control signals that drive the sorting hardware (6-compartment flapper bins and conveyor machines) are emitted as low-power digital GPIO/PWM outputs from an embedded microcontroller. Their operational energy is negligible relative to the vision inference runtime, and they execute on a separate hardware path (microcontroller) outside the measured edge inference boundary. |
 | On-Device Vision Pipeline, Mobile & Audit App Runtimes | Excluded because these components execute on separate hardware paths (mobile CPU/ISP/DSP and embedded microcontroller) that are outside the measured edge inference runtime boundary. This is a deliberate boundary decision: the SCI assessment isolates the vision inference runtime as the sole attributable operational component under DWaste's control, and treats the surrounding capture, display, and audit application layers as host-platform functions. |
+| Local Storage | Excluded because the 3.5 MB ONNX model is memory-mapped and read once per inference; estimated read energy is ~0.005 J (using a conservative NAND benchmark of ~1.5 J/GB), which is under 0.3% of the measured 1.85 J inference energy (5.15 × 10⁻⁷ kWh). Image reads and temporary writes are infrequent and fall below the reporting precision. |
 
 ### Shared infrastructure statement
 
-No shared infrastructure is attributable to DWaste's operational boundary. The benchmark was executed on a Kaggle-hosted Tesla T4 GPU, which is a shared cloud environment. Per ISO/IEC 21031:2024, shared infrastructure emissions are allocated to the software only to the extent they are attributable to its operation. In this assessment, the GPU time consumed by the single-inference benchmark run was isolated via execution profilers, and only that attributable slice is included in the reported energy (E). The broader shared host, its embodied emissions, and idle capacity are not attributable to DWaste and are excluded.
+No shared infrastructure is attributable to DWaste's operational boundary. The benchmark was executed on the iPhone 13 reference device, a dedicated edge device, not a shared cloud environment. No shared-infrastructure allocation is therefore required for E.
 
 ---
 
@@ -79,7 +79,7 @@ No shared infrastructure is attributable to DWaste's operational boundary. The b
 
 **Why this unit:** A single inference represents the fundamental unit of utility delivered by the software converting an image into a structured 7-class waste classification.
 
-**How counted:** Logged forward-pass executions measured via execution profilers and benchmark telemetry during evaluation.
+**How counted:** Logged forward-pass executions isolated with OSSignposter during a single-inference benchmark on iPhone 13.
 
 **Total in measurement period:** 1 functional unit (Benchmark single-inference run)
 
@@ -89,67 +89,89 @@ No shared infrastructure is attributable to DWaste's operational boundary. The b
 
 ### Energy
 
-**Total energy:** 7.3 × 10⁻⁶ kWh (benchmark value on Kaggle Tesla T4 GPU; represents an upper bound for deployed edge hardware)
+**Total energy:** 5.15 × 10⁻⁷ kWh (derived on iPhone 13, edge reference hardware)
 
 **PUE applied:** N/A (Direct edge runtime deployment)
 
 | Component | Energy (kWh) | Data source |
 |-----------|--------------|-------------|
-| YOLOv8n-CBAM Edge Inference | 7.3 × 10⁻⁶ | Calculated from empirical inference time (0.11s) and execution power logs via CodeCarbon v3.0.7 |
+| YOLOv8n-CBAM Edge Inference | 5.15 × 10⁻⁷ | iPhone 13 (MLML3LL/A), iOS 26.5.2; t_inference 442.90 ms via OSSignposter; Power Profiler overall-system power 33.7 %/hr at 93% brightness (unplugged) gave 4.182 W |
 
-**Note on component energy values:** Only the Edge Inference Runtime draws measurable operational power within the assessed boundary, and its energy is captured within the 7.3 × 10⁻⁶ kWh. The On-Device Vision Pipeline, Mobile & Audit App Runtimes, and Actuator Control Signals are excluded from this boundary for the reasons stated in Section 3 (separate hardware paths outside the measured edge inference runtime); no portion of their operational energy is attributed to this score.
+**Note on component energy values:** Only the Edge Inference Runtime draws measurable operational power within the assessed boundary, and its energy is captured within the 5.15 × 10⁻⁷ kWh. The On-Device Vision Pipeline, Mobile & Audit App Runtimes, and Actuator Control Signals are excluded from this boundary for the reasons stated in Section 3 (separate hardware paths outside the measured edge inference runtime); no portion of their operational energy is attributed to this score.
 
-**Note on hardware differences:** The energy value of 7.3 × 10⁻⁶ kWh was derived from a benchmark run on a Kaggle Tesla T4 GPU, not from the deployed edge hardware. The T4 has a higher power envelope than typical mobile and edge inference chips, so this value represents an upper bound for the deployed system.
+**Note on hardware and scope:** E was derived on the iPhone 13 reference device, not a datacentre GPU. The Power Profiler value is overall-system power and includes display and system overhead over the whole measurement session; it is therefore an upper bound for the isolated inference energy. The inference interval (442.90 ms) was isolated via OSSignposter.
 
 ### Carbon intensity
 
-**Carbon intensity:** 412 gCO2eq/kWh
+**Carbon intensity:** 418 gCO2eq/kWh
 
-**Location(s):** US-IA (Iowa Grid Subregion)
+**Location(s):** US-PJM (PJM Interconnection)
 
 **Approach:** Location-based
 
-**Data source + year:** CodeCarbon v3.0.7 grid database (EPA eGRID / Ember 2023)
+**Data source + year:** Electricity Maps (historical daily data), 2026
 
 | Region | Component | gCO2eq/kWh | Source |
 |--------|-----------|------------|--------|
-| US-IA | Edge Inference Runtime | 412 | CodeCarbon v3.0.7 / EPA eGRID |
+| US-PJM | Edge Inference Runtime | 418 | Electricity Maps |
+
+The iPhone 13 measurement was conducted in Baltimore, MD, within the US-PJM grid region.
 
 ---
 
 ## Section 6 — Embodied Emissions (M)
 
-**Total embodied (allocated):** 0 gCO2eq
+**Total embodied (allocated):** 0.000187 gCO2eq
 
-**Explanation:** Embodied hardware emissions are excluded from this operational assessment boundary. In accordance with the methodology published in Kunwar, S. (2026), Journal on Artificial Intelligence, carbon measurements focus strictly on operational emissions (Scope 2). End-user devices (smartphones and client edge boards) are not under DWaste's operational control and their lifecycle emissions are not attributable to the software. Future work will incorporate full lifecycle carbon accounting including hardware emissions.
+**Reference hardware:** iPhone 13 (MLML3LL/A), 128 GB, iOS 26.5.2
+
+**M_device:** 64 kgCO2eq (source: Apple, iPhone 13 Product Environmental Report, September 2021, endnote 3, ISO 14040/14044 LCA for 128 GB configuration)
+
+**Life-cycle stage breakdown:** Production 81%, Transport 2%, Use 16%, End-of-life <1%
+
+**Embodied share used for allocation:** Production (81%) + Transport (2%) + End-of-life (<1%) = 83%, so M_embodied = 0.83 × 64 = 53.12 kgCO2eq.
+
+**Rationale for excluding the Use phase:** Apple's Use-phase share (16%) represents aggregate operational electricity already superseded by the E reported in Section 5 for this functional unit; including it would double-count operational emissions. M therefore uses the Production + Transport + End-of-life share (83%).
+
+**Allocation formula (SCI time-share method):**
+
+```
+M_allocated = M_embodied × (t_inference / t_device_active_life)
+
+            = 53.12 kgCO2eq × (0.4429 s / 1.261 × 10⁸ s)
+
+            = 1.866 × 10⁻⁷ kgCO2eq = 0.000187 gCO2eq per inference
+```
+
+t_device_active_life = 4 years × 365 × 24 × 3600 = 1.261 × 10⁸ s, per Apple's stated 3 to 4 year first-owner use assumption (endnote 3)
 
 ---
 
 ## Section 7 — Methodology and Calculation
 
-**Approach:** Hybrid (direct GPU telemetry via pynvml combined with TDP-based CPU power modeling via CodeCarbon v3.0.7)
+**Approach:** Hybrid measurement on the edge reference device. Inference duration measured directly via OSSignposter in Xcode Instruments; energy derived from battery-percent drain and battery capacity rather than measured at component level; power via Power Profiler overall-system battery drain.
 
-**Hardware used for benchmark:** Kaggle Tesla T4 GPU, Intel Xeon @ 2.00 GHz (4 threads), 31.35 GB RAM. GPU power was measured directly via pynvml; CPU power was estimated using CodeCarbon's TDP-based model. The deployed edge inference runtime uses equivalent low-power hardware, but the benchmark values reported here are from the Kaggle Tesla T4 environment.
+**Hardware used for benchmark:** iPhone 13 (MLML3LL/A), iOS 26.5.2. Inference duration measured via OSSignposter (Model_Inference interval, 442.90 ms, Runner process 2801). Power measured via Power Profiler as a whole-session average over the full trace (~51 s, Runner process 3003) at 93% brightness, unplugged. This is a separate trace from the inference interval and is treated as an upper bound.
 
-**How you calculated your score:** The score was derived from empirical benchmark measurements conducted for the deployed YOLOv8n-CBAM model architecture (3,012,213 parameters, 3.5 MB quantized footprint). Power draw and carbon output were captured using CodeCarbon v3.0.7 during inference benchmarking over an execution duration of 0.11 s per forward pass. While the paper's summary tables truncate single-inference emissions to 0.000000 kgCO2 due to display precision limits (rounding down values under 1 × 10⁻⁶ kgCO2), the unrounded narrative calculation yields approximately 3 × 10⁻⁶ kgCO2 (0.003 gCO2eq per inference based on 7.3 × 10⁻⁶ kWh at 412 gCO2eq/kWh), which is used here to prevent underreporting.
+**How you calculated your score:** The score is a single-inference benchmark result on iPhone 13, not typical or average deployment performance. The YOLOv8n-CBAM model (3.5 MB ONNX) ran once per inference; the inference interval (442.90 ms) was isolated with OSSignposter. Power Profiler reported overall-system power of 33.7 %/hr at 93% brightness; multiplied by the iPhone 13 battery capacity (12.41 Wh) this gives P_avg = 4.182 W. E = 4.182 W × 0.4429 s ÷ 3,600,000 = 5.15 × 10⁻⁷ kWh. This is an upper bound for isolated inference energy because the power figure is a whole-session average from a separate trace and includes display and system overhead.
 
 **Show your calculation:**
 
 ```
 SCI = (E × I) + M per R
 
-= (0.0000073 kWh × 412 gCO2eq/kWh) + 0
+= (5.145 × 10⁻⁷ kWh × 418 gCO2eq/kWh) + 0.000187 gCO2eq
 
-= 0.003 gCO2eq per inference
+= 0.000402 gCO2eq per inference
 ```
 
 **Assumptions and limitations:**
 
 | Assumption or limitation | Justification or mitigation |
 |--------------------------|------------------------------|
-| Single-inference benchmark evaluation | Benchmark settings do not capture long-term thermal throttling or extended field deployment dynamics; future disclosures will report longitudinal field logs. |
-| CPU power draw estimated via static TDP models | Direct hardware ammeters are unavailable on heterogenous mobile edge hardware; CodeCarbon TDP modeling serves as the standard proxy. |
-| GPU benchmark hardware differs from deployed edge hardware | Benchmark was run on a Kaggle Tesla T4 GPU, whereas the deployed runtime runs on low-power edge devices. The reported values represent an upper bound for the deployed system. |
+| Single-inference benchmark evaluation | Explicitly labelled as a single-inference benchmark on iPhone 13, not typical/average deployment. Benchmark settings do not capture long-term thermal throttling or extended field deployment dynamics; future disclosures will report longitudinal field logs. |
+| Power measured at 93% display brightness; overall-system value | Includes display and system overhead, so E is an upper bound for isolated inference energy. Measurement was unplugged on the battery. |
+| Embodied emissions allocation | Allocated per SCI time-share using Apple's published LCA and 4-year use assumption; formula and sources in Section 6. |
 
 ---
 
@@ -172,7 +194,7 @@ By submitting this application, I hereby:
 
 **Signature:** Suman Kunwar
 
-**Date:** October 7, 2026
+**Date:** October 26, 2026
 
 **Name and title:** Suman Kunwar, Founder & Lead Researcher
 
@@ -199,5 +221,5 @@ By submitting this application, I hereby:
 
 ## Optional Attachments
 
-- TSP_JAI_76674.pdf (Peer-reviewed Journal on Artificial Intelligence paper)
-- 7774-Article Text-41625.pdf (Peer-reviewed Journal of the Brazilian Computer Society paper)
+- Power Measurement
+- Inference Measurement
