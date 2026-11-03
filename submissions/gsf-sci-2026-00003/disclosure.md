@@ -20,20 +20,12 @@
 
 **Software name:** tapflow
 
-**Software version:** v0.18.0 — the release the score was measured on (2026-08-03).
-The exact commit was not recorded at the time. The current release at this revision
-(2026-10-16) is v0.27.1, and the score has not been re-measured against it. See Section 7.
+**Software version:** v0.18.0
 
 **Software URL:** https://www.tapflow.dev · https://github.com/jo-duchan/tapflow
 
 **Software description:**
-tapflow streams iOS simulators and Android emulators to a browser, so a whole team can
-run mobile QA without installing a mobile development environment. It is TypeScript on
-Node.js: a relay process serves the dashboard and brokers sessions over WebSocket, and
-an agent process runs on an Apple Silicon Mac next to the simulators it controls,
-encoding the screen as H.264. It is MIT licensed and self-hosted — it runs on hardware
-the operator already owns, such as a desk Mac, a LAN host, or a machine behind a
-tunnel. No cloud service is involved.
+tapflow streams iOS simulators and Android emulators to a browser, so a whole team can run mobile QA without installing a mobile development environment. It is TypeScript on Node.js: a relay process serves the dashboard and brokers sessions over WebSocket, and an agent process runs on an Apple Silicon Mac next to the simulators it controls, encoding the screen as H.264. It is MIT licensed and self-hosted — it runs on hardware the operator already owns, such as a desk Mac, a LAN host, or a machine behind a tunnel. No cloud service is involved.
 
 ---
 
@@ -47,8 +39,9 @@ tunnel. No cloud service is involved.
 
 **Measurement period:** 2026-08-03 to 2026-08-03
 
-This is a single controlled benchmark on one host, not an aggregate over a production
-period. Section 7 states what that does and does not support.
+This is a single controlled benchmark on one host, not an aggregate over a production period. Section 7 states what that does and does not support.
+
+The release the score was measured on (2026-08-03). The exact commit was not recorded at the time. The current release at this revision (2026-10-16) is v0.27.1, and the score has not been re-measured against it. See Section 7.
 
 ---
 
@@ -74,10 +67,7 @@ period. Section 7 states what that does and does not support.
 
 ### Shared infrastructure
 
-The agent host is shared rather than dedicated: tapflow runs
-up to four concurrent simulator slots on one Mac. Embodied carbon is therefore
-allocated at one quarter of the host — see Section 6. Energy in Section 5 is not
-divided this way. Section 7 explains the pairing and gives the score under each basis.
+The agent host is shared rather than dedicated: tapflow runs up to four concurrent simulator slots on one Mac. Embodied carbon is therefore allocated at one quarter of the host — see Section 6. Energy in Section 5 is not divided this way. Section 7 explains the pairing and gives the score under each basis.
 
 ---
 
@@ -96,8 +86,7 @@ one-to-one onto the work delivered.
 
 **How did you count or measure the total units?**
 
-R = 1. The score comes from one controlled benchmark session, timed
-directly, not from aggregated production telemetry.
+R = 1. The score comes from one controlled benchmark session, timed directly, not from aggregated production telemetry.
 
 **Total units in measurement period:** 1 QA session-hour.
 
@@ -109,8 +98,7 @@ directly, not from aggregated production telemetry.
 
 **Total energy consumed:** 0.005725 kWh
 
-**PUE applied:** N/A. The host is a desk or office machine, not a data-centre tenant.
-There is no facility overhead to apportion.
+**PUE applied:** N/A. The host is a desk or office machine, not a data-centre tenant. There is no facility overhead to apportion.
 
 Energy breakdown
 
@@ -118,10 +106,7 @@ Energy breakdown
 | --- | --- | --- | --- | --- |
 | Agent host, whole machine | 1 hour | Idle 4.21 W + active increment 5.05 W applied to 30% of the hour | 0.005725 | Idle wall power 4.21 W from the Apple Product Environmental Report power table for the 14-inch MacBook Pro (M2 Pro), January 2023, at 100 V. Active increment 5.05 W wall: 4.52 W measured at the SoC, divided by the 89.5% adapter efficiency printed in the same table. |
 
-A per-process split is not available. `powermetrics` reports combined SoC power for the
-machine, so the relay, the agent, the simulator, and the H.264 encoder cannot be
-separated. What the measurement does resolve is the cost of the session itself, by
-differencing three states on the same machine:
+A per-process split is not available. `powermetrics` reports combined SoC power for the machine, so the relay, the agent, the simulator, and the H.264 encoder cannot be separated. What the measurement does resolve is the cost of the session itself, by differencing three states on the same machine:
 
 | State | SoC power | Increment over idle |
 | --- | --- | --- |
@@ -139,11 +124,7 @@ E = (4.21 W + 5.05 W x 0.30) x 1 h = 5.725 Wh = 0.005725 kWh
 
 **Approach:** Location-based.
 
-**Data source + year:** Republic of Korea national grid emission factor,
-consumption-side combined, 2023 factor, confirmed by the national greenhouse gas
-statistics committee on 2025-12-17. Combustion-based, not lifecycle. The
-generation-side figure for the same year is 384.4 gCO2eq/kWh; it is a different
-quantity and is not used here.
+**Data source + year:** Republic of Korea national grid emission factor, consumption-side combined, 2023 factor, confirmed by the national greenhouse gas statistics committee on 2025-12-17. Combustion-based, not lifecycle. The generation-side figure for the same year is 384.4 gCO2eq/kWh; it is a different quantity and is not used here.
 
 ---
 
@@ -159,51 +140,26 @@ Hardware component breakdown
 | --- | --- | --- |
 | Agent host — MacBook Pro 14-inch (M2 Pro, 512 GB) | 1.404 | Apple Product Environmental Report, 14-inch MacBook Pro (M2 Pro), January 2023. |
 
-**Allocation:** M = TE x (1 / 35,040 h) x (1 / 4 slots). The first factor is a four-year
-service life, matching the first-owner lifespan Apple uses in its own reports. The
-second is tapflow's documented concurrency of four simulator slots on one host, so one
-session takes a quarter of the machine.
+**Allocation:** M = TE x (1 / 35,040 h) x (1 / 4 slots). The first factor is a four-year service life, matching the first-owner lifespan Apple uses in its own reports. The second is tapflow's documented concurrency of four simulator slots on one host, so one session takes a quarter of the machine.
 
 **TE definition:** production + transport + end-of-life processing, **excluding the use
-stage**. The use stage is computed separately in Section 5 against the Korean grid
-factor; including it in TE would double-count it.
+stage**. The use stage is computed separately in Section 5 against the Korean grid factor; including it in TE would double-count it.
 
-**How TE was derived, and how precise it is.** The report prints a life-cycle total of
-243 kg CO2e and stage shares only — 79% production, <1% transport, 20% use, <1%
-end-of-life processing. There is no numeric per-stage table, so TE is derived rather
-than read off: 243 kg x (79% + 1% + 1%) = 196.8 kg, counting each "<1%" stage as a full
-1% so that the figure errs upward. Propagating the rounding on all three shares puts TE
-between roughly 191 and 198 kg, which moves M between 1.36 and 1.41 gCO2eq and the SCI
-score between 3.75 and 3.80 — the third significant figure.
+**How TE was derived, and how precise it is.** The report prints a life-cycle total of 243 kg CO2e and stage shares only — 79% production, <1% transport, 20% use, <1% end-of-life processing. There is no numeric per-stage table, so TE is derived rather than read off: 243 kg x (79% + 1% + 1%) = 196.8 kg, counting each "<1%" stage as a full 1% so that the figure errs upward. Propagating the rounding on all three shares puts TE between roughly 191 and 198 kg, which moves M between 1.36 and 1.41 gCO2eq and the SCI score between 3.75 and 3.80 — the third significant figure.
 
 ---
 
 ## Section 7 — Methodology and Calculation
 
-**Overall approach:** Hybrid. The active increment is measured. Idle wall power, embodied
-carbon, and grid intensity come from published figures.
+**Overall approach:** Hybrid. The active increment is measured. Idle wall power, embodied carbon, and grid intensity come from published figures.
 
 **Describe your methodology:**
 
-- Power was sampled in three states on one host — no session, session open with a
-  static screen, session open with continuous scrolling — using
-  `powermetrics --samplers cpu_power`, 60 one-second samples per state, reading
-  `Combined Power (CPU + GPU + ANE)`. The difference between the first and third states
-  gives the cost of active use: +4.52 W at the SoC.
-- Holding a session open with nothing moving on screen costs nothing measurable. The
-  static state read 0.02 W *below* idle, well inside the standard deviation, because
-  the H.264 encoder has almost nothing to encode when the screen does not change. This
-  is why the duty assumption below applies the increment only to the interacting
-  fraction of the hour.
-- SoC-only instrumentation is deliberate for a difference. Display, SSD, and fan draw
-  are constant across the three states and cancel out. Absolute draw therefore comes
-  from Apple's published wall-power figure, which already includes platform draw, and
-  the SoC increment is converted to wall power with the adapter efficiency from the
-  same table.
-- Embodied carbon comes from the manufacturer's Product Environmental Report for the
-  exact host model, allocated as described in Section 6.
-- The grid factor is the national location-based factor for the country the host runs
-  in.
+- Power was sampled in three states on one host — no session, session open with a static screen, session open with continuous scrolling — using `powermetrics --samplers cpu_power`, 60 one-second samples per state, reading `Combined Power (CPU + GPU + ANE)`. The difference between the first and third states gives the cost of active use: +4.52 W at the SoC.
+- Holding a session open with nothing moving on screen costs nothing measurable. The static state read 0.02 W *below* idle, well inside the standard deviation, because the H.264 encoder has almost nothing to encode when the screen does not change. This is why the duty assumption below applies the increment only to the interacting fraction of the hour.
+- SoC-only instrumentation is deliberate for a difference. Display, SSD, and fan draw are constant across the three states and cancel out. Absolute draw therefore comes from Apple's published wall-power figure, which already includes platform draw, and the SoC increment is converted to wall power with the adapter efficiency from the same table.
+- Embodied carbon comes from the manufacturer's Product Environmental Report for the exact host model, allocated as described in Section 6.
+- The grid factor is the national location-based factor for the country the host runs in.
 
 **Show your calculation:**
 
@@ -290,10 +246,7 @@ Logo attached.
 
 ## Optional Attachments
 
-The full engineering backing for every figure above is public:
-https://github.com/jo-duchan/tapflow/blob/main/contributing/sustainability-carbon-math.md
-It records the measurement conditions, the three-state power samples, the published
-sources, and the arguments that were tested and discarded.
+The full engineering backing for every figure above is public: https://github.com/jo-duchan/tapflow/blob/main/contributing/sustainability-carbon-math.md It records the measurement conditions, the three-state power samples, the published sources, and the arguments that were tested and discarded.
 
 ---
 
