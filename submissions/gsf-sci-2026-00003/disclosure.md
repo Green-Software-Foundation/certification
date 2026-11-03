@@ -26,7 +26,7 @@ The exact commit was not recorded at the time. The current release at this revis
 
 **Software URL:** https://www.tapflow.dev · https://github.com/jo-duchan/tapflow
 
-**What does it do?**
+**Software description:**
 tapflow streams iOS simulators and Android emulators to a browser, so a whole team can
 run mobile QA without installing a mobile development environment. It is TypeScript on
 Node.js: a relay process serves the dashboard and brokers sessions over WebSocket, and
@@ -39,7 +39,11 @@ tunnel. No cloud service is involved.
 
 ## Section 2 — Your SCI Score
 
-**SCI score:** 3.79 gCO2eq per QA session-hour
+**Your SCI score:** 3.79 gCO2eq per QA session-hour
+
+**Measurement start date:** 2026-08-03
+
+**Measurement end date:** 2026-08-03
 
 **Measurement period:** 2026-08-03 to 2026-08-03
 
@@ -50,16 +54,16 @@ period. Section 7 states what that does and does not support.
 
 ## Section 3 — Software Boundary
 
-### What's included?
+### Included Components
 
-| Component | Brief description |
+| Component | Description |
 | --- | --- |
 | Agent host | 1x MacBook Pro 14-inch (M2 Pro, 32 GB, macOS 26.5.2). Energy and embodied carbon both counted. |
 | Relay process | Node.js. Serves the dashboard from the built `public/` directory and brokers the session. Runs on the agent host. |
 | iOS agent process | Node.js. Controls the simulator and encodes the screen as H.264. Runs on the agent host. |
 | iOS simulator | One simulator instance, started and controlled by the agent. |
 
-### What's excluded, and why?
+### Excluded Components
 
 | Component | Reason for exclusion |
 | --- | --- |
@@ -68,7 +72,9 @@ period. Section 7 states what that does and does not support.
 | CI/CD runners and developer machines | These run while tapflow is being built, not while a deployed instance serves a QA session. The functional unit is a session-hour on a running instance, so development compute falls outside the system being measured. |
 | Build artifact storage | Uploaded builds are written to the operator's own filesystem on the agent host, whose embodied carbon is already allocated above. Counting the storage again would double-count the same hardware. |
 
-**Shared infrastructure.** The agent host is shared rather than dedicated: tapflow runs
+### Shared infrastructure
+
+The agent host is shared rather than dedicated: tapflow runs
 up to four concurrent simulator slots on one Mac. Embodied carbon is therefore
 allocated at one quarter of the host — see Section 6. Energy in Section 5 is not
 divided this way. Section 7 explains the pairing and gives the score under each basis.
@@ -77,17 +83,23 @@ divided this way. Section 7 explains the pairing and gives the score under each 
 
 ## Section 4 — Functional Unit (R)
 
-**Functional unit:** one QA session-hour — one tester streaming one simulator for one hour.
+**What is your functional unit?**
 
-**Why this unit:** tapflow's energy cost tracks how long a session is held open and how
+One QA session-hour — one tester streaming one simulator for one hour.
+
+**Why did you choose this unit?**
+
+tapflow's energy cost tracks how long a session is held open and how
 much interaction happens inside it. It does not track builds uploaded or accounts
 registered. A live session is single-occupancy by design, so one session-hour maps
 one-to-one onto the work delivered.
 
-**How counted:** R = 1. The score comes from one controlled benchmark session, timed
+**How did you count or measure the total units?**
+
+R = 1. The score comes from one controlled benchmark session, timed
 directly, not from aggregated production telemetry.
 
-**Total in measurement period:** 1 QA session-hour.
+**Total units in measurement period:** 1 QA session-hour.
 
 ---
 
@@ -95,14 +107,16 @@ directly, not from aggregated production telemetry.
 
 ### Energy
 
-**Total energy:** 0.005725 kWh
+**Total energy consumed:** 0.005725 kWh
 
 **PUE applied:** N/A. The host is a desk or office machine, not a data-centre tenant.
 There is no facility overhead to apportion.
 
-| Component | Energy (kWh) | Data source |
-| --- | --- | --- |
-| Agent host, whole machine, 1 hour | 0.005725 | Idle wall power 4.21 W from the Apple Product Environmental Report power table for the 14-inch MacBook Pro (M2 Pro), January 2023, at 100 V. Active increment 5.05 W wall: 4.52 W measured at the SoC, divided by the 89.5% adapter efficiency printed in the same table. Increment applied to 30% of the hour. |
+Energy breakdown
+
+| Component | Duration | Power (incremental) | Energy after PUE (kWh) | How calculated |
+| --- | --- | --- | --- | --- |
+| Agent host, whole machine | 1 hour | Idle 4.21 W + active increment 5.05 W applied to 30% of the hour | 0.005725 | Idle wall power 4.21 W from the Apple Product Environmental Report power table for the 14-inch MacBook Pro (M2 Pro), January 2023, at 100 V. Active increment 5.05 W wall: 4.52 W measured at the SoC, divided by the 89.5% adapter efficiency printed in the same table. |
 
 A per-process split is not available. `powermetrics` reports combined SoC power for the
 machine, so the relay, the agent, the simulator, and the H.264 encoder cannot be
@@ -119,7 +133,7 @@ E = (4.21 W + 5.05 W x 0.30) x 1 h = 5.725 Wh = 0.005725 kWh
 
 ### Carbon intensity
 
-**Carbon intensity:** 417.3 gCO2eq/kWh
+**Carbon intensity value:** 417.3 gCO2eq/kWh
 
 **Location(s):** Republic of Korea.
 
@@ -135,9 +149,13 @@ quantity and is not used here.
 
 ## Section 6 — Embodied Emissions (M)
 
-**Total embodied (allocated):** 1.404 gCO2eq
+**Total embodied emissions allocated to this measurement:** 1.404 gCO2eq
 
-| Component | Allocated M (gCO2eq) | Data source |
+**Allocation methodology:** SCI time-share and capacity-share allocation (M = TE x (1 / 35,040 h) x (1 / 4 slots)), using Apple's published lifecycle data for the reference device.
+
+Hardware component breakdown
+
+| Hardware component | Allocated M (gCO2eq) | Data source |
 | --- | --- | --- |
 | Agent host — MacBook Pro 14-inch (M2 Pro, 512 GB) | 1.404 | Apple Product Environmental Report, 14-inch MacBook Pro (M2 Pro), January 2023. |
 
@@ -162,10 +180,10 @@ score between 3.75 and 3.80 — the third significant figure.
 
 ## Section 7 — Methodology and Calculation
 
-**Approach:** Hybrid. The active increment is measured. Idle wall power, embodied
+**Overall approach:** Hybrid. The active increment is measured. Idle wall power, embodied
 carbon, and grid intensity come from published figures.
 
-**How you calculated your score:**
+**Describe your methodology:**
 
 - Power was sampled in three states on one host — no session, session open with a
   static screen, session open with continuous scrolling — using
