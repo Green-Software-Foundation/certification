@@ -38,13 +38,15 @@ Core capabilities include the mobile AI sorting app, mountable edge camera units
 
 ## Section 2 — Your SCI Score
 
-**Your SCI score:** 0.000402 gCO2eq per waste-sorting inference, single-inference benchmark result on iPhone 13 (MLML3LL/A), iOS version 26.5.2.
+**Your SCI score:** 0.000402 gCO2eq per waste-sorting inference
 
 **Measurement start date:** 2026-10-22
 
 **Measurement end date:** 2026-10-22
 
 **Measurement period:** Single-inference benchmark on the named reference device; scope and limits stated in Sections 3 and 7.
+
+Single-inference benchmark result on iPhone 13 (MLML3LL/A), iOS version 26.5.2.
 
 ---
 
