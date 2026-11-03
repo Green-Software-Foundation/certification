@@ -1,50 +1,46 @@
-# SCI Self-Certification — Public Disclosure
-
-| Field | Value |
-|-------|-------|
-| **Certificate ID** | [TO BE ISSUED: GSF-SCI-2026-NNNNN] |
-| **Date Issued** | [TO BE COMPLETED ON ISSUE] |
-| **Valid Until** | [TO BE COMPLETED ON ISSUE] |
-| **Certificate URL** | [TO BE COMPLETED ON ISSUE] |
-| **Status** | [Active on issue] |
+> **Certificate ID:** GSF-SCI-2026-[NNNNN]
+> **Issued:** [YYYY-MM-DD]
+> **Valid until:** [YYYY-MM-DD]
+> **Status:** Active
+> **Certificate URL:** https://badges.greensoftware.foundation/awards/sci/gsf-sci-2026-[nnnnn]
 
 ---
 
 ## Section 1 — About You and Your Software
 
-**Organization name:** DWaste
+**Organization name:** tapflow (open-source project)
 
-**Contact name:** Suman Kunwar
+**Contact name:** Jo Duchan
 
-**Contact email:** *[redacted]*
+**Contact email:** [redacted]
 
-**Software name:** DWaste Platform
+**Software name:** tapflow
 
-**Software version:** v1.4.0
+**Software version:** v0.18.0 — the release the score was measured on (2026-08-03).
+The exact commit was not recorded at the time. The current release at this revision
+(2026-10-16) is v0.27.1, and the score has not been re-measured against it. See Section 7.
 
-**Software URL:** https://www.dwaste.live
+**Software URL:** https://www.tapflow.dev · https://github.com/jo-duchan/tapflow
 
 **What does it do?**
-
-DWaste is an edge-AI and IoT-enabled platform for sustainable waste intelligence, automated recycling sorting, and real-time contamination tracking serving educational institutions, businesses, public spaces, and Material Recovery Facilities (MRFs). The platform deploys lightweight computer-vision models directly on smartphones and edge devices including full offline functionality to classify waste into seven recycling-critical categories (biological, cardboard, glass, metal, paper, plastic, trash).
-
-Core capabilities include the mobile AI sorting app, mountable edge camera units for automatic bin-level waste detection, DInsights on-device MRF waste auditing, DSort gamified education, and automated sorting hardware integration (6-compartment flapper smart bins and conveyor machines). By processing vision telemetry locally on resource-constrained hardware, dWaste bypasses the heavy energy footprint of transmitting raw video streams to cloud infrastructure. The platform architecture and benchmarks are backed by peer-reviewed research published in the Journal on Artificial Intelligence and the Journal of the Brazilian Computer Society.
-
-**Deployed model:** YOLOv8n-CBAM (Convolutional Block Attention Module injected at the deepest backbone layer)
-
-**Validated performance** (on held-out validation set, 1,778 images / 2,942 instances): mAP50 = 0.809, mAP50-95 = 0.598, Precision = 0.776, Recall = 0.730, F1 = 0.809.
+tapflow streams iOS simulators and Android emulators to a browser, so a whole team can
+run mobile QA without installing a mobile development environment. It is TypeScript on
+Node.js: a relay process serves the dashboard and brokers sessions over WebSocket, and
+an agent process runs on an Apple Silicon Mac next to the simulators it controls,
+encoding the screen as H.264. It is MIT licensed and self-hosted — it runs on hardware
+the operator already owns, such as a desk Mac, a LAN host, or a machine behind a
+tunnel. No cloud service is involved.
 
 ---
 
 ## Section 2 — Your SCI Score
 
-**SCI score:** 0.000402 gCO2eq per waste-sorting inference, single-inference benchmark result on iPhone 13 (MLML3LL/A), iOS version 26.5.2.
+**SCI score:** 3.79 gCO2eq per QA session-hour
 
-**Measurement start date:** 2026-10-22
+**Measurement period:** 2026-08-03 to 2026-08-03
 
-**Measurement end date:** 2026-10-22
-
-**Measurement period:** Single-inference benchmark on the named reference device; scope and limits stated in Sections 3 and 7.
+This is a single controlled benchmark on one host, not an aggregate over a production
+period. Section 7 states what that does and does not support.
 
 ---
 
@@ -53,35 +49,41 @@ Core capabilities include the mobile AI sorting app, mountable edge camera units
 ### What's included?
 
 | Component | Brief description |
-|-----------|-------------------|
-| Edge Inference Runtime | Quantized YOLOv8n-CBAM model execution layer (3.5 MB footprint) |
+| --- | --- |
+| Agent host | 1x MacBook Pro 14-inch (M2 Pro, 32 GB, macOS 26.5.2). Energy and embodied carbon both counted. |
+| Relay process | Node.js. Serves the dashboard from the built `public/` directory and brokers the session. Runs on the agent host. |
+| iOS agent process | Node.js. Controls the simulator and encodes the screen as H.264. Runs on the agent host. |
+| iOS simulator | One simulator instance, started and controlled by the agent. |
 
 ### What's excluded, and why?
 
 | Component | Reason for exclusion |
-|-----------|----------------------|
-| Cloud Analytics Backend | Excluded because core classification operates cloud-free by design; optional external syncing falls outside the measured operational boundary. |
-| Model Training Phase | Excluded from operational SCI per ISO/IEC 21031:2024 guidelines (one-time development cost of 0.09458 kgCO2, reported separately). |
-| Network Transmission | Excluded by architectural design as all image inference and auditing occur locally on-device. |
-| Actuator Control Signals | Excluded because the control signals that drive the sorting hardware (6-compartment flapper bins and conveyor machines) are emitted as low-power digital GPIO/PWM outputs from an embedded microcontroller. Their operational energy is negligible relative to the vision inference runtime, and they execute on a separate hardware path (microcontroller) outside the measured edge inference boundary. |
-| On-Device Vision Pipeline, Mobile & Audit App Runtimes | Excluded because these components execute on separate hardware paths (mobile CPU/ISP/DSP and embedded microcontroller) that are outside the measured edge inference runtime boundary. This is a deliberate boundary decision: the SCI assessment isolates the vision inference runtime as the sole attributable operational component under DWaste's control, and treats the surrounding capture, display, and audit application layers as host-platform functions. |
-| Local Storage | Excluded because the 3.5 MB ONNX model is memory-mapped and read once per inference; estimated read energy is ~0.005 J (using a conservative NAND benchmark of ~1.5 J/GB), which is under 0.3% of the measured 1.85 J inference energy (5.15 × 10⁻⁷ kWh). Image reads and temporary writes are infrequent and fall below the reporting precision. |
+| --- | --- |
+| The viewer's browser and the machine running it | An end-user device. The operator of a tapflow instance does not own, provision, or control the testers' laptops, and tapflow imposes no requirement on them beyond a browser. |
+| Network transport between host and viewer | The path is chosen by the operator — a LAN, a Tailscale tunnel, or a reverse proxy they already run. tapflow ships no network infrastructure of its own, so there is no component here under our operational control to measure. |
+| CI/CD runners and developer machines | These run while tapflow is being built, not while a deployed instance serves a QA session. The functional unit is a session-hour on a running instance, so development compute falls outside the system being measured. |
+| Build artifact storage | Uploaded builds are written to the operator's own filesystem on the agent host, whose embodied carbon is already allocated above. Counting the storage again would double-count the same hardware. |
 
-### Shared infrastructure statement
-
-No shared infrastructure is attributable to DWaste's operational boundary. The benchmark was executed on the iPhone 13 reference device, a dedicated edge device, not a shared cloud environment. No shared-infrastructure allocation is therefore required for E.
+**Shared infrastructure.** The agent host is shared rather than dedicated: tapflow runs
+up to four concurrent simulator slots on one Mac. Embodied carbon is therefore
+allocated at one quarter of the host — see Section 6. Energy in Section 5 is not
+divided this way. Section 7 explains the pairing and gives the score under each basis.
 
 ---
 
 ## Section 4 — Functional Unit (R)
 
-**Functional unit:** 1 waste-sorting inference (one forward pass on a single image input)
+**Functional unit:** one QA session-hour — one tester streaming one simulator for one hour.
 
-**Why this unit:** A single inference represents the fundamental unit of utility delivered by the software converting an image into a structured 7-class waste classification.
+**Why this unit:** tapflow's energy cost tracks how long a session is held open and how
+much interaction happens inside it. It does not track builds uploaded or accounts
+registered. A live session is single-occupancy by design, so one session-hour maps
+one-to-one onto the work delivered.
 
-**How counted:** Logged forward-pass executions isolated with OSSignposter during a single-inference benchmark on iPhone 13.
+**How counted:** R = 1. The score comes from one controlled benchmark session, timed
+directly, not from aggregated production telemetry.
 
-**Total in measurement period:** 1 functional unit (Benchmark single-inference run)
+**Total in measurement period:** 1 QA session-hour.
 
 ---
 
@@ -89,89 +91,121 @@ No shared infrastructure is attributable to DWaste's operational boundary. The b
 
 ### Energy
 
-**Total energy:** 5.15 × 10⁻⁷ kWh (derived on iPhone 13, edge reference hardware)
+**Total energy:** 0.005725 kWh
 
-**PUE applied:** N/A (Direct edge runtime deployment)
+**PUE applied:** N/A. The host is a desk or office machine, not a data-centre tenant.
+There is no facility overhead to apportion.
 
 | Component | Energy (kWh) | Data source |
-|-----------|--------------|-------------|
-| YOLOv8n-CBAM Edge Inference | 5.15 × 10⁻⁷ | iPhone 13 (MLML3LL/A), iOS 26.5.2; t_inference 442.90 ms via OSSignposter; Power Profiler overall-system power 33.7 %/hr at 93% brightness (unplugged) gave 4.182 W |
+| --- | --- | --- |
+| Agent host, whole machine, 1 hour | 0.005725 | Idle wall power 4.21 W from the Apple Product Environmental Report power table for the 14-inch MacBook Pro (M2 Pro), January 2023, at 100 V. Active increment 5.05 W wall: 4.52 W measured at the SoC, divided by the 89.5% adapter efficiency printed in the same table. Increment applied to 30% of the hour. |
 
-**Note on component energy values:** Only the Edge Inference Runtime draws measurable operational power within the assessed boundary, and its energy is captured within the 5.15 × 10⁻⁷ kWh. The On-Device Vision Pipeline, Mobile & Audit App Runtimes, and Actuator Control Signals are excluded from this boundary for the reasons stated in Section 3 (separate hardware paths outside the measured edge inference runtime); no portion of their operational energy is attributed to this score.
+A per-process split is not available. `powermetrics` reports combined SoC power for the
+machine, so the relay, the agent, the simulator, and the H.264 encoder cannot be
+separated. What the measurement does resolve is the cost of the session itself, by
+differencing three states on the same machine:
 
-**Note on hardware and scope:** E was derived on the iPhone 13 reference device, not a datacentre GPU. The Power Profiler value is overall-system power and includes display and system overhead over the whole measurement session; it is therefore an upper bound for the isolated inference energy. The inference interval (442.90 ms) was isolated via OSSignposter.
+| State | SoC power | Increment over idle |
+| --- | --- | --- |
+| No session open | 0.66 W (sd 0.14) | — |
+| Session open, screen static | 0.64 W (sd 0.29) | ~0, within noise |
+| Session open, continuous scrolling | 5.16 W (sd 1.99, peak 15.98) | +4.52 W |
+
+E = (4.21 W + 5.05 W x 0.30) x 1 h = 5.725 Wh = 0.005725 kWh
 
 ### Carbon intensity
 
-**Carbon intensity:** 418 gCO2eq/kWh
+**Carbon intensity:** 417.3 gCO2eq/kWh
 
-**Location(s):** US-PJM (PJM Interconnection)
+**Location(s):** Republic of Korea.
 
-**Approach:** Location-based
+**Approach:** Location-based.
 
-**Data source + year:** Electricity Maps (historical daily data), 2026
-
-| Region | Component | gCO2eq/kWh | Source |
-|--------|-----------|------------|--------|
-| US-PJM | Edge Inference Runtime | 418 | Electricity Maps |
-
-The iPhone 13 measurement was conducted in Baltimore, MD, within the US-PJM grid region.
+**Data source + year:** Republic of Korea national grid emission factor,
+consumption-side combined, 2023 factor, confirmed by the national greenhouse gas
+statistics committee on 2025-12-17. Combustion-based, not lifecycle. The
+generation-side figure for the same year is 384.4 gCO2eq/kWh; it is a different
+quantity and is not used here.
 
 ---
 
 ## Section 6 — Embodied Emissions (M)
 
-**Total embodied (allocated):** 0.000187 gCO2eq
+**Total embodied (allocated):** 1.404 gCO2eq
 
-**Reference hardware:** iPhone 13 (MLML3LL/A), 128 GB, iOS 26.5.2
+| Component | Allocated M (gCO2eq) | Data source |
+| --- | --- | --- |
+| Agent host — MacBook Pro 14-inch (M2 Pro, 512 GB) | 1.404 | Apple Product Environmental Report, 14-inch MacBook Pro (M2 Pro), January 2023. |
 
-**M_device:** 64 kgCO2eq (source: Apple, iPhone 13 Product Environmental Report, September 2021, endnote 3, ISO 14040/14044 LCA for 128 GB configuration)
+**Allocation:** M = TE x (1 / 35,040 h) x (1 / 4 slots). The first factor is a four-year
+service life, matching the first-owner lifespan Apple uses in its own reports. The
+second is tapflow's documented concurrency of four simulator slots on one host, so one
+session takes a quarter of the machine.
 
-**Life-cycle stage breakdown:** Production 81%, Transport 2%, Use 16%, End-of-life <1%
+**TE definition:** production + transport + end-of-life processing, **excluding the use
+stage**. The use stage is computed separately in Section 5 against the Korean grid
+factor; including it in TE would double-count it.
 
-**Embodied share used for allocation:** Production (81%) + Transport (2%) + End-of-life (<1%) = 83%, so M_embodied = 0.83 × 64 = 53.12 kgCO2eq.
-
-**Rationale for excluding the Use phase:** Apple's Use-phase share (16%) represents aggregate operational electricity already superseded by the E reported in Section 5 for this functional unit; including it would double-count operational emissions. M therefore uses the Production + Transport + End-of-life share (83%).
-
-**Allocation formula (SCI time-share method):**
-
-```
-M_allocated = M_embodied × (t_inference / t_device_active_life)
-
-            = 53.12 kgCO2eq × (0.4429 s / 1.261 × 10⁸ s)
-
-            = 1.866 × 10⁻⁷ kgCO2eq = 0.000187 gCO2eq per inference
-```
-
-t_device_active_life = 4 years × 365 × 24 × 3600 = 1.261 × 10⁸ s, per Apple's stated 3 to 4 year first-owner use assumption (endnote 3)
+**How TE was derived, and how precise it is.** The report prints a life-cycle total of
+243 kg CO2e and stage shares only — 79% production, <1% transport, 20% use, <1%
+end-of-life processing. There is no numeric per-stage table, so TE is derived rather
+than read off: 243 kg x (79% + 1% + 1%) = 196.8 kg, counting each "<1%" stage as a full
+1% so that the figure errs upward. Propagating the rounding on all three shares puts TE
+between roughly 191 and 198 kg, which moves M between 1.36 and 1.41 gCO2eq and the SCI
+score between 3.75 and 3.80 — the third significant figure.
 
 ---
 
 ## Section 7 — Methodology and Calculation
 
-**Approach:** Hybrid measurement on the edge reference device. Inference duration measured directly via OSSignposter in Xcode Instruments; energy derived from battery-percent drain and battery capacity rather than measured at component level; power via Power Profiler overall-system battery drain.
+**Approach:** Hybrid. The active increment is measured. Idle wall power, embodied
+carbon, and grid intensity come from published figures.
 
-**Hardware used for benchmark:** iPhone 13 (MLML3LL/A), iOS 26.5.2. Inference duration measured via OSSignposter (Model_Inference interval, 442.90 ms, Runner process 2801). Power measured via Power Profiler as a whole-session average over the full trace (~51 s, Runner process 3003) at 93% brightness, unplugged. This is a separate trace from the inference interval and is treated as an upper bound.
+**How you calculated your score:**
 
-**How you calculated your score:** The score is a single-inference benchmark result on iPhone 13, not typical or average deployment performance. The YOLOv8n-CBAM model (3.5 MB ONNX) ran once per inference; the inference interval (442.90 ms) was isolated with OSSignposter. Power Profiler reported overall-system power of 33.7 %/hr at 93% brightness; multiplied by the iPhone 13 battery capacity (12.41 Wh) this gives P_avg = 4.182 W. E = 4.182 W × 0.4429 s ÷ 3,600,000 = 5.15 × 10⁻⁷ kWh. This is an upper bound for isolated inference energy because the power figure is a whole-session average from a separate trace and includes display and system overhead.
+- Power was sampled in three states on one host — no session, session open with a
+  static screen, session open with continuous scrolling — using
+  `powermetrics --samplers cpu_power`, 60 one-second samples per state, reading
+  `Combined Power (CPU + GPU + ANE)`. The difference between the first and third states
+  gives the cost of active use: +4.52 W at the SoC.
+- Holding a session open with nothing moving on screen costs nothing measurable. The
+  static state read 0.02 W *below* idle, well inside the standard deviation, because
+  the H.264 encoder has almost nothing to encode when the screen does not change. This
+  is why the duty assumption below applies the increment only to the interacting
+  fraction of the hour.
+- SoC-only instrumentation is deliberate for a difference. Display, SSD, and fan draw
+  are constant across the three states and cancel out. Absolute draw therefore comes
+  from Apple's published wall-power figure, which already includes platform draw, and
+  the SoC increment is converted to wall power with the adapter efficiency from the
+  same table.
+- Embodied carbon comes from the manufacturer's Product Environmental Report for the
+  exact host model, allocated as described in Section 6.
+- The grid factor is the national location-based factor for the country the host runs
+  in.
 
 **Show your calculation:**
 
 ```
-SCI = (E × I) + M per R
+E x I = 0.005725 kWh x 417.3 gCO2eq/kWh = 2.389 gCO2eq
+M = 1.404 gCO2eq
+R = 1 QA session-hour
 
-= (5.145 × 10⁻⁷ kWh × 418 gCO2eq/kWh) + 0.000187 gCO2eq
-
-= 0.000402 gCO2eq per inference
+SCI = (E x I + M) / R = (2.389 + 1.404) / 1 = 3.79 gCO2eq per QA session-hour
 ```
 
 **Assumptions and limitations:**
 
 | Assumption or limitation | Justification or mitigation |
-|--------------------------|------------------------------|
-| Single-inference benchmark evaluation | Explicitly labelled as a single-inference benchmark on iPhone 13, not typical/average deployment. Benchmark settings do not capture long-term thermal throttling or extended field deployment dynamics; future disclosures will report longitudinal field logs. |
-| Power measured at 93% display brightness; overall-system value | Includes display and system overhead, so E is an upper bound for isolated inference energy. Measurement was unplugged on the battery. |
-| Embodied emissions allocation | Allocated per SCI time-share using Apple's published LCA and 4-year use assumption; formula and sources in Section 6. |
+| --- | --- |
+| The active increment applies to 30% of a session-hour. | A QA session is mostly spent looking at the screen, with interaction in bursts. The static state is indistinguishable from idle, so only the interacting fraction carries the increment. 30% is a conservative estimate of that fraction for interactive manual testing. |
+| Embodied carbon is allocated over four years and four concurrent simulator slots. | Four years matches the first-owner service life Apple uses in the report the TE figure comes from. Four slots is tapflow's documented concurrency on one host. |
+| TE is derived from stage shares, not read from a numeric table. | The report prints only a total and percentages. Each "<1%" stage is counted as a full 1%, which errs upward. The resulting range is stated in Section 6: SCI 3.75 to 3.80. |
+| No per-process energy split is available. | `powermetrics` reports combined SoC power for the whole machine. The measurement resolves the session increment by differencing states instead, which is the quantity the score depends on. |
+| Single-day, single-host benchmark. | This is one controlled session on 2026-08-03, not an aggregate over an extended production period. It is not represented as reflective of broader production usage. |
+| The increment is an upper bound. | The viewer's browser decoded the stream on the same Mac during the benchmark. In normal use the browser runs on the tester's own machine and the agent host only encodes. Sixty seconds of continuous scrolling is also harsher than real QA. |
+| The score was measured on v0.18.0; the current release is v0.27.1. | The measurement has not been repeated against the current release. Nothing here should be read as a claim that the figure has been re-verified for it. |
+| Energy and embodied carbon are allocated on different utilisation bases. | Energy charges the host's full idle draw (4.21 W) to one session. That matches the benchmark, which ran one session on the host. Embodied carbon is allocated by capacity, one quarter of the host, because tapflow's documented concurrency is four slots per host. Applied on one basis, the score would be about 8.0 gCO2eq per session-hour on a dedicated host (2.389 + 1.404 x 4) and about 2.5 with all four slots in use ((4.21 / 4 + 5.05 x 0.30) Wh x 0.4173 gCO2eq/Wh + 1.404). The certified 3.79 sits between those two bounds. |
+| A second host was modelled but is not the certified figure. | The same calculation for a Mac mini M4 host gives 2.50 gCO2eq per session-hour (O 2.30, M 0.198, TE 27.8 kg of a 32 kg life-cycle total). It is disclosed here rather than certified because it would transfer the active increment from the M2 Pro machine it was measured on to a different chip. The embodied share differs sharply between the two: 37% of the score on the laptop, 7.9% on the desktop. |
 
 ---
 
@@ -182,23 +216,32 @@ SCI = (E × I) + M per R
 By submitting this application, I hereby:
 
 1. **DECLARE** that the submitted SCI calculation conforms to all requirements of ISO/IEC 21031:2024 (Software Carbon Intensity).
+
 2. **ATTEST** that the calculation was performed in good faith using appropriate methodologies and data sources consistent with ISO/IEC 21031:2024.
+
 3. **ACKNOWLEDGE** that this is self-certification under the ISO/IEC 17050 framework and does not constitute third-party certification or independent validation by the Green Software Foundation.
+
 4. **MAINTAIN** supporting documentation for all calculations, methodologies, data sources, and assumptions for a minimum of 3 years and will provide upon reasonable request.
+
 5. **ACCEPT RESPONSIBILITY** for the accuracy, completeness, and conformity of the calculation and disclosure with ISO/IEC 21031:2024.
+
 6. **AGREE** to promptly correct any errors or inaccuracies if identified through community review or self-discovery.
+
 7. **UNDERSTAND** that GSF's role is limited to verifying disclosure completeness, not validating calculation accuracy or ISO/IEC 21031:2024 conformity.
+
 8. **AGREE** to use the certificate and badge only as permitted in the GSF Badge Usage Guidelines, including always using the "self-certified" qualifier when claiming ISO/IEC 21031:2024 conformity.
+
 9. **ACKNOWLEDGE** that false or misleading self-certification may result in certificate revocation, public notice, and potential legal consequences.
+
 10. **CONSENT** to public disclosure of the submitted information to enable community review and validation.
 
-**Signature:** Suman Kunwar
+**Signature:** /s/ Jo Duchan
 
-**Date:** October 26, 2026
+**Date:** October 16, 2026
 
-**Name and title:** Suman Kunwar, Founder & Lead Researcher
+**Name and title:** Jo Duchan, maintainer
 
-**Organization:** DWaste
+**Organization:** tapflow (open-source project)
 
 ---
 
@@ -208,6 +251,8 @@ By submitting this application, I hereby:
 
 - [x] Yes — you may display our organisation name and logo on the GSF certified organisations page
 - [ ] No thank you
+
+Logo attached.
 
 **Would you participate in a blog post or case study?**
 
@@ -219,7 +264,24 @@ By submitting this application, I hereby:
 - [x] Yes — you may use our published disclosure for downstream analysis, including AI syntheses
 - [ ] No thank you
 
+---
+
 ## Optional Attachments
 
-- Power Measurement
-- Inference Measurement
+The full engineering backing for every figure above is public:
+https://github.com/jo-duchan/tapflow/blob/main/contributing/sustainability-carbon-math.md
+It records the measurement conditions, the three-state power samples, the published
+sources, and the arguments that were tested and discarded.
+
+---
+
+## Submission Checklist
+
+- [x] Section 1 — Organization and software details
+- [x] Section 2 — SCI score with units and measurement period
+- [x] Section 3 — Included and excluded components with rationales
+- [x] Section 4 — Functional unit with rationale and measurement method
+- [x] Section 5 — Energy with per-component breakdown; carbon intensity with source and year
+- [x] Section 6 — Embodied emissions with breakdown (or justification if zero)
+- [x] Section 7 — Methodology, assumptions, limitations, and calculation shown
+- [x] Attestation — Signed and dated
