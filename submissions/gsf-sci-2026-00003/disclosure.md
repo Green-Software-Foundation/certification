@@ -1,8 +1,12 @@
-> **Certificate ID:** GSF-SCI-2026-[NNNNN]
-> **Issued:** [YYYY-MM-DD]
-> **Valid until:** [YYYY-MM-DD]
-> **Status:** Active
-> **Certificate URL:** https://badges.greensoftware.foundation/awards/sci/gsf-sci-2026-[nnnnn]
+# SCI Self-Certification — Public Disclosure
+
+| Field | Value |
+|-------|-------|
+| **Certificate ID** | GSF-SCI-2026-00003 |
+| **Date Issued** | 2026-11-03 |
+| **Valid Until** | 2027-11-03 |
+| **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/awards/sci/gsf-sci-2026-00003) |
+| **Status** | Active |
 
 ---
 
