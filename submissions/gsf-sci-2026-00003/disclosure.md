@@ -1,12 +1,8 @@
-# SCI Self-Certification — Public Disclosure
-
-| Field | Value |
-|-------|-------|
-| **Certificate ID** | GSF-SCI-2026-00003 |
-| **Date Issued** |  |
-| **Valid Until** |  |
-| **Certificate URL** |  |
-| **Status** | [Active on issue] |
+> **Certificate ID:** GSF-SCI-2026-[NNNNN]
+> **Issued:** [YYYY-MM-DD]
+> **Valid until:** [YYYY-MM-DD]
+> **Status:** Active
+> **Certificate URL:** https://badges.greensoftware.foundation/awards/sci/gsf-sci-2026-[nnnnn]
 
 ---
 
@@ -16,13 +12,13 @@
 
 **Contact name:** Jo Duchan
 
-**Contact email:** jo_duchan@icloud.com
+**Contact email:** [redacted]
 
 **Software name:** tapflow
 
 **Software version:** v0.18.0 — the release the score was measured on (2026-08-03).
-The exact commit was not recorded at the time. The current release at submission is
-v0.26.1, and the score has not been re-measured against it. See Section 7.
+The exact commit was not recorded at the time. The current release at this revision
+(2026-10-16) is v0.27.1, and the score has not been re-measured against it. See Section 7.
 
 **Software URL:** https://www.tapflow.dev · https://github.com/jo-duchan/tapflow
 
@@ -70,7 +66,8 @@ period. Section 7 states what that does and does not support.
 
 **Shared infrastructure.** The agent host is shared rather than dedicated: tapflow runs
 up to four concurrent simulator slots on one Mac. Embodied carbon is therefore
-allocated at one quarter of the host — see Section 6.
+allocated at one quarter of the host — see Section 6. Energy in Section 5 is not
+divided this way. Section 7 explains the pairing and gives the score under each basis.
 
 ---
 
@@ -206,7 +203,8 @@ SCI = (E x I + M) / R = (2.389 + 1.404) / 1 = 3.79 gCO2eq per QA session-hour
 | No per-process energy split is available. | `powermetrics` reports combined SoC power for the whole machine. The measurement resolves the session increment by differencing states instead, which is the quantity the score depends on. |
 | Single-day, single-host benchmark. | This is one controlled session on 2026-08-03, not an aggregate over an extended production period. It is not represented as reflective of broader production usage. |
 | The increment is an upper bound. | The viewer's browser decoded the stream on the same Mac during the benchmark. In normal use the browser runs on the tester's own machine and the agent host only encodes. Sixty seconds of continuous scrolling is also harsher than real QA. |
-| The score was measured on v0.18.0; the current release is v0.26.1. | The measurement has not been repeated against the current release. Nothing here should be read as a claim that the figure has been re-verified for it. |
+| The score was measured on v0.18.0; the current release is v0.27.1. | The measurement has not been repeated against the current release. Nothing here should be read as a claim that the figure has been re-verified for it. |
+| Energy and embodied carbon are allocated on different utilisation bases. | Energy charges the host's full idle draw (4.21 W) to one session. That matches the benchmark, which ran one session on the host. Embodied carbon is allocated by capacity, one quarter of the host, because tapflow's documented concurrency is four slots per host. Applied on one basis, the score would be about 8.0 gCO2eq per session-hour on a dedicated host (2.389 + 1.404 x 4) and about 2.5 with all four slots in use ((4.21 / 4 + 5.05 x 0.30) Wh x 0.4173 gCO2eq/Wh + 1.404). The certified 3.79 sits between those two bounds. |
 | A second host was modelled but is not the certified figure. | The same calculation for a Mac mini M4 host gives 2.50 gCO2eq per session-hour (O 2.30, M 0.198, TE 27.8 kg of a 32 kg life-cycle total). It is disclosed here rather than certified because it would transfer the active increment from the M2 Pro machine it was measured on to a different chip. The embodied share differs sharply between the two: 37% of the score on the laptop, 7.9% on the desktop. |
 
 ---
@@ -239,7 +237,7 @@ By submitting this application, I hereby:
 
 **Signature:** /s/ Jo Duchan
 
-**Date:** October 2, 2026
+**Date:** October 16, 2026
 
 **Name and title:** Jo Duchan, maintainer
 
