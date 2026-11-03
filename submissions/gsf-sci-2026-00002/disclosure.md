@@ -20,7 +20,7 @@
 
 **Software name:** DWaste Platform
 
-**Software version:** v1.4.0
+**Software version:** 1.4.0
 
 **Software URL:** https://www.dwaste.live
 
