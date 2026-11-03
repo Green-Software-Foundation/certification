@@ -52,7 +52,7 @@ Core capabilities include the mobile AI sorting app, mountable edge camera units
 
 ### Included Components
 
-| Component | Brief description |
+| Component | Description |
 |-----------|-------------------|
 | Edge Inference Runtime | Quantized YOLOv8n-CBAM model execution layer (3.5 MB footprint) |
 
