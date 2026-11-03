@@ -2,11 +2,11 @@
 
 | Field | Value |
 |-------|-------|
-| **Certificate ID** | [TO BE ISSUED: GSF-SCI-2026-NNNNN] |
-| **Date Issued** | [TO BE COMPLETED ON ISSUE] |
-| **Valid Until** | [TO BE COMPLETED ON ISSUE] |
-| **Certificate URL** | [TO BE COMPLETED ON ISSUE] |
-| **Status** | [Active on issue] |
+| **Certificate ID** | GSF-SCI-2026-00002 |
+| **Date Issued** | 2026-11-03 |
+| **Valid Until** | 2027-11-03 |
+| **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/awards/sci/gsf-sci-2026-00002) |
+| **Status** | Active |
 
 ---
 
