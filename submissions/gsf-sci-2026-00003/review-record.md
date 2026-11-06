@@ -3,9 +3,10 @@
 ```
 REVIEW RECORD
 =============
-Submission ID:    GSF-SUB-2026-00003
+Submission ID:    GSF-SUB-2026-0003
 Reviewer:         Kirsty
-Review Date:      2026-10-05
+Review Date:      2026-10-05 (revised disclosure 2026-10-16;
+                  certificate issued 2026-11-03)
 Time Spent:       [add] hours
 
 CHECKLIST (Y = present & adequate, N = missing, I = insufficient)
@@ -13,7 +14,7 @@ CHECKLIST (Y = present & adequate, N = missing, I = insufficient)
   1.  Identity and scope:                                        Y
       Org, contact, and software identified (tapflow, open-source
       project, v0.18.0, measured release; current release v0.26.1
-      disclosed). Four included components named (agent host, relay
+      disclosed; updated to v0.27.1 in the revised version). Four included components named (agent host, relay
       process, iOS agent process, iOS simulator). Four excluded
       components (viewer browser/machine, network transport,
       CI/CD and developer machines, build artifact storage), each
@@ -60,21 +61,22 @@ CHECKLIST (Y = present & adequate, N = missing, I = insufficient)
       actual numbers.
   7.  Attestation:                                               Y
       All 10 points present, signed (/s/ Jo Duchan) and dated
-      2026-10-02.
+      2026-10-02 (original) and 2026-10-16 (revised version).
 
-Result:           APPROVE (recommend)
+Result:           APPROVE
 
 If REVISION REQUESTED — items marked N or I with notes:
 N/A — no revisions required.
 
 If REJECT — rationale:
-N/A — submission recommended for approval.
+N/A — submission approved.
 
 NOTES / PRECEDENT:
 - Single-day, single-host benchmark: accepted under the existing
   precedent in GSF-SUB-2026-0002 (Offlyn Clipper). Scope is
   clearly disclosed and not overstated.
-- Measured on v0.18.0; current release at submission is v0.26.1.
+- Measured on v0.18.0; current release at submission was v0.26.1
+  (v0.27.1 in the revised version).
   The gap and the absence of re-measurement are disclosed
   openly. Possible precedent entry: score measured on an older
   release than current is acceptable where the version gap is
@@ -92,6 +94,26 @@ NOTES / PRECEDENT:
   is clean. The corrected file is the version to publish.
 - Logo opt-in: Yes. Blog/case study opt-in: Yes. Downstream
   analysis consent: Yes.
-- SWG notified 2026-10-06; 7-day objection period ends
-  2026-10-13.
+- SWG notified 2026-10-07; 7-day objection period closed
+  2026-10-14 with no objections lodged in-window.
+- Post-window input from an SWG member (received 2026-10-15,
+  not a formal objection): energy charges full idle draw to one
+  session (dedicated-host basis) while embodied is divided by
+  four slots (shared basis); on one basis the score would be
+  about 8.0 (dedicated) or about 2.5 (shared). Methodology
+  matter, not a completeness issue, and not a blocker under
+  program rules. Passed to the applicant as an optional
+  suggestion.
+- Applicant response (2026-10-16): kept the figures unchanged
+  and added a Section 7 row explaining the pairing and showing
+  both bounds; Section 3 references it. Also updated the
+  current release to v0.27.1. The revised disclosure replaces
+  the original and is the published version. Score unchanged,
+  so treated as a clarification with no new objection period.
+- Certificate GSF-SCI-2026-00003 issued 2026-11-03, valid until
+  2027-11-03. Published disclosure verified against the revised
+  file (email redacted, header added, allocation row present).
+  The certificate page renders only part of the methodology
+  section and shows the version as "vv0.18.0"; noted for
+  follow-up, no change to figures.
 ```
