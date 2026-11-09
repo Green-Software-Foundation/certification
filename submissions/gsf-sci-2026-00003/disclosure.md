@@ -20,7 +20,7 @@
 
 **Software name:** tapflow
 
-**Software version:** v0.18.0
+**Software version:** 0.18.0
 
 **Software URL:** https://www.tapflow.dev · https://github.com/jo-duchan/tapflow
 
@@ -154,12 +154,7 @@ stage**. The use stage is computed separately in Section 5 against the Korean gr
 **Overall approach:** Hybrid. The active increment is measured. Idle wall power, embodied carbon, and grid intensity come from published figures.
 
 **Describe your methodology:**
-
-- Power was sampled in three states on one host — no session, session open with a static screen, session open with continuous scrolling — using `powermetrics --samplers cpu_power`, 60 one-second samples per state, reading `Combined Power (CPU + GPU + ANE)`. The difference between the first and third states gives the cost of active use: +4.52 W at the SoC.
-- Holding a session open with nothing moving on screen costs nothing measurable. The static state read 0.02 W *below* idle, well inside the standard deviation, because the H.264 encoder has almost nothing to encode when the screen does not change. This is why the duty assumption below applies the increment only to the interacting fraction of the hour.
-- SoC-only instrumentation is deliberate for a difference. Display, SSD, and fan draw are constant across the three states and cancel out. Absolute draw therefore comes from Apple's published wall-power figure, which already includes platform draw, and the SoC increment is converted to wall power with the adapter efficiency from the same table.
-- Embodied carbon comes from the manufacturer's Product Environmental Report for the exact host model, allocated as described in Section 6.
-- The grid factor is the national location-based factor for the country the host runs in.
+Power was sampled in three states on one host — no session, session open with a static screen, session open with continuous scrolling — using `powermetrics --samplers cpu_power`, 60 one-second samples per state, reading `Combined Power (CPU + GPU + ANE)`. The difference between the first and third states gives the cost of active use: +4.52 W at the SoC. Holding a session open with nothing moving on screen costs nothing measurable. The static state read 0.02 W *below* idle, well inside the standard deviation, because the H.264 encoder has almost nothing to encode when the screen does not change. This is why the duty assumption below applies the increment only to the interacting fraction of the hour. SoC-only instrumentation is deliberate for a difference. Display, SSD, and fan draw are constant across the three states and cancel out. Absolute draw therefore comes from Apple's published wall-power figure, which already includes platform draw, and the SoC increment is converted to wall power with the adapter efficiency from the same table. Embodied carbon comes from the manufacturer's Product Environmental Report for the exact host model, allocated as described in Section 6. The grid factor is the national location-based factor for the country the host runs in.
 
 **Show your calculation:**
 
