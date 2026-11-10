@@ -6,6 +6,8 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 **This submission becomes your public disclosure.** If approved, it is published as-is to the `greensoftware-foundation/certification` GitHub repository (your contact email is redacted and a certificate metadata header is added). Write accordingly — there is no separate disclosure step.
 
+**Keep the headings, bold field labels and table column headers exactly as written.** The certificate page on badges.greensoftware.foundation reads your published disclosure by matching these labels, so renaming, merging or removing them stops fields from rendering on your badge page. Add extra detail beneath any field, as notes or additional tables, rather than changing the label.
+
 ---
 
 **To:** sci-certification@greensoftware.foundation
@@ -26,51 +28,66 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 **Software version:** [e.g. v2.1.0, or "commit abc123 deployed 2026-01-15"]
 
-**Software URL:** [Link to application, docs, or repository — if public, or "Internal"]
+**Software URL:** [Link to application, docs, or repository if public, or "Internal"]
 
-**What does it do?**
+**Software description:**
+
 [2-3 sentences: what the software does, tech stack, where it runs]
 
 ---
 
 ## Section 2 — Your SCI Score
 
-**SCI score:** [Number] [unit] per [functional unit]
+**Your SCI score:** [Number] [unit] per [functional unit]
+
 *Example: 349.6 gCO2eq per 1,000 API requests*
 
-**Measurement period:** [Start date] to [End date]
-*Example: 2026-01-01 to 2026-03-31*
+**Measurement start date:** [YYYY-MM-DD]
+
+**Measurement end date:** [YYYY-MM-DD]
+
+*Example: 2026-01-01 and 2026-03-31. Give both dates as separate fields, even for a single-day benchmark.*
 
 ---
 
 ## Section 3 — Software Boundary
 
-### What's included?
+### Included Components
 
-| Component                  | Brief description                       |
-| -------------------------- | --------------------------------------- |
+| Component | Description |
+|-----------|-------------|
 | [e.g. Application servers] | [e.g. 2x EC2 t3.medium running Node.js] |
-| [e.g. Database]            | [e.g. RDS PostgreSQL db.t3.medium]      |
+| [e.g. Database] | [e.g. RDS PostgreSQL db.t3.medium] |
 
-### What's excluded, and why?
+### Excluded Components
 
-| Component  | Reason for exclusion                                 |
-| ---------- | ---------------------------------------------------- |
+| Component | Reason for exclusion |
+|-----------|----------------------|
 | [e.g. CDN] | [e.g. Separate service outside operational boundary] |
 
 *Each exclusion needs a system-specific rationale. "Not included" or "out of scope" is not sufficient.*
+
+### Shared infrastructure
+
+[Describe any included component that runs on shared or multi-tenant infrastructure and how its energy and embodied emissions were allocated to your software. If nothing is shared, say so and explain why, e.g. "No included component runs on shared infrastructure; all compute is on dedicated hosts."]
 
 ---
 
 ## Section 4 — Functional Unit (R)
 
-**Functional unit:** [e.g. 1,000 API requests]
+**What is your functional unit?**
 
-**Why this unit:** [e.g. Primary measure of how the service delivers value]
+[e.g. 1,000 API requests]
 
-**How counted:** [e.g. nginx access logs, validated against CloudWatch]
+**Why did you choose this unit?**
 
-**Total in measurement period:** [e.g. 45,000,000 requests]
+[e.g. Primary measure of how the service delivers value]
+
+**How did you count or measure the total units?**
+
+[e.g. nginx access logs, validated against CloudWatch]
+
+**Total units in measurement period:** [e.g. 45,000,000 requests]
 
 ---
 
@@ -78,18 +95,20 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 ### Energy
 
-**Total energy:** [e.g. 46.01 kWh]
+**Total energy consumed:** [e.g. 46.01 kWh]
 
-**PUE applied:** [e.g. 1.2, or "N/A — cloud provider"]
+**PUE applied:** [e.g. 1.2, or "N/A, cloud provider"]
 
-| Component                  | Energy (kWh) | Data source                                    |
-| -------------------------- | ------------ | ---------------------------------------------- |
-| [e.g. Application servers] | [e.g. 21.6]  | [e.g. AWS CloudWatch CPU metrics -> TDP model] |
-| [e.g. Database]            | [e.g. 14.4]  | [e.g. RDS CloudWatch metrics]                  |
+Energy breakdown
+
+| Component | Duration | Power (incremental) | Energy after PUE (kWh) | How calculated |
+|-----------|----------|---------------------|------------------------|----------------|
+| [e.g. Application servers] | [e.g. 720 h] | [e.g. 30 W avg] | [e.g. 21.6] | [e.g. AWS CloudWatch CPU metrics -> TDP model] |
+| [e.g. Database] | [e.g. 720 h] | [e.g. 20 W avg] | [e.g. 14.4] | [e.g. RDS CloudWatch metrics] |
 
 ### Carbon intensity
 
-**Carbon intensity:** [e.g. 340 gCO2eq/kWh]
+**Carbon intensity value:** [e.g. 340 gCO2eq/kWh]
 
 **Location(s):** [e.g. AWS us-east-1 (Virginia, USA)]
 
@@ -99,30 +118,35 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 *If multi-region, add a row per region:*
 
-| Region           | Component                  | gCO2eq/kWh | Source                |
-| ---------------- | -------------------------- | ---------- | --------------------- |
+| Region | Component | gCO2eq/kWh | Source |
+|--------|-----------|------------|--------|
 | [e.g. us-east-1] | [e.g. Application servers] | [e.g. 340] | [e.g. EPA eGRID 2023] |
 
 ---
 
 ## Section 6 — Embodied Emissions (M)
 
-**Total embodied (allocated):** [e.g. 96,574.9 gCO2eq]
+**Total embodied emissions allocated to this measurement:** [e.g. 96,574.9 gCO2eq]
 
-*If M = 0, explain why (e.g. "Pure SaaS — no hardware under our operational control") and skip the table.*
+**Allocation methodology:** [e.g. SCI time-share allocation (M = TE x (TiR / EL) x RS), using Cloud Carbon Footprint embodied coefficients]
 
-| Component                         | Allocated M (gCO2eq) | Data source                   |
-| --------------------------------- | -------------------- | ----------------------------- |
-| [e.g. App server — EC2 t3.medium] | [e.g. 24,658]        | [e.g. Cloud Carbon Footprint] |
+*If M = 0, explain why in the allocation methodology (e.g. "Pure SaaS, no hardware under our operational control") and skip the table.*
+
+Hardware component breakdown
+
+| Hardware component | Allocated M (gCO2eq) | Data source |
+|--------------------|----------------------|-------------|
+| [e.g. App server, EC2 t3.medium] | [e.g. 24,658] | [e.g. Cloud Carbon Footprint] |
 
 ---
 
 ## Section 7 — Methodology and Calculation
 
-**Approach:** [Measurement / Calculation / Hybrid]
+**Overall approach:** [Measurement / Calculation / Hybrid]
 
-**How you calculated your score:**
-[Paragraph or bullet points: what tools/models you used, how you gathered data, key decisions you made. If different metyhods were used for different components, please give component-wise descriptions]
+**Describe your methodology:**
+
+[Paragraph or bullet points: what tools/models you used, how you gathered data, key decisions you made. If different methods were used for different components, please give component-wise descriptions]
 
 **Show your calculation:**
 
@@ -134,16 +158,14 @@ R = [total units]
 SCI = (E x I + M) / R = [result] [unit] per [functional unit]
 ```
 
-
 **Assumptions and limitations:**
 
-| Assumption or limitation                 | Justification or mitigation                    |
-| ---------------------------------------- | ---------------------------------------------- |
-| [e.g. Server avg power draw is 15W]      | [e.g. Based on AWS TDP at 40% avg utilization] |
-| [e.g. No direct hardware power metering] | [e.g. Used cloud telemetry as proxy]           |
+| Assumption or limitation | Justification or mitigation |
+|--------------------------|-----------------------------|
+| [e.g. Server avg power draw is 15W] | [e.g. Based on AWS TDP at 40% avg utilization] |
+| [e.g. No direct hardware power metering] | [e.g. Used cloud telemetry as proxy] |
 
 *Include at least one specific assumption and one specific limitation.*
-
 
 ---
 
@@ -227,6 +249,6 @@ You may attach supporting materials such as a spreadsheet with detailed calculat
 - [ ] Section 3 — Included and excluded components with rationales
 - [ ] Section 4 — Functional unit with rationale and measurement method
 - [ ] Section 5 — Energy with per-component breakdown; carbon intensity with source and year
-- [ ] Section 6 — Embodied emissions with breakdown (or justification if zero)
+- [ ] Section 6 — Embodied emissions with allocation method and breakdown (or justification if zero)
 - [ ] Section 7 — Methodology, assumptions, limitations, and calculation shown
 - [ ] Attestation — Signed and dated
