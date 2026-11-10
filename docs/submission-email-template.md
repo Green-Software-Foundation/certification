@@ -6,7 +6,7 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 **This submission becomes your public disclosure.** If approved, it is published as-is to the `greensoftware-foundation/certification` GitHub repository (your contact email is redacted and a certificate metadata header is added). Write accordingly — there is no separate disclosure step.
 
-**Keep the headings, bold field labels and table column headers exactly as written.** The certificate page on badges.greensoftware.foundation reads your published disclosure by matching these labels, so renaming, merging or removing them stops fields from rendering on your badge page. Add extra detail beneath any field, as notes or additional tables, rather than changing the label. Keep the "—" in each "## Section N —" heading, and leave a blank line after each heading and bold label.
+**Keep the headings, bold field labels and table column headers exactly as written.** The certificate page on badges.greensoftware.foundation reads your published disclosure by matching these labels, so renaming, merging or removing them stops fields from rendering on your badge page. Add extra detail beneath any field, as notes or additional tables, rather than changing the label.
 
 ---
 
@@ -34,8 +34,6 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 [2-3 sentences: what the software does, tech stack, where it runs]
 
-*Write this as a single paragraph with no line breaks. Only the first line is shown on your certificate page.*
-
 ---
 
 ## Section 2 — Your SCI Score
@@ -44,13 +42,11 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 *Example: 349.6 gCO2eq per 1,000 API requests*
 
-*Start with a plain decimal number followed by a space and the unit. Do not use thousands separators (write 1349.6, not 1,349.6) or scientific notation (write 0.000000515, not 5.15 × 10⁻⁷). Your certificate page cannot be generated if the score is not in this format.*
-
 **Measurement start date:** [YYYY-MM-DD]
 
 **Measurement end date:** [YYYY-MM-DD]
 
-*Example: 2026-01-01 and 2026-03-31. Use the YYYY-MM-DD format and give both dates as separate fields, even for a single-day benchmark.*
+*Example: 2026-01-01 and 2026-03-31. Give both dates as separate fields, even for a single-day benchmark.*
 
 ---
 
@@ -150,9 +146,7 @@ Hardware component breakdown
 
 **Describe your methodology:**
 
-[What tools/models you used, how you gathered data, key decisions you made. If different methods were used for different components, please give component-wise descriptions]
-
-*Write this as a single paragraph with no line breaks. Only the first line is shown on your certificate page, so numbered or bulleted lists will be cut off after the first item. Put extra detail in the assumptions table or an attachment.*
+[Paragraph or bullet points: what tools/models you used, how you gathered data, key decisions you made. If different methods were used for different components, please give component-wise descriptions]
 
 **Show your calculation:**
 
