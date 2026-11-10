@@ -20,7 +20,7 @@
 
 **Software name:** tapflow
 
-**Software version:** v0.18.0
+**Software version:** 0.18.0
 
 **Software URL:** https://www.tapflow.dev · https://github.com/jo-duchan/tapflow
 
