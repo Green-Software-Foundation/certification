@@ -8,8 +8,6 @@
 | **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/awards/sci/gsf-sci-2026-00002) |
 | **Status** | Active |
 
-> **Certificate note on scope:** The SCI score of 0.000402 gCO2eq per waste-sorting inference is a **single-inference benchmark result on an iPhone 13 (MLML3LL/A, iOS 26.5.2), measured on 2026-10-22**. It is not typical or average deployment performance. Energy (E) is derived from whole-session battery-drain power and is an upper bound for isolated inference energy. Embodied emissions (M) use Apple's published lifecycle data, allocated by time-share. GSF verified disclosure completeness only, not calculation accuracy.
-
 ---
 
 ## Section 1 — About You and Your Software
@@ -46,7 +44,7 @@ Core capabilities include the mobile AI sorting app, mountable edge camera units
 
 **Measurement end date:** 2026-10-22
 
-**Measurement period:** Single-inference benchmark on the named reference device; scope and limits stated in Sections 3 and 7.
+**Certificate note on scope:** The SCI score of 0.000402 gCO2eq per waste-sorting inference is a single-inference benchmark result on an iPhone 13 (MLML3LL/A, iOS 26.5.2), measured on 2026-10-22. It is not typical or average deployment performance. Energy (E) is derived from whole-session battery-drain power and is an upper bound for isolated inference energy. Embodied emissions (M) use Apple's published lifecycle data, allocated by time-share. GSF verified disclosure completeness only, not calculation accuracy. Single-inference benchmark on the named reference device; scope and limits stated in Sections 3 and 7.
 
 ---
 
