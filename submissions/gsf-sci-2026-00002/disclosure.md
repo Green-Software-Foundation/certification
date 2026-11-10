@@ -8,6 +8,8 @@
 | **Certificate URL** | [View certificate](https://badges.greensoftware.foundation/awards/sci/gsf-sci-2026-00002) |
 | **Status** | Active |
 
+> **Certificate note on scope:** The SCI score of 0.000402 gCO2eq per waste-sorting inference is a **single-inference benchmark result on an iPhone 13 (MLML3LL/A, iOS 26.5.2), measured on 2026-10-22**. It is not typical or average deployment performance. Energy (E) is derived from whole-session battery-drain power and is an upper bound for isolated inference energy. Embodied emissions (M) use Apple's published lifecycle data, allocated by time-share. GSF verified disclosure completeness only, not calculation accuracy.
+
 ---
 
 ## Section 1 — About You and Your Software
@@ -20,11 +22,11 @@
 
 **Software name:** DWaste Platform
 
-**Software version:** 1.4.0
+**Software version:** v1.4.0
 
 **Software URL:** https://www.dwaste.live
 
-**Software description:**
+**What does it do?**
 
 DWaste is an edge-AI and IoT-enabled platform for sustainable waste intelligence, automated recycling sorting, and real-time contamination tracking serving educational institutions, businesses, public spaces, and Material Recovery Facilities (MRFs). The platform deploys lightweight computer-vision models directly on smartphones and edge devices including full offline functionality to classify waste into seven recycling-critical categories (biological, cardboard, glass, metal, paper, plastic, trash).
 
@@ -38,7 +40,7 @@ Core capabilities include the mobile AI sorting app, mountable edge camera units
 
 ## Section 2 — Your SCI Score
 
-**Your SCI score:** 0.000402 gCO2eq per waste-sorting inference
+**SCI score:** 0.000402 gCO2eq per waste-sorting inference, single-inference benchmark result on iPhone 13 (MLML3LL/A), iOS version 26.5.2.
 
 **Measurement start date:** 2026-10-22
 
@@ -46,19 +48,17 @@ Core capabilities include the mobile AI sorting app, mountable edge camera units
 
 **Measurement period:** Single-inference benchmark on the named reference device; scope and limits stated in Sections 3 and 7.
 
-Single-inference benchmark result on iPhone 13 (MLML3LL/A), iOS version 26.5.2.
-
 ---
 
 ## Section 3 — Software Boundary
 
-### Included Components
+### What's included?
 
-| Component | Description |
+| Component | Brief description |
 |-----------|-------------------|
 | Edge Inference Runtime | Quantized YOLOv8n-CBAM model execution layer (3.5 MB footprint) |
 
-### Excluded Components
+### What's excluded, and why?
 
 | Component | Reason for exclusion |
 |-----------|----------------------|
@@ -69,7 +69,7 @@ Single-inference benchmark result on iPhone 13 (MLML3LL/A), iOS version 26.5.2.
 | On-Device Vision Pipeline, Mobile & Audit App Runtimes | Excluded because these components execute on separate hardware paths (mobile CPU/ISP/DSP and embedded microcontroller) that are outside the measured edge inference runtime boundary. This is a deliberate boundary decision: the SCI assessment isolates the vision inference runtime as the sole attributable operational component under DWaste's control, and treats the surrounding capture, display, and audit application layers as host-platform functions. |
 | Local Storage | Excluded because the 3.5 MB ONNX model is memory-mapped and read once per inference; estimated read energy is ~0.005 J (using a conservative NAND benchmark of ~1.5 J/GB), which is under 0.3% of the measured 1.85 J inference energy (5.15 × 10⁻⁷ kWh). Image reads and temporary writes are infrequent and fall below the reporting precision. |
 
-### Shared infrastructure
+### Shared infrastructure statement
 
 No shared infrastructure is attributable to DWaste's operational boundary. The benchmark was executed on the iPhone 13 reference device, a dedicated edge device, not a shared cloud environment. No shared-infrastructure allocation is therefore required for E.
 
@@ -77,19 +77,13 @@ No shared infrastructure is attributable to DWaste's operational boundary. The b
 
 ## Section 4 — Functional Unit (R)
 
-**What is your functional unit?**
+**Functional unit:** 1 waste-sorting inference (one forward pass on a single image input)
 
-1 waste-sorting inference (one forward pass on a single image input)
+**Why this unit:** A single inference represents the fundamental unit of utility delivered by the software converting an image into a structured 7-class waste classification.
 
-**Why did you choose this unit?**
+**How counted:** Logged forward-pass executions isolated with OSSignposter during a single-inference benchmark on iPhone 13.
 
-A single inference represents the fundamental unit of utility delivered by the software converting an image into a structured 7-class waste classification.
-
-**How did you count or measure the total units?**
-
-Logged forward-pass executions isolated with OSSignposter during a single-inference benchmark on iPhone 13.
-
-**Total units in measurement period:** 1 functional unit (Benchmark single-inference run)
+**Total in measurement period:** 1 functional unit (Benchmark single-inference run)
 
 ---
 
@@ -97,15 +91,13 @@ Logged forward-pass executions isolated with OSSignposter during a single-infere
 
 ### Energy
 
-**Total energy consumed:** 5.15 × 10⁻⁷ kWh (derived on iPhone 13, edge reference hardware)
+**Total energy:** 5.15 × 10⁻⁷ kWh (derived on iPhone 13, edge reference hardware)
 
 **PUE applied:** N/A (Direct edge runtime deployment)
 
-Energy breakdown
-
-| Component | Duration | Power (incremental) | Energy after PUE (kWh) | How calculated |
-|-----------|----------|---------------------|--------------|-------------|
-| YOLOv8n-CBAM Edge Inference | 442.90 ms | 4.182 W | 5.15 × 10⁻⁷ | iPhone 13 (MLML3LL/A), iOS 26.5.2; t_inference via OSSignposter; Power Profiler overall-system power 33.7 %/hr at 93% brightness (unplugged) |
+| Component | Energy (kWh) | Data source |
+|-----------|--------------|-------------|
+| YOLOv8n-CBAM Edge Inference | 5.15 × 10⁻⁷ | iPhone 13 (MLML3LL/A), iOS 26.5.2; t_inference 442.90 ms via OSSignposter; Power Profiler overall-system power 33.7 %/hr at 93% brightness (unplugged) gave 4.182 W |
 
 **Note on component energy values:** Only the Edge Inference Runtime draws measurable operational power within the assessed boundary, and its energy is captured within the 5.15 × 10⁻⁷ kWh. The On-Device Vision Pipeline, Mobile & Audit App Runtimes, and Actuator Control Signals are excluded from this boundary for the reasons stated in Section 3 (separate hardware paths outside the measured edge inference runtime); no portion of their operational energy is attributed to this score.
 
@@ -113,7 +105,7 @@ Energy breakdown
 
 ### Carbon intensity
 
-**Carbon intensity value:** 418 gCO2eq/kWh
+**Carbon intensity:** 418 gCO2eq/kWh
 
 **Location(s):** US-PJM (PJM Interconnection)
 
@@ -131,7 +123,7 @@ The iPhone 13 measurement was conducted in Baltimore, MD, within the US-PJM grid
 
 ## Section 6 — Embodied Emissions (M)
 
-**Total embodied emissions allocated to this measurement:** 0.000187 gCO2eq
+**Total embodied (allocated):** 0.000187 gCO2eq
 
 **Reference hardware:** iPhone 13 (MLML3LL/A), 128 GB, iOS 26.5.2
 
@@ -142,8 +134,6 @@ The iPhone 13 measurement was conducted in Baltimore, MD, within the US-PJM grid
 **Embodied share used for allocation:** Production (81%) + Transport (2%) + End-of-life (<1%) = 83%, so M_embodied = 0.83 × 64 = 53.12 kgCO2eq.
 
 **Rationale for excluding the Use phase:** Apple's Use-phase share (16%) represents aggregate operational electricity already superseded by the E reported in Section 5 for this functional unit; including it would double-count operational emissions. M therefore uses the Production + Transport + End-of-life share (83%).
-
-**Allocation methodology:** SCI time-share allocation (M = TE × TS × RS), using Apple's published lifecycle data for the reference device.
 
 **Allocation formula (SCI time-share method):**
 
@@ -157,24 +147,15 @@ M_allocated = M_embodied × (t_inference / t_device_active_life)
 
 t_device_active_life = 4 years × 365 × 24 × 3600 = 1.261 × 10⁸ s, per Apple's stated 3 to 4 year first-owner use assumption (endnote 3)
 
-Hardware component breakdown
-
-| Hardware component | Allocated M (gCO2eq) | Data source |
-|-----------|-------|-----------|
-| TE (Total Embodied, Production + Transport + End-of-life share) | 53,120 gCO2e | Apple iPhone 13 Product Environmental Report (September 2021), 83% of 64 kgCO2e |
-| TiR (Time Reserved) | 0.4429 s | Inference duration via OSSignposter |
-| EL (Expected Lifespan) | 1.261 × 10⁸ s | 4 years (Apple's stated first-owner use assumption) |
-| **M** | **0.000187 gCO2eq** | Per functional unit |
-
 ---
 
 ## Section 7 — Methodology and Calculation
 
-**Overall approach:** Hybrid measurement on the edge reference device. Inference duration measured directly via OSSignposter in Xcode Instruments; energy derived from battery-percent drain and battery capacity rather than measured at component level; power via Power Profiler overall-system battery drain.
+**Approach:** Hybrid measurement on the edge reference device. Inference duration measured directly via OSSignposter in Xcode Instruments; energy derived from battery-percent drain and battery capacity rather than measured at component level; power via Power Profiler overall-system battery drain.
 
 **Hardware used for benchmark:** iPhone 13 (MLML3LL/A), iOS 26.5.2. Inference duration measured via OSSignposter (Model_Inference interval, 442.90 ms, Runner process 2801). Power measured via Power Profiler as a whole-session average over the full trace (~51 s, Runner process 3003) at 93% brightness, unplugged. This is a separate trace from the inference interval and is treated as an upper bound.
 
-**Describe your methodology:** The score is a single-inference benchmark result on iPhone 13, not typical or average deployment performance. The YOLOv8n-CBAM model (3.5 MB ONNX) ran once per inference; the inference interval (442.90 ms) was isolated with OSSignposter. Power Profiler reported overall-system power of 33.7 %/hr at 93% brightness; multiplied by the iPhone 13 battery capacity (12.41 Wh) this gives P_avg = 4.182 W. E = 4.182 W × 0.4429 s ÷ 3,600,000 = 5.15 × 10⁻⁷ kWh. This is an upper bound for isolated inference energy because the power figure is a whole-session average from a separate trace and includes display and system overhead.
+**How you calculated your score:** The score is a single-inference benchmark result on iPhone 13, not typical or average deployment performance. The YOLOv8n-CBAM model (3.5 MB ONNX) ran once per inference; the inference interval (442.90 ms) was isolated with OSSignposter. Power Profiler reported overall-system power of 33.7 %/hr at 93% brightness; multiplied by the iPhone 13 battery capacity (12.41 Wh) this gives P_avg = 4.182 W. E = 4.182 W × 0.4429 s ÷ 3,600,000 = 5.15 × 10⁻⁷ kWh. This is an upper bound for isolated inference energy because the power figure is a whole-session average from a separate trace and includes display and system overhead.
 
 **Show your calculation:**
 
