@@ -3,7 +3,7 @@
 ```
 REVIEW RECORD
 =============
-Submission ID:    [GSF-SUB-2026-NNNN: confirm from tracking sheet]
+Submission ID:    GSF-SUB-2026-0002
 Reviewer:         Kirsty
 Review Date:      2026-10-29 (final review; submission signed 2026-10-26)
 Time Spent:       [TO COMPLETE]
@@ -111,7 +111,7 @@ NOTES / PRECEDENT:
   for isolated inference energy. M uses Apple's published
   lifecycle data allocated by time-share.
 - Single-day, single-inference benchmark (R = 1). Accepted under
-  the existing precedent (GSF-SUB-2026-0002, Offlyn Clipper):
+  the existing precedent (GSF-SUB-2026-0001, Offlyn Clipper):
   the completeness bar is met because the limited scope is
   clearly disclosed. The SWG notes repeated measurements would
   strengthen the baseline; recommended, not required.

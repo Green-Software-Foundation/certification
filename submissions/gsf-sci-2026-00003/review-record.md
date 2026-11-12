@@ -27,7 +27,7 @@ CHECKLIST (Y = present & adequate, N = missing, I = insufficient)
       3.79 gCO2eq per QA session-hour. Period 2026-08-03 to
       2026-08-03. Single controlled benchmark, clearly disclosed
       as such and not represented as reflective of production
-      usage (see precedent GSF-SUB-2026-0002).
+      usage (see precedent GSF-SUB-2026-0001).
   3.  Functional unit (R):                                       Y
       One QA session-hour. Rationale ties the unit to how energy
       scales (session duration and interaction, not builds or
@@ -73,7 +73,7 @@ N/A — submission approved.
 
 NOTES / PRECEDENT:
 - Single-day, single-host benchmark: accepted under the existing
-  precedent in GSF-SUB-2026-0002 (Offlyn Clipper). Scope is
+  precedent in GSF-SUB-2026-0001 (Offlyn Clipper). Scope is
   clearly disclosed and not overstated.
 - Measured on v0.18.0; current release at submission was v0.26.1
   (v0.27.1 in the revised version).
