@@ -4,10 +4,10 @@
 REVIEW RECORD
 =============
 Submission ID:    GSF-SUB-2026-0004
-Reviewer:         Kirsty
-Review Date:      2026-11-16 (final revised submission signed
-                  2026-11-08)
-Time Spent:       [TO COMPLETE]
+Reviewer:         Kirsty Du Plessis
+Review Date:      2026-11-16 (submission received 2026-11-08,
+                  signed 2026-11-08; assigned 2026-11-10)
+Time Spent:       0.5 hours
 
 CHECKLIST (Y = present & adequate, N = missing, I = insufficient)
 
@@ -138,8 +138,8 @@ NOTES / PRECEDENT:
 - Logo opt-in: Yes (logo attached to email). Blog/case study
   opt-in: Yes. Downstream analysis consent: Yes (including AI
   syntheses).
-- SWG objection period: [TO COMPLETE: notification date and
-  7-day window close]. Sign-off by SWG Chair / Executive
+- SWG notified 2026-11-16; 7-day objection period closes
+  2026-11-23. Sign-off by SWG Chair / Executive
   Director required before certificate issue.
 - Certificate GSF-SCI-2026-00004: [TO COMPLETE: issue and
   expiry dates once issued; update disclosure header to match].
