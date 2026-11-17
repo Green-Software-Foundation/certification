@@ -138,8 +138,8 @@ NOTES / PRECEDENT:
 - Logo opt-in: Yes (logo attached to email). Blog/case study
   opt-in: Yes. Downstream analysis consent: Yes (including AI
   syntheses).
-- SWG notified 2026-11-16; 7-day objection period closes
-  2026-11-23. Sign-off by SWG Chair / Executive
+- SWG notified 2026-11-17; 7-day objection period closes
+  2026-11-24. Sign-off by SWG Chair / Executive
   Director required before certificate issue.
 - Certificate GSF-SCI-2026-00004: [TO COMPLETE: issue and
   expiry dates once issued; update disclosure header to match].
