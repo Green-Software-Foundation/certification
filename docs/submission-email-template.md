@@ -4,7 +4,7 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 **Format:** You can answer inline in the email or attach documents (PDF, Word, Markdown, or plain text). If you use attachments, note the filename inline so the reviewer can match it — e.g., *"See attached: acme-api-boundary.pdf"*.
 
-**This submission becomes your public disclosure.** If approved, it is published as-is to the `greensoftware-foundation/certification` GitHub repository (your contact email is redacted and a certificate metadata header is added). Write accordingly — there is no separate disclosure step.
+**This submission becomes your public disclosure.** If approved, it is published as-is to the `Green-Software-Foundation/certification` GitHub repository (your contact email is redacted and a certificate metadata header is added). Write accordingly — there is no separate disclosure step.
 
 **Keep the headings, bold field labels and table column headers exactly as written.** The certificate page on badges.greensoftware.foundation reads your published disclosure by matching these labels, so renaming, merging or removing them stops fields from rendering on your badge page. Add extra detail beneath any field, as notes or additional tables, rather than changing the label.
 
@@ -12,7 +12,7 @@ Copy everything below the line into a new email addressed to **sci-certification
 
 **To:** sci-certification@greensoftware.foundation
 
-**Subject:** "SCI Self-Certification - [Your Organization Name] - [Your Software Name]"
+**Subject:** "SCI Self-Certification Submission - [Your Organization Name] - [Your Software Name]"
 
 ---
 
@@ -213,12 +213,12 @@ By submitting this application, I hereby:
 
 **May we feature your organisation?**
 
-We maintain a public page of certified organisations to help grow the SCI community. If you opt in, your organisation name and logo will appear on our "Certified Organisations" page alongside other certificate holders.
+We maintain a public page of certified organizations to help grow the SCI community. If you opt in, your organization name and logo will appear on our "Certified Organisations" page alongside other certificate holders.
 
-- [ ] Yes — you may display our organisation name and logo on the GSF certified organisations page
+- [ ] Yes — you may display our organization name and logo on the GSF certified organizations page
 - [ ] No thank you
 
-*If yes, please attach your organisation logo (SVG or PNG, minimum 200px wide) or let us know where to find it.*
+*If yes, please attach your organization logo (SVG or PNG, minimum 200px wide) or let us know where to find it.*
 
 **Would you participate in a blog post or case study?**
 
@@ -238,7 +238,7 @@ Your published disclosure may be included in aggregate analyses, research, and A
 
 ## Optional Attachments
 
-You may attach supporting materials such as a spreadsheet with detailed calculations, an Impact Framework manifest file (IMP/YAML), or links to public documentation. These are encouraged but not required — the questionnaire above is sufficient.
+You may attach supporting materials such as a spreadsheet with detailed calculations, an Impact Framework manifest file (IMP/YAML), or links to public documentation. These are encouraged but not required — the 7-section questionnaire above is sufficient.
 
 ---
 
@@ -246,7 +246,7 @@ You may attach supporting materials such as a spreadsheet with detailed calculat
 
 - [ ] Section 1 — Organization and software details
 - [ ] Section 2 — SCI score with units and measurement period
-- [ ] Section 3 — Included and excluded components with rationales
+- [ ] Section 3 — Included and excluded components with rationales; how shared infrastructure is handled
 - [ ] Section 4 — Functional unit with rationale and measurement method
 - [ ] Section 5 — Energy with per-component breakdown; carbon intensity with source and year
 - [ ] Section 6 — Embodied emissions with allocation method and breakdown (or justification if zero)

@@ -1,6 +1,6 @@
 # Impact Manifest Protocol (IMP) Schema Documentation
 
-## Version 1.0 - GSF SCI Self-Certification Program
+## Version 1.0.1 - GSF SCI Self-Certification Program
 
 ---
 
@@ -9,10 +9,11 @@
 1. [Overview](#overview)
 2. [Schema Structure](#schema-structure)
 3. [Core Fields Reference](#core-fields-reference)
-4. [Disclosure Sections](#disclosure-sections)
-5. [Validation Rules](#validation-rules)
-6. [Examples by Domain](#examples-by-domain)
-7. [JSON Schema Definition](#json-schema-definition)
+4. [Validation Rules](#validation-rules)
+5. [Examples by Domain](#examples-by-domain)
+6. [JSON Schema Definition](#json-schema-definition)
+7. [Additional Resources](#additional-resources)
+8. [Version History](#version-history)
 
 ---
 
@@ -84,8 +85,10 @@ boundary:
 # Functional Unit
 functional_unit:
   unit: string (required)
+  unit_symbol: string (required)
   rationale: string (required)
   measurement_method: string (required)
+  total_units: number (required)
   conversion_factors: array (optional)
 
 # SCI Calculation
@@ -98,15 +101,21 @@ calculation:
 # Methodology and Sources
 methodology:
   approach: string (required)
+  measurement_details: string (required if approach includes measurement)
+  calculation_details: string (required if approach includes calculation)
   assumptions: array (required)
   limitations: array (required)
+  uncertainties: array (optional)
   data_sources: array (required)
 
-# Baseline Comparison (optional)
+# Baseline Comparison (optional section)
 baseline:
-  baseline_score: object (optional)
-  actions_taken: array (optional)
-  explanation: string (optional)
+  exists: boolean (required if section present)
+  baseline_score: object (required if exists=true)
+  new_score: object (required if exists=true)
+  improvement: object (optional)
+  actions_taken: array (required if exists=true)
+  explanation: string (required if exists=true)
 
 # Impact Framework Configuration (for automation)
 initialize:
@@ -149,7 +158,7 @@ description: |
   Measurement Period: January 2025 (30 days)
   Total Requests: 45,000,000
 
-  Result: 349.63 gCO2eq per 1,000 API requests
+  Result: 2.49 gCO2eq per 1,000 API requests
 ```
 
 #### `tags` (object, required)
@@ -210,7 +219,7 @@ submission:
     start_date: string (required, ISO 8601 date)
     end_date: string (required, ISO 8601 date)
     duration_hours: number (required, positive)
-    submission_date: string (required, ISO 8601 date)
+    submission_date: string (optional, ISO 8601 date, auto-populated by portal)
 ```
 
 **Field Details**:
@@ -222,7 +231,7 @@ submission:
 - **measurement_period.start_date**: ISO 8601 format (e.g., `"2025-01-01"`)
 - **measurement_period.end_date**: Must be after start_date
 - **measurement_period.duration_hours**: Calculated duration for validation
-- **submission_date**: Date of submission (auto-populated by portal)
+- **measurement_period.submission_date**: Date of submission (auto-populated by portal; may be omitted)
 
 **Example**:
 ```yaml
@@ -419,6 +428,7 @@ calculation:
     unit: string (required, default "gCO2eq/kWh")
     location: string (required)
     approach: string (required, enum: ["location-based", "market-based"])
+    methodology: string (optional)
     data_sources: array (required)
     regional_breakdown: array (optional)
 
@@ -436,9 +446,9 @@ calculation:
 
 ```yaml
 score:
-  value: 349.63
+  value: 2.49
   unit: "gCO2eq per 1,000 API requests"
-  formula: "SCI = (E × I + M) / R = (46.01 × 340 + 96,574.9) / 45,000 × 1,000"
+  formula: "SCI = (E × I + M) / R = (46.01 × 340 + 96,575.3) / 45,000,000 × 1,000 = 2.49"
 ```
 
 **Validation**:
@@ -564,7 +574,7 @@ carbon_intensity:
 **Validation Rules**:
 - Carbon intensity must be positive and typically < 2000 gCO2eq/kWh
 - Location(s) must be specified
-- Data sources must include year (within last 3 years preferred)
+- Data sources must include year (within the last 3 years preferred; sources older than 5 years fail the date check in [Validation Rules](#validation-rules))
 - If weighted: regional percentages must sum to 100%
 
 ---
@@ -573,7 +583,7 @@ carbon_intensity:
 
 ```yaml
 embodied_emissions:
-  value: 96574.9
+  value: 96575.3
   unit: "gCO2eq"
 
   methodology: |
@@ -595,8 +605,8 @@ embodied_emissions:
       expected_lifespan_hours: 35040  # 4 years
       time_reserved_hours: 720  # measurement period
       resource_share: 1.0  # dedicated
-      allocated_emissions: 24658.0
-      calculation: "1,200,000 × (720/35,040) × 1.0 = 24,658.0 g"
+      allocated_emissions: 24657.5
+      calculation: "1,200,000 × (720/35,040) × 1.0 = 24,657.5 g"
       data_source: "Cloud Carbon Footprint - AWS EC2 Embodied Emissions"
 
     - name: "Application Server 2"
@@ -605,8 +615,8 @@ embodied_emissions:
       expected_lifespan_hours: 35040
       time_reserved_hours: 720
       resource_share: 1.0
-      allocated_emissions: 24658.0
-      calculation: "1,200,000 × (720/35,040) × 1.0 = 24,658.0 g"
+      allocated_emissions: 24657.5
+      calculation: "1,200,000 × (720/35,040) × 1.0 = 24,657.5 g"
       data_source: "Cloud Carbon Footprint - AWS EC2 Embodied Emissions"
 
     - name: "Load Balancer"
@@ -625,8 +635,8 @@ embodied_emissions:
       expected_lifespan_hours: 35040
       time_reserved_hours: 720
       resource_share: 1.0
-      allocated_emissions: 30820.5
-      calculation: "1,500,000 × (720/35,040) × 1.0 = 30,820.5 g"
+      allocated_emissions: 30821.9
+      calculation: "1,500,000 × (720/35,040) × 1.0 = 30,821.9 g"
       data_source: "Cloud Carbon Footprint - AWS RDS Embodied Emissions"
 
   data_sources:
@@ -646,8 +656,8 @@ hardware_components:
     expected_lifespan_hours: 35040  # 4 years
     time_reserved_hours: 720  # 30 days
     resource_share: 0.125  # Using 2 of 16 vCPUs
-    allocated_emissions: 5142.9
-    calculation: "2,000,000 × (720/35,040) × (2/16) = 5,142.9 g"
+    allocated_emissions: 5137.0
+    calculation: "2,000,000 × (720/35,040) × (2/16) = 5,137.0 g"
     data_source: "GCP Embodied Emissions Data"
 ```
 
@@ -658,7 +668,7 @@ hardware_components:
   - Expected lifespan (EL)
   - Time reserved (TiR)
   - Resource share (RR/ToR) if applicable
-- Typical expected lifespans: 3-5 years for servers, 2-4 years for mobile devices
+- Typical expected lifespans: 3-5 years for servers, 2-4 years for mobile devices (values outside 2-7 years fail the reasonableness check in [Validation Rules](#validation-rules))
 - Embodied emissions can be zero only with explicit justification
 
 ---
@@ -822,7 +832,7 @@ baseline:
     value: 5.12
     unit: "kgCO2eq per training run"
     measurement_date: "2024-12-01"
-    reference: "https://badges.greensoftware.foundation/awards/sci/example-neuralcast-llm-inference"
+    reference: "https://badges.greensoftware.foundation/awards/sci/[previous-certificate-id]"
 
   new_score:
     value: 2.72
@@ -840,7 +850,7 @@ baseline:
 
     - action: "Moved from us-east-1 (340 gCO2eq/kWh) to europe-west4 (420 gCO2eq/kWh)"
       category: "location-optimization"
-      expected_impact: "Lower carbon intensity region"
+      expected_impact: "Access to newer GPU capacity; slightly higher grid carbon intensity accepted"
       actual_impact: "Note: Carbon intensity slightly higher, but overall reduction due to efficiency gains"
 
     - action: "Optimized model architecture (reduced parameters)"
@@ -900,12 +910,12 @@ baseline:
    - Measurement start_date < end_date
    - Measurement period is in the past
    - Submission date ≥ measurement end date
-   - Data source years are reasonable (within last 5 years preferred)
+   - Data source years are no more than 5 years old (within the last 3 years preferred)
 
 7. **Numeric Reasonableness**
    - Carbon intensity: 0 < I < 2000 gCO2eq/kWh (typical)
    - PUE: 1.0 ≤ PUE ≤ 3.0 (typical range: 1.1-1.5)
-   - Expected lifespan: 2-7 years for most hardware
+   - Expected lifespan: 2-7 years for most hardware (outer bound; typical values are 3-5 years for servers)
    - Resource share: 0 < RR/ToR ≤ 1.0
 
 ### Quality Checks (Non-Blocking, May Trigger Manual Review)
@@ -1015,7 +1025,7 @@ See: `example-3-mobile-app-final.yml`
           "properties": {
             "start_date": {"type": "string", "format": "date"},
             "end_date": {"type": "string", "format": "date"},
-            "duration_hours": {"type": "number", "minimum": 0},
+            "duration_hours": {"type": "number", "exclusiveMinimum": 0},
             "submission_date": {"type": "string", "format": "date"}
           }
         }
@@ -1041,4 +1051,5 @@ See: `example-3-mobile-app-final.yml`
 
 ## Version History
 
+- **v1.0.1** (2026-11): Corrected worked-example arithmetic (score, embodied emissions), aligned overview structure and JSON Schema with field reference, clarified validation limits, fixed table of contents
 - **v1.0.0** (2026-01): Initial release for GSF SCI Self-Certification Program
