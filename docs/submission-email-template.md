@@ -1,3 +1,5 @@
+> **Language:** English | [繁體中文（台灣）](../zh-TW/docs/submission-email-template.md)
+
 # SCI Self-Certification Submission — Email Template
 
 Copy everything below the line into a new email addressed to **sci-certification@greensoftware.foundation** with the subject line shown. Replace all placeholder text in [square brackets] with your information. Delete the helper notes in *italics* as you go.
