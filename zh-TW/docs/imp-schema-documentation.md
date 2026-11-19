@@ -66,7 +66,7 @@
 ### 整體結構
 
 ```yaml
-# 中繼資料區段
+# 詮釋資料區段
 name: string (required)
 description: string (required)
 tags: object (required)
@@ -124,7 +124,7 @@ tree:
 
 ## 核心欄位參考
 
-### 1. 中繼資料區段
+### 1. 詮釋資料區段
 
 #### `name` (string, 必填)
 - **說明**：此計算的唯一識別碼
@@ -157,7 +157,7 @@ description: |
 ```
 
 #### `tags` (object, 必填)
-- **說明**：用於分類與歸類的中繼資料
+- **說明**：用於分類與歸類的詮釋資料
 - **必填欄位**：
   - `kind`：SCI 計算一律為 `"sci"`
   - `category`：領域類別（請見下方類別列表）
@@ -356,8 +356,8 @@ functional_unit:
 
 **欄位詳細說明**：
 
-- **unit**：人類易讀的功能單位（例如 「API requests」、「user-months」）
-- **unit_symbol**：簡短符號（例如 「requests」、「users」、「training-runs」）
+- **unit**：人類易讀的功能單位（例如「API requests」、「user-months」）
+- **unit_symbol**：簡短符號（例如「requests」、「users」、「training-runs」）
 - **rationale**：選擇此單位的理由（會隨使用量增減、能代表所提供的價值）
 - **measurement_method**：單位的計數方式（應用程式日誌、遙測資料等）
 - **total_units**：量測期間內的單位總數
