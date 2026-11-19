@@ -24,8 +24,8 @@ Self-certification means **your organization** declares conformity with the stan
 |---|---|---|
 | **Who declares conformity** | Your organization | An independent auditor |
 | **What gets verified** | Disclosure completeness | Full conformity assessment |
-| **Cost** | Free (no fees) | $12,000–$47,000+/year |
-| **Timeline** | ~3–4 weeks | Months |
+| **Cost** | Free (no fees) | Not currently available for ISO/IEC 21031:2024 |
+| **Timeline** | ~3–4 weeks | Not currently available for ISO/IEC 21031:2024 |
 | **Accountability** | Community validation via public disclosure | Auditor validation |
 
 Third-party certification for ISO/IEC 21031:2024 does not currently exist. This program provides a practical path to demonstrate conformity while the standard is still gaining adoption.
@@ -64,7 +64,7 @@ No. You must have a completed SCI calculation before submitting. The submission 
 
 ### How do I submit?
 
-Email your completed submission to **sci-certification@greensoftware.foundation** using the subject line format: `SCI Self-Certification Submission — [Your Organization Name] — [Your Software Name]`. Use the submission email template (`docs/submission-email-template.md`) as your starting point. Accepted formats are PDF, Word, Markdown, or plain text in the email body.
+Email your completed submission to **sci-certification@greensoftware.foundation** using the subject line format: `SCI Self-Certification Submission - [Your Organization Name] - [Your Software Name]`. Use the [submission email template](docs/submission-email-template.md) as your starting point. Accepted formats are PDF, Word, Markdown, or plain text in the email body.
 
 ### What do I need to include?
 
@@ -82,11 +82,11 @@ Plus a 10-point attestation, signed and dated.
 
 ### Is there an example I can look at?
 
-Yes. The repository includes a complete example submission in `submissions/example-greentech-inventory-api/disclosure.md` along with the corresponding review record in `review-record.md`. These show what a strong submission looks like and how the reviewer evaluates it.
+Yes. The repository includes a complete example submission in [`submissions/example-greentech-inventory-api/disclosure.md`](submissions/example-greentech-inventory-api/disclosure.md) along with the corresponding review record in [`review-record.md`](submissions/example-greentech-inventory-api/review-record.md). These show what a strong submission looks like and how the reviewer evaluates it.
 
 ### My submission will be published publicly?
 
-Yes. If approved, your submission is published as-is to the `greensoftware-foundation/certification` GitHub repository. Your contact email is redacted and a certificate metadata header is added, but otherwise the submission is published exactly as you wrote it. This is a core feature of the program — public disclosure enables community validation, which is what gives self-certification its credibility. You consent to this in attestation point 10.
+Yes. If approved, your submission is published as-is to the `Green-Software-Foundation/certification` GitHub repository. Your contact email is redacted and a certificate metadata header is added, but otherwise the submission is published exactly as you wrote it. This is a core feature of the program — public disclosure enables community validation, which is what gives self-certification its credibility. You consent to this in attestation point 10.
 
 ### Can I submit confidential or proprietary information?
 
@@ -127,7 +127,7 @@ You self-certify all of that. The reviewer only checks that your disclosure is c
 
 ### How long does the review take?
 
-The initial review decision takes **10–15 business days** from submission (up to 20 for complex cases). After approval, there is a **7-day SWG objection period** before the certificate is issued. Total time from submission to certificate is typically **3–4 weeks**.
+The initial review decision takes **10–15 business days** from submission (up to 20 for complex cases). After approval, there is a **7-calendar-day SWG objection period** before the certificate is issued. Total time from submission to certificate is typically **3–4 weeks**, or up to about 5 weeks for complex cases.
 
 ### What happens if my submission needs revisions?
 
@@ -135,7 +135,7 @@ You receive specific feedback identifying which checklist items need attention a
 
 ### What is the SWG sign-off?
 
-After a reviewer recommends approval, the Software Standards Working Group (SWG) has a **7-day objection period**. Any SWG member may raise an objection with a specific rationale during this window. If no objections are raised, the SWG Chair or GSF Executive Director provides explicit sign-off and the certificate is issued. This is a governance safeguard — in practice, most submissions proceed without objection.
+After a reviewer recommends approval, the Software Standards Working Group (SWG) has a **7-calendar-day objection period**. Any SWG member may raise an objection with a specific rationale during this window. If no objections are raised, the SWG Chair or GSF Executive Director provides explicit sign-off and the certificate is issued. This is a governance safeguard — in practice, most submissions proceed without objection.
 
 ### Can my submission be rejected?
 
@@ -223,7 +223,7 @@ Yes. Any party may challenge a certificate by emailing sci-certification@greenso
 ### What happens if my certificate is challenged?
 
 1. GSF reviews the challenge for legitimacy (5 business days)
-2. If valid, you have 30 days to respond — your certificate status changes to "Under Community Review"
+2. If valid, you have 30 calendar days to respond — your certificate status changes to "Under Community Review"
 3. GSF evaluates the response (15 business days)
 
 Outcomes range from dismissal (certificate returns to Active) through minor corrections (disclosure updated) to revocation (material non-conformity or bad faith confirmed).
@@ -245,9 +245,9 @@ Certificates are **not** revoked for calculation errors, methodology disagreemen
 
 The dispute resolution process has three phases:
 
-1. **Informal resolution (days 1–10)** — email sci-certification@greensoftware.foundation with your rationale; the Program Manager attempts to resolve
-2. **Formal review (days 11–30)** — a 3-person panel from the review committee (excluding anyone involved in the original decision) reviews written statements and issues a written decision
-3. **Final appeal (days 31–60)** — heard by the SWG Chair; limited to procedural errors, new evidence, or panel misconduct; decision is final
+1. **Informal resolution (calendar days 1–10)** — email sci-certification@greensoftware.foundation with your rationale; the Program Owner (GSF Head of R&D) attempts to resolve
+2. **Formal review (calendar days 11–30)** — a 3-person panel from the review committee (excluding anyone involved in the original decision) reviews written statements and issues a written decision
+3. **Final appeal (calendar days 31–60)** — heard by the SWG Chair; limited to procedural errors, new evidence, or panel misconduct; decision is final
 
 ### What can I dispute?
 
@@ -259,7 +259,7 @@ You can dispute whether disclosure requirements were met, whether the code of co
 
 ### Where do I find the submission template?
 
-The template is in this repository at `docs/submission-email-template.md`. It is structured to match the 7-section requirements exactly, with placeholder text and examples for every field.
+The template is in this repository at [`docs/submission-email-template.md`](docs/submission-email-template.md). It is structured to match the 7-section requirements exactly, with placeholder text and examples for every field.
 
 ### Where do I find detailed submission requirements?
 

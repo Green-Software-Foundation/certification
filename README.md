@@ -2,7 +2,7 @@
 
 # GSF Self-Certification Program for ISO/IEC 21031:2024
 
-This program enables **any organization** to self-certify conformity with ISO/IEC 21031:2024 (Software Carbon Intensity). It is **free**, open to any organization, and targets a **~3–4 week turnaround** from submission to certificate.
+This program enables **any organization** to self-certify conformity with ISO/IEC 21031:2024 (Software Carbon Intensity). It is **free**, open to any organization, and targets a **~3–4 week turnaround** from submission to certificate (up to about 5 weeks for complex cases).
 
 You submit your SCI calculation along with a signed attestation and full methodology disclosure. A GSF review committee verifies **disclosure completeness** — not calculation accuracy — through a structured 7-item checklist. All disclosures are published publicly on GitHub for community review.
 
@@ -17,7 +17,7 @@ This is a **self-certification** program, not a third-party audit. Your organiza
 1. **Calculate your SCI score** in accordance with ISO/IEC 21031:2024
 2. **Prepare your submission** using the [submission template](docs/submission-email-template.md) — a 7-section questionnaire covering your boundary, functional unit, energy and carbon data, embodied emissions, and methodology
 3. **Email your submission** to sci-certification@greensoftware.foundation — a reviewer checks disclosure completeness against a 7-item checklist within 10–15 business days
-4. **Receive your certificate** after a 7-day Software Standards Working Group sign-off period
+4. **Receive your certificate** after a 7-calendar-day Software Standards Working Group sign-off period
 
 Certificates are valid for one year and renewed by full resubmission.
 
@@ -27,7 +27,7 @@ All 7 sections are required — missing anything means your submission is return
 
 | Section | What to include |
 |---|---|
-| **1. About you and your software** | Organisation name, contact, software name, version, brief description |
+| **1. About you and your software** | Organization name, contact, software name, version, brief description |
 | **2. SCI score** | Score with units (e.g. "349.63 gCO2eq per 1,000 API requests"), measurement start and end dates |
 | **3. Software boundary** | Included components; excluded components each with a specific rationale; how shared infrastructure is handled |
 | **4. Functional unit (R)** | The unit you chose, why it reflects how your software scales or delivers value, how you counted it, total units in the period |
@@ -38,14 +38,14 @@ All 7 sections are required — missing anything means your submission is return
 
 **Your submission becomes your public disclosure.** If approved, it is published as-is to the public GitHub repository (contact email redacted, certificate metadata header added). Write it knowing it will be publicly visible — there is no separate disclosure step.
 
-**To submit:** Email to sci-certification@greensoftware.foundation with the subject line: `SCI Self-Certification Submission — [Your Organization Name] — [Your Software Name]`. Accepted formats: PDF, Word, Markdown, or plain text in the email body.
+**To submit:** Email to sci-certification@greensoftware.foundation with the subject line: `SCI Self-Certification Submission - [Your Organization Name] - [Your Software Name]`. Accepted formats: PDF, Word, Markdown, or plain text in the email body.
 
 ## How Review Works
 A reviewer checks your disclosure against a **7-item completeness checklist** — not whether your numbers are correct. The bar is adequate, not perfect: enough detail that a practitioner can see what you did and where your numbers came from.
 
 1. You receive an acknowledgement with a tracking number within 1 business day
 2. A reviewer assesses your submission within 10–15 business days
-3. **Approved** — enters a 7-day SWG objection period, then your certificate is issued
+3. **Approved** — enters a 7-calendar-day SWG objection period, then your certificate is issued
 4. **Revision requested** — you receive specific feedback on what to fix and can resubmit as many times as needed. This is not a rejection
 5. **Rejected** — reserved exclusively for bad faith (fabricated data, fraud, or persistent refusal to engage after revision requests)
 

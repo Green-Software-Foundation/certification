@@ -33,13 +33,13 @@ The program is open to **any organization** that has calculated an SCI score acc
 | 7 | If revisions were requested, you fix and resubmit | You | At your pace |
 | 8 | Resubmission re-enters the review queue | GSF reviewer | Another 10–15 business days (plus sign-off period if approved) |
 
-Complex cases may extend to 20 business days for the review step. You will be notified of any delay. The total time from submission to certificate issuance is typically **3–4 weeks** (review period plus sign-off period).
+Complex cases may extend to 20 business days for the review step. You will be notified of any delay. The total time from submission to certificate issuance is typically **3–4 weeks** (review period plus sign-off period), or up to about 5 weeks if the review step is extended.
 
 ---
 
 ## What You Must Submit
 
-Your submission must contain **all** of the following. If any item is missing, your submission will be returned for revision before the review proceeds. Use the submission email template (`submission-email-template.md` in this repository) as your starting point — it is structured to match these requirements exactly.
+Your submission must contain **all** of the following. If any item is missing, your submission will be returned for revision before the review proceeds. Use the [submission email template](submission-email-template.md) as your starting point — it is structured to match these requirements exactly.
 
 ### 1. About you and your software (template Section 1)
 
@@ -117,11 +117,11 @@ These are not required but strengthen your submission:
 
 **Email to:** sci-certification@greensoftware.foundation
 
-**Subject line:** `SCI Self-Certification Submission — [Your Organization Name] — [Your Software Name]`
+**Subject line:** `SCI Self-Certification Submission - [Your Organization Name] - [Your Software Name]`
 
 **Accepted formats:** PDF, Word, Markdown, or plain text in the email body. You can answer inline in the email or attach one or more documents. If you use attachments, reference each filename in the relevant section so the reviewer can match it.
 
-Use the submission email template (`submission-email-template.md`) as your starting point. It is structured to match the requirements above section by section, with examples for every field.
+Use the [submission email template](submission-email-template.md) as your starting point. It is structured to match the requirements above section by section, with examples for every field.
 
 **Your submission becomes your public disclosure.** If approved, your submission is published as-is to the public GitHub repository (with your contact email redacted and a certificate metadata header added). Write your submission knowing it will be the public-facing document — there is no separate disclosure step.
 
@@ -133,7 +133,7 @@ Your reviewer works through a **7-item checklist** in a single pass. This is the
 
 The reviewer's question for every item: *"Could a knowledgeable practitioner reading this disclosure understand and evaluate this part of the calculation?"*
 
-Here is what the reviewer checks, and what "adequate" looks like for the items where detail matters:
+Here is what the reviewer checks, and what "adequate" looks like for the items where detail matters. Items 2 (Score and period) and 7 (Attestation) are presence checks: they pass when the score with units, the measurement start and end dates, and all 10 signed attestation points are included. The full list of 7 items is in the [Pre-Submission Checklist](#pre-submission-checklist).
 
 | Item | What must be present | What "adequate" looks like | What gets marked insufficient |
 |------|---------------------|---------------------------|-------------------------------|
@@ -158,10 +158,10 @@ Here is what the reviewer checks, and what "adequate" looks like for the items w
 
 Your submission passes the review. What happens next:
 
-1. The reviewer recommends approval. Your submission then enters a **7-day objection period** during which the Software Standards Working Group may raise objections. This is a governance safeguard — in practice, most submissions proceed without objection.
+1. The reviewer recommends approval. Your submission then enters a **7-calendar-day objection period** during which the Software Standards Working Group may raise objections. This is a governance safeguard — in practice, most submissions proceed without objection.
 2. After the objection period, the SWG Chair or GSF Executive Director provides explicit sign-off.
 3. GSF issues a certificate on the badging platform with a unique certificate ID (format: `GSF-SCI-YYYY-NNNNN`).
-4. Your submission is published to the public GitHub repository (`greensoftware-foundation/certification`) with your contact email redacted and a certificate metadata header added.
+4. Your submission is published to the public GitHub repository (`Green-Software-Foundation/certification`) with your contact email redacted and a certificate metadata header added.
 5. You receive a short email with your certificate link, disclosure URL, badge download instructions, and expiry date.
 6. Your certificate is **valid for 1 year** from the date of issuance.
 
@@ -206,7 +206,7 @@ You may also be invited to participate in a blog post or case study sharing your
 
 ### Your public disclosure
 
-Your submission is published as-is to the `greensoftware-foundation/certification` GitHub repository, with two changes: your contact email is redacted, and a certificate metadata header (certificate ID, issue date, expiry date, certificate URL) is prepended. No separate disclosure document is created — your submission is the disclosure. This is a requirement of the program (attestation point 10) and enables the community validation that underpins the self-certification model.
+Your submission is published as-is to the `Green-Software-Foundation/certification` GitHub repository, with two changes: your contact email is redacted, and a certificate metadata header (certificate ID, issue date, expiry date, certificate URL) is prepended. No separate disclosure document is created — your submission is the disclosure. This is a requirement of the program (attestation point 10) and enables the community validation that underpins the self-certification model.
 
 ---
 
@@ -238,7 +238,7 @@ GSF verified that your disclosure is **complete** (all required information pres
 ### Enforcement
 
 - Community members can report misuse to sci-certification@greensoftware.foundation.
-- First offence: warning with 14 days to correct.
+- First offense: warning with 14 days to correct.
 - Persistent misuse: certificate revocation.
 - GSF may conduct periodic spot-checks.
 
@@ -253,7 +253,7 @@ Because this is self-certification, the community serves as the validation layer
 **If your certificate is challenged:**
 
 1. GSF reviews the challenge for legitimacy (5 business days). Frivolous challenges are dismissed.
-2. If the challenge is valid, you are notified and have **30 days** to respond with clarifications, corrections, or a rebuttal. Your certificate status changes to "Under Community Review" during this period.
+2. If the challenge is valid, you are notified and have **30 calendar days** to respond with clarifications, corrections, or a rebuttal. Your certificate status changes to "Under Community Review" during this period.
 3. GSF evaluates your response (15 business days).
 
 **Possible outcomes:**
@@ -271,11 +271,11 @@ Because this is self-certification, the community serves as the validation layer
 
 If your submission is rejected or you disagree with a review decision, you may appeal.
 
-**Phase 1 — Informal resolution (days 1–10):** Submit your dispute by email to sci-certification@greensoftware.foundation with a detailed rationale. The Program Owner (GSF Head of R&D) attempts informal resolution.
+**Phase 1 — Informal resolution (calendar days 1–10):** Submit your dispute by email to sci-certification@greensoftware.foundation with a detailed rationale. The Program Owner (GSF Head of R&D) attempts informal resolution.
 
-**Phase 2 — Formal review (days 11–30):** If unresolved, a 3-person panel from the review committee (excluding anyone involved in the original decision) reviews written statements from both sides and issues a written decision.
+**Phase 2 — Formal review (calendar days 11–30):** If unresolved, a 3-person panel from the review committee (excluding anyone involved in the original decision) reviews written statements from both sides and issues a written decision.
 
-**Phase 3 — Final appeal (days 31–60):** Limited to procedural errors, new evidence, or panel misconduct. Heard by the SWG Chair (Chair of the Software Standards Working Group). Decision is final.
+**Phase 3 — Final appeal (calendar days 31–60):** Limited to procedural errors, new evidence, or panel misconduct. Heard by the SWG Chair (Chair of the Software Standards Working Group). Decision is final.
 
 ---
 
@@ -287,16 +287,16 @@ If your submission is rejected or you disagree with a review decision, you may a
 | Initial review decision | 10–15 business days (up to 20 for complex cases) |
 | SWG objection period (after approval recommendation) | 7 calendar days |
 | SWG Chair / Executive Director sign-off | After objection period expires |
-| Total time: submission to certificate | ~3–4 weeks (review + sign-off) |
+| Total time: submission to certificate | ~3–4 weeks (review + sign-off); up to ~5 weeks for complex cases |
 | Resubmission review | 10–15 business days from resubmission (plus sign-off period) |
 | Certificate validity | 1 year from issuance |
-| Renewal reminder | 30 days before expiry |
+| Renewal reminder | 30 calendar days before expiry |
 | Community challenge — initial review | 5 business days |
-| Community challenge — your response window | 30 days |
+| Community challenge — your response window | 30 calendar days |
 | Community challenge — GSF evaluation | 15 business days |
-| Appeal — informal resolution | 10 days |
-| Appeal — formal review | 20 days |
-| Appeal — final appeal | 30 days |
+| Appeal — informal resolution | 10 calendar days |
+| Appeal — formal review | 20 calendar days |
+| Appeal — final appeal | 30 calendar days |
 
 ---
 

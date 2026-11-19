@@ -2,7 +2,7 @@
 
 # GSF SCI Self-Certification Program - Badge Usage Guidelines
 
-## Version 1.0 - Branding and Display Standards
+## Version 1.2 - Branding and Display Standards
 
 ---
 
@@ -16,6 +16,9 @@
 6. [Display Examples](#display-examples)
 7. [Digital Asset Library](#digital-asset-library)
 8. [Compliance and Enforcement](#compliance-and-enforcement)
+9. [Frequently Asked Questions](#frequently-asked-questions)
+10. [Appendix: Badge Usage Checklist](#appendix-badge-usage-checklist)
+11. [Contact and Support](#contact-and-support)
 
 ---
 
@@ -100,7 +103,7 @@ The GSF SCI Self-Certification badge is a visual indicator that an organization 
 | Website Header | 80-120px height | 60px height |
 | Website Footer | 60-80px height | 40px height |
 | Documentation | 100-150px height | 60px height |
-| Email Signature | 60-80px height | 40px height |
+| Email Signature | 40-60px height | 40px height |
 | Print Materials | 1-2 inches | 0.75 inches |
 | Social Media | 500x500px | 250x250px |
 
@@ -209,7 +212,7 @@ Organizations MAY share the certificate on:
 - Tag @greensoftware (optional but encouraged)
 
 **Example Post**:
-> "We're proud to share our Software Carbon Intensity calculation through @greensoftware's SCI Self-Certification Program. Transparency is key to reducing software's carbon footprint. [View our full disclosure] (URL) #GreenSoftware #SustainableTech"
+> "We're proud to share our Software Carbon Intensity calculation through @greensoftware's SCI Self-Certification Program. Transparency is key to reducing software's carbon footprint. [View our full disclosure](URL) #GreenSoftware #SustainableTech"
 
 ### 4. Email Signatures
 
@@ -268,7 +271,7 @@ At least one of the following MUST accompany badge display:
 > "This certificate confirms our self-certification of conformity with ISO/IEC 21031:2024. The Green Software Foundation verified disclosure completeness, enabling public review. This is not third-party certification."
 
 **Option 2 (Concise)**:
-> "Self-certified compliant with ISO/IEC 21031:2024, verified by GSF. [Full disclosure](URL)"
+> "Self-certified compliant with ISO/IEC 21031:2024, disclosure verified for completeness by GSF. [Full disclosure](URL)"
 
 **Option 3 (Footnote)**:
 > "* GSF SCI Self-Certification confirms public disclosure of SCI calculation with required information for community review. Does not certify accuracy."
@@ -321,9 +324,9 @@ At least one of the following MUST accompany badge display:
 - Remove badge immediately upon expiration
 
 **Exception**: Historical references are permitted if clearly marked:
-> "Achieved GSF SCI Self-Certification in 2025 (now expired). Updated calculation in progress."
+> "Achieved GSF SCI Self-Certification in 2025 (expired). Updated calculation in progress."
 
-**Consequence**: Immediate takedown required, potential future application restrictions.
+**Consequence**: Immediate takedown required. A badge left up shortly after expiry is handled as a minor violation with a 14-day correction period (see [Compliance and Enforcement](#compliance-and-enforcement)); continued or repeated display after expiry is a serious violation and may restrict future applications.
 
 ---
 
@@ -358,8 +361,8 @@ At least one of the following MUST accompany badge display:
 - "Audited and certified"
 
 **Correct Alternatives**:
-- "Self-certified compliant with ISO/IEC 21031:2024, verified by GSF"
-- "ISO/IEC 21031:2024 SCI calculation (self-certified, disclosure verified by Green Software Foundation)"
+- "Self-certified compliant with ISO/IEC 21031:2024, disclosure verified for completeness by GSF"
+- "ISO/IEC 21031:2024 SCI calculation (self-certified, disclosure verified for completeness by Green Software Foundation)"
 - "Our software carbon intensity has been self-certified to ISO/IEC 21031:2024 standards"
 
 **Consequence**: Warning and required correction. Persistent misrepresentation may result in revocation.
@@ -425,7 +428,7 @@ At least one of the following MUST accompany badge display:
            height="80">
     </a>
     <p class="disclaimer">
-      Self-certified compliant with ISO/IEC 21031:2024, verified by GSF.
+      Self-certified compliant with ISO/IEC 21031:2024, disclosure verified for completeness by GSF.
       <a href="https://badges.greensoftware.foundation/awards/sci/example-greentech-inventory-api">
         View full disclosure
       </a>
@@ -519,7 +522,7 @@ jane@acme.com
 
 **Why This Works**:
 - Minimal but linked
-- Uses icon instead of full badge (space-constrained)
+- Uses a text link instead of the full badge (space-constrained)
 - Direct link to certificate
 
 ---
@@ -668,7 +671,7 @@ To report badge misuse:
 **Examples**:
 - Badge not linked
 - Missing context disclaimer
-- Badge displayed for recently expired certificate
+- Badge still displayed shortly after certificate expiry (removal is required immediately; the 14-day correction period is the enforcement deadline, not a grace period)
 
 **Response**:
 1. Email notification to certificate holder
@@ -740,7 +743,7 @@ Badge misuse determinations can be appealed through the dispute resolution proce
 
 ### Q: Can I say "GSF Certified"?
 
-**A**: Not without the "self-certified" qualifier. Acceptable: "Self-certified compliant with ISO/IEC 21031:2024, verified by GSF." Not acceptable: "GSF Certified Accurate" or "GSF Certified Green Software."
+**A**: Not without the "self-certified" qualifier. Acceptable: "Self-certified compliant with ISO/IEC 21031:2024, disclosure verified for completeness by GSF." Not acceptable: "GSF Certified Accurate" or "GSF Certified Green Software."
 
 ---
 
@@ -806,7 +809,7 @@ Use this checklist before displaying the badge:
 
 ---
 
-**Document Version**: 1.1
-**Last Updated**: 2026-03
+**Document Version**: 1.2
+**Last Updated**: 2026-11
 **Maintained By**: GSF SCI Self-Certification Program
 **License**: (c) Green Software Foundation. Badge assets provided under certificate terms.
