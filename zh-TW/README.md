@@ -4,7 +4,7 @@
 
 # GSF ISO/IEC 21031:2024 自我認證計畫
 
-本計畫讓**任何組織**都能針對 ISO/IEC 21031:2024（軟體碳強度，Software Carbon Intensity，SCI）進行符合性自我認證。本計畫**免費**，開放所有組織參加，從提交申請到取得證書的目標處理時間**約為 3 至 4 週**。
+本計畫讓**任何組織**都能針對 ISO/IEC 21031:2024（軟體碳強度，Software Carbon Intensity，SCI）進行符合性自我認證。本計畫**免費**，開放所有組織參加，從提交申請到取得證書的目標處理時間**約為 3 至 4 週**（複雜案件最長約 5 週）。
 
 您需要提交 SCI 計算結果，並附上經簽署之聲明書（attestation）及完整的方法論揭露（disclosure）。GSF 審查委員會透過結構化的 7 項檢核表，確認的是**揭露的完整性**，而非計算的正確性。所有揭露內容都會公開發布於 GitHub，供社群審閱。
 
@@ -19,7 +19,7 @@
 1. 依照 ISO/IEC 21031:2024 **計算您的 SCI 分數**
 2. 使用[申請範本](docs/submission-email-template.md)**準備申請資料**。範本是一份共 7 個部分的問卷，涵蓋軟體邊界、功能單位、能源與碳資料、隱含排放及方法論
 3. 將申請資料**以電子郵件寄至** sci-certification@greensoftware.foundation。審查人員會在 10 至 15 個工作天內，依 7 項檢核表確認揭露的完整性
-4. 經過軟體標準工作小組（Software Standards Working Group，SWG）為期 7 天的簽核期後，**取得您的證書**
+4. 經過軟體標準工作小組（Software Standards Working Group，SWG）為期 7 個日曆天的簽核期後，**取得您的證書**
 
 證書有效期為一年，換證時須完整重新提交申請資料。
 
@@ -42,7 +42,7 @@
 
 **您的申請資料就是您的公開揭露。** 若獲核准，申請資料將原樣發布至公開的 GitHub 儲存庫（聯絡人電子郵件會遮蔽，並加上證書詮釋資料標頭）。撰寫時請記得內容將會公開，本計畫沒有另外的揭露步驟。
 
-**提交方式：** 以電子郵件寄至 sci-certification@greensoftware.foundation，主旨請使用：`SCI Self-Certification Submission — [Your Organization Name] — [Your Software Name]`（請將方括號內文字替換為您的組織名稱與軟體名稱）。接受的格式：PDF、Word、Markdown，或直接寫在電子郵件內文中的純文字。
+**提交方式：** 以電子郵件寄至 sci-certification@greensoftware.foundation，主旨請使用：`SCI Self-Certification Submission - [Your Organization Name] - [Your Software Name]`（請將方括號內文字替換為您的組織名稱與軟體名稱）。接受的格式：PDF、Word、Markdown，或直接寫在電子郵件內文中的純文字。
 
 ## 審查方式
 
@@ -50,7 +50,7 @@
 
 1. 您會在 1 個工作天內收到附有追蹤編號的確認信
 2. 審查人員會在 10 至 15 個工作天內完成申請資料的審查
-3. **核准**：進入為期 7 天的 SWG 異議期，之後核發證書
+3. **核准**：進入為期 7 個日曆天的 SWG 異議期，之後核發證書
 4. **要求修訂**：您會收到需要修正之處的具體回饋，並可視需要多次重新提交。這不是駁回
 5. **駁回**：僅適用於惡意行為（捏造資料、詐欺，或在收到修訂要求後持續拒絕配合）
 
