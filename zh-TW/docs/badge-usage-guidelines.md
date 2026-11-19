@@ -624,7 +624,7 @@ jane@acme.com
 >
 > 完整揭露：badges.greensoftware.foundation/awards/sci/example-greentech-inventory-api
 >
-> * 依 ISO/IEC 21031:2024 完成自我認證。GSF 已驗證揭露內容的完整性，以供社群審查。
+> \* 依 ISO/IEC 21031:2024 完成自我認證。GSF 已驗證揭露內容的完整性，以供社群審查。
 
 **為何正確**：
 - 標章清楚可見
