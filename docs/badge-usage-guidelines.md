@@ -1,3 +1,5 @@
+> **Language:** English | [繁體中文（台灣）](../zh-TW/docs/badge-usage-guidelines.md)
+
 # GSF SCI Self-Certification Program - Badge Usage Guidelines
 
 ## Version 1.0 - Branding and Display Standards

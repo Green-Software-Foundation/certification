@@ -1,3 +1,5 @@
+> **Language:** English | [繁體中文（台灣）](zh-TW/README.md)
+
 # GSF Self-Certification Program for ISO/IEC 21031:2024
 
 This program enables **any organization** to self-certify conformity with ISO/IEC 21031:2024 (Software Carbon Intensity). It is **free**, open to any organization, and targets a **~3–4 week turnaround** from submission to certificate.

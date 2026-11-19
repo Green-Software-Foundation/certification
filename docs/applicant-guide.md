@@ -1,3 +1,5 @@
+> **Language:** English | [繁體中文（台灣）](../zh-TW/docs/applicant-guide.md)
+
 # Applicant Guide: SCI Self-Certification Program
 
 ## What This Program Is

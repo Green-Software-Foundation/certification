@@ -1,3 +1,5 @@
+> **Language:** English | [繁體中文（台灣）](../zh-TW/docs/imp-schema-documentation.md)
+
 # Impact Manifest Protocol (IMP) Schema Documentation
 
 ## Version 1.0 - GSF SCI Self-Certification Program
