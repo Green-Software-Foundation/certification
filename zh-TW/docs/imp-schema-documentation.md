@@ -4,7 +4,7 @@
 
 # Impact Manifest Protocol (IMP) Schema 說明文件
 
-## 1.0 版 GSF SCI 自我認證計畫
+## 1.0.1 版 GSF SCI 自我認證計畫
 
 ---
 
@@ -13,10 +13,11 @@
 1. [概述](#概述)
 2. [Schema 結構](#schema-結構)
 3. [核心欄位參考](#核心欄位參考)
-4. [揭露章節](#揭露章節)
-5. [驗證規則](#驗證規則)
-6. [各領域範例](#各領域範例)
-7. [JSON Schema 定義](#json-schema-定義)
+4. [驗證規則](#驗證規則)
+5. [各領域範例](#各領域範例)
+6. [JSON Schema 定義](#json-schema-定義)
+7. [其他資源](#其他資源)
+8. [版本紀錄](#版本紀錄)
 
 ---
 
@@ -88,8 +89,10 @@ boundary:
 # 功能單位
 functional_unit:
   unit: string (required)
+  unit_symbol: string (required)
   rationale: string (required)
   measurement_method: string (required)
+  total_units: number (required)
   conversion_factors: array (optional)
 
 # SCI 計算
@@ -102,15 +105,21 @@ calculation:
 # 方法論與資料來源
 methodology:
   approach: string (required)
+  measurement_details: string (required if approach includes measurement)
+  calculation_details: string (required if approach includes calculation)
   assumptions: array (required)
   limitations: array (required)
+  uncertainties: array (optional)
   data_sources: array (required)
 
-# 基準比較（選填）
+# 基準比較（選填區段）
 baseline:
-  baseline_score: object (optional)
-  actions_taken: array (optional)
-  explanation: string (optional)
+  exists: boolean (required if section present)
+  baseline_score: object (required if exists=true)
+  new_score: object (required if exists=true)
+  improvement: object (optional)
+  actions_taken: array (required if exists=true)
+  explanation: string (required if exists=true)
 
 # Impact Framework 設定（供自動化使用）
 initialize:
@@ -153,7 +162,7 @@ description: |
   Measurement Period: January 2025 (30 days)
   Total Requests: 45,000,000
 
-  Result: 349.63 gCO2eq per 1,000 API requests
+  Result: 2.49 gCO2eq per 1,000 API requests
 ```
 
 #### `tags` (object, 必填)
@@ -214,7 +223,7 @@ submission:
     start_date: string (required, ISO 8601 date)
     end_date: string (required, ISO 8601 date)
     duration_hours: number (required, positive)
-    submission_date: string (required, ISO 8601 date)
+    submission_date: string (optional, ISO 8601 date, auto-populated by portal)
 ```
 
 **欄位詳細說明**：
@@ -226,7 +235,7 @@ submission:
 - **measurement_period.start_date**：ISO 8601 格式（例如 `"2025-01-01"`）
 - **measurement_period.end_date**：必須晚於 start_date
 - **measurement_period.duration_hours**：計算出的期間長度，供驗證使用
-- **submission_date**：提交日期（由入口網站自動填入）
+- **measurement_period.submission_date**：提交日期（由入口網站自動填入；可省略）
 
 **範例**：
 ```yaml
@@ -423,6 +432,7 @@ calculation:
     unit: string (required, default "gCO2eq/kWh")
     location: string (required)
     approach: string (required, enum: ["location-based", "market-based"])
+    methodology: string (optional)
     data_sources: array (required)
     regional_breakdown: array (optional)
 
@@ -440,9 +450,9 @@ calculation:
 
 ```yaml
 score:
-  value: 349.63
+  value: 2.49
   unit: "gCO2eq per 1,000 API requests"
-  formula: "SCI = (E × I + M) / R = (46.01 × 340 + 96,574.9) / 45,000 × 1,000"
+  formula: "SCI = (E × I + M) / R = (46.01 × 340 + 96,575.3) / 45,000,000 × 1,000 = 2.49"
 ```
 
 **驗證**：
@@ -568,7 +578,7 @@ carbon_intensity:
 **驗證規則**：
 - 碳強度（carbon intensity）必須為正值，且通常 < 2000 gCO2eq/kWh
 - 必須指明所在地點
-- 資料來源必須包含年份（以最近 3 年內為佳）
+- 資料來源必須包含年份（以最近 3 年內為佳；超過 5 年的資料來源將無法通過[驗證規則](#驗證規則)中的日期檢查）
 - 若採加權計算：各區域百分比總和必須為 100%
 
 ---
@@ -577,7 +587,7 @@ carbon_intensity:
 
 ```yaml
 embodied_emissions:
-  value: 96574.9
+  value: 96575.3
   unit: "gCO2eq"
 
   methodology: |
@@ -599,8 +609,8 @@ embodied_emissions:
       expected_lifespan_hours: 35040  # 4 年
       time_reserved_hours: 720  # 量測期間
       resource_share: 1.0  # 專用
-      allocated_emissions: 24658.0
-      calculation: "1,200,000 × (720/35,040) × 1.0 = 24,658.0 g"
+      allocated_emissions: 24657.5
+      calculation: "1,200,000 × (720/35,040) × 1.0 = 24,657.5 g"
       data_source: "Cloud Carbon Footprint - AWS EC2 Embodied Emissions"
 
     - name: "Application Server 2"
@@ -609,8 +619,8 @@ embodied_emissions:
       expected_lifespan_hours: 35040
       time_reserved_hours: 720
       resource_share: 1.0
-      allocated_emissions: 24658.0
-      calculation: "1,200,000 × (720/35,040) × 1.0 = 24,658.0 g"
+      allocated_emissions: 24657.5
+      calculation: "1,200,000 × (720/35,040) × 1.0 = 24,657.5 g"
       data_source: "Cloud Carbon Footprint - AWS EC2 Embodied Emissions"
 
     - name: "Load Balancer"
@@ -629,8 +639,8 @@ embodied_emissions:
       expected_lifespan_hours: 35040
       time_reserved_hours: 720
       resource_share: 1.0
-      allocated_emissions: 30820.5
-      calculation: "1,500,000 × (720/35,040) × 1.0 = 30,820.5 g"
+      allocated_emissions: 30821.9
+      calculation: "1,500,000 × (720/35,040) × 1.0 = 30,821.9 g"
       data_source: "Cloud Carbon Footprint - AWS RDS Embodied Emissions"
 
   data_sources:
@@ -650,8 +660,8 @@ hardware_components:
     expected_lifespan_hours: 35040  # 4 年
     time_reserved_hours: 720  # 30 天
     resource_share: 0.125  # 使用 16 顆 vCPU 中的 2 顆
-    allocated_emissions: 5142.9
-    calculation: "2,000,000 × (720/35,040) × (2/16) = 5,142.9 g"
+    allocated_emissions: 5137.0
+    calculation: "2,000,000 × (720/35,040) × (2/16) = 5,137.0 g"
     data_source: "GCP Embodied Emissions Data"
 ```
 
@@ -662,7 +672,7 @@ hardware_components:
   - 預期使用壽命（EL）
   - 保留時間（TiR）
   - 資源占比（RR/ToR，如適用）
-- 常見的預期使用壽命：伺服器為 3-5 年，行動裝置為 2-4 年
+- 常見的預期使用壽命：伺服器為 3-5 年，行動裝置為 2-4 年（超出 2-7 年範圍的數值將無法通過[驗證規則](#驗證規則)中的合理性檢查）
 - 隱含排放（embodied emissions）僅在有明確理由時才可為零
 
 ---
@@ -826,7 +836,7 @@ baseline:
     value: 5.12
     unit: "kgCO2eq per training run"
     measurement_date: "2024-12-01"
-    reference: "https://badges.greensoftware.foundation/awards/sci/example-neuralcast-llm-inference"
+    reference: "https://badges.greensoftware.foundation/awards/sci/[previous-certificate-id]"
 
   new_score:
     value: 2.72
@@ -844,7 +854,7 @@ baseline:
 
     - action: "Moved from us-east-1 (340 gCO2eq/kWh) to europe-west4 (420 gCO2eq/kWh)"
       category: "location-optimization"
-      expected_impact: "Lower carbon intensity region"
+      expected_impact: "Access to newer GPU capacity; slightly higher grid carbon intensity accepted"
       actual_impact: "Note: Carbon intensity slightly higher, but overall reduction due to efficiency gains"
 
     - action: "Optimized model architecture (reduced parameters)"
@@ -904,12 +914,12 @@ baseline:
    - 量測的 start_date < end_date
    - 量測期間必須已經過去
    - 提交日期 ≥ 量測結束日期
-   - 資料來源年份合理（以最近 5 年內為佳）
+   - 資料來源年份不得超過 5 年（以最近 3 年內為佳）
 
 7. **數值合理性**
    - 碳強度：0 < I < 2000 gCO2eq/kWh（常見情況）
    - PUE：1.0 ≤ PUE ≤ 3.0（常見範圍：1.1-1.5）
-   - 預期使用壽命：大多數硬體為 2-7 年
+   - 預期使用壽命：大多數硬體為 2-7 年（此為外部界限；伺服器的常見數值為 3-5 年）
    - 資源占比：0 < RR/ToR ≤ 1.0
 
 ### 品質檢查（不會阻擋提交，但可能觸發人工審查）
@@ -1019,7 +1029,7 @@ baseline:
           "properties": {
             "start_date": {"type": "string", "format": "date"},
             "end_date": {"type": "string", "format": "date"},
-            "duration_hours": {"type": "number", "minimum": 0},
+            "duration_hours": {"type": "number", "exclusiveMinimum": 0},
             "submission_date": {"type": "string", "format": "date"}
           }
         }
@@ -1045,4 +1055,5 @@ baseline:
 
 ## 版本紀錄
 
+- **v1.0.1**（2026-11）：修正範例計算（分數、隱含排放），使概述結構與 JSON Schema 與欄位參考一致，釐清驗證限制，並修正目錄
 - **v1.0.0**（2026-01）：GSF SCI 自我認證計畫首次發布版本
