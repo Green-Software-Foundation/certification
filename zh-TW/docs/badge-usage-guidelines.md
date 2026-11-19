@@ -4,7 +4,7 @@
 
 # GSF SCI 自我認證計畫：標章使用準則
 
-## 版本 1.0：品牌與展示標準
+## 版本 1.2：品牌與展示標準
 
 ---
 
@@ -18,6 +18,9 @@
 6. [展示範例](#展示範例)
 7. [數位素材庫](#數位素材庫)
 8. [合規與執行](#合規與執行)
+9. [常見問題](#常見問題)
+10. [附錄：標章使用檢核表](#附錄標章使用檢核表)
+11. [聯絡與支援](#聯絡與支援)
 
 ---
 
@@ -102,7 +105,7 @@ GSF SCI 自我認證標章（badge）是一種視覺標示，表示某組織已�
 | 網站頁首 | 高度 80-120px | 高度 60px |
 | 網站頁尾 | 高度 60-80px | 高度 40px |
 | 文件 | 高度 100-150px | 高度 60px |
-| 電子郵件簽名檔 | 高度 60-80px | 高度 40px |
+| 電子郵件簽名檔 | 高度 40-60px | 高度 40px |
 | 印刷品 | 1-2 英吋 | 0.75 英吋 |
 | 社群媒體 | 500x500px | 250x250px |
 
@@ -219,9 +222,9 @@ GSF SCI 自我認證標章（badge）是一種視覺標示，表示某組織已�
 - 標記 @greensoftware（非必要，但鼓勵）
 
 **貼文範例**：
-> 「我們很榮幸透過 @greensoftware 的 SCI 自我認證計畫分享我們的軟體碳強度計算。透明是降低軟體碳足跡的關鍵。[查看我們的完整揭露] (URL) #GreenSoftware #SustainableTech」
+> 「我們很榮幸透過 @greensoftware 的 SCI 自我認證計畫分享我們的軟體碳強度計算。透明是降低軟體碳足跡的關鍵。[查看我們的完整揭露](URL) #GreenSoftware #SustainableTech」
 >
-> "We're proud to share our Software Carbon Intensity calculation through @greensoftware's SCI Self-Certification Program. Transparency is key to reducing software's carbon footprint. [View our full disclosure] (URL) #GreenSoftware #SustainableTech"
+> "We're proud to share our Software Carbon Intensity calculation through @greensoftware's SCI Self-Certification Program. Transparency is key to reducing software's carbon footprint. [View our full disclosure](URL) #GreenSoftware #SustainableTech"
 
 ### 4. 電子郵件簽名檔
 
@@ -284,9 +287,9 @@ jane@acme.com | acme.com
 > "This certificate confirms our self-certification of conformity with ISO/IEC 21031:2024. The Green Software Foundation verified disclosure completeness, enabling public review. This is not third-party certification."
 
 **選項 2（精簡版）**：
-> 「經自我認證符合 ISO/IEC 21031:2024，並經 GSF 驗證。[完整揭露](URL)」
+> 「經自我認證符合 ISO/IEC 21031:2024，揭露內容經 GSF 完整性驗證。[完整揭露](URL)」
 >
-> "Self-certified compliant with ISO/IEC 21031:2024, verified by GSF. [Full disclosure](URL)"
+> "Self-certified compliant with ISO/IEC 21031:2024, disclosure verified for completeness by GSF. [Full disclosure](URL)"
 
 **選項 3（註腳）**：
 > 「* GSF SCI 自我認證確認 SCI 計算已連同必要資訊公開揭露，以供社群審查。不保證準確性。」
@@ -341,11 +344,11 @@ jane@acme.com | acme.com
 - 證書到期後立即移除標章
 
 **例外**：歷史性提及在清楚標示的前提下允許：
-> 「於 2025 年取得 GSF SCI 自我認證（現已過期）。更新的計算正在進行中。」
+> 「於 2025 年取得 GSF SCI 自我認證（已過期）。更新的計算正在進行中。」
 >
-> "Achieved GSF SCI Self-Certification in 2025 (now expired). Updated calculation in progress."
+> "Achieved GSF SCI Self-Certification in 2025 (expired). Updated calculation in progress."
 
-**後果**：須立即下架，未來申請可能受到限制。
+**後果**：須立即下架。證書到期後短時間內仍展示標章者，以輕微違規處理，並給予 14 天更正期（見[合規與執行](#合規與執行)）；到期後持續或重複展示者，則構成嚴重違規，未來申請可能受到限制。
 
 ---
 
@@ -380,8 +383,8 @@ jane@acme.com | acme.com
 - 「經稽核並認證」<br>"Audited and certified"
 
 **正確替代用語**（中文為譯文，每則下方為具效力的英文原文）：
-- 「經自我認證符合 ISO/IEC 21031:2024，並經 GSF 驗證」<br>"Self-certified compliant with ISO/IEC 21031:2024, verified by GSF"
-- 「ISO/IEC 21031:2024 SCI 計算（自我認證，揭露內容經 Green Software Foundation 驗證）」<br>"ISO/IEC 21031:2024 SCI calculation (self-certified, disclosure verified by Green Software Foundation)"
+- 「經自我認證符合 ISO/IEC 21031:2024，揭露內容經 GSF 完整性驗證」<br>"Self-certified compliant with ISO/IEC 21031:2024, disclosure verified for completeness by GSF"
+- 「ISO/IEC 21031:2024 SCI 計算（自我認證，揭露內容經 Green Software Foundation 完整性驗證）」<br>"ISO/IEC 21031:2024 SCI calculation (self-certified, disclosure verified for completeness by Green Software Foundation)"
 - 「我們的軟體碳強度已依 ISO/IEC 21031:2024 標準完成自我認證」<br>"Our software carbon intensity has been self-certified to ISO/IEC 21031:2024 standards"
 
 **後果**：警告並要求更正。持續不實陳述可能導致撤銷。
@@ -447,7 +450,7 @@ jane@acme.com | acme.com
            height="80">
     </a>
     <p class="disclaimer">
-      Self-certified compliant with ISO/IEC 21031:2024, verified by GSF.
+      Self-certified compliant with ISO/IEC 21031:2024, disclosure verified for completeness by GSF.
       <a href="https://badges.greensoftware.foundation/awards/sci/example-greentech-inventory-api">
         View full disclosure
       </a>
@@ -563,7 +566,7 @@ jane@acme.com
 
 **為何正確**：
 - 精簡但附有連結
-- 以圖示取代完整標章（空間有限）
+- 以文字連結取代完整標章（空間有限）
 - 直接連結至證書
 
 ---
@@ -721,7 +724,7 @@ GSF 透過下列方式監測標章使用情形：
 **範例**：
 - 標章未附連結
 - 缺少說明文字免責聲明
-- 證書剛過期仍展示標章
+- 證書到期後短時間內仍展示標章（標章須於到期時立即移除；14 天更正期為執行期限，並非寬限期）
 
 **處理方式**：
 1. 以電子郵件通知證書持有者
@@ -798,9 +801,9 @@ GSF 透過下列方式監測標章使用情形：
 **答**：除非加上「self-certified」（自我認證）限定詞，否則不行。
 
 可接受（中文為譯文，下方為具效力的英文原文）：
-> 「經自我認證符合 ISO/IEC 21031:2024，並經 GSF 驗證。」
+> 「經自我認證符合 ISO/IEC 21031:2024，揭露內容經 GSF 完整性驗證。」
 >
-> "Self-certified compliant with ISO/IEC 21031:2024, verified by GSF."
+> "Self-certified compliant with ISO/IEC 21031:2024, disclosure verified for completeness by GSF."
 
 不可接受（中文為譯文，每則下方為具效力的英文原文）：
 - 「GSF 認證準確」<br>"GSF Certified Accurate"
@@ -870,7 +873,7 @@ GSF 透過下列方式監測標章使用情形：
 
 ---
 
-**文件版本**：1.1
-**最後更新**：2026-03
+**文件版本**：1.2
+**最後更新**：2026-11
 **維護單位**：GSF SCI 自我認證計畫
 **授權**：(c) Green Software Foundation。標章素材依證書條款提供。

@@ -14,7 +14,7 @@
 
 **格式：**您可以直接在電子郵件內文中作答，或附加文件（PDF、Word、Markdown 或純文字）。若使用附件，請在內文中註明檔案名稱，以便審查人員對照，例如：*「See attached: acme-api-boundary.pdf」*。
 
-**本申請資料即為您的公開揭露。**若獲核准，將依原樣發布至 `greensoftware-foundation/certification` GitHub 儲存庫（您的聯絡電子郵件會被遮蔽，並加上證書詮釋資料標頭）。請據此撰寫，因為不會另有揭露步驟。
+**本申請資料即為您的公開揭露。**若獲核准，將依原樣發布至 `Green-Software-Foundation/certification` GitHub 儲存庫（您的聯絡電子郵件會被遮蔽，並加上證書詮釋資料標頭）。請據此撰寫，因為不會另有揭露步驟。
 
 **請完全依照原樣保留標題、粗體欄位標籤與表格欄位標題。**badges.greensoftware.foundation 上的證書頁面會比對這些標籤來讀取您已發布的揭露內容，因此若重新命名、合併或移除這些標籤，相關欄位將無法顯示在您的標章頁面上。如需補充細節，請在任一欄位下方以附註或額外表格的方式加入，而非更改標籤。
 
@@ -24,9 +24,9 @@
 
 *（收件人：請勿更改此電子郵件地址）*
 
-**Subject:** "SCI Self-Certification - [Your Organization Name] - [Your Software Name]"
+**Subject:** "SCI Self-Certification Submission - [Your Organization Name] - [Your Software Name]"
 
-*（主旨：請保留英文原樣，只將方括號內容替換為您的組織名稱與軟體名稱，例如 "SCI Self-Certification - Acme Corporation - Acme API"）*
+*（主旨：請保留英文原樣，只將方括號內容替換為您的組織名稱與軟體名稱，例如 "SCI Self-Certification Submission - Acme Corporation - Acme API"）*
 
 ---
 
@@ -300,7 +300,7 @@ By submitting this application, I hereby:
 
 我們維護一個公開的已認證組織頁面，以協助擴大 SCI 社群。若您選擇加入，您的組織名稱與標誌將與其他證書持有者一同顯示於我們的「Certified Organisations」（已認證組織）頁面。
 
-- [ ] Yes — you may display our organisation name and logo on the GSF certified organisations page
+- [ ] Yes — you may display our organization name and logo on the GSF certified organizations page
 - [ ] No thank you
 
 *（選項：第一項為「是，您可以在 GSF 已認證組織頁面上顯示我們的組織名稱與標誌」；第二項為「不用，謝謝」。請保留英文選項，並以 [x] 勾選。）*
@@ -331,7 +331,7 @@ By submitting this application, I hereby:
 
 *（選填附件）*
 
-您可以附上佐證資料，例如包含詳細計算的試算表、Impact Framework manifest（清單檔）檔案（IMP/YAML），或公開文件的連結。我們鼓勵您提供，但並非必要：上方的問卷內容已經足夠。
+您可以附上佐證資料，例如包含詳細計算的試算表、Impact Framework manifest（清單檔）檔案（IMP/YAML），或公開文件的連結。我們鼓勵您提供，但並非必要：上方的 7 節問卷內容已經足夠。
 
 ---
 
@@ -341,7 +341,7 @@ By submitting this application, I hereby:
 
 - [ ] Section 1：組織與軟體資料
 - [ ] Section 2：SCI 分數，包含單位與量測期間
-- [ ] Section 3：納入與排除的元件，並附理由
+- [ ] Section 3：納入與排除的元件，並附理由；共用基礎設施的處理方式
 - [ ] Section 4：功能單位，並附選擇理由與量測方式
 - [ ] Section 5：能源消耗，並附各元件明細；碳強度，並附來源與年份
 - [ ] Section 6：隱含排放，並附分配方法與明細（若為零，則附理由）
