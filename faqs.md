@@ -1,3 +1,5 @@
+> **Language:** English | [繁體中文（台灣）](zh-TW/faqs.md)
+
 # SCI Self-Certification Program — Frequently Asked Questions
 
 ---
